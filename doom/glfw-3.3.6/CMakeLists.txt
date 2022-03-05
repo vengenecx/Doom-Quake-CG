@@ -1,5 +1,11 @@
 cmake_minimum_required(VERSION 3.0...3.20 FATAL_ERROR)
 
+
+
+set( CMAKE_CXX_COMPILER "C:/MinGW/bin/g++" )
+set( CMAKE_C_COMPILER "C:/MinGW/bin/gcc" )
+
+
 project(GLFW VERSION 3.3.6 LANGUAGES C)
 
 set(CMAKE_LEGACY_CYGWIN_WIN32 OFF)
@@ -20,6 +26,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+
 
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 option(GLFW_BUILD_EXAMPLES "Build the GLFW example programs" ON)
