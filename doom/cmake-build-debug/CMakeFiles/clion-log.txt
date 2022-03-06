@@ -1,4 +1,0 @@
-Cannot generate into C:\Users\benwa\Documents\Doom-Quake-CG\doom
-It was created with incompatible generator 'NMake Makefiles'
-
-Please either delete it manually or select another generation directory
