@@ -85,3 +85,6 @@ doom/glfw-3.3.6/src/glfw3.pc
 doom/glfw-3.3.6/src/glfw_config.h
 doom/INSTALL.vcxproj.filters
 doom/ZERO_CHECK.vcxproj.filters
+doom/glfw-3.3.6/src/cmake_install.cmake
+doom/glfw-3.3.6/src/glfw3.pc
+doom/glfw-3.3.6/src/glfw_config.h
