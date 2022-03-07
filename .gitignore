@@ -55,8 +55,6 @@ doom/glfw-3.3.6/ZERO_CHECK.vcxproj.filters
 doom/glfw-3.3.6/src/cmake_install.cmake
 doom/glfw-3.3.6/src/glfw3.pc
 doom/glfw-3.3.6/src/glfw_config.h
-<<<<<<< Updated upstream
-=======
 doom/cmake-build-debug/.cmake/api/v1/reply/cache-v2-fa87d7fc9fd976ea3b6b.json
 *.cmake
 *.cmake
@@ -90,11 +88,6 @@ doom/ZERO_CHECK.vcxproj.filters
 doom/glfw-3.3.6/src/cmake_install.cmake
 doom/glfw-3.3.6/src/glfw3.pc
 doom/glfw-3.3.6/src/glfw_config.h
-doom/glfw-3.3.6/src/cmake_install.cmake
-doom/glfw-3.3.6/src/glfw3.pc
-doom/glfw-3.3.6/src/glfw_config.h
-*.cmake
->>>>>>> Stashed changes
 doom/glfw-3.3.6/src/cmake_install.cmake
 doom/glfw-3.3.6/src/glfw3.pc
 doom/glfw-3.3.6/src/glfw_config.h

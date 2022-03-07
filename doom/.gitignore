@@ -24,3 +24,13 @@ out/
 
 CMakeCache.txt
 CMakeFiles
+
+*.cmake
+*.cmake
+*.make
+*.pc
+*.ninja
+
+.idea/*
+
+cmake-build-debug/*
