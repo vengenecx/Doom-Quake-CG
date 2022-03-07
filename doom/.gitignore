@@ -34,3 +34,4 @@ CMakeFiles
 .idea/*
 
 cmake-build-debug/*
+glfw-3.3.6/src/*
