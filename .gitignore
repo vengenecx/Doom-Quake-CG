@@ -12,3 +12,7 @@ doom/glfw-3.3.6/src/cmake_install.cmake
 doom/glfw-3.3.6/src/glfw_config.h
 doom/glfw-3.3.6/src/glfw3.pc
 doom/glfw-3.3.6/src/cmake_install.cmake
+doom/CMakeCache.txt
+doom/CMakeFiles/3.23.0-rc2/CMakeSystem.cmake
+doom/CMakeFiles/cmake.check_cache
+doom/CMakeFiles/CMakeOutput.log
