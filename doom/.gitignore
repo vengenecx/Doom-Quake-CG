@@ -31,4 +31,6 @@ CMakeFiles
 *.pc
 *.ninja
 
+.idea/*
+
 cmake-build-debug/*
