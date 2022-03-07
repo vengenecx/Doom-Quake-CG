@@ -6,3 +6,8 @@ doom/cmake-build-debug/**
 doom/glfw-3.3.6/src/cmake_install.cmake
 doom/glfw-3.3.6/src/glfw3.pc
 doom/glfw-3.3.6/src/**
+
+*.cmake
+*.make
+*.pc
+*.ninja
