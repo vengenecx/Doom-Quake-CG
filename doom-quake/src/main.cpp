@@ -1,6 +1,9 @@
 #include <iostream>
 #include <glad.h>
 #include "GLFW/glfw3.h"
+#include "Engine.h"
+
+void processInput(GLFWwindow *pWwindow);
 
 int main(void)
 {
@@ -28,8 +31,8 @@ int main(void)
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
-    
 
+    std::unique_ptr<Engine> engine = std::make_unique<Engine>();
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
@@ -41,9 +44,11 @@ int main(void)
 
         /* Poll for and process events */
         glfwPollEvents();
+
+        /* Call input function */
+        engine->render(window);
     }
 
     glfwTerminate();
     return 0;
 }
-
