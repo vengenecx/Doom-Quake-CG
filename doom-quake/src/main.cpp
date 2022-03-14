@@ -46,7 +46,7 @@ int main(void)
         glfwPollEvents();
 
         /* Call input function */
-        engine->render(window);
+        engine->loop(window);
     }
 
     glfwTerminate();

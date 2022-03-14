@@ -9,6 +9,8 @@
 
 class Engine {
 public:
-    void render(GLFWwindow *window);
+    void loop(GLFWwindow *window);
+private:
+    void keyHandler(GLFWwindow *window);
 };
 #endif //DOOM_QUAKE_ENGINE_H
