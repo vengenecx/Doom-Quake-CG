@@ -1,4 +1,5 @@
 .DS_Store
+build/**
 doom/.idea/workspace.xml
 doom/.idea/vcs.xml
 doom-quake/ZERO_CHECK.vcxproj.filters
@@ -94,3 +95,5 @@ doom-quake/x64/Debug/ZERO_CHECK/ZERO_CHECK.tlog/CustomBuild.command.1.tlog
 doom-quake/x64/Debug/ZERO_CHECK/ZERO_CHECK.tlog/CustomBuild.read.1.tlog
 doom-quake/x64/Debug/ZERO_CHECK/ZERO_CHECK.tlog/CustomBuild.write.1.tlog
 doom-quake/x64/Debug/ZERO_CHECK/ZERO_CHECK.tlog/ZERO_CHECK.lastbuildstate
+.vscode/settings.json
+.DS_Store
