@@ -1,7 +1,4 @@
-#include <iostream>
-#include <glad.h>
-#include "GLFW/glfw3.h"
-#include "Engine.h"
+#include <Engine.h>
 
 void processInput(GLFWwindow *pWwindow);
 
@@ -12,6 +9,15 @@ int main(void)
     /* Initialize the library */
     if (!glfwInit())
         return -1;
+
+
+
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3.3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+
 
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(640, 480, "Up and running", NULL, NULL);
@@ -39,14 +45,16 @@ int main(void)
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
+        /* Render in engine */
+        engine->loop(window);
+
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 
         /* Poll for and process events */
         glfwPollEvents();
 
-        /* Call input function */
-        engine->loop(window);
+
     }
 
     glfwTerminate();
