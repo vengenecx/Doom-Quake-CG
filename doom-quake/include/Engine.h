@@ -23,12 +23,15 @@ private:
     void setupVBO();
     void initShader();
     void setupVAO();
+    void setupEBO();
 
     unsigned int VBO;
     unsigned int VAO;
+    unsigned int EBO;
     unsigned int vertexShader;
     unsigned int fragmentShader;
     unsigned int shaderProgram;
-    float vertices[9];
+    float vertices[12];
+    unsigned int indices[6];
 };
 #endif //DOOM_QUAKE_ENGINE_H
