@@ -25,12 +25,17 @@ private:
     void setupVAO();
     void setupEBO();
 
+    // Buffers
     unsigned int VBO;
     unsigned int VAO;
     unsigned int EBO;
+
+    // Shader variables
     unsigned int vertexShader;
     unsigned int fragmentShader;
     unsigned int shaderProgram;
+
+    // Const input
     float vertices[12];
     unsigned int indices[6];
 };
