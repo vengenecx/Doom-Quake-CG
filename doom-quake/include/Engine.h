@@ -10,7 +10,7 @@
 #include <Shaders/basicShader.h>
 #include <iostream>
 #include <memory>
-
+#include <assimp/scene.h>
 
 class Engine {
 public:
