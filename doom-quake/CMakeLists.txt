@@ -4,7 +4,7 @@ project(doom_quake)
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(include)
-add_executable(doom_quake src/main.cpp include/Engine.h include/glad.h include/khrplatform.h src/glad/glad.c src/engine.cpp include/Shaders/basicShader.h)
+add_executable(doom_quake src/main.cpp include/Engine.h include/glad.h include/khrplatform.h src/glad/glad.c src/engine.cpp include/Shaders/basicShader.h src/Shaders/Shader.cpp include/Shaders/Shader.h include/Shaders/EShader.h)
 add_subdirectory(glfw-3.3.6)
 target_link_libraries(doom_quake glfw)
 find_package(OpenGL REQUIRED)

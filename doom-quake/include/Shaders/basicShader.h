@@ -19,4 +19,10 @@ static const char *fragmentShaderSource = "#version 330 core\n"
                                  "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
                                  "}\0";
 
+static const char* shaderPaths[] = {
+        "path1",
+        "path2"
+};
+
+
 #endif //DOOM_QUAKE_BASICSHADER_H
