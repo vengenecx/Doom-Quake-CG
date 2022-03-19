@@ -1,6 +1,8 @@
 .DS_Store
 build/**
 .idea/**
+doom-quake/.vs/**
+doom-quake/out/**
 doom/.idea/workspace.xml
 doom/.idea/vcs.xml
 doom-quake/ZERO_CHECK.vcxproj.filters
