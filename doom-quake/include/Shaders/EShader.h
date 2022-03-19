@@ -4,7 +4,7 @@
 
 #ifndef DOOM_QUAKE_ESHADER_H
 #define DOOM_QUAKE_ESHADER_H
-enum suit {
+enum EShader {
     defaultVertex = 0,
     defaultFragment = 1,
 } eShader;
