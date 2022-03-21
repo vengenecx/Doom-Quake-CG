@@ -41,7 +41,7 @@ private:
     std::unique_ptr<Shader> ourShader;
 
     // Const input
-    float vertices[12];
+    float vertices[24];
     unsigned int indices[6];
 };
 #endif //DOOM_QUAKE_ENGINE_H

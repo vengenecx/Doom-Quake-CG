@@ -13,10 +13,14 @@
 
 Engine::Engine() :
 vertices{
-        0.5f,  0.5f, 0.0f,  // top right
-        0.5f, -0.5f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f,  // bottom left
-        -0.5f,  0.5f, 0.0f   // top left
+//        0.5f,  0.5f, 0.0f,          1.0f, 0.0f, 0.0f,        // top right
+//        0.5f, -0.5f, 0.0f,          1.0f, 0.0f, 0.0f,        // bottom right
+//        -0.5f, -0.5f, 0.0f,      1.0f, 0.0f, 0.0f,           // bottom left
+//        -0.5f,  0.5f, 0.0f,      1.0f, 0.0f, 0.0f        // top left
+        // positions         // colors
+        0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
+        -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
+        0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // top
         },
 indices{
         0, 1, 3,   // first triangle
@@ -29,8 +33,10 @@ indices{
     setupVBO();
     setupVAO();
     setupEBO();
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3* sizeof(float)));
+    glEnableVertexAttribArray(1);
 }
 
 void Engine::initBuffer(){
@@ -103,10 +109,12 @@ void Engine::setupEBO(){
 void Engine::loop(GLFWwindow *window) {
     this->keyHandler(window);
 
-    glUseProgram(shaderProgram);
+    //glUseProgram(shaderProgram);
+    ourShader->use();
+    ourShader->setFloat("someUniform", 1.0f);
     glBindVertexArray(VAO);
-    //glDrawArrays(GL_TRIANGLES, 0, 3);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+    //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }
 

@@ -28,4 +28,7 @@ target_link_libraries(doom_quake glm)
 
 # STB
 include_directories(stb-master)
-#target_link_libraries(doom_quake stb)
+
+# Shader files include
+#include_directories()
+file(COPY shader-files DESTINATION .)
