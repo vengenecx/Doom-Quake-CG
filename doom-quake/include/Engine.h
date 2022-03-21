@@ -24,7 +24,7 @@ private:
     void keyHandler(GLFWwindow *window);
     void initBuffer();
     void setupVBO();
-    void initShader();
+//    void initShader();
     void setupVAO();
     void setupEBO();
 
