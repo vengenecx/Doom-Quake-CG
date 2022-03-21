@@ -24,7 +24,8 @@ indices{
 }
 {
     initBuffer();
-    initShader();
+    //initShader();
+    ourShader = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
     setupVBO();
     setupVAO();
     setupEBO();

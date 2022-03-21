@@ -25,3 +25,7 @@ target_link_libraries(doom_quake assimp)
 # GLM
 add_subdirectory(glm-master)
 target_link_libraries(doom_quake glm)
+
+# STB
+include_directories(stb-master)
+#target_link_libraries(doom_quake stb)

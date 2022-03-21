@@ -10,6 +10,8 @@
 #include <Shaders/basicShader.h>
 #include <iostream>
 #include <memory>
+#include "Shaders/Shader.h"
+#include <Shaders/EShader.h>
 
 
 class Engine {
@@ -35,6 +37,8 @@ private:
     unsigned int vertexShader;
     unsigned int fragmentShader;
     unsigned int shaderProgram;
+
+    std::unique_ptr<Shader> ourShader;
 
     // Const input
     float vertices[12];
