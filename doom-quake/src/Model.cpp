@@ -4,7 +4,7 @@
 
 #include<Model.h>
 
-void Model::Draw(Shader &shader)
+void Model::Draw(Shader *shader)
 {
     for(unsigned int i = 0; i < meshes.size(); i++)
         meshes[i].Draw(shader);
@@ -12,12 +12,12 @@ void Model::Draw(Shader &shader)
 
 void Model::loadModel(std::string path)
 {
-    Assimp::Importer import;
-    const aiScene *scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
+    Assimp::Importer importer;
+    const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
 
     if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
     {
-        std::cout << "ERROR::ASSIMP::" << import.GetErrorString() << std::endl;
+        std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
         return;
     }
     directory = path.substr(0, path.find_last_of('/'));

@@ -6,6 +6,7 @@ int main(void)
 {
     GLFWwindow* window;
 
+
     /* Initialize the library */
     if (!glfwInit())
         return -1;
@@ -20,7 +21,7 @@ int main(void)
 
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Doom/Quake", NULL, NULL);
+    window = glfwCreateWindow(800, 600, "Doom/Quake", NULL, NULL);
 
 
     if (!window)
@@ -37,13 +38,23 @@ int main(void)
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
-
     std::unique_ptr<Engine> engine = std::make_unique<Engine>();
+    glfwSetWindowUserPointer(window, engine.get());
+    glfwSetCursorPosCallback(window, engine->mouseHandler_static);
+    glfwSetScrollCallback(window, engine->scrollHandler_static);
+
+
+    // tell GLFW to capture our mouse
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+    stbi_set_flip_vertically_on_load(true);
+    glEnable(GL_DEPTH_TEST);
+
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
+        //glClear(GL_COLOR_BUFFER_BIT);
 
         /* Render in engine */
         engine->loop(window);
