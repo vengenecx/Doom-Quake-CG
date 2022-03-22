@@ -32,12 +32,13 @@ indices{
         1, 2, 3    // second triangle
 }
 {
-    initBuffer();
+    //initBuffer();
     //initShader();
 
-    //ourShader = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
-    ourShader = std::make_unique<Shader>(shaderPaths[modelLoadingVertex],shaderPaths[modelLoadingFragment]);
+    ourShader = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
+    //ourShader = std::make_unique<Shader>(shaderPaths[modelLoadingVertex],shaderPaths[modelLoadingFragment]);
     model = std::make_unique<Model>("model-files/backpack/backpack.obj");
+
     camera = std::make_unique<Camera>(glm::vec3(0.0f, 0.0f, 3.0f));
 
 //    setupVBO();
@@ -143,10 +144,10 @@ void Engine::loop(GLFWwindow *window) {
     ourShader->setMat4("view", view);
 
     // render the loaded model
-    glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
-    ourShader->setMat4("model", model);
+    glm::mat4 m = glm::mat4(1.0f);
+    m = glm::translate(m, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+    m = glm::scale(m, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+    ourShader->setMat4("model", m);
     Shader* test = ourShader.get();
     this->model->Draw(test);
 }
@@ -156,12 +157,16 @@ void Engine::keyHandler(GLFWwindow *window) {
         glfwSetWindowShouldClose(window, true);
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+        std::cout << "W pressed"<< std::endl;
         camera->ProcessKeyboard(FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+        std::cout << "S pressed" << std::endl;
         camera->ProcessKeyboard(BACKWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+        std::cout << "A pressed" << std::endl;
         camera->ProcessKeyboard(LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+        std::cout << "D pressed" << std::endl;
         camera->ProcessKeyboard(RIGHT, deltaTime);
 }
 // glfw: whenever the mouse moves, this callback is called
@@ -185,12 +190,14 @@ void Engine::mouseHandler(GLFWwindow* window, double xposIn, double yposIn)
     lastY = ypos;
 
     camera->ProcessMouseMovement(xoffset, yoffset);
+    std::cout << "mouse movement" << std::endl;
 }
 
 // glfw: whenever the mouse scroll wheel scrolls, this callback is called
 // ----------------------------------------------------------------------
 void Engine::scrollHandler(GLFWwindow* window, double xoffset, double yoffset)
 {
+    std::cout << "mouse scroll" <<  std::endl;
     camera->ProcessMouseScroll(static_cast<float>(yoffset));
 }
 

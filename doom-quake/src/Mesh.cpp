@@ -57,6 +57,7 @@ void Mesh::setupMesh()
     glBindVertexArray(0);
 }
 
+// render the mesh
 void Mesh::Draw(Shader *shader)
 {
     // bind appropriate textures
