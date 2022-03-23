@@ -20,8 +20,10 @@ static const char *fragmentShaderSource = "#version 330 core\n"
                                  "}\0";
 
 static const char* shaderPaths[] = {
-        "path1",
-        "path2"
+        "shader-files/shader.vs",
+        "shader-files/shader.fs",
+        "shader-files/modelloading.vs",
+        "shader-files/modelloading.fs"
 };
 
 
