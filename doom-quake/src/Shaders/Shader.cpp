@@ -28,7 +28,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
         vShaderFile.close();
         fShaderFile.close();
         // convert stream into string
-        vertexCode   = vShaderStream.str();
+        vertexCode = vShaderStream.str();
         fragmentCode = fShaderStream.str();
     }
     catch (std::ifstream::failure& e)
@@ -55,7 +55,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     glAttachShader(ID, fragment);
     glLinkProgram(ID);
     checkCompileErrors(ID, "PROGRAM");
-    // delete the shaders as they're linked into our program now and no longer necessary
+    // delete the shaders as they're linked into our program now and no longer necessery
     glDeleteShader(vertex);
     glDeleteShader(fragment);
 }
@@ -130,8 +130,8 @@ void Shader::setMat4(const std::string &name, const glm::mat4 &mat) const
 // ------------------------------------------------------------------------
 void Shader::checkCompileErrors(unsigned int shader, std::string type)
 {
-    int success;
-    char infoLog[1024];
+    GLint success;
+    GLchar infoLog[1024];
     if (type != "PROGRAM")
     {
         glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
