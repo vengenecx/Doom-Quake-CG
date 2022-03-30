@@ -22,7 +22,7 @@ int main(void)
 
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(800, 600, "Doom/Quake", NULL, NULL);
+    window = glfwCreateWindow(800, 600, "Doom-Quake", NULL, NULL);
 
 
     if (!window)
