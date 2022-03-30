@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 # Doom project includes
 include_directories(include)
-add_executable(doom_quake src/main.cpp include/Engine.h include/glad.h include/khrplatform.h src/glad/glad.c src/engine.cpp include/Shaders/basicShader.h src/Shaders/Shader.cpp include/Shaders/Shader.h include/Shaders/EShader.h include/Mesh.h src/Mesh.cpp include/Model.h src/Model.cpp include/Octree/Octree.h include/Octree/Node.h include/Octree/Octants.h include/Camera/Camera.h src/Camera/Camera.cpp)
+add_executable(doom_quake src/main.cpp include/Engine.h include/glad.h include/khrplatform.h src/glad/glad.c src/engine.cpp include/Shaders/basicShader.h src/Shaders/Shader.cpp include/Shaders/Shader.h include/Shaders/EShader.h include/Mesh.h src/Mesh.cpp include/Model.h src/Model.cpp include/Octree/Octree.h include/Octree/Node.h include/Octree/Octants.h include/Camera/Camera.h src/Camera/Camera.cpp include/Model/Cube/CubeModel.h)
 
 # GLFW
 
