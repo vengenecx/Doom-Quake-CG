@@ -33,26 +33,32 @@ glm::mat4 Camera::GetViewMatrix()
 // processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)
 void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 {
-//    float velocity = MovementSpeed * deltaTime;
-//    if (direction == FORWARD)
-//        Position += glm::vec3(glm::cos(Yaw), glm::sin(Yaw), 0) * velocity; // Tom 
-//    if (direction == BACKWARD)
-//        Position -= glm::vec3(glm::cos(Yaw), glm::sin(Yaw), 0) * velocity; // Tom
-//    if (direction == LEFT)
-//        Position -= Right * velocity;
-//    if (direction == RIGHT)
-//        Position += Right * velocity;
-
-
     float velocity = MovementSpeed * deltaTime;
-    if (direction == FORWARD)
-        Position += Front * velocity;
-    if (direction == BACKWARD)
-        Position -= Front * velocity;
-    if (direction == LEFT)
+    if (direction == FORWARD) {
+        // glm::vec3(X,Y,Z)!!! we only want to change the X-Z position
+        Position += glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * velocity; //help of Tom: Y is not affected, Y is looking up
+    }
+    if (direction == BACKWARD) {
+        // glm::vec3(X,Y,Z)!!! we only want to change the X-Z position
+        Position -= glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * velocity; //help of Tom: Y is not affected, Y is looking up
+    }
+    if (direction == LEFT) {
         Position -= Right * velocity;
-    if (direction == RIGHT)
+    }
+    if (direction == RIGHT) {
         Position += Right * velocity;
+    }
+
+
+    //float velocity = MovementSpeed * deltaTime;
+    //if (direction == FORWARD)
+    //    Position += Front * velocity;
+    //if (direction == BACKWARD)
+    //    Position -= Front * velocity;
+    //if (direction == LEFT)
+    //    Position -= Right * velocity;
+    //if (direction == RIGHT)
+    //    Position += Right * velocity;
 }
 
 // processes input received from a mouse input system. Expects the offset value in both the x and y direction.
