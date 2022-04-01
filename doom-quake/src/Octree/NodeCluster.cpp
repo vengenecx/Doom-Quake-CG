@@ -15,4 +15,6 @@ void NodeCluster::addModel(Model *model) {
 
 std::vector<Model*>& NodeCluster::getModels(){
     //TODO
+    std::vector<Model*> vect;// temporarly 
+    return vect;// temporarly 
 }

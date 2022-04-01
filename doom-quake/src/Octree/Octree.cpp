@@ -14,10 +14,13 @@ void Octree::addModel(Model &model) {
 
 bool Octree::query(Ray &ray) {
     //TODO
+    return false;// temporarly 
 }
 
 NodeCluster& Octree::query(BoundingBox& b){
     //TODO
+    NodeCluster test; // temporarly 
+    return test; // temporarly 
 }
 
 void Octree::draw(BoundingBox &b) {
