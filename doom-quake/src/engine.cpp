@@ -37,9 +37,9 @@ indices{
 
     ourShader = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
     //ourShader = std::make_unique<Shader>(shaderPaths[modelLoadingVertex],shaderPaths[modelLoadingFragment]);
-    //model = std::make_unique<Model>("model-files/backpack/backpack.obj");
+    model = std::make_unique<Model>("model-files/backpack/backpack.obj");
     //model = std::make_unique<Model>("model-files/body/FinalBaseMesh.obj");
-    model = std::make_unique<Model>("model-files/Humvee_models/Humvee.obj");
+    //model = std::make_unique<Model>("model-files/Humvee_models/Humvee.obj");
 
     camera = std::make_unique<Camera>(glm::vec3(0.0f, 0.0f, 3.0f));
 

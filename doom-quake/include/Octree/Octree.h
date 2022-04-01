@@ -19,7 +19,7 @@ public:
 
     bool query(Ray & ray);
 
-    NodeCluster& query(BoundingBox& b);
+    std::unique_ptr<NodeCluster> query(BoundingBox& b);
 
 
     void draw(BoundingBox& b);

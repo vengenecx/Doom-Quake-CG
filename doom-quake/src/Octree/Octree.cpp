@@ -14,10 +14,13 @@ void Octree::addModel(Model &model) {
 
 bool Octree::query(Ray &ray) {
     //TODO
+    return false;
 }
 
-NodeCluster& Octree::query(BoundingBox& b){
+std::unique_ptr<NodeCluster> Octree::query(BoundingBox& b){
     //TODO
+    std::unique_ptr<NodeCluster> n = std::make_unique<NodeCluster>();
+    return move(n);
 }
 
 void Octree::draw(BoundingBox &b) {
