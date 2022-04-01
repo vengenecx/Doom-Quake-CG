@@ -5,13 +5,16 @@
 #ifndef DOOM_QUAKE_MODEL_H
 #define DOOM_QUAKE_MODEL_H
 
-#include<Mesh.h>
+#include <Mesh.h>
 #include <assimp/scene.h>
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <stb_image.h>
 
-class Model
+
+#include "Octree/BoundingBox.h"
+
+class Model // Parent modelclass
 {
 public:
     // constructor, expects a filepath to a 3D model.
@@ -27,6 +30,12 @@ private:
     std::string directory;
     std::vector<Texture> textures_loaded;
     bool gammaCorrection;
+
+    // TODO
+    // Boundingbox calculation
+    // https://www.sebastianhaas.at/calculating-bounding-box/
+    std::unique_ptr<BoundingBox> boundingBox;
+    void calculateBoundingBox();
 
     void loadModel(std::string path);
     void processNode(aiNode *node, const aiScene *scene);
