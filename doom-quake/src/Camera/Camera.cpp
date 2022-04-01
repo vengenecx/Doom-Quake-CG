@@ -38,14 +38,20 @@ glm::mat4 Camera::GetViewMatrix()
 void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 {
     float velocity = MovementSpeed * deltaTime;
-    if (direction == FORWARD)
-        Position += Front * velocity;
-    if (direction == BACKWARD)
-        Position -= Front * velocity;
-    if (direction == LEFT)
+    if (direction == FORWARD) {
+        // glm::vec3(X,Y,Z)!!! we only want to change the X-Z position
+        Position += glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * velocity; //help of Tom: Y is not affected, Y is looking up
+    }
+    if (direction == BACKWARD) {
+        // glm::vec3(X,Y,Z)!!! we only want to change the X-Z position
+        Position -= glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * velocity; //help of Tom: Y is not affected, Y is looking up
+    }
+    if (direction == LEFT) {
         Position -= Right * velocity;
-    if (direction == RIGHT)
+    }
+    if (direction == RIGHT) {
         Position += Right * velocity;
+    }
 }
 
 // processes input received from a mouse input system. Expects the offset value in both the x and y direction.
