@@ -2,6 +2,9 @@
 // Created by Lennert Steyaert on 19/03/2022.
 //
 
+// following code was written with help of the following URL: https://learnopengl.com/Model-Loading/Model
+
+
 #include<Model.h>
 
 void Model::Draw(Shader *shader)

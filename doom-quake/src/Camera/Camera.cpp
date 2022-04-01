@@ -2,6 +2,9 @@
 // Created by Lennert Steyaert on 22/03/2022.
 //
 
+// We used the following URL to help us understand and code the following code:
+// https://learnopengl.com/Getting-started/Camera 
+
 #include <Camera/Camera.h>
 
 
