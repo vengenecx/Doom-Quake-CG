@@ -9,8 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-class BoundingBox {
-public:
+struct BoundingBox {
     glm::vec3 q1;
     glm::vec3 q2;
     glm::vec3 q3;

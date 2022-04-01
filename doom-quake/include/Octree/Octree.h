@@ -7,6 +7,7 @@
 
 #include "Node.h"
 #include "Ray/Ray.h"
+#include "NodeCluster.h"
 
 class Octree
 {
@@ -18,7 +19,10 @@ public:
 
     bool query(Ray & ray);
 
-    bool query(Ray & ray);
+    NodeCluster& query(BoundingBox& b);
+
+
+    void draw(BoundingBox& b);
 
 private:
     std::unique_ptr<Node> root;
