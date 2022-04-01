@@ -5,6 +5,10 @@
 #ifndef DOOM_QUAKE_RAY_H
 #define DOOM_QUAKE_RAY_H
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 class Ray {
 public:
 private:
