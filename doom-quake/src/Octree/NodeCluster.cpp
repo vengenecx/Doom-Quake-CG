@@ -3,3 +3,16 @@
 //
 
 #include "Octree/NodeCluster.h"
+
+NodeCluster::NodeCluster() {
+    //TODO
+    models = std::vector<Model*>();
+}
+
+void NodeCluster::addModel(Model *model) {
+    //TODO
+}
+
+std::vector<Model*>& NodeCluster::getModels(){
+    //TODO
+}

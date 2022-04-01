@@ -7,6 +7,9 @@
 
 class Ray {
 public:
+private:
+    glm::vec3 direction;
+    glm::vec3 origin;
 };
 
 #endif //DOOM_QUAKE_RAY_H

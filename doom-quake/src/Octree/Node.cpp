@@ -3,3 +3,10 @@
 //
 
 #include "Octree/Node.h"
+
+Node::Node(BoundingBox& bb){
+    //TODO
+
+}
+
+
