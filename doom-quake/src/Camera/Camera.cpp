@@ -1,7 +1,6 @@
 //
 // Created by Lennert Steyaert on 22/03/2022.
-//
-
+//  
 #include <Camera/Camera.h>
 
 
@@ -34,6 +33,17 @@ glm::mat4 Camera::GetViewMatrix()
 // processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)
 void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 {
+//    float velocity = MovementSpeed * deltaTime;
+//    if (direction == FORWARD)
+//        Position += glm::vec3(glm::cos(Yaw), glm::sin(Yaw), 0) * velocity; // Tom 
+//    if (direction == BACKWARD)
+//        Position -= glm::vec3(glm::cos(Yaw), glm::sin(Yaw), 0) * velocity; // Tom
+//    if (direction == LEFT)
+//        Position -= Right * velocity;
+//    if (direction == RIGHT)
+//        Position += Right * velocity;
+
+
     float velocity = MovementSpeed * deltaTime;
     if (direction == FORWARD)
         Position += Front * velocity;

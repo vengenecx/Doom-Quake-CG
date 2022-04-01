@@ -7,12 +7,9 @@ int main(void)
 {
     GLFWwindow* window;
 
-
     /* Initialize the library */
     if (!glfwInit())
         return -1;
-
-
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -22,7 +19,7 @@ int main(void)
 
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(800, 600, "Doom-Quake", NULL, NULL);
+    window = glfwCreateWindow(800, 600, "FPS_GAME", NULL, NULL);
 
 
     if (!window)
@@ -68,8 +65,6 @@ int main(void)
 
         /* Poll for and process events */
         glfwPollEvents();
-
-
     }
 
     glfwTerminate();
