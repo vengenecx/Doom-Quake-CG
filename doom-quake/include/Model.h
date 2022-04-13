@@ -24,6 +24,9 @@ public:
     }
     //void Draw(Shader &shader);
     void Draw(Shader *shader);
+
+    BoundingBox* getBoundingbox();
+
 private:
     // model data
     std::vector<Mesh> meshes;

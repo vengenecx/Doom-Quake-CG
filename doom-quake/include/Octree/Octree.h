@@ -12,9 +12,9 @@
 class Octree
 {
 public:
-    Octree(std::unique_ptr<BoundingBox> boundingBox);
+    Octree(BoundingBox& boundingBox);
 
-    void addModel(Model& model);
+    void addModel(Model* model);
 
 
     bool query(Ray & ray);
@@ -26,6 +26,9 @@ public:
 
 private:
     std::unique_ptr<Node> root;
+
+    bool containsBoundaries(Node * node, BoundingBox* boundingBox);
+    void generateChildren(Node* node);
 };
 
 #endif //DOOM_QUAKE_OCTREE_H

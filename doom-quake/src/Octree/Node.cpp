@@ -10,3 +10,14 @@ Node::Node(BoundingBox& bb){
 }
 
 
+Octants Node::matchChild(BoundingBox*  bb){
+    // TODO
+    return Octants::Q1;
+}
+
+
+Node* Node::getChild(Octants oc){
+    // TODO
+    return nullptr;
+}
+

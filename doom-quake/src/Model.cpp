@@ -13,6 +13,15 @@ void Model::Draw(Shader *shader)
         meshes[i].Draw(shader);
 }
 
+BoundingBox* Model::getBoundingbox(){
+    // TODO
+    return boundingBox.get();
+}
+
+void Model::calculateBoundingBox(){
+    // TODO
+}
+
 void Model::loadModel(std::string path)
 {
     Assimp::Importer importer;

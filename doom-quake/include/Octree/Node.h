@@ -8,6 +8,7 @@
 #include <iostream>
 #include "Model.h"
 #include "Octree/BoundingBox.h"
+#include "Octants.h"
 
 #define OCTREE_CHILDREN 8
 class Node
@@ -25,5 +26,8 @@ class Node
         BoundingBox boundingBox;
 
         unsigned char activeOctants;
+
+        Octants matchChild(BoundingBox*  bb);
+        Node* getChild(Octants oc);
 };
 #endif //DOOM_QUAKE_NODE_H
