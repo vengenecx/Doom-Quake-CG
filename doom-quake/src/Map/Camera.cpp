@@ -1,15 +1,15 @@
-#include"Camera.h"
+#include"Map/Camera.h"
 
 
 
-Camera::Camera(int width, int height, glm::vec3 position)
+CameraMap::CameraMap(int width, int height, glm::vec3 position)
 {
-	Camera::width = width;
-	Camera::height = height;
+	CameraMap::width = width;
+	CameraMap::height = height;
 	Position = position;
 }
 
-void Camera::updateMatrix(float FOVdeg, float nearPlane, float farPlane)
+void CameraMap::updateMatrix(float FOVdeg, float nearPlane, float farPlane)
 {
 	// Initializes matrices since otherwise they will be the null matrix
 	glm::mat4 view = glm::mat4(1.0f);
@@ -24,7 +24,7 @@ void Camera::updateMatrix(float FOVdeg, float nearPlane, float farPlane)
 	cameraMatrix = projection * view;
 }
 
-void Camera::Matrix(Shader& shader, const char* uniform)
+void CameraMap::Matrix(ShaderMap& shader, const char* uniform)
 {
 	// Exports camera matrix
 	glUniformMatrix4fv(glGetUniformLocation(shader.ID, uniform), 1, GL_FALSE, glm::value_ptr(cameraMatrix));
@@ -32,7 +32,7 @@ void Camera::Matrix(Shader& shader, const char* uniform)
 
 
 
-void Camera::Inputs(GLFWwindow* window)
+void CameraMap::Inputs(GLFWwindow* window)
 {
 	// Handles key inputs
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)

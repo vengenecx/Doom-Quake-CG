@@ -32,6 +32,7 @@ add_executable( doom_quake src/main.cpp
                 include/Map/Texture.h
                 include/Map/VAO.h
                 include/Map/VBO.h
+                include/Map/Camera.h
 
                 src/Octree/Node.cpp 
                 src/Octree/NodeCluster.cpp 
@@ -43,7 +44,7 @@ add_executable( doom_quake src/main.cpp
                 src/Map/Texture.cpp
                 src/Map/VAO.cpp
                 src/Map/VBO.cpp
-
+                src/Map/Camera.cpp
                 )
 
                

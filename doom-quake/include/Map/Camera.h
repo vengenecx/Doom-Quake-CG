@@ -1,7 +1,7 @@
 #ifndef CAMERA_CLASS_H
 #define CAMERA_CLASS_H
 
-#include<glad/glad.h>
+#include<glad.h>
 #include<GLFW/glfw3.h>
 #include<glm/glm.hpp>
 #include<glm/gtc/matrix_transform.hpp>
@@ -9,9 +9,9 @@
 #include<glm/gtx/rotate_vector.hpp>
 #include<glm/gtx/vector_angle.hpp>
 
-#include"shaderClass.h"
+#include"Map/shaderClass.h"
 
-class Camera
+class CameraMap
 {
 public:
 	// Stores the main vectors of the camera
@@ -32,12 +32,12 @@ public:
 	float sensitivity = 100.0f;
 
 	// Camera constructor to set up initial values
-	Camera(int width, int height, glm::vec3 position);
+    CameraMap(int width, int height, glm::vec3 position);
 
 	// Updates the camera matrix to the Vertex Shader
 	void updateMatrix(float FOVdeg, float nearPlane, float farPlane);
 	// Exports the camera matrix to a shader
-	void Matrix(Shader& shader, const char* uniform);
+	void Matrix(ShaderMap& shader, const char* uniform);
 	// Handles camera inputs
 	void Inputs(GLFWwindow* window);
 };

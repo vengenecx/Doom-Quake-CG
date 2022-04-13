@@ -99,7 +99,7 @@
 #include"Map/VAO.h"
 #include"Map/VBO.h"
 #include"Map/EBO.h"
-#include"Camera/Camera.h"
+#include"Map/Camera.h"
 
 
 
@@ -250,8 +250,10 @@ int main()
     * folder and then give a relative path from this folder to whatever resource you want to get to.
     * Also note that this requires C++17, so go to Project Properties, C/C++, Language, and select C++17
     */
-    std::string parentDir = (fs::current_path().fs::path::parent_path()).string();
-    std::string texPath = "/Resources/YoutubeOpenGL 10 - Specular Maps/";
+    //std::string parentDir = (fs::current_path().fs::path::parent_path()).string();
+
+    std::string parentDir =  "/Users/lennertsteyaert/Documents/GitHub/Doom-Quake-CG/doom-quake";
+    std::string texPath = "/model-files/plank/";
 
     // Textures
     Texture planksTex((parentDir + texPath + "planks.png").c_str(), GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE);
@@ -271,7 +273,7 @@ int main()
     glEnable(GL_DEPTH_TEST);
 
     // Creates camera object
-    Camera camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
+    CameraMap camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
 
     // Main while loop
     while (!glfwWindowShouldClose(window))
