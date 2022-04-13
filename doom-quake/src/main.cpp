@@ -155,19 +155,37 @@ GLuint lightIndices[] =
 
 int main()
 {
-    // Initialize GLFW
-    glfwInit();
+//    // Initialize GLFW
+//    glfwInit();
+//
+//    // Tell GLFW what version of OpenGL we are using
+//    // In this case we are using OpenGL 3.3
+//    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+//    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+//    // Tell GLFW we are using the CORE profile
+//    // So that means we only have the modern functions
+//    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+//
+//    // Create a GLFWwindow object of 800 by 800 pixels, naming it "YoutubeOpenGL"
+//    GLFWwindow* window = glfwCreateWindow(width, height, "YoutubeOpenGL", NULL, NULL);
 
-    // Tell GLFW what version of OpenGL we are using
-    // In this case we are using OpenGL 3.3
+    GLFWwindow* window;
+
+
+    /* Initialize the library */
+    if (!glfwInit())
+        return -1;
+
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    // Tell GLFW we are using the CORE profile
-    // So that means we only have the modern functions
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
-    // Create a GLFWwindow object of 800 by 800 pixels, naming it "YoutubeOpenGL"
-    GLFWwindow* window = glfwCreateWindow(width, height, "YoutubeOpenGL", NULL, NULL);
+
+    /* Create a windowed mode window and its OpenGL context */
+    window = glfwCreateWindow(800, 600, "Doom-Quake", NULL, NULL);
+
     // Error check if the window fails to create
     if (window == NULL)
     {
@@ -252,7 +270,9 @@ int main()
     */
     //std::string parentDir = (fs::current_path().fs::path::parent_path()).string();
 
-    std::string parentDir =  "C:/Users/Benoît/Documents/Doom-Quake-CG/doom-quake";
+    std::string parentDir =  "C:/Users/Benoï¿½t/Documents/Doom-Quake-CG/doom-quake";
+
+    //std::string parentDir =  "/Users/lennertsteyaert/Documents/GitHub/Doom-Quake-CG/doom-quake";
     std::string texPath = "/model-files/plank/";
 
     // Textures
