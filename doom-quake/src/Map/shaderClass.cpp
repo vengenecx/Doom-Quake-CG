@@ -1,4 +1,4 @@
-#include"shaderClass.h"
+#include"Map/shaderClass.h"
 
 // Reads a text file and outputs a string with everything in the text file
 std::string get_file_contents(const char* filename)
@@ -18,7 +18,7 @@ std::string get_file_contents(const char* filename)
 }
 
 // Constructor that build the Shader Program from 2 different shaders
-Shader::Shader(const char* vertexFile, const char* fragmentFile)
+ShaderMap::ShaderMap(const char* vertexFile, const char* fragmentFile)
 {
 	// Read vertexFile and fragmentFile and store the strings
 	std::string vertexCode = get_file_contents(vertexFile);
@@ -63,19 +63,19 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 }
 
 // Activates the Shader Program
-void Shader::Activate()
+void ShaderMap::Activate()
 {
 	glUseProgram(ID);
 }
 
 // Deletes the Shader Program
-void Shader::Delete()
+void ShaderMap::Delete()
 {
 	glDeleteProgram(ID);
 }
 
 // Checks if the different Shaders have compiled properly
-void Shader::compileErrors(unsigned int shader, const char* type)
+void ShaderMap::compileErrors(unsigned int shader, const char* type)
 {
 	// Stores status of compilation
 	GLint hasCompiled;
