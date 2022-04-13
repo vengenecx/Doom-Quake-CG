@@ -10,7 +10,6 @@ int main(void)
 {
     GLFWwindow* window;
 
-
     /* Initialize the library */
     if (!glfwInit())
         return -1;
@@ -21,13 +20,12 @@ int main(void)
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
-
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(800, 600, "Doom-Quake", NULL, NULL);
 
-
     if (!window)
     {
+        std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
         return -1;
     }
@@ -45,7 +43,6 @@ int main(void)
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glfwSetCursorPosCallback(window, engine->mouseHandler_static);
     glfwSetScrollCallback(window, engine->scrollHandler_static);
-
 
     // tell GLFW to capture our mouse
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -69,8 +66,6 @@ int main(void)
 
         /* Poll for and process events */
         glfwPollEvents();
-
-
     }
 
     glfwTerminate();
