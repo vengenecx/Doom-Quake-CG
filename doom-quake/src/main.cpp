@@ -187,7 +187,7 @@ int main()
 
 
     // Generates Shader object using shaders default.vert and default.frag
-    ShaderMap shaderProgram("default.vert", "default.frag");
+    ShaderMap shaderProgram("shader-files/default.vert", "shader-files/default.frag");
     // Generates Vertex Array Object and binds it
     VAO VAO1;
     VAO1.Bind();
@@ -207,7 +207,7 @@ int main()
 
 
     // Shader for light cube
-    ShaderMap lightShader("light.vert", "light.frag");
+    ShaderMap lightShader("shader-files/light.vert", "shader-files/light.frag");
     // Generates Vertex Array Object and binds it
     VAO lightVAO;
     lightVAO.Bind();
@@ -252,7 +252,7 @@ int main()
     */
     //std::string parentDir = (fs::current_path().fs::path::parent_path()).string();
 
-    std::string parentDir =  "/Users/lennertsteyaert/Documents/GitHub/Doom-Quake-CG/doom-quake";
+    std::string parentDir =  "C:/Users/Benoît/Documents/Doom-Quake-CG/doom-quake";
     std::string texPath = "/model-files/plank/";
 
     // Textures
