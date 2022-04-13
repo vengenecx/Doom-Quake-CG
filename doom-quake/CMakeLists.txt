@@ -24,7 +24,29 @@ add_executable( doom_quake src/main.cpp
                 include/Camera/Camera.h
                 src/Camera/Camera.cpp
                 include/Model/Cube/CubeModel.h
-                include/Octree/BoundingBox.h include/Ray/Ray.h include/Octree/NodeCluster.h src/Octree/Node.cpp src/Octree/NodeCluster.cpp src/Octree/Octree.cpp src/Ray/Ray.cpp)
+                include/Octree/BoundingBox.h 
+                include/Ray/Ray.h 
+                include/Octree/NodeCluster.h 
+                include/Map/EBO.h
+                include/Map/shaderClass.h
+                include/Map/Texture.h
+                include/Map/VAO.h
+                include/Map/VBO.h
+
+                src/Octree/Node.cpp 
+                src/Octree/NodeCluster.cpp 
+                src/Octree/Octree.cpp 
+                src/Ray/Ray.cpp
+                src/Map/EBO.cpp
+                src/Map/shaderClass.cpp
+                src/Map/stb.cpp
+                src/Map/Texture.cpp
+                src/Map/VAO.cpp
+                src/Map/VBO.cpp
+
+                )
+
+               
 
 # GLFW
 
