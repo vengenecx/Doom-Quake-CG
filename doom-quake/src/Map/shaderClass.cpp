@@ -3,18 +3,42 @@
 // Reads a text file and outputs a string with everything in the text file
 std::string get_file_contents(const char* filename)
 {
-	std::ifstream in(filename, std::ios::binary);
-	if (in)
-	{
-		std::string contents;
-		in.seekg(0, std::ios::end);
-		contents.resize(in.tellg());
-		in.seekg(0, std::ios::beg);
-		in.read(&contents[0], contents.size());
-		in.close();
-		return(contents);
-	}
-	throw(errno);
+	//std::ifstream in(filename, std::ios::binary);
+//	if (in)
+//	{
+//		std::string contents;
+//		in.seekg(0, std::ios::end);
+//		contents.resize(in.tellg());
+//		in.seekg(0, std::ios::beg);
+//		in.read(&contents[0], contents.size());
+//		in.close();
+//		return(contents);
+//	}
+	//throw(errno);
+
+    // 1. retrieve the vertex/fragment source code from filePath
+    std::string vertexCode;
+    std::ifstream vShaderFile;
+    // ensure ifstream objects can throw exceptions:
+    vShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
+    try
+    {
+        // open files
+        vShaderFile.open(filename);
+        std::stringstream vShaderStream, fShaderStream;
+        // read file's buffer contents into streams
+        vShaderStream << vShaderFile.rdbuf();
+        // close file handlers
+        vShaderFile.close();
+        // convert stream into string
+        vertexCode = vShaderStream.str();
+    }
+    catch (std::ifstream::failure& e)
+    {
+        std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ: " << e.what() << std::endl;
+        throw(e.what());
+    }
+    return(vertexCode);
 }
 
 // Constructor that build the Shader Program from 2 different shaders
