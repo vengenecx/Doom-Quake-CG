@@ -60,8 +60,10 @@ void CameraMap::Inputs(GLFWwindow* window)
 	// main keys
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 	{
-		//Position += speed * Orientation;
-		Position += speed * glm::vec3(glm::cos(glm::radians(height)), 0, glm::sin(glm::radians(height)));
+		Position += speed * Orientation;
+
+		// Tom
+		//Position += speed * glm::vec3(glm::cos(glm::radians(height)), 0, glm::sin(glm::radians(height)));
 
 	}
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
@@ -70,8 +72,10 @@ void CameraMap::Inputs(GLFWwindow* window)
 	}
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 	{
-		//Position += speed * -Orientation;
-		Position += speed * -(glm::vec3(glm::cos(glm::radians(height)), 0, glm::sin(glm::radians(height))));
+		Position += speed * -Orientation;
+
+		// Tom
+		//Position += speed * -(glm::vec3(glm::cos(glm::radians(height)), 0, glm::sin(glm::radians(height))));
 	}
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 	{

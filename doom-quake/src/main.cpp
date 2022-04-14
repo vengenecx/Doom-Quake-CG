@@ -114,9 +114,23 @@ GLfloat vertices[] =
         { //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
                 -10.0f, -5.0f,  10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		0.0f, 1.0f, 0.0f,
                 -10.0f, -5.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		0.0f, 1.0f, 0.0f,
-                10.0f, -5.0f, -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		0.0f, 1.0f, 0.0f,
-                10.0f, -5.0f,  10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		0.0f, 1.0f, 0.0f
+                //10.0f, -5.0f, -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		0.0f, 1.0f, 0.0f,
+                //10.0f, -5.0f,  10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		0.0f, 1.0f, 0.0f
+
+                //10.0f, -5.0f,  10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		0.0f, 1.0f, 0.0f,
+                //10.0f, -5.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		0.0f, 1.0f, 0.0f,
+                30.0f, -5.0f, -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		0.0f, 1.0f, 0.0f,
+                30.0f, -5.0f,  10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		0.0f, 1.0f, 0.0f
         };
+
+//// trying to add multiple planes!!
+//GLfloat vertices2[] = 
+//        { //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
+//                10.0f, -5.0f,  10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
+//                10.0f, -5.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+//                30.0f, -5.0f, 10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+//                30.0f, -5.0f,  -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
+//        };
 
 // Indices for vertices order
 GLuint indices[] =
@@ -124,6 +138,14 @@ GLuint indices[] =
                 0, 1, 2,
                 0, 2, 3
         };
+
+GLuint indices2[] =
+        {
+                0, 2, 3,
+                0, 3, 4
+        };
+
+
 
 GLfloat lightVertices[] =
         { //     COORDINATES     //
@@ -192,20 +214,48 @@ int main()
     ShaderMap shaderProgram("shader-files/default.vert", "shader-files/default.frag");
     // Generates Vertex Array Object and binds it
     VAO VAO1;
+
+    //VAO VAO2; // added to create a second plane
     VAO1.Bind();
+    //VAO2.Bind();
+
     // Generates Vertex Buffer Object and links it to vertices
     VBO VBO1(vertices, sizeof(vertices));
+    //VBO VBO2(vertices2, sizeof(vertices2)); // added to try to create a second plane!
+
     // Generates Element Buffer Object and links it to indices
     EBO EBO1(indices, sizeof(indices));
+
+    // added to try and create a second plane
+    //EBO EBO2(indices2, sizeof(indices2));
+
+
+
+
+
     // Links VBO attributes such as coordinates and colors to VAO
     VAO1.LinkAttrib(VBO1, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
     VAO1.LinkAttrib(VBO1, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
     VAO1.LinkAttrib(VBO1, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
     VAO1.LinkAttrib(VBO1, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+
+    // added to try and create a second plane
+    //VAO2.LinkAttrib(VBO2, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0); 
+    //VAO2.LinkAttrib(VBO2, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
+    //VAO2.LinkAttrib(VBO2, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
+    //VAO2.LinkAttrib(VBO2, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+
+
+
     // Unbind all to prevent accidentally modifying them
     VAO1.Unbind();
     VBO1.Unbind();
     EBO1.Unbind();
+
+    //VAO2.Unbind();
+    //VBO2.Unbind();
+    //EBO2.Unbind();
+
 
 
     // Shader for light cube
@@ -302,8 +352,10 @@ int main()
         planksSpec.Bind();
         // Bind the VAO so OpenGL knows to use it
         VAO1.Bind();
+        //VAO2.Bind();
         // Draw primitives, number of indices, datatype of indices, index of indices
         glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, sizeof(indices2) / sizeof(int), GL_UNSIGNED_INT, 0);
 
 
 
@@ -312,6 +364,7 @@ int main()
         // Export the camMatrix to the Vertex Shader of the light cube
         camera.Matrix(lightShader, "camMatrix");
         // Bind the VAO so OpenGL knows to use it
+        lightVAO.Bind();
         lightVAO.Bind();
         // Draw primitives, number of indices, datatype of indices, index of indices
         glDrawElements(GL_TRIANGLES, sizeof(lightIndices) / sizeof(int), GL_UNSIGNED_INT, 0);
@@ -329,6 +382,11 @@ int main()
     VAO1.Delete();
     VBO1.Delete();
     EBO1.Delete();
+
+  /*  VAO2.Delete();
+    VBO2.Delete();
+    EBO2.Delete();*/
+
     planksTex.Delete();
     planksSpec.Delete();
     shaderProgram.Delete();
