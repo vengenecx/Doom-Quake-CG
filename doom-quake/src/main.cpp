@@ -103,8 +103,8 @@
 
 
 
-const unsigned int width = 800;
-const unsigned int height = 600;
+const unsigned int width = 1000;
+const unsigned int height = 800;
 
 
 
@@ -129,12 +129,21 @@ GLfloat vertices2[] =
 
 
 GLfloat vertices3[] =
+        { //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
+                10.0f, -10.0f, -20.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
+                10.0f, -10.0f, -30.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+                20.0f, -5.0f, -30.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+                20.0f, -5.0f, -20.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
+        };
+
+GLfloat floor_[] =
 { //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
-        10.0f, -10.0f, -20.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
-        10.0f, -10.0f, -30.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
-        20.0f, -5.0f, -30.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
-        20.0f, -5.0f, -20.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
+        -20.0f, -10.0f, 20.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
+        -20.0f, -10.0f, -50.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+        50.0f, -10.0f, -50.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+        50.0f, -10.0f, 20.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
 };
+
 
 
 // Indices for vertices order
@@ -158,6 +167,21 @@ GLfloat lightVertices[] =
                 0.1f,  0.1f, -0.1f,
                 0.1f,  0.1f,  0.1f
         };
+
+
+GLfloat lightVertices2[] =
+{ //     COORDINATES     //
+  // 8 coordinates to define the cube that is emitting light
+        13.0f, -3.0f,  -14.0f,
+        13.0f, -3.0f, -16.0f,
+        15.0f, -3.0f, -16.0f,
+        15.0f, -3.0f,  -14.0f,
+        13.0f,  -1.0f,  -14.0f,
+        13.0f,  -1.0f, -16.0f,
+        15.0f,  -1.0f, -16.0f,
+        15.0f,  -1.0f,  -14.0f
+};
+
 
 GLuint lightIndices[] =
         {
@@ -257,7 +281,7 @@ int main()
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////
-    VAO VAO3; // added to create a second plane
+    VAO VAO3;
     VAO3.Bind();
 
     VBO VBO3(vertices3, sizeof(vertices3)); // added to try to create a second plane!
@@ -272,6 +296,24 @@ int main()
     VAO3.Unbind();
     VBO3.Unbind();
     EBO3.Unbind();
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    VAO VAO4; 
+    VAO4.Bind();
+
+    VBO VBO4(floor_, sizeof(floor_));
+    EBO EBO4(indices, sizeof(indices));
+    VAO4.LinkAttrib(VBO4, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
+    VAO4.LinkAttrib(VBO4, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
+    VAO4.LinkAttrib(VBO4, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
+    VAO4.LinkAttrib(VBO4, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+
+    VAO4.Unbind();
+    VBO4.Unbind();
+    EBO4.Unbind();
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -312,6 +354,38 @@ int main()
     glUniform3f(glGetUniformLocation(shaderProgram.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
 
 
+    /////////////////////////////////////////////////////////////////////////
+    // trying to make a second light source
+    // Shader for light cube
+    // Generates Vertex Array Object and binds it
+    VAO lightVAO2;
+    lightVAO2.Bind();
+    // Generates Vertex Buffer Object and links it to vertices
+    VBO lightVBO2(lightVertices2, sizeof(lightVertices2));
+    // Generates Element Buffer Object and links it to indices
+    EBO lightEBO2(lightIndices, sizeof(lightIndices));
+    // Links VBO attributes such as coordinates and colors to VAO
+    lightVAO2.LinkAttrib(lightVBO2, 0, 3, GL_FLOAT, 3 * sizeof(float), (void*)0);
+    // Unbind all to prevent accidentally modifying them
+    lightVAO2.Unbind();
+    lightVBO2.Unbind();
+    lightEBO2.Unbind();
+    glm::vec4 lightColor2 = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+    glm::vec3 lightPos2 = glm::vec3(0.5f, 0.5f, 0.5f);
+    glm::mat4 lightModel2 = glm::mat4(1.0f);
+    lightModel2 = glm::translate(lightModel2, lightPos2);
+    glm::vec3 objectPos2 = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::mat4 objectModel2 = glm::mat4(1.0f);
+    objectModel2 = glm::translate(objectModel2, objectPos2);
+
+    lightShader.Activate();
+    glUniformMatrix4fv(glGetUniformLocation(lightShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(lightModel2));
+    glUniform4f(glGetUniformLocation(lightShader.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
+    shaderProgram.Activate();
+    glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
+    glUniform4f(glGetUniformLocation(shaderProgram.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
+    glUniform3f(glGetUniformLocation(shaderProgram.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
 
     /*
     * I'm doing this relative path thing in order to centralize all the resources into one folder and not
@@ -400,6 +474,18 @@ int main()
         glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
 
 
+        // Tells OpenGL which Shader Program we want to use
+        shaderProgram.Activate();
+        // Exports the camera Position to the Fragment Shader for specular lighting
+        glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
+        // Export the camMatrix to the Vertex Shader of the pyramid
+        camera.Matrix(shaderProgram, "camMatrix");
+        // Binds textures so that they appear in the rendering
+        planksTex.Bind();
+        planksSpec.Bind();
+        VAO4.Bind();
+        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
+
 
         // Tells OpenGL which Shader Program we want to use
         lightShader.Activate();
@@ -408,6 +494,17 @@ int main()
         // Bind the VAO so OpenGL knows to use it
         lightVAO.Bind();
         lightVAO.Bind();
+        // Draw primitives, number of indices, datatype of indices, index of indices
+        glDrawElements(GL_TRIANGLES, sizeof(lightIndices) / sizeof(int), GL_UNSIGNED_INT, 0);
+
+
+        // Tells OpenGL which Shader Program we want to use
+        lightShader.Activate();
+        // Export the camMatrix to the Vertex Shader of the light cube
+        camera.Matrix(lightShader, "camMatrix");
+        // Bind the VAO so OpenGL knows to use it
+        lightVAO2.Bind();
+        lightVAO2.Bind();
         // Draw primitives, number of indices, datatype of indices, index of indices
         glDrawElements(GL_TRIANGLES, sizeof(lightIndices) / sizeof(int), GL_UNSIGNED_INT, 0);
 
@@ -433,6 +530,9 @@ int main()
     VBO3.Delete();
     EBO3.Delete();
 
+    VAO4.Delete();
+    VBO4.Delete();
+    EBO4.Delete();
 
     planksTex.Delete();
     planksSpec.Delete();
