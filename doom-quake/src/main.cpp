@@ -114,35 +114,34 @@ GLfloat vertices[] =
         { //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
                 -10.0f, -5.0f,  10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		0.0f, 1.0f, 0.0f,
                 -10.0f, -5.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		0.0f, 1.0f, 0.0f,
-                //10.0f, -5.0f, -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		0.0f, 1.0f, 0.0f,
-                //10.0f, -5.0f,  10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		0.0f, 1.0f, 0.0f
-
-                //10.0f, -5.0f,  10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		0.0f, 1.0f, 0.0f,
-                //10.0f, -5.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		0.0f, 1.0f, 0.0f,
                 30.0f, -5.0f, -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		0.0f, 1.0f, 0.0f,
                 30.0f, -5.0f,  10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		0.0f, 1.0f, 0.0f
         };
 
 //// trying to add multiple planes!!
-//GLfloat vertices2[] = 
-//        { //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
-//                10.0f, -5.0f,  10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
-//                10.0f, -5.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
-//                30.0f, -5.0f, 10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
-//                30.0f, -5.0f,  -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
-//        };
+GLfloat vertices2[] = 
+        { //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
+                20.0f, -5.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
+                20.0f, -5.0f, -30.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+                30.0f, -5.0f, -30.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+                30.0f, -5.0f, -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
+        };
+
+
+GLfloat vertices3[] =
+{ //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
+        10.0f, -10.0f, -20.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
+        10.0f, -10.0f, -30.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+        20.0f, -5.0f, -30.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+        20.0f, -5.0f, -20.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
+};
+
 
 // Indices for vertices order
 GLuint indices[] =
         {
                 0, 1, 2,
                 0, 2, 3
-        };
-
-GLuint indices2[] =
-        {
-                0, 2, 3,
-                0, 3, 4
         };
 
 
@@ -191,7 +190,7 @@ int main()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Create a GLFWwindow object of 800 by 800 pixels, naming it "YoutubeOpenGL"
-    GLFWwindow* window = glfwCreateWindow(width, height, "YoutubeOpenGL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(width, height, "FPS_SHOOTER_GAME", NULL, NULL);
     // Error check if the window fails to create
     if (window == NULL)
     {
@@ -215,20 +214,14 @@ int main()
     // Generates Vertex Array Object and binds it
     VAO VAO1;
 
-    //VAO VAO2; // added to create a second plane
+
     VAO1.Bind();
-    //VAO2.Bind();
 
     // Generates Vertex Buffer Object and links it to vertices
     VBO VBO1(vertices, sizeof(vertices));
-    //VBO VBO2(vertices2, sizeof(vertices2)); // added to try to create a second plane!
 
     // Generates Element Buffer Object and links it to indices
     EBO EBO1(indices, sizeof(indices));
-
-    // added to try and create a second plane
-    //EBO EBO2(indices2, sizeof(indices2));
-
 
 
 
@@ -238,23 +231,47 @@ int main()
     VAO1.LinkAttrib(VBO1, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
     VAO1.LinkAttrib(VBO1, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
     VAO1.LinkAttrib(VBO1, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
-
-    // added to try and create a second plane
-    //VAO2.LinkAttrib(VBO2, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0); 
-    //VAO2.LinkAttrib(VBO2, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
-    //VAO2.LinkAttrib(VBO2, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
-    //VAO2.LinkAttrib(VBO2, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
-
-
-
     // Unbind all to prevent accidentally modifying them
     VAO1.Unbind();
     VBO1.Unbind();
     EBO1.Unbind();
 
-    //VAO2.Unbind();
-    //VBO2.Unbind();
-    //EBO2.Unbind();
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    VAO VAO2; // added to create a second plane
+    VAO2.Bind();
+
+    VBO VBO2(vertices2, sizeof(vertices2)); // added to try to create a second plane!
+    // added to try and create a second plane
+    EBO EBO2(indices, sizeof(indices));
+    // added to try and create a second plane
+    VAO2.LinkAttrib(VBO2, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
+    VAO2.LinkAttrib(VBO2, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
+    VAO2.LinkAttrib(VBO2, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
+    VAO2.LinkAttrib(VBO2, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+
+    VAO2.Unbind();
+    VBO2.Unbind();
+    EBO2.Unbind();
+
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    VAO VAO3; // added to create a second plane
+    VAO3.Bind();
+
+    VBO VBO3(vertices3, sizeof(vertices3)); // added to try to create a second plane!
+    // added to try and create a second plane
+    EBO EBO3(indices, sizeof(indices));
+    // added to try and create a second plane
+    VAO3.LinkAttrib(VBO3, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
+    VAO3.LinkAttrib(VBO3, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
+    VAO3.LinkAttrib(VBO3, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
+    VAO3.LinkAttrib(VBO3, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+
+    VAO3.Unbind();
+    VBO3.Unbind();
+    EBO3.Unbind();
 
 
 
@@ -310,6 +327,7 @@ int main()
     // Textures
     Texture planksTex((parentDir + texPath + "planks.png").c_str(), GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE);
     planksTex.texUnit(shaderProgram, "tex0", 0);
+    // GL_RED because the planksSpec.png image contains only gray values (black and white)
     Texture planksSpec((parentDir + texPath + "planksSpec.png").c_str(), GL_TEXTURE_2D, 1, GL_RED, GL_UNSIGNED_BYTE);
     planksSpec.texUnit(shaderProgram, "tex1", 1);
 
@@ -352,10 +370,34 @@ int main()
         planksSpec.Bind();
         // Bind the VAO so OpenGL knows to use it
         VAO1.Bind();
-        //VAO2.Bind();
         // Draw primitives, number of indices, datatype of indices, index of indices
         glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
-        glDrawElements(GL_TRIANGLES, sizeof(indices2) / sizeof(int), GL_UNSIGNED_INT, 0);
+
+
+        // Tells OpenGL which Shader Program we want to use
+        shaderProgram.Activate();
+        // Exports the camera Position to the Fragment Shader for specular lighting
+        glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
+        // Export the camMatrix to the Vertex Shader of the pyramid
+        camera.Matrix(shaderProgram, "camMatrix");
+        // Binds textures so that they appear in the rendering
+        planksTex.Bind();
+        planksSpec.Bind();
+        VAO2.Bind();
+        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
+
+
+        // Tells OpenGL which Shader Program we want to use
+        shaderProgram.Activate();
+        // Exports the camera Position to the Fragment Shader for specular lighting
+        glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
+        // Export the camMatrix to the Vertex Shader of the pyramid
+        camera.Matrix(shaderProgram, "camMatrix");
+        // Binds textures so that they appear in the rendering
+        planksTex.Bind();
+        planksSpec.Bind();
+        VAO3.Bind();
+        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
 
 
 
@@ -383,9 +425,14 @@ int main()
     VBO1.Delete();
     EBO1.Delete();
 
-  /*  VAO2.Delete();
+    VAO2.Delete();
     VBO2.Delete();
-    EBO2.Delete();*/
+    EBO2.Delete();
+
+    VAO3.Delete();
+    VBO3.Delete();
+    EBO3.Delete();
+
 
     planksTex.Delete();
     planksSpec.Delete();
