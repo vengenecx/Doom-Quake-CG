@@ -110,6 +110,7 @@ const unsigned int height = 600;
 
 // Vertices coordinates
 GLfloat vertices[] =
+        // I also lowered the Y coordinate to lower the plane so we are already standing/starting on the correct height.
         { //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
                 -10.0f, -5.0f,  10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		0.0f, 1.0f, 0.0f,
                 -10.0f, -5.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		0.0f, 1.0f, 0.0f,
@@ -126,6 +127,7 @@ GLuint indices[] =
 
 GLfloat lightVertices[] =
         { //     COORDINATES     //
+          // 8 coordinates to define the cube that is emitting light
                 -0.1f, -0.1f,  0.1f,
                 -0.1f, -0.1f, -0.1f,
                 0.1f, -0.1f, -0.1f,

@@ -24,15 +24,17 @@ public:
 	bool firstClick = true;
 
 	// Stores the width and height of the window
-	int width;
-	int height;
+	// changed values to floats because radians only work with floating points!! 
+	// was nessecary to only walk on a 2D plane like in a real first person game.
+	float width;
+	float height;
 
 	// Adjust the speed of the camera and it's sensitivity when looking around
-	float speed = 0.1f;
+	float speed = 0.04f;
 	float sensitivity = 100.0f;
 
 	// Camera constructor to set up initial values
-    CameraMap(int width, int height, glm::vec3 position);
+    CameraMap(float width, float height, glm::vec3 position);
 
 	// Updates the camera matrix to the Vertex Shader
 	void updateMatrix(float FOVdeg, float nearPlane, float farPlane);
