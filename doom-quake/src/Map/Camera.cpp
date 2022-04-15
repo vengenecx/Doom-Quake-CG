@@ -2,7 +2,7 @@
 
 
 
-CameraMap::CameraMap(int width, int height, glm::vec3 position)
+CameraMap::CameraMap(float width, float height, glm::vec3 position)
 {
 	CameraMap::width = width;
 	CameraMap::height = height;
@@ -18,7 +18,7 @@ void CameraMap::updateMatrix(float FOVdeg, float nearPlane, float farPlane)
 	// Makes camera look in the right direction from the right position
 	view = glm::lookAt(Position, Position + Orientation, Up);
 	// Adds perspective to the scene
-	projection = glm::perspective(glm::radians(FOVdeg), (float)width / height, nearPlane, farPlane);
+	projection = glm::perspective(glm::radians(FOVdeg), width / height, nearPlane, farPlane);
 
 	// Sets new camera matrix
 	cameraMatrix = projection * view;
@@ -31,13 +31,40 @@ void CameraMap::Matrix(ShaderMap& shader, const char* uniform)
 }
 
 
+//void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
+//{
+//	float velocity = MovementSpeed * deltaTime;
+//	if (direction == FORWARD) {
+//		// glm::vec3(X,Y,Z)!!! we only want to change the X-Z position
+//		Position += glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * velocity; //help of Tom: Y is not affected, Y is looking up
+//	}
+//	if (direction == BACKWARD) {
+//		// glm::vec3(X,Y,Z)!!! we only want to change the X-Z position
+//		Position -= glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * velocity; //help of Tom: Y is not affected, Y is looking up
+//	}
+//	if (direction == LEFT) {
+//		Position -= Right * velocity;
+//	}
+//	if (direction == RIGHT) {
+//		Position += Right * velocity;
+//	}
+//}
+
+//glm::vec3 Orientation = glm::vec3(0.0f, 0.0f, -1.0f);
+//glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f);
+
 
 void CameraMap::Inputs(GLFWwindow* window)
 {
 	// Handles key inputs
+	// main keys
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 	{
 		Position += speed * Orientation;
+
+		// Tom
+		//Position += speed * glm::vec3(glm::cos(glm::radians(height)), 0, glm::sin(glm::radians(height)));
+
 	}
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
 	{
@@ -46,11 +73,16 @@ void CameraMap::Inputs(GLFWwindow* window)
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 	{
 		Position += speed * -Orientation;
+
+		// Tom
+		//Position += speed * -(glm::vec3(glm::cos(glm::radians(height)), 0, glm::sin(glm::radians(height))));
 	}
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 	{
 		Position += speed * glm::normalize(glm::cross(Orientation, Up));
 	}
+
+	// extra keys
 	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
 	{
 		Position += speed * Up;
@@ -65,7 +97,7 @@ void CameraMap::Inputs(GLFWwindow* window)
 	}
 	else if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_RELEASE)
 	{
-		speed = 0.1f;
+		speed = 0.04f;;
 	}
 
 
