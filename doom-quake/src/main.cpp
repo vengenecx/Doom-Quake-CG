@@ -138,22 +138,44 @@ GLfloat vertices3[] =
 
 GLfloat floor_[] =
 { //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
-        -20.0f, -10.0f, 20.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
-        -20.0f, -10.0f, -50.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
-        50.0f, -10.0f, -50.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
-        50.0f, -10.0f, 20.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
+        -10.0f, 0.0f, 10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
+        -10.0f, 0.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+        10.0f, 0.0f, -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+        10.0f, 0.0f, 10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
 };
 
 
-GLfloat wall_[] =
+GLfloat wall_1[] =
         { //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
-                -20.0f, -10.0f, 20.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
-                -20.0f, -10.0f, -50.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
-                50.0f, -10.0f, -50.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
-                50.0f, -10.0f, 20.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
+                -10.0f, 0.0f, 10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
+                -10.0f, 10.0f, 10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+                10.0f, 10.0f, 10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+                10.0f, 0.0f, 10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
         };
 
+GLfloat wall_2[] =
+        { //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
+                10.0f, 0.0f, 10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
+                10.0f, 10.0f, 10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+                10.0f, 10.0f, -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+                10.0f, 0.0f, -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
+        };
 
+GLfloat wall_3[] =
+        { //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
+                10.0f, 0.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
+                10.0f, 10.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+                -10.0f, 10.0f, -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+                -10.0f, 0.0f, -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
+        };
+
+GLfloat wall_4[] =
+        { //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
+                -10.0f, 0.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
+                -10.0f, 10.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+                -10.0f, 10.0f, 10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
+                -10.0f, 0.0f, 10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
+        };
 
 
 // Indices for vertices order
@@ -168,28 +190,28 @@ GLuint indices[] =
 GLfloat lightVertices[] =
         { //     COORDINATES     //
           // 8 coordinates to define the cube that is emitting light
-                -0.1f, -0.1f,  0.1f,
-                -0.1f, -0.1f, -0.1f,
-                0.1f, -0.1f, -0.1f,
-                0.1f, -0.1f,  0.1f,
-                -0.1f,  0.1f,  0.1f,
-                -0.1f,  0.1f, -0.1f,
-                0.1f,  0.1f, -0.1f,
-                0.1f,  0.1f,  0.1f
+                -0.1f, 7.0f,  0.1f,
+                -0.1f, 7.0f, -0.1f,
+                0.1f, 7.0f, -0.1f,
+                0.1f, 7.0f,  0.1f,
+                -0.1f,  7.2f,  0.1f,
+                -0.1f,  7.2f, -0.1f,
+                0.1f,  7.2f, -0.1f,
+                0.1f,  7.2f,  0.1f
         };
 
 
 GLfloat lightVertices2[] =
 { //     COORDINATES     //
   // 8 coordinates to define the cube that is emitting light
-        13.0f, -3.0f,  -14.0f,
-        13.0f, -3.0f, -16.0f,
-        15.0f, -3.0f, -16.0f,
-        15.0f, -3.0f,  -14.0f,
-        13.0f,  -1.0f,  -14.0f,
-        13.0f,  -1.0f, -16.0f,
-        15.0f,  -1.0f, -16.0f,
-        15.0f,  -1.0f,  -14.0f
+        13.0f, 10.0f,  -14.0f,
+        13.0f, 10.0f, -16.0f,
+        15.0f, 10.0f, -16.0f,
+        15.0f, 10.0f,  -14.0f,
+        13.0f,  14.0f,  -14.0f,
+        13.0f,  14.0f, -16.0f,
+        15.0f,  14.0f, -16.0f,
+        15.0f,  14.0f,  -14.0f
 };
 
 
@@ -249,66 +271,66 @@ int main()
     // Generates Shader object using shaders default.vert and default.frag
     ShaderMap shaderProgram("shader-files/default.vert", "shader-files/default.frag");
     // Generates Vertex Array Object and binds it
-    VAO VAO1;
-
-
-    VAO1.Bind();
-
-    // Generates Vertex Buffer Object and links it to vertices
-    VBO VBO1(vertices, sizeof(vertices));
-
-    // Generates Element Buffer Object and links it to indices
-    EBO EBO1(indices, sizeof(indices));
-
-
-
-
-    // Links VBO attributes such as coordinates and colors to VAO
-    VAO1.LinkAttrib(VBO1, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
-    VAO1.LinkAttrib(VBO1, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
-    VAO1.LinkAttrib(VBO1, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
-    VAO1.LinkAttrib(VBO1, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
-    // Unbind all to prevent accidentally modifying them
-    VAO1.Unbind();
-    VBO1.Unbind();
-    EBO1.Unbind();
-
-
-    ///////////////////////////////////////////////////////////////////////////////////////////
-    VAO VAO2; // added to create a second plane
-    VAO2.Bind();
-
-    VBO VBO2(vertices2, sizeof(vertices2)); // added to try to create a second plane!
-    // added to try and create a second plane
-    EBO EBO2(indices, sizeof(indices));
-    // added to try and create a second plane
-    VAO2.LinkAttrib(VBO2, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
-    VAO2.LinkAttrib(VBO2, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
-    VAO2.LinkAttrib(VBO2, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
-    VAO2.LinkAttrib(VBO2, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
-
-    VAO2.Unbind();
-    VBO2.Unbind();
-    EBO2.Unbind();
-
-
-
-    ///////////////////////////////////////////////////////////////////////////////////////////
-    VAO VAO3;
-    VAO3.Bind();
-
-    VBO VBO3(vertices3, sizeof(vertices3)); // added to try to create a second plane!
-    // added to try and create a second plane
-    EBO EBO3(indices, sizeof(indices));
-    // added to try and create a second plane
-    VAO3.LinkAttrib(VBO3, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
-    VAO3.LinkAttrib(VBO3, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
-    VAO3.LinkAttrib(VBO3, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
-    VAO3.LinkAttrib(VBO3, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
-
-    VAO3.Unbind();
-    VBO3.Unbind();
-    EBO3.Unbind();
+//    VAO VAO1;
+//
+//
+//    VAO1.Bind();
+//
+//    // Generates Vertex Buffer Object and links it to vertices
+//    VBO VBO1(vertices, sizeof(vertices));
+//
+//    // Generates Element Buffer Object and links it to indices
+//    EBO EBO1(indices, sizeof(indices));
+//
+//
+//
+//
+//    // Links VBO attributes such as coordinates and colors to VAO
+//    VAO1.LinkAttrib(VBO1, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
+//    VAO1.LinkAttrib(VBO1, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
+//    VAO1.LinkAttrib(VBO1, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
+//    VAO1.LinkAttrib(VBO1, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+//    // Unbind all to prevent accidentally modifying them
+//    VAO1.Unbind();
+//    VBO1.Unbind();
+//    EBO1.Unbind();
+//
+//
+//    ///////////////////////////////////////////////////////////////////////////////////////////
+//    VAO VAO2; // added to create a second plane
+//    VAO2.Bind();
+//
+//    VBO VBO2(vertices2, sizeof(vertices2)); // added to try to create a second plane!
+//    // added to try and create a second plane
+//    EBO EBO2(indices, sizeof(indices));
+//    // added to try and create a second plane
+//    VAO2.LinkAttrib(VBO2, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
+//    VAO2.LinkAttrib(VBO2, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
+//    VAO2.LinkAttrib(VBO2, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
+//    VAO2.LinkAttrib(VBO2, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+//
+//    VAO2.Unbind();
+//    VBO2.Unbind();
+//    EBO2.Unbind();
+//
+//
+//
+//    ///////////////////////////////////////////////////////////////////////////////////////////
+//    VAO VAO3;
+//    VAO3.Bind();
+//
+//    VBO VBO3(vertices3, sizeof(vertices3)); // added to try to create a second plane!
+//    // added to try and create a second plane
+//    EBO EBO3(indices, sizeof(indices));
+//    // added to try and create a second plane
+//    VAO3.LinkAttrib(VBO3, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
+//    VAO3.LinkAttrib(VBO3, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
+//    VAO3.LinkAttrib(VBO3, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
+//    VAO3.LinkAttrib(VBO3, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+//
+//    VAO3.Unbind();
+//    VBO3.Unbind();
+//    EBO3.Unbind();
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -327,7 +349,64 @@ int main()
     EBO4.Unbind();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    VAO VAO5;
+    VAO5.Bind();
 
+    VBO VBO5(wall_1, sizeof(wall_1));
+    EBO EBO5(indices, sizeof(indices));
+    VAO5.LinkAttrib(VBO5, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
+    VAO5.LinkAttrib(VBO5, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
+    VAO5.LinkAttrib(VBO5, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
+    VAO5.LinkAttrib(VBO5, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+
+    VAO5.Unbind();
+    VBO5.Unbind();
+    EBO5.Unbind();
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    VAO VAO6;
+    VAO6.Bind();
+
+    VBO VBO6(wall_2, sizeof(wall_2));
+    EBO EBO6(indices, sizeof(indices));
+    VAO6.LinkAttrib(VBO6, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
+    VAO6.LinkAttrib(VBO6, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
+    VAO6.LinkAttrib(VBO6, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
+    VAO6.LinkAttrib(VBO6, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+
+    VAO6.Unbind();
+    VBO6.Unbind();
+    EBO6.Unbind();
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    VAO VAO7;
+    VAO7.Bind();
+
+    VBO VBO7(wall_3, sizeof(wall_3));
+    EBO EBO7(indices, sizeof(indices));
+    VAO7.LinkAttrib(VBO7, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
+    VAO7.LinkAttrib(VBO7, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
+    VAO7.LinkAttrib(VBO7, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
+    VAO7.LinkAttrib(VBO7, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+
+    VAO7.Unbind();
+    VBO7.Unbind();
+    EBO7.Unbind();
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    VAO VAO8;
+    VAO8.Bind();
+
+    VBO VBO8(wall_4, sizeof(wall_4));
+    EBO EBO8(indices, sizeof(indices));
+    VAO8.LinkAttrib(VBO8, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
+    VAO8.LinkAttrib(VBO8, 1, 3, GL_FLOAT, 11 * sizeof(float), (void*)(3 * sizeof(float)));
+    VAO8.LinkAttrib(VBO8, 2, 2, GL_FLOAT, 11 * sizeof(float), (void*)(6 * sizeof(float)));
+    VAO8.LinkAttrib(VBO8, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+
+    VAO8.Unbind();
+    VBO8.Unbind();
+    EBO8.Unbind();
 
 
     // Shader for light cube
@@ -432,7 +511,7 @@ int main()
     glEnable(GL_DEPTH_TEST);
 
     // Creates camera object
-    CameraMap camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
+    CameraMap camera(width, height, glm::vec3(0.0f, 5.0f, 0.0f));
 
     // Main while loop
     while (!glfwWindowShouldClose(window))
@@ -448,45 +527,45 @@ int main()
         camera.updateMatrix(45.0f, 0.1f, 100.0f);
 
 
-        // Tells OpenGL which Shader Program we want to use
-        shaderProgram.Activate();
-        // Exports the camera Position to the Fragment Shader for specular lighting
-        glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
-        // Export the camMatrix to the Vertex Shader of the pyramid
-        camera.Matrix(shaderProgram, "camMatrix");
-        // Binds textures so that they appear in the rendering
-        planksTex.Bind();
-        planksSpec.Bind();
-        // Bind the VAO so OpenGL knows to use it
-        VAO1.Bind();
-        // Draw primitives, number of indices, datatype of indices, index of indices
-        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
+//        // Tells OpenGL which Shader Program we want to use
+//        shaderProgram.Activate();
+//        // Exports the camera Position to the Fragment Shader for specular lighting
+//        glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
+//        // Export the camMatrix to the Vertex Shader of the pyramid
+//        camera.Matrix(shaderProgram, "camMatrix");
+//        // Binds textures so that they appear in the rendering
+//        planksTex.Bind();
+//        planksSpec.Bind();
+//        // Bind the VAO so OpenGL knows to use it
+//        VAO1.Bind();
+//        // Draw primitives, number of indices, datatype of indices, index of indices
+//        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
+//
+//
+//        // Tells OpenGL which Shader Program we want to use
+//        shaderProgram.Activate();
+//        // Exports the camera Position to the Fragment Shader for specular lighting
+//        glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
+//        // Export the camMatrix to the Vertex Shader of the pyramid
+//        camera.Matrix(shaderProgram, "camMatrix");
+//        // Binds textures so that they appear in the rendering
+//        planksTex.Bind();
+//        planksSpec.Bind();
+//        VAO2.Bind();
+//        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
 
 
-        // Tells OpenGL which Shader Program we want to use
-        shaderProgram.Activate();
-        // Exports the camera Position to the Fragment Shader for specular lighting
-        glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
-        // Export the camMatrix to the Vertex Shader of the pyramid
-        camera.Matrix(shaderProgram, "camMatrix");
-        // Binds textures so that they appear in the rendering
-        planksTex.Bind();
-        planksSpec.Bind();
-        VAO2.Bind();
-        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
-
-
-        // Tells OpenGL which Shader Program we want to use
-        shaderProgram.Activate();
-        // Exports the camera Position to the Fragment Shader for specular lighting
-        glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
-        // Export the camMatrix to the Vertex Shader of the pyramid
-        camera.Matrix(shaderProgram, "camMatrix");
-        // Binds textures so that they appear in the rendering
-        planksTex.Bind();
-        planksSpec.Bind();
-        VAO3.Bind();
-        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
+//        // Tells OpenGL which Shader Program we want to use
+//        shaderProgram.Activate();
+//        // Exports the camera Position to the Fragment Shader for specular lighting
+//        glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
+//        // Export the camMatrix to the Vertex Shader of the pyramid
+//        camera.Matrix(shaderProgram, "camMatrix");
+//        // Binds textures so that they appear in the rendering
+//        planksTex.Bind();
+//        planksSpec.Bind();
+//        VAO3.Bind();
+//        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
 
 
         // Tells OpenGL which Shader Program we want to use
@@ -499,6 +578,54 @@ int main()
         planksTex.Bind();
         planksSpec.Bind();
         VAO4.Bind();
+        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
+
+        // Tells OpenGL which Shader Program we want to use
+        shaderProgram.Activate();
+        // Exports the camera Position to the Fragment Shader for specular lighting
+        glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
+        // Export the camMatrix to the Vertex Shader of the pyramid
+        camera.Matrix(shaderProgram, "camMatrix");
+        // Binds textures so that they appear in the rendering
+        planksTex.Bind();
+        planksSpec.Bind();
+        VAO5.Bind();
+        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
+
+        // Tells OpenGL which Shader Program we want to use
+        shaderProgram.Activate();
+        // Exports the camera Position to the Fragment Shader for specular lighting
+        glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
+        // Export the camMatrix to the Vertex Shader of the pyramid
+        camera.Matrix(shaderProgram, "camMatrix");
+        // Binds textures so that they appear in the rendering
+        planksTex.Bind();
+        planksSpec.Bind();
+        VAO6.Bind();
+        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
+
+        // Tells OpenGL which Shader Program we want to use
+        shaderProgram.Activate();
+        // Exports the camera Position to the Fragment Shader for specular lighting
+        glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
+        // Export the camMatrix to the Vertex Shader of the pyramid
+        camera.Matrix(shaderProgram, "camMatrix");
+        // Binds textures so that they appear in the rendering
+        planksTex.Bind();
+        planksSpec.Bind();
+        VAO7.Bind();
+        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
+
+        // Tells OpenGL which Shader Program we want to use
+        shaderProgram.Activate();
+        // Exports the camera Position to the Fragment Shader for specular lighting
+        glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
+        // Export the camMatrix to the Vertex Shader of the pyramid
+        camera.Matrix(shaderProgram, "camMatrix");
+        // Binds textures so that they appear in the rendering
+        planksTex.Bind();
+        planksSpec.Bind();
+        VAO8.Bind();
         glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
 
 
@@ -532,22 +659,38 @@ int main()
 
 
 
-    // Delete all the objects we've created
-    VAO1.Delete();
-    VBO1.Delete();
-    EBO1.Delete();
-
-    VAO2.Delete();
-    VBO2.Delete();
-    EBO2.Delete();
-
-    VAO3.Delete();
-    VBO3.Delete();
-    EBO3.Delete();
+//    // Delete all the objects we've created
+//    VAO1.Delete();
+//    VBO1.Delete();
+//    EBO1.Delete();
+//
+//    VAO2.Delete();
+//    VBO2.Delete();
+//    EBO2.Delete();
+//
+//    VAO3.Delete();
+//    VBO3.Delete();
+//    EBO3.Delete();
 
     VAO4.Delete();
     VBO4.Delete();
     EBO4.Delete();
+
+    VAO5.Delete();
+    VBO5.Delete();
+    EBO5.Delete();
+
+    VAO6.Delete();
+    VBO6.Delete();
+    EBO6.Delete();
+
+    VAO7.Delete();
+    VBO7.Delete();
+    EBO7.Delete();
+
+    VAO8.Delete();
+    VBO8.Delete();
+    EBO8.Delete();
 
     planksTex.Delete();
     planksSpec.Delete();
