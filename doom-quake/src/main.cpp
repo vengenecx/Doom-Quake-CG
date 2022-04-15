@@ -252,12 +252,12 @@ int main()
     * folder and then give a relative path from this folder to whatever resource you want to get to.
     * Also note that this requires C++17, so go to Project Properties, C/C++, Language, and select C++17
     */
-    //std::string parentDir = (fs::current_path().fs::path::parent_path()).string();
+    std::string parentDir = (fs::current_path().fs::path::parent_path()).string();
 
-    std::string parentDir =  "C:/Users/Benoît/Documents/Doom-Quake-CG/doom-quake";
+    //std::string parentDir =  "C:/Users/Benoît/Documents/Doom-Quake-CG/doom-quake";
     //std::string parentDir =  "/Users/lennertsteyaert/Documents/GitHub/Doom-Quake-CG/doom-quake";
 
-    std::string texPath = "/model-files/plank/";
+    std::string texPath = "/x64-Debug/model-files/plank/";
 
     // Textures
     Texture planksTex((parentDir + texPath + "planks.png").c_str(), GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE);
