@@ -95,12 +95,18 @@
 #include<glm/gtc/type_ptr.hpp>
 
 #include"Map/Texture.h"
-#include"Map/shaderClass.h"
+//#include"Map/shaderClass.h"
 #include"Map/VAO.h"
 #include"Map/VBO.h"
 #include"Map/EBO.h"
 #include"Map/Camera.h"
 
+
+
+#include "Shaders/Shader.h"
+
+#include<filesystem>
+namespace fs = std::filesystem;
 
 
 const unsigned int width = 1000;
@@ -268,8 +274,9 @@ int main()
 
 
 
+
     // Generates Shader object using shaders default.vert and default.frag
-    ShaderMap shaderProgram("shader-files/default.vert", "shader-files/default.frag");
+    Shader shaderProgram("shader-files/default.vert", "shader-files/default.frag");
     // Generates Vertex Array Object and binds it
 //    VAO VAO1;
 //
@@ -410,7 +417,7 @@ int main()
 
 
     // Shader for light cube
-    ShaderMap lightShader("shader-files/light.vert", "shader-files/light.frag");
+    Shader lightShader("shader-files/light.vert", "shader-files/light.frag");
     // Generates Vertex Array Object and binds it
     VAO lightVAO;
     lightVAO.Bind();
@@ -437,10 +444,10 @@ int main()
     objectModel = glm::translate(objectModel, objectPos);
 
 
-    lightShader.Activate();
+    lightShader.use();
     glUniformMatrix4fv(glGetUniformLocation(lightShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(lightModel));
     glUniform4f(glGetUniformLocation(lightShader.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
-    shaderProgram.Activate();
+    shaderProgram.use();
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
     glUniform4f(glGetUniformLocation(shaderProgram.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
     glUniform3f(glGetUniformLocation(shaderProgram.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
@@ -470,10 +477,10 @@ int main()
     glm::mat4 objectModel2 = glm::mat4(1.0f);
     objectModel2 = glm::translate(objectModel2, objectPos2);
 
-    lightShader.Activate();
+    lightShader.use();
     glUniformMatrix4fv(glGetUniformLocation(lightShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(lightModel2));
     glUniform4f(glGetUniformLocation(lightShader.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
-    shaderProgram.Activate();
+    shaderProgram.use();
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
     glUniform4f(glGetUniformLocation(shaderProgram.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
     glUniform3f(glGetUniformLocation(shaderProgram.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
@@ -487,9 +494,13 @@ int main()
     */
     //std::string parentDir = (fs::current_path().fs::path::parent_path()).string();
 
+
     //std::string parentDir =  "C:/Users/Beno�t/Documents/Doom-Quake-CG/doom-quake";
     //std::string parentDir =  "C:/Users/Benoît/Documents/Doom-Quake-CG/doom-quake";
-    std::string parentDir =  "/Users/lennertsteyaert/Documents/GitHub/Doom-Quake-CG/doom-quake";
+    //std::string parentDir =  "/Users/lennertsteyaert/Documents/GitHub/Doom-Quake-CG/doom-quake";
+
+    std::string parentDir = (fs::current_path().fs::path::parent_path()).string();
+    //std::string texPath = "/x64-Debug/model-files/plank/";
     std::string texPath = "/model-files/plank/";
 
     // Textures
@@ -569,7 +580,7 @@ int main()
 
 
         // Tells OpenGL which Shader Program we want to use
-        shaderProgram.Activate();
+        shaderProgram.use();
         // Exports the camera Position to the Fragment Shader for specular lighting
         glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
         // Export the camMatrix to the Vertex Shader of the pyramid
@@ -581,7 +592,7 @@ int main()
         glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
 
         // Tells OpenGL which Shader Program we want to use
-        shaderProgram.Activate();
+        shaderProgram.use();
         // Exports the camera Position to the Fragment Shader for specular lighting
         glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
         // Export the camMatrix to the Vertex Shader of the pyramid
@@ -593,7 +604,7 @@ int main()
         glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
 
         // Tells OpenGL which Shader Program we want to use
-        shaderProgram.Activate();
+        shaderProgram.use();
         // Exports the camera Position to the Fragment Shader for specular lighting
         glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
         // Export the camMatrix to the Vertex Shader of the pyramid
@@ -605,7 +616,7 @@ int main()
         glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
 
         // Tells OpenGL which Shader Program we want to use
-        shaderProgram.Activate();
+        shaderProgram.use();
         // Exports the camera Position to the Fragment Shader for specular lighting
         glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
         // Export the camMatrix to the Vertex Shader of the pyramid
@@ -617,7 +628,7 @@ int main()
         glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
 
         // Tells OpenGL which Shader Program we want to use
-        shaderProgram.Activate();
+        shaderProgram.use();
         // Exports the camera Position to the Fragment Shader for specular lighting
         glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
         // Export the camMatrix to the Vertex Shader of the pyramid
@@ -630,7 +641,7 @@ int main()
 
 
         // Tells OpenGL which Shader Program we want to use
-        lightShader.Activate();
+        lightShader.use();
         // Export the camMatrix to the Vertex Shader of the light cube
         camera.Matrix(lightShader, "camMatrix");
         // Bind the VAO so OpenGL knows to use it
@@ -641,7 +652,7 @@ int main()
 
 
         // Tells OpenGL which Shader Program we want to use
-        lightShader.Activate();
+        lightShader.use();
         // Export the camMatrix to the Vertex Shader of the light cube
         camera.Matrix(lightShader, "camMatrix");
         // Bind the VAO so OpenGL knows to use it
@@ -694,11 +705,13 @@ int main()
 
     planksTex.Delete();
     planksSpec.Delete();
-    shaderProgram.Delete();
+    shaderProgram.remove();
+
+
     lightVAO.Delete();
     lightVBO.Delete();
     lightEBO.Delete();
-    lightShader.Delete();
+    lightShader.remove();
     // Delete window before ending the program
     glfwDestroyWindow(window);
     // Terminate GLFW before ending the program
