@@ -101,6 +101,9 @@
 #include"Map/EBO.h"
 #include"Map/Camera.h"
 
+#include<filesystem>
+namespace fs = std::filesystem;
+
 const unsigned int width = 800;
 const unsigned int height = 800;
 

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 project(doom_quake)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 # Doom project includes
 include_directories(include)
