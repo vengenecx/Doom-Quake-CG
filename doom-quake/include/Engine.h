@@ -11,9 +11,18 @@
 #include <iostream>
 #include <memory>
 #include "Shaders/Shader.h"
-#include "Model.h"
+//#include "Model.h"
+#include "Map/VAO.h"
+#include "Map/EBO.h"
+#include "Map/VBO.h"
+#include "Map/Texture.h"
 #include <Shaders/EShader.h>
 #include <Camera/Camera.h>
+
+
+#include<filesystem>
+namespace fs = std::filesystem;
+
 
 
 class Engine {
@@ -37,9 +46,16 @@ private:
     void setupEBO();
 
     // Buffers
-    unsigned int VBO;
-    unsigned int VAO;
-    unsigned int EBO;
+    //unsigned int VBO;
+    //unsigned int VAO;
+    //unsigned int EBO;
+
+    std::unique_ptr<VAO> VAO1;
+    std::unique_ptr<VBO> VBO1;
+    std::unique_ptr<EBO> EBO1;
+
+    std::unique_ptr<Texture> planksTex;
+    std::unique_ptr<Texture> planksSpec;
 
     // Shader variables
     unsigned int vertexShader;
@@ -47,10 +63,10 @@ private:
     unsigned int shaderProgram;
 
     std::unique_ptr<Shader> ourShader;
-    std::unique_ptr<Model> model;
+    //std::unique_ptr<Model> model;
 
     // Const input
-    float vertices[24];
+    float vertices[44];
     unsigned int indices[6];
 
     // settings
