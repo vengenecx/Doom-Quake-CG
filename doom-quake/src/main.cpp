@@ -239,7 +239,6 @@ int main()
 {
     GLFWwindow* window;
 
-
     /* Initialize the library */
     if (!glfwInit())
         return -1;
@@ -492,7 +491,11 @@ int main()
 
 
     std::string parentDir = (fs::current_path().fs::path::parent_path()).string();
-    std::string texPath = "/x64-Debug/model-files/plank/";
+    std::cout << "DIR : " << parentDir << std::endl; 
+
+    // std::string texPath = "/x64-Debug/model-files/plank/"; 
+    std::string texPath = "/model-files/plank/"; 
+
 
     // Textures
     Texture planksTex((parentDir + texPath + "planks.png").c_str(), GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE);

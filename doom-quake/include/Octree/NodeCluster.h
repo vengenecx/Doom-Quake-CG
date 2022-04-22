@@ -11,7 +11,7 @@ class NodeCluster {
 public:
     NodeCluster();
     void addModel(Model* model);
-    std::vector<Model*>& getModels();
+    std::vector<Model*> getModels();
 private:
     std::vector<Model*> models;
 };

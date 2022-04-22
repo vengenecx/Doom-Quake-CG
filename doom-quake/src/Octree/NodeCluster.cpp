@@ -13,7 +13,7 @@ void NodeCluster::addModel(Model *model) {
     //TODO
 }
 
-std::vector<Model*>& NodeCluster::getModels(){
+std::vector<Model*> NodeCluster::getModels(){
     //TODO
     std::vector<Model*> result = std::vector<Model*>();
     return result;

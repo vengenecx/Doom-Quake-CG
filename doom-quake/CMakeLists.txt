@@ -1,10 +1,28 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.16)
 project(doom_quake)
 
 set(CMAKE_CXX_STANDARD 17)
 
+
+if(UNIX AND NOT APPLE)
+    set(LINUX TRUE)
+endif()
+
+
+# van TOM:
+# src: https://stackoverflow.com/questions/46060038/undefined-reference-to-symbol-libdl-so-2-error-adding-symbols-dso-missing
+if (LINUX)
+set(CMAKE_CXX_LINK_EXECUTABLE "${CMAKE_CXX_LINK_EXECUTABLE} -ldl")
+endif (LINUX)
+
 # Doom project includes
-include_directories(include)
+if (LINUX)
+    include_directories(include glfw-3.3.6/include)
+else()
+    include_directories(include)
+endif (LINUX)
+
+
 add_executable( doom_quake src/main.cpp
                 include/Engine.h include/glad.h
                 include/khrplatform.h
@@ -47,21 +65,36 @@ add_executable( doom_quake src/main.cpp
                 src/Map/Camera.cpp
                 )
 
-               
 
-# GLFW
+if (WIN32 OR __APPLE__) 
 
-add_subdirectory(glfw-3.3.6)
-target_link_libraries(doom_quake glfw)
+    message(STATUS "building for non Linux OS")
+    add_subdirectory(glfw-3.3.6)
+    # GLFW
+    target_link_libraries(doom_quake glfw)
+
+    add_subdirectory(assimp-master)
+    target_link_libraries(doom_quake assimp)
+    
+
+else()
+
+    message(STATUS "Building for Linux")
+    target_link_libraries(doom_quake glfw)
+
+    # Assimp
+    find_library(libassimp assimp)
+    target_link_libraries(doom_quake ${libassimp})
+
+endif (WIN32 OR __APPLE__) 
+
+
 
 
 # Opengl
 find_package(OpenGL REQUIRED)
 target_link_libraries(doom_quake OpenGL::GL)
 
-# Assimp
-add_subdirectory(assimp-master)
-target_link_libraries(doom_quake assimp)
 
 
 # GLM
