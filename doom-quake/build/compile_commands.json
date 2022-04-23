@@ -1,92 +1,92 @@
 [
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/main.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/main.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/main.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/main.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/main.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c89-gcc  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -o CMakeFiles/doom_quake.dir/src/glad/glad.c.o   -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/glad/glad.c",
+  "command": "/usr/bin/c89-gcc  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/glad/glad.c.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/glad/glad.c",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/glad/glad.c"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/engine.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/engine.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/engine.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/engine.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/engine.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Shaders/Shader.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Shaders/Shader.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Shaders/Shader.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Mesh.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Mesh.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Mesh.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Mesh.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Mesh.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Model.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Model.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Model.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Model.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Model.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Camera/Camera.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Camera/Camera.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Camera/Camera.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Node.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Node.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Node.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/NodeCluster.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/NodeCluster.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/NodeCluster.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Octree.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Octree.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Octree.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Ray/Ray.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Ray/Ray.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Ray/Ray.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/EBO.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/EBO.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/EBO.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/shaderClass.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/shaderClass.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/shaderClass.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Map/stb.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/stb.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Map/stb.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/stb.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/stb.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Texture.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Texture.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Texture.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VAO.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VAO.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VAO.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VBO.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VBO.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VBO.cpp"
 },
 {
   "directory": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build",
-  "command": "/usr/bin/c++   -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master  -g   -std=gnu++17 -o CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Camera.cpp",
+  "command": "/usr/bin/c++  -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glfw-3.3.6/include -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/stb-master -I/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/glm-master -g -o CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Camera.cpp",
   "file": "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Camera.cpp"
 }
 ]
