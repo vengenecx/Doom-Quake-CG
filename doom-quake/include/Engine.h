@@ -11,11 +11,11 @@
 #include <iostream>
 #include <memory>
 #include "Shaders/Shader.h"
-//#include "Model.h"
+#include "Model.h"
 #include "Map/VAO.h"
 #include "Map/EBO.h"
 #include "Map/VBO.h"
-#include "Map/Texture.h"
+//#include "Map/Texture.h"
 #include <Shaders/EShader.h>
 #include <Camera/Camera.h>
 
@@ -63,7 +63,7 @@ private:
     unsigned int shaderProgram;
 
     std::unique_ptr<Shader> ourShader;
-    //std::unique_ptr<Model> model;
+    std::unique_ptr<Model> model;
 
     // Const input
     float vertices[44];
