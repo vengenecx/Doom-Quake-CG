@@ -24,35 +24,11 @@ void CameraMap::updateMatrix(float FOVdeg, float nearPlane, float farPlane)
 	cameraMatrix = projection * view;
 }
 
-void CameraMap::Matrix(ShaderMap& shader, const char* uniform)
+void CameraMap::Matrix(Shader& shader, const char* uniform)
 {
 	// Exports camera matrix
 	glUniformMatrix4fv(glGetUniformLocation(shader.ID, uniform), 1, GL_FALSE, glm::value_ptr(cameraMatrix));
 }
-
-
-//void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
-//{
-//	float velocity = MovementSpeed * deltaTime;
-//	if (direction == FORWARD) {
-//		// glm::vec3(X,Y,Z)!!! we only want to change the X-Z position
-//		Position += glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * velocity; //help of Tom: Y is not affected, Y is looking up
-//	}
-//	if (direction == BACKWARD) {
-//		// glm::vec3(X,Y,Z)!!! we only want to change the X-Z position
-//		Position -= glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * velocity; //help of Tom: Y is not affected, Y is looking up
-//	}
-//	if (direction == LEFT) {
-//		Position -= Right * velocity;
-//	}
-//	if (direction == RIGHT) {
-//		Position += Right * velocity;
-//	}
-//}
-
-//glm::vec3 Orientation = glm::vec3(0.0f, 0.0f, -1.0f);
-//glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f);
-
 
 void CameraMap::Inputs(GLFWwindow* window)
 {
@@ -60,11 +36,9 @@ void CameraMap::Inputs(GLFWwindow* window)
 	// main keys
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 	{
-		Position += speed * Orientation;
-
-		// Tom
-		//Position += speed * glm::vec3(glm::cos(glm::radians(height)), 0, glm::sin(glm::radians(height)));
-
+        glm::vec3 copy = Orientation;
+        copy.y = 0;
+		Position += speed * copy;
 	}
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
 	{
@@ -72,10 +46,9 @@ void CameraMap::Inputs(GLFWwindow* window)
 	}
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 	{
-		Position += speed * -Orientation;
-
-		// Tom
-		//Position += speed * -(glm::vec3(glm::cos(glm::radians(height)), 0, glm::sin(glm::radians(height))));
+        glm::vec3 copy = Orientation;
+        copy.y = 0;
+		Position += speed * -copy;
 	}
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 	{
@@ -121,7 +94,7 @@ void CameraMap::Inputs(GLFWwindow* window)
 		glfwGetCursorPos(window, &mouseX, &mouseY);
 
 		// Normalizes and shifts the coordinates of the cursor such that they begin in the middle of the screen
-		// and then "transforms" them into degrees 
+		// and then "transforms" them into degrees
 		float rotX = sensitivity * (float)(mouseY - (height / 2)) / height;
 		float rotY = sensitivity * (float)(mouseX - (width / 2)) / width;
 
@@ -148,3 +121,12 @@ void CameraMap::Inputs(GLFWwindow* window)
 		firstClick = true;
 	}
 }
+
+
+
+
+
+//#include"Map/Camera.h"
+
+
+

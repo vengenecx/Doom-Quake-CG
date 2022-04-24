@@ -8,8 +8,8 @@
 #include<glm/gtc/type_ptr.hpp>
 #include<glm/gtx/rotate_vector.hpp>
 #include<glm/gtx/vector_angle.hpp>
+#include "Shaders/Shader.h"
 
-#include"Map/shaderClass.h"
 
 class CameraMap
 {
@@ -19,6 +19,10 @@ public:
 	glm::vec3 Orientation = glm::vec3(0.0f, 0.0f, -1.0f);
 	glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f);
 	glm::mat4 cameraMatrix = glm::mat4(1.0f);
+
+    // euler Angles
+    float Yaw;
+    float Pitch;
 
 	// Prevents the camera from jumping around when first clicking left click
 	bool firstClick = true;
@@ -39,7 +43,7 @@ public:
 	// Updates the camera matrix to the Vertex Shader
 	void updateMatrix(float FOVdeg, float nearPlane, float farPlane);
 	// Exports the camera matrix to a shader
-	void Matrix(ShaderMap& shader, const char* uniform);
+	void Matrix(Shader& shader, const char* uniform);
 	// Handles camera inputs
 	void Inputs(GLFWwindow* window);
 };
