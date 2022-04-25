@@ -13,7 +13,6 @@
 #include "Shaders/Shader.h"
 #include "Model.h"
 #include "Model/Cube/CubeModel.h"
-//#include "Map/Texture.h"
 #include <Shaders/EShader.h>
 #include <Camera/Camera.h>
 
@@ -40,19 +39,14 @@ private:
     void keyHandler(GLFWwindow *window);
 
 
-    std::unique_ptr<VAO> VAO1;
-    std::unique_ptr<VBO> VBO1;
-    std::unique_ptr<EBO> EBO1;
+
 
     std::unique_ptr<Texture> containerTexture;
     std::unique_ptr<Texture> awesomeTexture;
 
-    // Shader variables
-    unsigned int vertexShader;
-    unsigned int fragmentShader;
-    unsigned int shaderProgram;
 
-    std::unique_ptr<Shader> ourShader;
+    std::unique_ptr<Shader> doubleTextureColShader;
+    std::unique_ptr<Shader> meshModelShader;
     std::unique_ptr<Model> model;
 
     std::unique_ptr<CubeModel> cube;

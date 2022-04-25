@@ -9,6 +9,12 @@
 
 void Model::Draw(Shader *shader)
 {
+    // render the loaded model
+    glm::mat4 m = glm::mat4(1.0f);
+    m = glm::translate(m, glm::vec3(0.0f, 0.0f, -20.0f)); // translate it down so it's at the center of the scene
+    m = glm::scale(m, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+    shader->setMat4("model", m);
+
     for(unsigned int i = 0; i < meshes.size(); i++)
         meshes[i].Draw(shader);
 }
