@@ -4,69 +4,79 @@
 
 #include "Model/Skybox/Skybox.h"
 
-Skybox::Skybox() {
+Skybox::Skybox(bool rgba) {
     this->vao = std::make_unique<VAO>();
     this->vao->bind();
 
     this->vertices = std::vector<float> {
             // positions
-            -1.0f,  1.0f, -1.0f,
-            -1.0f, -1.0f, -1.0f,
-            1.0f, -1.0f, -1.0f,
-            1.0f, -1.0f, -1.0f,
-            1.0f,  1.0f, -1.0f,
-            -1.0f,  1.0f, -1.0f,
+            -20.0f,  20.0f, -20.0f,
+            -20.0f, -20.0f, -20.0f,
+            20.0f, -20.0f, -20.0f,
+            20.0f, -20.0f, -20.0f,
+            20.0f,  20.0f, -20.0f,
+            -20.0f,  20.0f, -20.0f,
 
-            -1.0f, -1.0f,  1.0f,
-            -1.0f, -1.0f, -1.0f,
-            -1.0f,  1.0f, -1.0f,
-            -1.0f,  1.0f, -1.0f,
-            -1.0f,  1.0f,  1.0f,
-            -1.0f, -1.0f,  1.0f,
+            -20.0f, -20.0f,  20.0f,
+            -20.0f, -20.0f, -20.0f,
+            -20.0f,  20.0f, -20.0f,
+            -20.0f,  20.0f, -20.0f,
+            -20.0f,  20.0f,  20.0f,
+            -20.0f, -20.0f,  20.0f,
 
-            1.0f, -1.0f, -1.0f,
-            1.0f, -1.0f,  1.0f,
-            1.0f,  1.0f,  1.0f,
-            1.0f,  1.0f,  1.0f,
-            1.0f,  1.0f, -1.0f,
-            1.0f, -1.0f, -1.0f,
+            20.0f, -20.0f, -20.0f,
+            20.0f, -20.0f,  20.0f,
+            20.0f,  20.0f,  20.0f,
+            20.0f,  20.0f,  20.0f,
+            20.0f,  20.0f, -20.0f,
+            20.0f, -20.0f, -20.0f,
 
-            -1.0f, -1.0f,  1.0f,
-            -1.0f,  1.0f,  1.0f,
-            1.0f,  1.0f,  1.0f,
-            1.0f,  1.0f,  1.0f,
-            1.0f, -1.0f,  1.0f,
-            -1.0f, -1.0f,  1.0f,
+            -20.0f, -20.0f,  20.0f,
+            -20.0f,  20.0f,  20.0f,
+            20.0f,  20.0f,  20.0f,
+            20.0f,  20.0f,  20.0f,
+            20.0f, -20.0f,  20.0f,
+            -20.0f, -20.0f,  20.0f,
 
-            -1.0f,  1.0f, -1.0f,
-            1.0f,  1.0f, -1.0f,
-            1.0f,  1.0f,  1.0f,
-            1.0f,  1.0f,  1.0f,
-            -1.0f,  1.0f,  1.0f,
-            -1.0f,  1.0f, -1.0f,
+            -20.0f,  20.0f, -20.0f,
+            20.0f,  20.0f, -20.0f,
+            20.0f,  20.0f,  20.0f,
+            20.0f,  20.0f,  20.0f,
+            -20.0f,  20.0f,  20.0f,
+            -20.0f,  20.0f, -20.0f,
 
-            -1.0f, -1.0f, -1.0f,
-            -1.0f, -1.0f,  1.0f,
-            1.0f, -1.0f, -1.0f,
-            1.0f, -1.0f, -1.0f,
-            -1.0f, -1.0f,  1.0f,
-            1.0f, -1.0f,  1.0f
+            -20.0f, -20.0f, -20.0f,
+            -20.0f, -20.0f,  20.0f,
+            20.0f, -20.0f, -20.0f,
+            20.0f, -20.0f, -20.0f,
+            -20.0f, -20.0f,  20.0f,
+            20.0f, -20.0f,  20.0f
     };
 
     this->vbo = std::make_unique<VBO>(vertices,vertices.size());
 
     vao->linkAttrib(vbo.get(), 0, 3, GL_FLOAT, 3 * sizeof(float), (void*)0);
 
+//    std::vector<std::string> faces
+//            {
+//                    "model-files/skybox/right.jpg",
+//                    "model-files/skybox/left.jpg",
+//                    "model-files/skybox/top.jpg",
+//                    "model-files/skybox/bottom.jpg",
+//                    "model-files/skybox/front.jpg",
+//                    "model-files/skybox/back.jpg"
+//            };
+
     std::vector<std::string> faces
             {
-                    "model-files/skybox/right.jpg",
-                    "model-files/skybox/left.jpg",
-                    "model-files/skybox/top.jpg",
-                    "model-files/skybox/bottom.jpg",
-                    "model-files/skybox/front.jpg",
-                    "model-files/skybox/back.jpg"
+                    "model-files/skybox/px.png",
+                    "model-files/skybox/nx.png",
+                    "model-files/skybox/py.png",
+                    "model-files/skybox/ny.png",
+                    "model-files/skybox/pz.png",
+                    "model-files/skybox/nz.png"
             };
-    this->loadCubemap(faces);
+    this->loadCubemap(faces,rgba);
 }
 
 void Skybox::draw(Shader *shader) {
@@ -82,10 +92,12 @@ void Skybox::draw(Shader *shader) {
     glDepthFunc(GL_LESS);
 }
 
-unsigned int Skybox::loadCubemap(std::vector<std::string> faces)
+unsigned int Skybox::loadCubemap(std::vector<std::string> faces, bool rgba)
 {
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+
+    stbi_set_flip_vertically_on_load(false);
 
     int width, height, nrChannels;
     for (unsigned int i = 0; i < faces.size(); i++)
@@ -93,7 +105,10 @@ unsigned int Skybox::loadCubemap(std::vector<std::string> faces)
         unsigned char *data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
         if (data)
         {
-            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+            if(rgba)
+                glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+            else
+                glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
             stbi_image_free(data);
         }
         else
