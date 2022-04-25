@@ -3,15 +3,16 @@
 //
 
 #include <Engine.h>
-
+#include "Model/Plane/PlaneModel.h"
 
 
 Engine::Engine()
 {
-    shaders = std::vector<std::unique_ptr<Shader>>(2);
+    shaders = std::vector<std::unique_ptr<Shader>>(3);
 //    shaders[0] = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
     shaders[0] = std::make_unique<Shader>(shaderPaths[doubleTextureColorVertex],shaderPaths[doubleTextureColorFragment]);
     shaders[1] = std::make_unique<Shader>(shaderPaths[modelLoadingVertex],shaderPaths[modelLoadingFragment]);
+    shaders[2] = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
 
     //  Model shader (assimp)
     //meshModelShader = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
@@ -23,7 +24,7 @@ Engine::Engine()
     //model = std::make_unique<Model>("model-files/Humvee_models/Humvee.obj");
 
 
-    camera = std::make_unique<Camera>(glm::vec3(0.0f, 0.0f, 3.0f));
+    camera = std::make_unique<Camera>(glm::vec3(0.0f, 0.0f, 1.0f));
 
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
@@ -41,6 +42,8 @@ Engine::Engine()
     models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
     models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, -5.0f),DOUBLE_TEXTURE_COLOR_SHADER));
     models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 5.0f,  5.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+
+    models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( -5.0f,  0.0f, 0.0f),DEFAULT));
 
     skyboxShader = std::make_unique<Shader>("shader-files/skybox.vs", "shader-files/skybox.fs");
     skybox = std::make_unique<Skybox>(true);

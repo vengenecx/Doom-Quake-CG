@@ -43,7 +43,7 @@ add_executable( doom_quake src/main.cpp
                 src/Texture/Texture.cpp
                 src/Model/BaseModel.cpp
                 include/Model/BaseModel.h
-                include/Shaders/ShaderType.h include/Model/Skybox/Skybox.h src/Model/Skybox/Skybox.cpp)
+                include/Shaders/ShaderType.h include/Model/Skybox/Skybox.h src/Model/Skybox/Skybox.cpp include/Model/Plane/PlaneModel.h src/Model/Plane/PlaneModel.cpp)
 
                
 

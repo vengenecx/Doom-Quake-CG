@@ -8,6 +8,8 @@ static enum EShader {
     modelLoadingVertex = 0,
     modelLoadingFragment = 1,
     doubleTextureColorVertex = 2,
-    doubleTextureColorFragment = 3
+    doubleTextureColorFragment = 3,
+    defaultVertex = 4,
+    defaultFragment = 5
 } eShader;
 #endif //DOOM_QUAKE_ESHADER_H

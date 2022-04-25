@@ -33,7 +33,6 @@ private:
     glm::vec3 position;
 
     void setTextures(Shader* shader);
-
-
 };
+
 #endif //DOOM_QUAKE_CUBEMODEL_H

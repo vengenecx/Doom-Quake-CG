@@ -23,7 +23,9 @@ static const char* shaderPaths[] = {
         "shader-files/modelloading.vs",
         "shader-files/modelloading.fs",
         "shader-files/doubletexturecolor.vs",
-        "shader-files/doubletexturecolor.fs"
+        "shader-files/doubletexturecolor.fs",
+        "shader-files/default.vs",
+        "shader-files/default.fs"
 };
 
 
