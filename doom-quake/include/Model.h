@@ -13,17 +13,19 @@
 
 
 #include "Octree/BoundingBox.h"
+#include "Model/BaseModel.h"
 
-class Model // Parent modelclass
+class Model : public BaseModel
 {
 public:
     // constructor, expects a filepath to a 3D model.
-    Model(std::string const &path, bool gamma = false) : gammaCorrection(gamma)
-    {
-        loadModel(path);
-    }
-    //void Draw(Shader &shader);
-    void Draw(Shader *shader);
+    Model(std::string const &path, glm::vec3 position, ShaderType type, bool gamma = false);
+    ~Model();
+
+
+    void draw(Shader *shader);
+    void remove();
+    void updatePosition(glm::vec3 pos);
 
     BoundingBox* getBoundingbox();
 
@@ -33,6 +35,9 @@ private:
     std::string directory;
     std::vector<Texture> textures_loaded;
     bool gammaCorrection;
+
+    glm::vec3 position;
+
 
     // TODO
     // Boundingbox calculation
@@ -45,7 +50,7 @@ private:
     Mesh processMesh(aiMesh *mesh, const aiScene *scene);
     std::vector<Texture> loadMaterialTextures(aiMaterial *mat, aiTextureType type,
                                          std::string typeName);
-    unsigned int TextureFromFile(const char *path, const std::string &directory, bool gamma= false);
+    unsigned int textureFromFile(const char *path, const std::string &directory, bool gamma= false);
 };
 
 #endif //DOOM_QUAKE_MODEL_H

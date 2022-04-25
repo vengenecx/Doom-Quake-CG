@@ -49,7 +49,8 @@ add_executable( doom_quake src/main.cpp
                 include/Texture/Texture.h
                 src/Texture/Texture.cpp
                 src/Model/BaseModel.cpp
-                include/Model/BaseModel.h)
+                include/Model/BaseModel.h
+                include/Shaders/ShaderType.h)
 
                
 

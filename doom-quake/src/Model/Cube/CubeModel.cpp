@@ -5,7 +5,7 @@
 #include "Model/Cube/CubeModel.h"
 
 
-CubeModel::CubeModel(Shader* shader, Texture * texture_1, Texture * texture_2, glm::vec3 pos) {
+CubeModel::CubeModel(Texture * texture_1, Texture * texture_2, glm::vec3 pos, ShaderType type) : BaseModel(type){
     this->vao = std::make_unique<VAO>();
     this->vao->bind();
 
@@ -15,7 +15,6 @@ CubeModel::CubeModel(Shader* shader, Texture * texture_1, Texture * texture_2, g
 //            0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
 //            -0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
 //            -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
-
 
             -0.5f, -0.5f, -0.5f,    1.0f, 1.0f, 1.0f,   0.0f, 0.0f,
             0.5f, -0.5f, -0.5f,     1.0f, 1.0f, 1.0f,   1.0f, 0.0f,
@@ -103,6 +102,18 @@ CubeModel::CubeModel(Shader* shader, Texture * texture_1, Texture * texture_2, g
     this->position = pos;
 }
 
+
+CubeModel::~CubeModel() {
+    std::cout << "deleted cubemodel" << std::endl;
+    vao.release();
+    vbo.release();
+    ebo.release();
+}
+
+
+void CubeModel::updatePosition(glm::vec3 pos){
+    this->position = pos;
+}
 
 void CubeModel::setTextures(Shader* shader) {
     this->texture_1->texUnit(shader,"texture1");

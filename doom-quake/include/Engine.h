@@ -47,13 +47,13 @@ private:
 
     std::unique_ptr<Shader> doubleTextureColShader;
     std::unique_ptr<Shader> meshModelShader;
-    std::unique_ptr<Model> model;
+    std::unique_ptr<BaseModel> model;
 
     std::unique_ptr<CubeModel> cube;
 
 
     std::vector<std::unique_ptr<BaseModel>> models;
-
+    std::vector<std::unique_ptr<Shader>> shaders;
 
     // settings
     const unsigned int SCR_WIDTH = 800;

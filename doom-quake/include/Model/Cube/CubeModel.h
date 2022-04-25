@@ -11,10 +11,12 @@ class CubeModel : public BaseModel {
 public:
     // mesh data
 
-    CubeModel(Shader * shader, Texture * texture_1, Texture * texture_2, glm::vec3);
+    CubeModel(Texture * texture_1, Texture * texture_2, glm::vec3, ShaderType type);
+    void updatePosition(glm::vec3 pos);
     void draw(Shader * shader);
-
     void remove();
+
+    ~CubeModel();
 private:
     std::unique_ptr<VAO> vao;
     std::unique_ptr<VBO> vbo;

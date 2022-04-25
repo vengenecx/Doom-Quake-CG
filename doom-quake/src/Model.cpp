@@ -7,16 +7,43 @@
 
 #include<Model.h>
 
-void Model::Draw(Shader *shader)
+
+Model::Model(std::string const &path, glm::vec3 position, ShaderType type, bool gamma) : BaseModel(type), position(position),gammaCorrection(gamma)
+{
+    loadModel(path);
+}
+
+
+Model::~Model(){
+    boundingBox.release();
+}
+
+void Model::remove() {
+    for(auto& m : meshes){
+        m.remove();
+    }
+}
+
+void Model::updatePosition(glm::vec3 pos){
+    this->position = pos;
+}
+
+
+void Model::draw(Shader *shader)
 {
     // render the loaded model
     glm::mat4 m = glm::mat4(1.0f);
-    m = glm::translate(m, glm::vec3(0.0f, 0.0f, -20.0f)); // translate it down so it's at the center of the scene
+    //m = glm::translate(m, glm::vec3(0.0f, 0.0f, -20.0f)); // translate it down so it's at the center of the scene
+
+    m = glm::translate(m, position);
+
     m = glm::scale(m, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+
+
     shader->setMat4("model", m);
 
     for(unsigned int i = 0; i < meshes.size(); i++)
-        meshes[i].Draw(shader);
+        meshes[i].draw(shader);
 }
 
 BoundingBox* Model::getBoundingbox(){
@@ -162,7 +189,7 @@ std::vector<Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType 
         if(!skip)
         {   // if texture hasn't been loaded already, load it
             Texture texture;
-            texture.ID = TextureFromFile(str.C_Str(), directory);
+            texture.ID = textureFromFile(str.C_Str(), directory);
             texture.type = typeName;
             texture.path = str.C_Str();
             textures.push_back(texture);
@@ -172,7 +199,7 @@ std::vector<Texture> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType 
     return textures;
 }
 
-unsigned int Model::TextureFromFile(const char *path, const std::string &directory, bool gamma)
+unsigned int Model::textureFromFile(const char *path, const std::string &directory, bool gamma)
 {
     std::string filename = std::string(path);
     filename = directory + '/' + filename;

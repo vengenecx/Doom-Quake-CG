@@ -57,8 +57,15 @@ void Mesh::setupMesh()
     glBindVertexArray(0);
 }
 
+
+void Mesh::remove() {
+    glDeleteBuffers(1, &VAO);
+    glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1, &EBO);
+}
+
 // render the mesh
-void Mesh::Draw(Shader *shader)
+void Mesh::draw(Shader *shader)
 {
     // bind appropriate textures
     unsigned int diffuseNr  = 1;
