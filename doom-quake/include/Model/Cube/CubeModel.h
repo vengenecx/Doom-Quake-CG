@@ -14,7 +14,7 @@ class CubeModel {
 public:
     // mesh data
 
-    CubeModel(Shader * shader);
+    CubeModel(Shader * shader, Texture * texture_1, Texture * texture_2);
     void draw(Shader * shader);
 
     void remove();
@@ -23,10 +23,16 @@ private:
     std::unique_ptr<VBO> vbo;
     std::unique_ptr<EBO> ebo;
 
-    std::unique_ptr<Texture> texture_1;
-    std::unique_ptr<Texture> texture_2;
+//    std::unique_ptr<Texture> texture_1;
+//    std::unique_ptr<Texture> texture_2;
+    Texture* texture_1;
+    Texture*  texture_2;
 
     std::vector<float>  vertices;
     std::vector<GLuint> indices;
+
+    void setTextures(Shader* shader);
+
+
 };
 #endif //DOOM_QUAKE_CUBEMODEL_H

@@ -5,16 +5,16 @@
 #include "Model/Cube/CubeModel.h"
 
 
-CubeModel::CubeModel(Shader* shader) {
+CubeModel::CubeModel(Shader* shader, Texture * texture_1, Texture * texture_2) {
     this->vao = std::make_unique<VAO>();
     this->vao->bind();
 
     this->vertices = std::vector<float> {
             // positions          // colors           // texture coords
-            0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
-            0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
-            -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-            -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left
+            0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+            0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+            -0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+            -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f    // top left
     };
     this->indices = std::vector<GLuint>
             {
@@ -36,18 +36,27 @@ CubeModel::CubeModel(Shader* shader) {
     ebo->unbind();
 
 
-    const char *img_1 = "model-files/cube/container.jpg";
-    const char *img_2 = "model-files/cube/awesomeface.png";
-    this->texture_1 = std::make_unique<Texture>(img_1,GL_TEXTURE_2D,0,GL_RGB,GL_UNSIGNED_BYTE);
-    this->texture_2 = std::make_unique<Texture>(img_2,GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
+//    const char *img_1 = "model-files/cube/container.jpg";
+//    const char *img_2 = "model-files/cube/awesomeface.png";
+//    this->texture_1 = std::make_unique<Texture>(img_1,GL_TEXTURE_2D,0,GL_RGB,GL_UNSIGNED_BYTE);
+//    this->texture_2 = std::make_unique<Texture>(img_2,GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
+    this->texture_1 = texture_1;
+    this->texture_2 = texture_2;
 
-    this->texture_1->texUnit(shader,"texture1",0);
-    this->texture_2->texUnit(shader,"texture2",1);
+//    this->texture_1->texUnit(shader,"texture1",0);
+//    this->texture_2->texUnit(shader,"texture2",1);
+}
+
+
+void CubeModel::setTextures(Shader* shader) {
+    this->texture_1->texUnit(shader,"texture1");
+    this->texture_2->texUnit(shader,"texture2");
 }
 
 
 void CubeModel::draw(Shader *shader) {
     shader->use();
+    setTextures(shader);
 
     this->texture_1->bind();
     this->texture_2->bind();

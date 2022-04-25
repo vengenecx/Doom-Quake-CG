@@ -37,6 +37,8 @@ public:
     static void mouseHandler_static(GLFWwindow* window, double xposIn, double yposIn);
     static void scrollHandler_static(GLFWwindow* window, double xoffset, double yoffset);
 
+    void remove();
+
 private:
     void keyHandler(GLFWwindow *window);
 
@@ -55,8 +57,8 @@ private:
     std::unique_ptr<VBO> VBO1;
     std::unique_ptr<EBO> EBO1;
 
-    std::unique_ptr<Texture> planksTex;
-    std::unique_ptr<Texture> planksSpec;
+    std::unique_ptr<Texture> containerTexture;
+    std::unique_ptr<Texture> awesomeTexture;
 
     // Shader variables
     unsigned int vertexShader;

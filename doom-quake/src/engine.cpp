@@ -77,7 +77,13 @@ indices{
     camera = std::make_unique<Camera>(glm::vec3(0.0f, 0.0f, 3.0f));
     //camera = std::make_unique<Camera>(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0f, 5.0f, 0.0f));
 
-    cube = std::make_unique<CubeModel>(ourShader.get());
+    const char *img_1 = "model-files/cube/container.jpg";
+    const char *img_2 = "model-files/cube/awesomeface.png";
+
+    this->containerTexture = std::make_unique<Texture>(img_1,GL_TEXTURE_2D,0,GL_RGB,GL_UNSIGNED_BYTE);
+    this->awesomeTexture = std::make_unique<Texture>(img_2,GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
+
+    cube = std::make_unique<CubeModel>(ourShader.get(),containerTexture.get(),awesomeTexture.get());
 
 
 //    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
@@ -290,6 +296,14 @@ void Engine::mouseHandler(GLFWwindow* window, double xposIn, double yposIn)
     camera->ProcessMouseMovement(xoffset, yoffset);
     std::cout << "mouse movement" << std::endl;
 }
+
+
+void Engine::remove() {
+    this->cube->remove();
+}
+
+
+
 
 // glfw: whenever the mouse scroll wheel scrolls, this callback is called
 // ----------------------------------------------------------------------

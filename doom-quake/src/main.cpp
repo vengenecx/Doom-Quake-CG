@@ -73,6 +73,7 @@
 
      }
 
+     engine->remove();
      glfwTerminate();
      return 0;
  }
