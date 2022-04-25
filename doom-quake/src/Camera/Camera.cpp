@@ -101,9 +101,13 @@ void Camera::updateCameraVectors()
 }
 
 
-void Camera::updateCamera(Shader *shader, float SCR_WIDTH, float SCR_HEIGHT) {
+void Camera::updateCamera(Shader *shader, float SCR_WIDTH, float SCR_HEIGHT, bool translation) {
     glm::mat4 projection = glm::perspective(glm::radians(Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-    glm::mat4 view = GetViewMatrix();
+    glm::mat4 view;
+    if(translation)
+        view = GetViewMatrix();
+    else
+        view = glm::mat4(glm::mat3(GetViewMatrix()));
 
     shader->setMat4("projection", projection);
     shader->setMat4("view", view);

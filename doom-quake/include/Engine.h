@@ -13,6 +13,7 @@
 #include "Shaders/Shader.h"
 #include "Model/LearnOpenglModel/Model.h"
 #include "Model/Cube/CubeModel.h"
+#include "Model/Skybox/Skybox.h"
 #include <Shaders/EShader.h>
 #include <Camera/Camera.h>
 
@@ -54,6 +55,10 @@ private:
 
     std::vector<std::unique_ptr<BaseModel>> models;
     std::vector<std::unique_ptr<Shader>> shaders;
+
+    std::unique_ptr<Shader> skyboxShader;
+
+    std::unique_ptr<Skybox> skybox;
 
     // settings
     const unsigned int SCR_WIDTH = 800;

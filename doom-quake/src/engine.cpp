@@ -8,40 +8,42 @@
 
 Engine::Engine()
 {
-    shaders = std::vector<std::unique_ptr<Shader>>(2);
-//    shaders[0] = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
-    shaders[0] = std::make_unique<Shader>(shaderPaths[doubleTextureColorVertex],shaderPaths[doubleTextureColorFragment]);
-    shaders[1] = std::make_unique<Shader>(shaderPaths[modelLoadingVertex],shaderPaths[modelLoadingFragment]);
+//    shaders = std::vector<std::unique_ptr<Shader>>(2);
+////    shaders[0] = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
+//    shaders[0] = std::make_unique<Shader>(shaderPaths[doubleTextureColorVertex],shaderPaths[doubleTextureColorFragment]);
+//    shaders[1] = std::make_unique<Shader>(shaderPaths[modelLoadingVertex],shaderPaths[modelLoadingFragment]);
+//
+//    //  Model shader (assimp)
+//    //meshModelShader = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
+//
+//    //ourShader = std::make_unique<Shader>(shaderPaths[modelLoadingVertex],shaderPaths[modelLoadingFragment]);
+//
+//
+//    //model = std::make_unique<Model>("model-files/body/FinalBaseMesh.obj");
+//    //model = std::make_unique<Model>("model-files/Humvee_models/Humvee.obj");
+//
+//
+    camera = std::make_unique<Camera>(glm::vec3(0.0f, 0.0f, 0.0f));
+//
+////    // Cube test
+//    //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
+//
+//    const char *img_1 = "model-files/cube/container.jpg";
+//    const char *img_2 = "model-files/cube/awesomeface.png";
+//
+//    this->containerTexture = std::make_unique<Texture>(img_1,GL_TEXTURE_2D,0,GL_RGB,GL_UNSIGNED_BYTE);
+//    this->awesomeTexture = std::make_unique<Texture>(img_2,GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
+//
+//
+//    models = std::vector<std::unique_ptr<BaseModel>>();
+//
+//    models.push_back(std::make_unique<Model>("model-files/backpack/backpack.obj",glm::vec3(0.0f, 0.0f, -20.0f),MODEL_LOADER_SHADER));
+//    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+//    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, -5.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+//    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 5.0f,  5.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 
-    //  Model shader (assimp)
-    //meshModelShader = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
-
-    //ourShader = std::make_unique<Shader>(shaderPaths[modelLoadingVertex],shaderPaths[modelLoadingFragment]);
-
-
-    //model = std::make_unique<Model>("model-files/body/FinalBaseMesh.obj");
-    //model = std::make_unique<Model>("model-files/Humvee_models/Humvee.obj");
-
-
-    camera = std::make_unique<Camera>(glm::vec3(0.0f, 0.0f, 3.0f));
-
-//    // Cube test
-    //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
-
-    const char *img_1 = "model-files/cube/container.jpg";
-    const char *img_2 = "model-files/cube/awesomeface.png";
-
-    this->containerTexture = std::make_unique<Texture>(img_1,GL_TEXTURE_2D,0,GL_RGB,GL_UNSIGNED_BYTE);
-    this->awesomeTexture = std::make_unique<Texture>(img_2,GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
-
-
-    models = std::vector<std::unique_ptr<BaseModel>>();
-
-    models.push_back(std::make_unique<Model>("model-files/backpack/backpack.obj",glm::vec3(0.0f, 0.0f, -20.0f),MODEL_LOADER_SHADER));
-    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, -5.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 5.0f,  5.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-
+    skyboxShader = std::make_unique<Shader>("shader-files/skybox.vs", "shader-files/skybox.fs");
+    skybox = std::make_unique<Skybox>();
 }
 
 void Engine::loop(GLFWwindow *window) {
@@ -56,15 +58,19 @@ void Engine::loop(GLFWwindow *window) {
     glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    for(auto &s  : shaders){
-        s->use();
-        camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-    }
+//    for(auto &s  : shaders){
+//        s->use();
+//        camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+//    }
+//
+//    for(std::unique_ptr<BaseModel>& c : this->models){
+//        shaders[c->getShaderType()]->use();
+//        c->draw(shaders[c->getShaderType()].get());
+//    }
 
-    for(std::unique_ptr<BaseModel>& c : this->models){
-        shaders[c->getShaderType()]->use();
-        c->draw(shaders[c->getShaderType()].get());
-    }
+    skyboxShader->use();
+    camera->updateCamera(skyboxShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+    skybox->draw(skyboxShader.get());
 }
 
 void Engine::keyHandler(GLFWwindow *window) {
