@@ -5,7 +5,7 @@
 #ifndef DOOM_QUAKE_NODECLUSTER_H
 #define DOOM_QUAKE_NODECLUSTER_H
 
-#include "Model.h"
+#include "Model/LearnOpenglModel/Model.h"
 
 class NodeCluster {
 public:

@@ -6,7 +6,7 @@
 #define DOOM_QUAKE_NODE_H
 
 #include <iostream>
-#include "Model.h"
+#include "Model/LearnOpenglModel/Model.h"
 #include "Octree/BoundingBox.h"
 #include "Octants.h"
 

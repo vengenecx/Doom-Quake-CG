@@ -11,7 +11,7 @@
 #include <iostream>
 #include <memory>
 #include "Shaders/Shader.h"
-#include "Model.h"
+#include "Model/LearnOpenglModel/Model.h"
 #include "Model/Cube/CubeModel.h"
 #include <Shaders/EShader.h>
 #include <Camera/Camera.h>

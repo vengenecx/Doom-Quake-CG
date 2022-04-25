@@ -14,10 +14,10 @@ add_executable( doom_quake src/main.cpp
                 src/Shaders/Shader.cpp
                 include/Shaders/Shader.h
                 include/Shaders/EShader.h
-                include/Mesh.h
-                src/Mesh.cpp
-                include/Model.h
-                src/Model.cpp
+                include/Model/LearnOpenglModel/Mesh.h
+                src/Model/LearnOpenglModel/Mesh.cpp
+                include/Model/LearnOpenglModel/Model.h
+                src/Model/LearnOpenglModel/Model.cpp
                 include/Octree/Octree.h
                 include/Octree/Node.h
                 include/Octree/Octants.h

@@ -9,8 +9,9 @@
 Engine::Engine()
 {
     shaders = std::vector<std::unique_ptr<Shader>>(2);
-    shaders[0] = std::make_unique<Shader>("shader-files/texture.vs", "shader-files/texture.fs");
-    shaders[1] = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
+//    shaders[0] = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
+    shaders[0] = std::make_unique<Shader>(shaderPaths[doubleTextureColorVertex],shaderPaths[doubleTextureColorFragment]);
+    shaders[1] = std::make_unique<Shader>(shaderPaths[modelLoadingVertex],shaderPaths[modelLoadingFragment]);
 
     //  Model shader (assimp)
     //meshModelShader = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
@@ -25,7 +26,7 @@ Engine::Engine()
     camera = std::make_unique<Camera>(glm::vec3(0.0f, 0.0f, 3.0f));
 
 //    // Cube test
-    //doubleTextureColShader = std::make_unique<Shader>("shader-files/texture.vs", "shader-files/texture.fs");
+    //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
 
     const char *img_1 = "model-files/cube/container.jpg";
     const char *img_2 = "model-files/cube/awesomeface.png";

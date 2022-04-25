@@ -5,7 +5,7 @@
 // following code was written with help of the following URL: https://learnopengl.com/Model-Loading/Model
 
 
-#include<Model.h>
+#include"Model/LearnOpenglModel/Model.h"
 
 
 Model::Model(std::string const &path, glm::vec3 position, ShaderType type, bool gamma) : BaseModel(type), position(position),gammaCorrection(gamma)

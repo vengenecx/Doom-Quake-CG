@@ -5,9 +5,9 @@
 #ifndef DOOM_QUAKE_MESH_H
 #define DOOM_QUAKE_MESH_H
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
 #include <string>
 #include "Shaders/Shader.h"
 #include <memory>

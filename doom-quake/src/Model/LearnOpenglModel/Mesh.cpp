@@ -2,7 +2,7 @@
 // Created by Lennert Steyaert on 19/03/2022.
 //
 
-#include <Mesh.h>
+#include "Model/LearnOpenglModel/Mesh.h"
 
 Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures)
 {

@@ -5,11 +5,11 @@
 #ifndef DOOM_QUAKE_MODEL_H
 #define DOOM_QUAKE_MODEL_H
 
-#include <Mesh.h>
-#include <assimp/scene.h>
-#include <assimp/Importer.hpp>
-#include <assimp/postprocess.h>
-#include <stb_image.h>
+#include "Mesh.h"
+#include "assimp/scene.h"
+#include "assimp/Importer.hpp"
+#include "assimp/postprocess.h"
+#include "stb_image.h"
 
 
 #include "Octree/BoundingBox.h"
