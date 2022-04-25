@@ -5,16 +5,13 @@
 #ifndef DOOM_QUAKE_CUBEMODEL_H
 #define DOOM_QUAKE_CUBEMODEL_H
 
-#include "Map/VAO.h"
-#include "Map/EBO.h"
-#include "Shaders/Shader.h"
-#include "Texture/Texture.h"
+#include "Model/BaseModel.h"
 
-class CubeModel {
+class CubeModel : public BaseModel {
 public:
     // mesh data
 
-    CubeModel(Shader * shader, Texture * texture_1, Texture * texture_2);
+    CubeModel(Shader * shader, Texture * texture_1, Texture * texture_2, glm::vec3);
     void draw(Shader * shader);
 
     void remove();
@@ -30,6 +27,8 @@ private:
 
     std::vector<float>  vertices;
     std::vector<GLuint> indices;
+
+    glm::vec3 position;
 
     void setTextures(Shader* shader);
 

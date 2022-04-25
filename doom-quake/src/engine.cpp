@@ -6,55 +6,8 @@
 
 
 
-// Triangle
-//{
-//-0.5f, -0.5f, 0.0f,
-//0.5f, -0.5f, 0.0f,
-//0.0f,  0.5f, 0.0f}
-
-//
-//GLfloat floor_[] =
-//{ //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
-//        -10.0f, 0.0f, 10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
-//        -10.0f, 0.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
-//        10.0f, 0.0f, -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
-//        10.0f, 0.0f, 10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
-//};
-
-
-
-Engine::Engine() :
-vertices{
-//        0.5f,  0.5f, 0.0f,          1.0f, 0.0f, 0.0f,        // top right
-//        0.5f, -0.5f, 0.0f,          1.0f, 0.0f, 0.0f,        // bottom right
-//        -0.5f, -0.5f, 0.0f,      1.0f, 0.0f, 0.0f,           // bottom left
-//        -0.5f,  0.5f, 0.0f,      1.0f, 0.0f, 0.0f            // top left
-//        // positions         // colors
-//        0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
-//        -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
-//        0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // top
-        // positions         // colors
-//        0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,        // top right
-//        0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,      // bottom right
-//        -0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f,   // bottom left
-//        -0.5f,  0.5f, 0.0f,  1.0f, 0.0f, 0.0f   // top left
-        -10.0f, 0.0f, 10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		10.0f, 1.0f, 0.0f,
-        -10.0f, 0.0f, -10.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		10.0f, 1.0f, 0.0f,
-        10.0f, 0.0f, -10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		10.0f, 1.0f, 0.0f,
-        10.0f, 0.0f, 10.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		10.0f, 1.0f, 0.0f
-        },
-indices{
-//        0, 1, 3,   // first triangle
-//        1, 2, 3    // second triangle
-
-                0, 1, 2,
-                0, 2, 3
-}
+Engine::Engine()
 {
-    //initBuffer();
-    //initShader();
-
-
     // Cube test
     ourShader = std::make_unique<Shader>("shader-files/texture.vs", "shader-files/texture.fs");
 //
@@ -83,7 +36,21 @@ indices{
     this->containerTexture = std::make_unique<Texture>(img_1,GL_TEXTURE_2D,0,GL_RGB,GL_UNSIGNED_BYTE);
     this->awesomeTexture = std::make_unique<Texture>(img_2,GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
 
-    cube = std::make_unique<CubeModel>(ourShader.get(),containerTexture.get(),awesomeTexture.get());
+    glm::vec3 position = glm::vec3( 0.0f,  0.0f, -5.0f);
+    //cube = std::make_unique<CubeModel>(ourShader.get(),containerTexture.get(),awesomeTexture.get(), position);
+
+//    cubes = std::vector<std::unique_ptr<CubeModel>>();
+//
+//    cubes.push_back(std::make_unique<CubeModel>(ourShader.get(),containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f)));
+//    cubes.push_back(std::make_unique<CubeModel>(ourShader.get(),containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, -5.0f)));
+//    cubes.push_back(std::make_unique<CubeModel>(ourShader.get(),containerTexture.get(),awesomeTexture.get(), glm::vec3( 5.0f,  5.0f, 0.0f)));
+
+    models = std::vector<std::unique_ptr<BaseModel>>();
+
+    models.push_back(std::make_unique<CubeModel>(ourShader.get(),containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f)));
+    models.push_back(std::make_unique<CubeModel>(ourShader.get(),containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, -5.0f)));
+    models.push_back(std::make_unique<CubeModel>(ourShader.get(),containerTexture.get(),awesomeTexture.get(), glm::vec3( 5.0f,  5.0f, 0.0f)));
+
 
 
 //    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
@@ -129,73 +96,6 @@ indices{
 
 }
 
-void Engine::initBuffer(){
-//    glGenBuffers(1, &VBO);
-//    glGenVertexArrays(1, &VAO);
-//    glGenBuffers(1, &EBO);
-}
-
-//void Engine::initShader(){
-//    vertexShader = glCreateShader(GL_VERTEX_SHADER);
-//    glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-//    glCompileShader(vertexShader);
-//
-//    int  success;
-//    char infoLog[512];
-//    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-//
-//    if(!success)
-//    {
-//        glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-//        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-//    }
-//
-//    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-//    glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-//    glCompileShader(fragmentShader);
-//
-//    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-//
-//    if(!success)
-//    {
-//        glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-//        std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
-//    }
-//
-//    shaderProgram = glCreateProgram();
-//    glAttachShader(shaderProgram, vertexShader);
-//    glAttachShader(shaderProgram, fragmentShader);
-//    glLinkProgram(shaderProgram);
-//
-//    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-//    if(!success) {
-//        glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-//        std::cout << "ERROR::SHADER::PROGRAM::COMPILATION_FAILED\n" << infoLog << std::endl;
-//    }
-//
-//    glUseProgram(shaderProgram);
-//
-//    glDeleteShader(vertexShader);
-//    glDeleteShader(fragmentShader);
-//}
-
-
-void Engine::setupVBO(){
-//    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-//    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-}
-
-void Engine::setupVAO(){
-//    glBindVertexArray(VAO);
-//    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-//    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-}
-
-void Engine::setupEBO(){
-//    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-//    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-}
-
 void Engine::loop(GLFWwindow *window) {
     // per-frame time logic
     // --------------------
@@ -214,7 +114,7 @@ void Engine::loop(GLFWwindow *window) {
     //glUseProgram(shaderProgram);
 
     //ourShader->use();
-    cube->draw(ourShader.get());
+
 
 //    glUniform3f(glGetUniformLocation(ourShader->ID, "camPos"), camera->Position.x, camera->Position.y, camera->Position.z);
 //    camera->Matrix(*ourShader, "camMatrix");
@@ -240,7 +140,20 @@ void Engine::loop(GLFWwindow *window) {
 //    glm::mat4 view = camera->GetViewMatrix();
 //    ourShader->setMat4("projection", projection);
 //    ourShader->setMat4("view", view);
-//
+
+    camera->updateCamera(ourShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+
+//    for(std::unique_ptr<CubeModel>& c : this->cubes){
+//        c->draw(ourShader.get());
+//    }
+
+    for(std::unique_ptr<BaseModel>& c : this->models){
+        c->draw(ourShader.get());
+    }
+
+    //cube->draw(ourShader.get());
+
+
 //    // render the loaded model
 //    glm::mat4 m = glm::mat4(1.0f);
 //    m = glm::translate(m, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
@@ -299,7 +212,11 @@ void Engine::mouseHandler(GLFWwindow* window, double xposIn, double yposIn)
 
 
 void Engine::remove() {
-    this->cube->remove();
+    //this->cube->remove();
+
+    for(std::unique_ptr<BaseModel>& c : this->models){
+        c->remove();
+    }
 }
 
 

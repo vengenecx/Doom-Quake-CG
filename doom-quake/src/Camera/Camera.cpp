@@ -100,6 +100,15 @@ void Camera::updateCameraVectors()
     Up    = glm::normalize(glm::cross(Right, Front));
 }
 
+
+void Camera::updateCamera(Shader *shader, float SCR_WIDTH, float SCR_HEIGHT) {
+    glm::mat4 projection = glm::perspective(glm::radians(Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+    glm::mat4 view = GetViewMatrix();
+
+    shader->setMat4("projection", projection);
+    shader->setMat4("view", view);
+}
+
 //
 //Camera::Camera(float width, float height, glm::vec3 position)
 //{

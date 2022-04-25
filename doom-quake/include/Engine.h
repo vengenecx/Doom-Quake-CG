@@ -12,9 +12,6 @@
 #include <memory>
 #include "Shaders/Shader.h"
 #include "Model.h"
-#include "Map/VAO.h"
-#include "Map/EBO.h"
-#include "Map/VBO.h"
 #include "Model/Cube/CubeModel.h"
 //#include "Map/Texture.h"
 #include <Shaders/EShader.h>
@@ -42,16 +39,6 @@ public:
 private:
     void keyHandler(GLFWwindow *window);
 
-    void initBuffer();
-    void setupVBO();
-//    void initShader();
-    void setupVAO();
-    void setupEBO();
-
-    // Buffers
-    //unsigned int VBO;
-    //unsigned int VAO;
-    //unsigned int EBO;
 
     std::unique_ptr<VAO> VAO1;
     std::unique_ptr<VBO> VBO1;
@@ -70,9 +57,9 @@ private:
 
     std::unique_ptr<CubeModel> cube;
 
-    // Const input
-    float vertices[44];
-    unsigned int indices[6];
+
+    std::vector<std::unique_ptr<BaseModel>> models;
+
 
     // settings
     const unsigned int SCR_WIDTH = 800;

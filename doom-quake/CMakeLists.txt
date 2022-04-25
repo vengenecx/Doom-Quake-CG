@@ -26,27 +26,30 @@ add_executable( doom_quake src/main.cpp
                 include/Model/Cube/CubeModel.h
                 include/Octree/BoundingBox.h 
                 include/Ray/Ray.h 
-                include/Octree/NodeCluster.h 
-                include/Map/EBO.h
+                include/Octree/NodeCluster.h
+                include/Register/EBO.h
                 include/Map/shaderClass.h
                 include/Map/Texture.h
-                include/Map/VAO.h
-                include/Map/VBO.h
+                include/Register/VAO.h
+                include/Register/VBO.h
                 include/Map/Camera.h
 
                 src/Octree/Node.cpp 
                 src/Octree/NodeCluster.cpp 
                 src/Octree/Octree.cpp 
                 src/Ray/Ray.cpp
-                src/Map/EBO.cpp
+                src/Register/EBO.cpp
                 src/Map/shaderClass.cpp
                 src/Map/stb.cpp
                 src/Map/Texture.cpp
-                src/Map/VAO.cpp
-                src/Map/VBO.cpp
+                src/Register/VAO.cpp
+                src/Register/VBO.cpp
                 src/Map/Camera.cpp
                 src/Model/Cube/CubeModel.cpp
-                include/Texture/Texture.h src/Texture/Texture.cpp)
+                include/Texture/Texture.h
+                src/Texture/Texture.cpp
+                src/Model/BaseModel.cpp
+                include/Model/BaseModel.h)
 
                
 

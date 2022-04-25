@@ -1,4 +1,4 @@
-#include"Map/VAO.h"
+#include"Register/VAO.h"
 
 // Constructor that generates a VAO ID
 VAO::VAO()

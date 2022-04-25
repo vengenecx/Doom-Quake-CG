@@ -66,6 +66,8 @@ public:
     // processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
     void ProcessMouseScroll(float yoffset);
 
+    void updateCamera(Shader* shader, float SCR_WIDTH, float SCR_HEIGHT);
+
 private:
     // calculates the front vector from the Camera's (updated) Euler Angles
     void updateCameraVectors();
