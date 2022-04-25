@@ -12,6 +12,7 @@
 #include "Shaders/Shader.h"
 #include <memory>
 #include <vector>
+#include "Texture/Texture.h"
 
 #define MAX_BONE_INFLUENCE 4
 
@@ -30,11 +31,6 @@ struct Vertex {
     int m_BoneIDs[MAX_BONE_INFLUENCE];
     //weights from each bone
     float m_Weights[MAX_BONE_INFLUENCE];
-};
-struct Texture {
-    unsigned int id;
-    std::string type;
-    std::string path;
 };
 
 class Mesh {

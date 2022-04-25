@@ -15,6 +15,7 @@
 #include "Map/VAO.h"
 #include "Map/EBO.h"
 #include "Map/VBO.h"
+#include "Model/Cube/CubeModel.h"
 //#include "Map/Texture.h"
 #include <Shaders/EShader.h>
 #include <Camera/Camera.h>
@@ -64,6 +65,8 @@ private:
 
     std::unique_ptr<Shader> ourShader;
     std::unique_ptr<Model> model;
+
+    std::unique_ptr<CubeModel> cube;
 
     // Const input
     float vertices[44];

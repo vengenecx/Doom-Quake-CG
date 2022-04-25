@@ -54,10 +54,22 @@ indices{
     //initBuffer();
     //initShader();
 
-    ourShader = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
+
+    // Cube test
+    ourShader = std::make_unique<Shader>("shader-files/texture.vs", "shader-files/texture.fs");
+//
+//    glm::vec3 objectPos = glm::vec3(0.0f, 0.0f, 0.0f);
+//    glm::mat4 objectModel = glm::mat4(1.0f);
+//    objectModel = glm::translate(objectModel, objectPos);
+//
+//    ourShader->setMat4("model",objectModel);
+
+
+    //  Model shader
+    //ourShader = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
     //ourShader = std::make_unique<Shader>(shaderPaths[modelLoadingVertex],shaderPaths[modelLoadingFragment]);
 
-    model = std::make_unique<Model>("model-files/backpack/backpack.obj");
+    //model = std::make_unique<Model>("model-files/backpack/backpack.obj");
     //model = std::make_unique<Model>("model-files/body/FinalBaseMesh.obj");
     //model = std::make_unique<Model>("model-files/Humvee_models/Humvee.obj");
 
@@ -65,9 +77,7 @@ indices{
     camera = std::make_unique<Camera>(glm::vec3(0.0f, 0.0f, 3.0f));
     //camera = std::make_unique<Camera>(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0f, 5.0f, 0.0f));
 
-//    setupVBO();
-//    setupVAO();
-//    setupEBO();
+    cube = std::make_unique<CubeModel>(ourShader.get());
 
 
 //    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
@@ -196,7 +206,9 @@ void Engine::loop(GLFWwindow *window) {
 //    camera->updateMatrix(45.0f, 0.1f, 100.0f);
 
     //glUseProgram(shaderProgram);
-    ourShader->use();
+
+    //ourShader->use();
+    cube->draw(ourShader.get());
 
 //    glUniform3f(glGetUniformLocation(ourShader->ID, "camPos"), camera->Position.x, camera->Position.y, camera->Position.z);
 //    camera->Matrix(*ourShader, "camMatrix");
@@ -215,19 +227,21 @@ void Engine::loop(GLFWwindow *window) {
 //    glBindVertexArray(0);
 
 
-    // view/projection transformations
-    glm::mat4 projection = glm::perspective(glm::radians(camera->Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-    glm::mat4 view = camera->GetViewMatrix();
-    ourShader->setMat4("projection", projection);
-    ourShader->setMat4("view", view);
 
-    // render the loaded model
-    glm::mat4 m = glm::mat4(1.0f);
-    m = glm::translate(m, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-    m = glm::scale(m, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
-    ourShader->setMat4("model", m);
-    Shader* test = ourShader.get();
-    this->model->Draw(test);
+
+//    // view/projection transformations
+//    glm::mat4 projection = glm::perspective(glm::radians(camera->Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+//    glm::mat4 view = camera->GetViewMatrix();
+//    ourShader->setMat4("projection", projection);
+//    ourShader->setMat4("view", view);
+//
+//    // render the loaded model
+//    glm::mat4 m = glm::mat4(1.0f);
+//    m = glm::translate(m, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+//    m = glm::scale(m, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+//    ourShader->setMat4("model", m);
+//    Shader* test = ourShader.get();
+//    this->model->Draw(test);
 }
 
 void Engine::keyHandler(GLFWwindow *window) {

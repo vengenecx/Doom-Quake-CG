@@ -45,7 +45,8 @@ add_executable( doom_quake src/main.cpp
                 src/Map/VAO.cpp
                 src/Map/VBO.cpp
                 src/Map/Camera.cpp
-                )
+                src/Model/Cube/CubeModel.cpp
+                include/Texture/Texture.h src/Texture/Texture.cpp)
 
                
 
