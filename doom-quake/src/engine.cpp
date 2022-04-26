@@ -27,7 +27,7 @@ Engine::Engine()
     //model = std::make_unique<Model>("model-files/Humvee_models/Humvee.obj");
 
 
-    camera = std::make_unique<Camera>(glm::vec3(0.0f, 0.0f, 3.0f));
+    camera = std::make_unique<Camera>(glm::vec3(0.0f, 10.0f, 3.0f));
 
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
@@ -54,6 +54,11 @@ Engine::Engine()
     skyboxShader = std::make_unique<Shader>((currentDir + "/shader-files/skybox.vs").c_str(), (currentDir  + "/shader-files/skybox.fs").c_str());
     skybox = std::make_unique<Skybox>(skybox_b,currentDir,true);
 
+
+    tessHeightMapShader = std::make_unique<Shader>("shader-files/gpuheight.vs","shader-files/gpuheight.fs", nullptr,            // if wishing to render as is
+                                                   "shader-files/gpuheight.tcs", "shader-files/gpuheight.tes");
+
+    terrain = std::make_unique<Terrain>(tessHeightMapShader.get());
 }
 
 void Engine::loop(GLFWwindow *window) {
@@ -68,19 +73,24 @@ void Engine::loop(GLFWwindow *window) {
     glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    for(auto &s  : shaders){
-        s->use();
-        camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-    }
+//    for(auto &s  : shaders){
+//        s->use();
+//        camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+//    }
+//
+//    for(std::unique_ptr<BaseModel>& c : this->models){
+//        shaders[c->getShaderType()]->use();
+//        c->draw(shaders[c->getShaderType()].get());
+//    }
 
-    for(std::unique_ptr<BaseModel>& c : this->models){
-        shaders[c->getShaderType()]->use();
-        c->draw(shaders[c->getShaderType()].get());
-    }
+    tessHeightMapShader->use();
+    camera->updateCamera(tessHeightMapShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
 
-    skyboxShader->use();
-    camera->updateCamera(skyboxShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-    skybox->draw(skyboxShader.get());
+    terrain->draw(tessHeightMapShader.get());
+
+//    skyboxShader->use();
+//    camera->updateCamera(skyboxShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+//    skybox->draw(skyboxShader.get());
 }
 
 void Engine::keyHandler(GLFWwindow *window) {
