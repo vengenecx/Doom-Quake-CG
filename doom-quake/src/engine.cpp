@@ -8,11 +8,14 @@
 
 Engine::Engine()
 {
+
+    std::string currentDir = (fs::current_path()).string();
+
     shaders = std::vector<std::unique_ptr<Shader>>(3);
 //    shaders[0] = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
-    shaders[0] = std::make_unique<Shader>(shaderPaths[doubleTextureColorVertex],shaderPaths[doubleTextureColorFragment]);
-    shaders[1] = std::make_unique<Shader>(shaderPaths[modelLoadingVertex],shaderPaths[modelLoadingFragment]);
-    shaders[2] = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
+    shaders[0] = std::make_unique<Shader>((currentDir + shaderPaths[doubleTextureColorVertex]).c_str(),(currentDir + shaderPaths[doubleTextureColorFragment]).c_str());
+    shaders[1] = std::make_unique<Shader>((currentDir + shaderPaths[modelLoadingVertex]).c_str(),(currentDir + shaderPaths[modelLoadingFragment]).c_str());
+    shaders[2] = std::make_unique<Shader>((currentDir + shaderPaths[defaultVertex]).c_str(),(currentDir + shaderPaths[defaultFragment]).c_str());
 
     //  Model shader (assimp)
     //meshModelShader = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
@@ -29,11 +32,11 @@ Engine::Engine()
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
 
-    const char *img_1 = "model-files/cube/container.jpg";
-    const char *img_2 = "model-files/cube/awesomeface.png";
+    std::string img_1 = (currentDir + "/model-files/cube/container.jpg");
+    std::string img_2 = (currentDir + "/model-files/cube/awesomeface.png");
 
-    this->containerTexture = std::make_unique<Texture>(img_1,GL_TEXTURE_2D,0,GL_RGB,GL_UNSIGNED_BYTE);
-    this->awesomeTexture = std::make_unique<Texture>(img_2,GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
+    this->containerTexture = std::make_unique<Texture>(img_1.c_str(),GL_TEXTURE_2D,0,GL_RGB,GL_UNSIGNED_BYTE);
+    this->awesomeTexture = std::make_unique<Texture>(img_2.c_str(),GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
 
 
     models = std::vector<std::unique_ptr<BaseModel>>();
@@ -45,8 +48,12 @@ Engine::Engine()
 
     models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DEFAULT));
 
-    skyboxShader = std::make_unique<Shader>("shader-files/skybox.vs", "shader-files/skybox.fs");
-    skybox = std::make_unique<Skybox>(true);
+
+
+
+    skyboxShader = std::make_unique<Shader>((currentDir + "/shader-files/skybox.vs").c_str(), (currentDir  + "/shader-files/skybox.fs").c_str());
+    skybox = std::make_unique<Skybox>(skybox_b,currentDir,true);
+
 }
 
 void Engine::loop(GLFWwindow *window) {

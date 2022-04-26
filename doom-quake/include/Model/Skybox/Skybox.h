@@ -12,7 +12,7 @@
 
 class Skybox {
 public:
-    Skybox(bool rgba=false);
+    Skybox(std::vector<std::string>& faces, std::string directory, bool rgba=false);
     void draw(Shader * shader);
     void remove();
     ~Skybox() {}
@@ -26,7 +26,7 @@ private:
     GLuint textureID;
     std::vector<float> vertices;
 
-    unsigned int loadCubemap(std::vector<std::string> faces, bool rgba);
+    unsigned int loadCubemap(std::vector<std::string> faces, std::string, bool rgba);
 };
 
 #endif //DOOM_QUAKE_SKYBOX_H

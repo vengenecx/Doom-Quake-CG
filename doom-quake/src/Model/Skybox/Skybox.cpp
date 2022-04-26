@@ -4,7 +4,7 @@
 
 #include "Model/Skybox/Skybox.h"
 
-Skybox::Skybox(bool rgba) {
+Skybox::Skybox(std::vector<std::string>& faces, std::string directory, bool rgba) {
     this->vao = std::make_unique<VAO>();
     this->vao->bind();
 
@@ -57,26 +57,8 @@ Skybox::Skybox(bool rgba) {
 
     vao->linkAttrib(vbo.get(), 0, 3, GL_FLOAT, 3 * sizeof(float), (void*)0);
 
-//    std::vector<std::string> faces
-//            {
-//                    "model-files/skybox/right.jpg",
-//                    "model-files/skybox/left.jpg",
-//                    "model-files/skybox/top.jpg",
-//                    "model-files/skybox/bottom.jpg",
-//                    "model-files/skybox/front.jpg",
-//                    "model-files/skybox/back.jpg"
-//            };
 
-    std::vector<std::string> faces
-            {
-                    "model-files/skybox/px.png",
-                    "model-files/skybox/nx.png",
-                    "model-files/skybox/py.png",
-                    "model-files/skybox/ny.png",
-                    "model-files/skybox/pz.png",
-                    "model-files/skybox/nz.png"
-            };
-    this->loadCubemap(faces,rgba);
+    this->loadCubemap(faces, directory, rgba);
 }
 
 void Skybox::draw(Shader *shader) {
@@ -92,7 +74,7 @@ void Skybox::draw(Shader *shader) {
     glDepthFunc(GL_LESS);
 }
 
-unsigned int Skybox::loadCubemap(std::vector<std::string> faces, bool rgba)
+unsigned int Skybox::loadCubemap(std::vector<std::string> faces, std::string directory, bool rgba)
 {
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
@@ -102,7 +84,7 @@ unsigned int Skybox::loadCubemap(std::vector<std::string> faces, bool rgba)
     int width, height, nrChannels;
     for (unsigned int i = 0; i < faces.size(); i++)
     {
-        unsigned char *data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
+        unsigned char *data = stbi_load((directory + faces[i]).c_str(), &width, &height, &nrChannels, 0);
         if (data)
         {
             if(rgba)
