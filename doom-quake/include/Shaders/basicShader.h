@@ -33,22 +33,22 @@ static const char* shaderPaths[] = {
 
 static std::vector<std::string> skybox_a
         {
-                "/model-files/skybox/right.jpg",
-                "/model-files/skybox/left.jpg",
-                "/model-files/skybox/top.jpg",
-                "/model-files/skybox/bottom.jpg",
-                "/model-files/skybox/front.jpg",
-                "/model-files/skybox/back.jpg"
+                "/model-files/skybox/a/right.jpg",
+                "/model-files/skybox/a/left.jpg",
+                "/model-files/skybox/a/top.jpg",
+                "/model-files/skybox/a/bottom.jpg",
+                "/model-files/skybox/a/front.jpg",
+                "/model-files/skybox/a/back.jpg"
         };
 
 static std::vector<std::string> skybox_b
         {
-                "/model-files/skybox/px.png",
-                "/model-files/skybox/nx.png",
-                "/model-files/skybox/py.png",
-                "/model-files/skybox/ny.png",
-                "/model-files/skybox/pz.png",
-                "/model-files/skybox/nz.png"
+                "/model-files/skybox/b/px.png",
+                "/model-files/skybox/b/nx.png",
+                "/model-files/skybox/b/py.png",
+                "/model-files/skybox/b/ny.png",
+                "/model-files/skybox/b/pz.png",
+                "/model-files/skybox/b/nz.png"
         };
 
 
