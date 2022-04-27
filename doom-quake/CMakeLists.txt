@@ -43,7 +43,12 @@ add_executable( doom_quake src/main.cpp
                 src/Texture/Texture.cpp
                 src/Model/BaseModel.cpp
                 include/Model/BaseModel.h
-                include/Shaders/ShaderType.h include/Model/Skybox/Skybox.h src/Model/Skybox/Skybox.cpp include/Model/Plane/PlaneModel.h src/Model/Plane/PlaneModel.cpp include/Map/Terrain/Terrain.h src/Map/Terrain/Terrain.cpp)
+                include/Shaders/ShaderType.h
+                include/Model/Skybox/Skybox.h
+                src/Model/Skybox/Skybox.cpp include/Model/Plane/PlaneModel.h
+                src/Model/Plane/PlaneModel.cpp include/Map/Terrain/Terrain.h
+                src/Map/Terrain/Terrain.cpp
+                include/Text/TextRenderer.h src/Text/TextRenderer.cpp)
 
                
 
@@ -74,3 +79,10 @@ file(COPY shader-files DESTINATION .)
 
 # Model files include
 file(COPY model-files DESTINATION .)
+
+if(APPLE)
+    find_package(Freetype REQUIRED)
+    message(STATUS "Found Freetype in ${FREETYPE_INCLUDE_DIRS}")
+    target_link_libraries(doom_quake ${FREETYPE_LIBRARIES})
+    target_include_directories(doom_quake PRIVATE ${FREETYPE_INCLUDE_DIRS})
+endif(APPLE)

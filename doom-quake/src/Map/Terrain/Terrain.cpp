@@ -81,7 +81,7 @@ void Terrain::loadTexture(Shader* shader) {
     // load image, create texture and generate mipmaps
 
     // The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
-    unsigned char *data = stbi_load("model-files/heightmaps/iceland_heightmap.png", &width, &height, &nrChannels, 0);
+    unsigned char *data = stbi_load("model-files/heightmaps/river2_heightmap.png", &width, &height, &nrChannels, 0);
     if (data)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);

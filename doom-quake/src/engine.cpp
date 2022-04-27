@@ -27,7 +27,7 @@ Engine::Engine()
     //model = std::make_unique<Model>("model-files/Humvee_models/Humvee.obj");
 
 
-    camera = std::make_unique<Camera>(glm::vec3(0.0f, 10.0f, 3.0f));
+    camera = std::make_unique<Camera>(false,glm::vec3(0.0f, 10.0f, 3.0f));
 
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");

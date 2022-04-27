@@ -9,7 +9,7 @@
 
 
 // constructor with vectors
-Camera::Camera(glm::vec3 position , glm::vec3 up, float yaw, float pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
+Camera::Camera(bool grounded, glm::vec3 position , glm::vec3 up, float yaw, float pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM), grounded(grounded)
 {
     Position = position;
     WorldUp = up;
@@ -19,7 +19,7 @@ Camera::Camera(glm::vec3 position , glm::vec3 up, float yaw, float pitch) : Fron
 }
 
 // constructor with scalar values
-Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
+Camera::Camera(bool grounded,float posX, float posY, float posZ, float upX, float upY, float upZ,  float yaw, float pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM), grounded(grounded)
 {
     Position = glm::vec3(posX, posY, posZ);
     WorldUp = glm::vec3(upX, upY, upZ);
@@ -40,11 +40,17 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
     float velocity = MovementSpeed * deltaTime;
     if (direction == FORWARD) {
         // glm::vec3(X,Y,Z)!!! we only want to change the X-Z position
-        Position += glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * velocity; //help of Tom: Y is not affected, Y is looking up
+        if (grounded)
+            Position += glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * velocity;
+        else
+            Position += Front * velocity;
+
     }
     if (direction == BACKWARD) {
-        // glm::vec3(X,Y,Z)!!! we only want to change the X-Z position
-        Position -= glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * velocity; //help of Tom: Y is not affected, Y is looking up
+        if (grounded)
+            Position += glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * velocity;
+        else
+            Position += Front * velocity;
     }
     if (direction == LEFT) {
         Position -= Right * velocity;
