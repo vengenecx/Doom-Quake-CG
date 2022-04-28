@@ -110,9 +110,9 @@ void Engine::loop(GLFWwindow *window) {
     textRenderer->RenderText(textShader.get(),fps, ((float )SCR_WIDTH)-100, 25.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
 
 
-//    skyboxShader->use();
-//    camera->updateCamera(skyboxShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-//    skybox->draw(skyboxShader.get());
+    skyboxShader->use();
+    camera->updateCamera(skyboxShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+    skybox->draw(skyboxShader.get());
 }
 
 void Engine::keyHandler(GLFWwindow *window) {
