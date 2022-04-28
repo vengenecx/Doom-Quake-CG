@@ -12,7 +12,7 @@
 
 class Terrain {
 public:
-    Terrain();
+    Terrain(Texture * mapTexture);
     ~Terrain();
 
 
@@ -27,11 +27,14 @@ private:
     std::unique_ptr<VAO> vao;
     std::unique_ptr<VBO> vbo;
 
-    std::unique_ptr<Texture> texture;
+    std::unique_ptr<Texture> heightTexture;
+
+    Texture* mapTexture;
+
     int width, height;
 //    unsigned int terrainVAO, terrainVBO;
     const unsigned int NUM_PATCH_PTS = 4;
-    unsigned rez = 40;
+    unsigned rez = 20;
 
 
     void setTextures(Shader* shader);

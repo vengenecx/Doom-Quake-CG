@@ -34,10 +34,13 @@ Engine::Engine()
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
 
-    std::string img_1 = (currentDir + "/model-files/cube/container.jpg");
+//    std::string img_1 = (currentDir + "/model-files/cube/container.jpg");
+//    std::string img_1 = (currentDir + "/model-files/grass/grass.jpeg");
+
+    std::string img_1 = (currentDir + "/model-files/grass/stone.png");
     std::string img_2 = (currentDir + "/model-files/cube/awesomeface.png");
 
-    this->containerTexture = std::make_unique<Texture>(img_1.c_str(),GL_TEXTURE_2D,0,GL_RGB,GL_UNSIGNED_BYTE);
+    this->containerTexture = std::make_unique<Texture>(img_1.c_str(),GL_TEXTURE_2D,0,GL_RGBA,GL_UNSIGNED_BYTE);
     this->awesomeTexture = std::make_unique<Texture>(img_2.c_str(),GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
 
 
@@ -60,7 +63,7 @@ Engine::Engine()
     tessHeightMapShader = std::make_unique<Shader>("shader-files/gpuheight.vs","shader-files/gpuheight.fs", nullptr,            // if wishing to render as is
                                                    "shader-files/gpuheight.tcs", "shader-files/gpuheight.tes");
 
-    terrain = std::make_unique<Terrain>();
+    terrain = std::make_unique<Terrain>(containerTexture.get());
 
 
     textShader = std::make_unique<Shader>("shader-files/text.vs","shader-files/text.fs");
