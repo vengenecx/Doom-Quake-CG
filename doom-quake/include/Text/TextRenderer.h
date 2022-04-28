@@ -48,6 +48,7 @@ public:
 private:
     // render state
     unsigned int VAO, VBO;
+    unsigned int width,height;
 };
 
 

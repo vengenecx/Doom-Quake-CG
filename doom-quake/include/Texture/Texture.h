@@ -36,6 +36,14 @@ public:
     void unbind();
     // Deletes a texture
     void remove();
+
+
+    int getWidth();
+    int getHeight();
+
+private:
+    int width;
+    int height;
 };
 
 #endif //DOOM_QUAKE_TEXTURE_H

@@ -11,6 +11,8 @@ Engine::Engine()
 
     std::string currentDir = (fs::current_path()).string();
 
+    std::cout << currentDir << std::endl;
+
     shaders = std::vector<std::unique_ptr<Shader>>(3);
 //    shaders[0] = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
     shaders[0] = std::make_unique<Shader>((currentDir + shaderPaths[doubleTextureColorVertex]).c_str(),(currentDir + shaderPaths[doubleTextureColorFragment]).c_str());
@@ -58,7 +60,11 @@ Engine::Engine()
     tessHeightMapShader = std::make_unique<Shader>("shader-files/gpuheight.vs","shader-files/gpuheight.fs", nullptr,            // if wishing to render as is
                                                    "shader-files/gpuheight.tcs", "shader-files/gpuheight.tes");
 
-    terrain = std::make_unique<Terrain>(tessHeightMapShader.get());
+    terrain = std::make_unique<Terrain>();
+
+
+    textShader = std::make_unique<Shader>("shader-files/text.vs","shader-files/text.fs");
+    textRenderer = std::make_unique<TextRenderer>(SCR_WIDTH,SCR_HEIGHT);
 }
 
 void Engine::loop(GLFWwindow *window) {
@@ -68,25 +74,41 @@ void Engine::loop(GLFWwindow *window) {
     deltaTime = currentFrame - lastFrame;
     lastFrame = currentFrame;
 
+
+
     this->keyHandler(window);
 
     glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-//    for(auto &s  : shaders){
-//        s->use();
-//        camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-//    }
-//
-//    for(std::unique_ptr<BaseModel>& c : this->models){
-//        shaders[c->getShaderType()]->use();
-//        c->draw(shaders[c->getShaderType()].get());
-//    }
+    for(auto &s  : shaders){
+        s->use();
+        camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+    }
+
+    for(std::unique_ptr<BaseModel>& c : this->models){
+        shaders[c->getShaderType()]->use();
+        c->draw(shaders[c->getShaderType()].get());
+    }
 
     tessHeightMapShader->use();
     camera->updateCamera(tessHeightMapShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
 
     terrain->draw(tessHeightMapShader.get());
+
+    fpsTime += deltaTime;
+    if(fpsTime >= 1){
+        fpsTime = fpsTime - 1;
+        frameSetPoint = frames;
+        frames = 0;
+    } else{
+        frames ++;
+    }
+
+    textShader->use();
+    std::string fps = std::to_string(frameSetPoint) + std::string(" FPS");
+    textRenderer->RenderText(textShader.get(),fps, ((float )SCR_WIDTH)-100, 25.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+
 
 //    skyboxShader->use();
 //    camera->updateCamera(skyboxShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);

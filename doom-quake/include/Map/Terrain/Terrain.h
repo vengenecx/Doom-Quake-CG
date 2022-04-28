@@ -7,26 +7,34 @@
 
 #include <vector>
 #include "Shaders/Shader.h"
+#include "Texture/Texture.h"
+#include "Register/VAO.h"
 
 class Terrain {
 public:
-    Terrain(Shader* shader);
+    Terrain();
+    ~Terrain();
+
+
     void draw(Shader * shader);
-    void updatePosition(glm::vec3 pos);
     void remove();
 
 
-    void loadTexture(Shader* shader);
-
-    ~Terrain() {}
 
 private:
     std::vector<float> vertices;
-    unsigned int texture;
-    int width, height, nrChannels;
-    unsigned int terrainVAO, terrainVBO;
+
+    std::unique_ptr<VAO> vao;
+    std::unique_ptr<VBO> vbo;
+
+    std::unique_ptr<Texture> texture;
+    int width, height;
+//    unsigned int terrainVAO, terrainVBO;
     const unsigned int NUM_PATCH_PTS = 4;
-    unsigned rez = 20;
+    unsigned rez = 40;
+
+
+    void setTextures(Shader* shader);
 };
 
 #endif //DOOM_QUAKE_TERRAIN_H

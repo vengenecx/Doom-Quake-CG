@@ -4,7 +4,7 @@
 
 #include "Text/TextRenderer.h"
 
-TextRenderer::TextRenderer(unsigned int width, unsigned int height)
+TextRenderer::TextRenderer(unsigned int width, unsigned int height) : width(width), height(height)
 {
     // load and configure shader
 //    this->TextShader = ResourceManager::LoadShader("text_2d.vs", "text_2d.fs", nullptr, "text");
@@ -20,6 +20,9 @@ TextRenderer::TextRenderer(unsigned int width, unsigned int height)
     glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+
+
+    Load("shader-files/Antonio-Bold.ttf",14);
 }
 
 void TextRenderer::Load(std::string font, unsigned int fontSize)
@@ -47,6 +50,7 @@ void TextRenderer::Load(std::string font, unsigned int fontSize)
             std::cout << "ERROR::FREETYTPE: Failed to load Glyph" << std::endl;
             continue;
         }
+
         // generate texture
         unsigned int texture;
         glGenTextures(1, &texture);
@@ -62,11 +66,13 @@ void TextRenderer::Load(std::string font, unsigned int fontSize)
                 GL_UNSIGNED_BYTE,
                 face->glyph->bitmap.buffer
         );
+
         // set texture options
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
 
         // now store character for later use
         Character character = {
@@ -77,14 +83,21 @@ void TextRenderer::Load(std::string font, unsigned int fontSize)
         };
         Characters.insert(std::pair<char, Character>(c, character));
     }
+    std::cout << "before" << std::endl;
     glBindTexture(GL_TEXTURE_2D, 0);
+    std::cout << "after" << std::endl;
     // destroy FreeType once we're finished
     FT_Done_Face(face);
     FT_Done_FreeType(ft);
+    std::cout << "here" << std::endl;
 }
 
 void TextRenderer::RenderText(Shader* shader, std::string text, float x, float y, float scale, glm::vec3 color)
 {
+
+    shader->setMat4("projection", glm::ortho(0.0f, static_cast<float>(width), static_cast<float>(height), 0.0f));
+    shader->setInt("text", 0);
+
     // activate corresponding render state
     shader->use();
     shader->setVec3("textColor", color);

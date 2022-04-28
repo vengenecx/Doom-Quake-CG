@@ -15,6 +15,7 @@
 #include "Model/Cube/CubeModel.h"
 #include "Model/Skybox/Skybox.h"
 #include "Map/Terrain/Terrain.h"
+#include "Text/TextRenderer.h"
 #include <Shaders/EShader.h>
 #include <Camera/Camera.h>
 
@@ -65,6 +66,10 @@ private:
 
     std::unique_ptr<Skybox> skybox;
 
+    std::unique_ptr<Shader> textShader;
+
+    std::unique_ptr<TextRenderer> textRenderer;
+
     // settings
     const unsigned int SCR_WIDTH = 800;
     const unsigned int SCR_HEIGHT = 600;
@@ -82,5 +87,10 @@ private:
     // timing
     float deltaTime = 0.0f;
     float lastFrame = 0.0f;
+
+    float fpsTime = 0.0f;
+    int frames = 0;
+
+    int frameSetPoint = 0;
 };
 #endif //DOOM_QUAKE_ENGINE_H

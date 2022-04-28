@@ -48,9 +48,9 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
     }
     if (direction == BACKWARD) {
         if (grounded)
-            Position += glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * velocity;
+            Position -= glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * velocity;
         else
-            Position += Front * velocity;
+            Position -= Front * velocity;
     }
     if (direction == LEFT) {
         Position -= Right * velocity;
