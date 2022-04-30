@@ -85,6 +85,9 @@ CubeModel::CubeModel(Texture * texture_1, Texture * texture_2, glm::vec3 pos, Sh
     this->vbo = std::make_unique<VBO>(vertices,vertices.size());
     this->ebo = std::make_unique<EBO>(indices,indices.size());
 
+
+
+
     vao->linkAttrib(vbo.get(), 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
     vao->linkAttrib(vbo.get(), 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
     vao->linkAttrib(vbo.get(), 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));

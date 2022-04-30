@@ -28,7 +28,15 @@ static const char* shaderPaths[] = {
         "/shader-files/doubletexturecolor.vs",
         "/shader-files/doubletexturecolor.fs",
         "/shader-files/default.vs",
-        "/shader-files/default.fs"
+        "/shader-files/default.fs",
+        "/shader-files/gpuheight.vs",
+        "/shader-files/gpuheight.fs",
+        "/shader-files/gpuheight.tcs",
+        "/shader-files/gpuheight.tes",
+        "/shader-files/text.vs",
+        "/shader-files/text.fs",
+        "/shader-files/skybox.vs",
+        "/shader-files/skybox.fs"
 };
 
 static std::vector<std::string> skybox_a

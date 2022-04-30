@@ -56,17 +56,26 @@ Engine::Engine()
 
 
 
-    skyboxShader = std::make_unique<Shader>((currentDir + "/shader-files/skybox.vs").c_str(), (currentDir  + "/shader-files/skybox.fs").c_str());
+//    skyboxShader = std::make_unique<Shader>((currentDir + "/shader-files/skybox.vs").c_str(), (currentDir  + "/shader-files/skybox.fs").c_str());
+
+    skyboxShader = std::make_unique<Shader>((currentDir + shaderPaths[skyboxVertex]).c_str(), (currentDir  + shaderPaths[skyboxFragment]).c_str());
+
     skybox = std::make_unique<Skybox>(skybox_b,currentDir,true);
 
 
-    tessHeightMapShader = std::make_unique<Shader>("shader-files/gpuheight.vs","shader-files/gpuheight.fs", nullptr,            // if wishing to render as is
-                                                   "shader-files/gpuheight.tcs", "shader-files/gpuheight.tes");
+//    tessHeightMapShader = std::make_unique<Shader>("shader-files/gpuheight.vs","shader-files/gpuheight.fs", nullptr,            // if wishing to render as is
+//                                                   "shader-files/gpuheight.tcs", "shader-files/gpuheight.tes");
+
+
+    tessHeightMapShader = std::make_unique<Shader>((currentDir + shaderPaths[tesselationVertex]).c_str(),(currentDir + shaderPaths[tesselationFragment]).c_str(), nullptr,            // if wishing to render as is
+                                                   (currentDir + shaderPaths[tesselationTCS]).c_str(), (currentDir + shaderPaths[tesselationTES]).c_str());
+
 
     terrain = std::make_unique<Terrain>(containerTexture.get());
 
 
-    textShader = std::make_unique<Shader>("shader-files/text.vs","shader-files/text.fs");
+//    textShader = std::make_unique<Shader>("shader-files/text.vs","shader-files/text.fs");
+    textShader = std::make_unique<Shader>((currentDir + shaderPaths[textVertex]).c_str(),shaderPaths[textFragment]);
     textRenderer = std::make_unique<TextRenderer>(SCR_WIDTH,SCR_HEIGHT);
 }
 

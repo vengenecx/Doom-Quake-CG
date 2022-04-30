@@ -25,8 +25,8 @@ Terrain::Terrain(Texture* mapTexture) : mapTexture(mapTexture)
             vertices.push_back(i / (float)rez); // u
             vertices.push_back(j / (float)rez); // v
 
-            vertices.push_back(0.0f); //
-            vertices.push_back(0.0f); //
+//            vertices.push_back(0.0f); //
+//            vertices.push_back(0.0f); //
 
 
 
@@ -36,8 +36,8 @@ Terrain::Terrain(Texture* mapTexture) : mapTexture(mapTexture)
             vertices.push_back((i+1) / (float)rez); // u
             vertices.push_back(j / (float)rez); // v
 
-            vertices.push_back(1.0f); //
-            vertices.push_back(0.0f); //
+//            vertices.push_back(1.0f); //
+//            vertices.push_back(0.0f); //
 
 
 
@@ -47,8 +47,8 @@ Terrain::Terrain(Texture* mapTexture) : mapTexture(mapTexture)
             vertices.push_back(i / (float)rez); // u
             vertices.push_back((j+1) / (float)rez); // v
 
-            vertices.push_back(0.0f); //
-            vertices.push_back(1.0f); //
+//            vertices.push_back(0.0f); //
+//            vertices.push_back(1.0f); //
 
 
 
@@ -57,9 +57,9 @@ Terrain::Terrain(Texture* mapTexture) : mapTexture(mapTexture)
             vertices.push_back(-height/2.0f + height*(j+1)/(float)rez); // v.z
             vertices.push_back((i+1) / (float)rez); // u
             vertices.push_back((j+1) / (float)rez); // v
-
-            vertices.push_back(1.0f); //
-            vertices.push_back(1.0f); //
+//
+//            vertices.push_back(1.0f); //
+//            vertices.push_back(1.0f); //
         }
     }
 
