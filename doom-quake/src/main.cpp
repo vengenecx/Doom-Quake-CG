@@ -6,6 +6,9 @@
  // this code was first written with the help of following URL: https://learnopengl.com/Getting-started/Hello-Window
  // which was changed everytime we implemented something new
 
+ int width = 800;
+ int height = 600;
+
  int main(void)
  {
      GLFWwindow* window;
@@ -19,11 +22,11 @@
      glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
      glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
      glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
-     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+     glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
 
      /* Create a windowed mode window and its OpenGL context */
-     window = glfwCreateWindow(800, 600, "Doom-Quake", NULL, NULL);
+     window = glfwCreateWindow(width, height, "Doom-Quake", NULL, NULL);
 //     window = glfwCreateWindow(800, 600, "Doom-Quake",glfwGetPrimaryMonitor(), NULL);
 
 
@@ -94,7 +97,7 @@
          //glClear(GL_COLOR_BUFFER_BIT);
 
          /* Render in engine */
-         engine->loop(window);
+         engine->loop(window, width, height);
 
          /* Swap front and back buffers */
          glfwSwapBuffers(window);
@@ -108,9 +111,11 @@
      return 0;
  }
 
- void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+ void framebuffer_size_callback(GLFWwindow* window, int w, int h)
  {
      // make sure the viewport matches the new window dimensions; note that width and
      // height will be significantly larger than specified on retina displays.
-     glViewport(0, 0, width, height);
+     width = w;
+     height = h;
+     glViewport(0, 0, w, h);
  }

@@ -39,7 +39,7 @@ class Engine {
 public:
     Engine();
 
-    void loop(GLFWwindow *window);
+    void loop(GLFWwindow *window, int width, int height);
     void mouseHandler(GLFWwindow* window, double xposIn, double yposIn);
     void scrollHandler(GLFWwindow* window, double xoffset, double yoffset);
 
@@ -85,8 +85,8 @@ private:
     std::unique_ptr<TextRenderer> textRenderer;
 
     // settings
-    const unsigned int SCR_WIDTH = 800;
-    const unsigned int SCR_HEIGHT = 600;
+    unsigned int SCR_WIDTH = 800;
+    unsigned int SCR_HEIGHT = 600;
 
 
 

@@ -83,7 +83,7 @@ Engine::Engine()
 
 }
 
-void Engine::loop(GLFWwindow *window) {
+void Engine::loop(GLFWwindow *window, int width, int height) {
     // per-frame time logic
     // --------------------
     float currentFrame = static_cast<float>(glfwGetTime());
@@ -99,7 +99,8 @@ void Engine::loop(GLFWwindow *window) {
 
     for(auto &s  : shaders){
         s->use();
-        camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+//        camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+        camera->updateCamera(s.get(),(float )width,(float ) height);
     }
 
     for(std::unique_ptr<BaseModel>& c : this->models){
