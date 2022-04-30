@@ -5,6 +5,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 # Doom project includes
 include_directories(include)
+
+# added for LINUX - Benoit
+# include_directories (/usr/include/freetype2)
+
 add_executable( doom_quake src/main.cpp
                 include/Engine.h include/glad.h
                 include/khrplatform.h
@@ -39,6 +43,10 @@ add_executable( doom_quake src/main.cpp
                 src/Register/VAO.cpp
                 src/Register/VBO.cpp
                 src/Model/Cube/CubeModel.cpp
+                
+                src/Model/Triangle/TriangleModel.cpp 
+                include/Model/Triangle/TriangleModel.h
+
                 include/Texture/Texture.h
                 src/Texture/Texture.cpp
                 src/Model/BaseModel.cpp
@@ -53,7 +61,6 @@ add_executable( doom_quake src/main.cpp
                
 
 # GLFW
-
 add_subdirectory(glfw-3.3.6)
 target_link_libraries(doom_quake glfw)
 
@@ -80,9 +87,14 @@ file(COPY shader-files DESTINATION .)
 # Model files include
 file(COPY model-files DESTINATION .)
 
-if(APPLE)
-    find_package(Freetype REQUIRED)
-    message(STATUS "Found Freetype in ${FREETYPE_INCLUDE_DIRS}")
-    target_link_libraries(doom_quake ${FREETYPE_LIBRARIES})
-    target_include_directories(doom_quake PRIVATE ${FREETYPE_INCLUDE_DIRS})
-endif(APPLE)
+# if(APPLE)
+#     find_package(Freetype REQUIRED)
+#     message(STATUS "Found Freetype in ${FREETYPE_INCLUDE_DIRS}")
+#     target_link_libraries(doom_quake ${FREETYPE_LIBRARIES})
+#     target_include_directories(doom_quake PRIVATE ${FREETYPE_INCLUDE_DIRS})
+# endif(APPLE)
+
+find_package(Freetype REQUIRED)
+message(STATUS "Found Freetype in ${FREETYPE_INCLUDE_DIRS}")
+target_link_libraries(doom_quake ${FREETYPE_LIBRARIES})
+target_include_directories(doom_quake PRIVATE ${FREETYPE_INCLUDE_DIRS})

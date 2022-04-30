@@ -13,6 +13,7 @@
 #include "Shaders/Shader.h"
 #include "Model/LearnOpenglModel/Model.h"
 #include "Model/Cube/CubeModel.h"
+#include "Model/Triangle/TriangleModel.h"
 #include "Model/Skybox/Skybox.h"
 #include "Map/Terrain/Terrain.h"
 #include "Text/TextRenderer.h"
@@ -53,6 +54,7 @@ private:
     std::unique_ptr<BaseModel> model;
 
     std::unique_ptr<CubeModel> cube;
+    std::unique_ptr<TriangleModel> triangle;
 
     std::unique_ptr<Terrain> terrain;
 
