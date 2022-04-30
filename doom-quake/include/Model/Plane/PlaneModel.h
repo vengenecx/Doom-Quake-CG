@@ -12,7 +12,7 @@ class PlaneModel : public BaseModel {
 public:
     // mesh data
 
-    PlaneModel(Texture * texture_1, glm::vec3, ShaderType type);
+    PlaneModel(std::vector<float> vertices, Texture * texture_1, glm::vec3, ShaderType type);
     void updatePosition(glm::vec3 pos);
     void draw(Shader * shader);
     void remove();
@@ -25,7 +25,6 @@ private:
 
     Texture* texture;
 
-    std::vector<float>  vertices;
     std::vector<GLuint> indices;
 
     glm::vec3 position;

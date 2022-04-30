@@ -15,8 +15,7 @@
 #include "Octree/BoundingBox.h"
 #include "Model/BaseModel.h"
 
-class Model : public BaseModel
-{
+class Model : public BaseModel{
 public:
     // constructor, expects a filepath to a 3D model.
     Model(std::string const &path, glm::vec3 position, ShaderType type, bool gamma = false);

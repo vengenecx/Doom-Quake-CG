@@ -7,7 +7,7 @@
 
 #include <glad.h>
 #include <GLFW/glfw3.h>
-#include <Shaders/basicShader.h>
+// #include <Shaders/basicShader.h>
 #include <iostream>
 #include <memory>
 #include "Shaders/Shader.h"
@@ -17,8 +17,11 @@
 #include "Model/Skybox/Skybox.h"
 #include "Map/Terrain/Terrain.h"
 #include "Text/TextRenderer.h"
-#include <Shaders/EShader.h>
+// #include <Shaders/EShader.h>
 #include <Camera/Camera.h>
+
+// added to make scenes!
+#include "Scenes/SceneOne.h"
 
 
 #include<filesystem>
@@ -29,6 +32,7 @@ namespace fs = std::filesystem;
 class Engine {
 public:
     Engine();
+    ~Engine();
 
     void loop(GLFWwindow *window);
     void mouseHandler(GLFWwindow* window, double xposIn, double yposIn);
@@ -36,17 +40,15 @@ public:
 
     static void mouseHandler_static(GLFWwindow* window, double xposIn, double yposIn);
     static void scrollHandler_static(GLFWwindow* window, double xoffset, double yoffset);
+    virtual void remove();
 
-    void remove();
 
 private:
     void keyHandler(GLFWwindow *window);
 
 
-
-
-    std::unique_ptr<Texture> containerTexture;
-    std::unique_ptr<Texture> awesomeTexture;
+    // std::unique_ptr<Texture> containerTexture;
+    // std::unique_ptr<Texture> awesomeTexture;
 
 
     std::unique_ptr<Shader> doubleTextureColShader;
@@ -59,8 +61,13 @@ private:
     std::unique_ptr<Terrain> terrain;
 
 
-    std::vector<std::unique_ptr<BaseModel>> models;
+    // std::vector<std::unique_ptr<BaseModel>> models;
+    
+    
+    
     std::vector<std::unique_ptr<Shader>> shaders;
+
+    // std::vector<Shader* > shaders;
 
     std::unique_ptr<Shader> skyboxShader;
 
@@ -75,9 +82,6 @@ private:
     // settings
     const unsigned int SCR_WIDTH = 800;
     const unsigned int SCR_HEIGHT = 600;
-
-
-
 
     // camera
     //Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
@@ -94,5 +98,13 @@ private:
     int frames = 0;
 
     int frameSetPoint = 0;
+
+    //==============================================
+    std::unique_ptr<SceneOne> sceneone;
+
+
+    
+
+
 };
 #endif //DOOM_QUAKE_ENGINE_H

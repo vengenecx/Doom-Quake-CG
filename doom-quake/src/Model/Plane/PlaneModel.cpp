@@ -5,17 +5,10 @@
 #include "Model/Plane/PlaneModel.h"
 
 
-PlaneModel::PlaneModel(Texture * texture, glm::vec3 pos, ShaderType type) : BaseModel(type){
+PlaneModel::PlaneModel(std::vector<float> vertices,  Texture * texture, glm::vec3 pos, ShaderType type) : BaseModel(type){
     this->vao = std::make_unique<VAO>();
     this->vao->bind();
 
-    this->vertices = std::vector<float> {
-//            // positions          // colors           // texture coords
-            10.0f,  -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-            10.0f, -1.0f, -10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
-            -10.0f, -1.0f, -10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-            -10.0f,  -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
-    };
     this->indices = std::vector<GLuint>
             {
                     0, 1, 3, // first triangle

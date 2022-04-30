@@ -3,18 +3,20 @@
 //
 
 #include <Engine.h>
-#include "Model/Plane/PlaneModel.h"
+// not nessecary anymore
+// #include "Model/Plane/PlaneModel.h" 
 
-
-Engine::Engine()
-{
+// default constructor
+Engine::Engine(){
 
     std::string currentDir = (fs::current_path()).string();
 
     std::cout << currentDir << std::endl;
 
+    sceneone = std::make_unique<SceneOne>();
+
     shaders = std::vector<std::unique_ptr<Shader>>(3);
-//    shaders[0] = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
+
     shaders[0] = std::make_unique<Shader>((currentDir + shaderPaths[doubleTextureColorVertex]).c_str(),(currentDir + shaderPaths[doubleTextureColorFragment]).c_str());
     shaders[1] = std::make_unique<Shader>((currentDir + shaderPaths[modelLoadingVertex]).c_str(),(currentDir + shaderPaths[modelLoadingFragment]).c_str());
     shaders[2] = std::make_unique<Shader>((currentDir + shaderPaths[defaultVertex]).c_str(),(currentDir + shaderPaths[defaultFragment]).c_str());
@@ -31,52 +33,33 @@ Engine::Engine()
 
     camera = std::make_unique<Camera>(false,glm::vec3(0.0f, 10.0f, 3.0f));
 
-//    // Cube test
-    //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
-
-//    std::string img_1 = (currentDir + "/model-files/cube/container.jpg");
-//    std::string img_1 = (currentDir + "/model-files/grass/grass.jpeg");
-
-    std::string img_1 = (currentDir + "/model-files/grass/stone.png");
-    std::string img_2 = (currentDir + "/model-files/cube/awesomeface.png");
-
-    this->containerTexture = std::make_unique<Texture>(img_1.c_str(),GL_TEXTURE_2D,0,GL_RGBA,GL_UNSIGNED_BYTE);
-    this->awesomeTexture = std::make_unique<Texture>(img_2.c_str(),GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
 
 
-    models = std::vector<std::unique_ptr<BaseModel>>();
+    // skyboxShader = std::make_unique<Shader>((currentDir + shaderPaths[skyboxVertex]).c_str(), (currentDir  + shaderPaths[skyboxFragment]).c_str());
 
-    models.push_back(std::make_unique<Model>("model-files/backpack/backpack.obj",glm::vec3(0.0f, 2.0f, -8.0f),MODEL_LOADER_SHADER));
-    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, -5.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 5.0f,  5.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-
-    models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DEFAULT));
-
-
-
-
-//    skyboxShader = std::make_unique<Shader>((currentDir + "/shader-files/skybox.vs").c_str(), (currentDir  + "/shader-files/skybox.fs").c_str());
-
-    skyboxShader = std::make_unique<Shader>((currentDir + shaderPaths[skyboxVertex]).c_str(), (currentDir  + shaderPaths[skyboxFragment]).c_str());
-
-    skybox = std::make_unique<Skybox>(skybox_b,currentDir,true);
+    // skybox = std::make_unique<Skybox>(skybox_b,currentDir,true);
 
 
 //    tessHeightMapShader = std::make_unique<Shader>("shader-files/gpuheight.vs","shader-files/gpuheight.fs", nullptr,            // if wishing to render as is
 //                                                   "shader-files/gpuheight.tcs", "shader-files/gpuheight.tes");
 
 
-    tessHeightMapShader = std::make_unique<Shader>((currentDir + shaderPaths[tesselationVertex]).c_str(),(currentDir + shaderPaths[tesselationFragment]).c_str(), nullptr,            // if wishing to render as is
-                                                   (currentDir + shaderPaths[tesselationTCS]).c_str(), (currentDir + shaderPaths[tesselationTES]).c_str());
+//     tessHeightMapShader = std::make_unique<Shader>((currentDir + shaderPaths[tesselationVertex]).c_str(),(currentDir + shaderPaths[tesselationFragment]).c_str(), nullptr, // if wishing to render as is
+//                                                    (currentDir + shaderPaths[tesselationTCS]).c_str(), (currentDir + shaderPaths[tesselationTES]).c_str());
 
 
-    terrain = std::make_unique<Terrain>(containerTexture.get());
+//     terrain = std::make_unique<Terrain>(containerTexture.get());
 
 
 //    textShader = std::make_unique<Shader>("shader-files/text.vs","shader-files/text.fs");
-    textShader = std::make_unique<Shader>((currentDir + shaderPaths[textVertex]).c_str(),shaderPaths[textFragment]);
+    textShader = std::make_unique<Shader>((currentDir + shaderPaths[textVertex]).c_str(),(currentDir + shaderPaths[textFragment]).c_str());
     textRenderer = std::make_unique<TextRenderer>(SCR_WIDTH,SCR_HEIGHT);
+}
+
+Engine::~Engine(){
+    // for(auto shader : shaders){
+    //     delete shader;
+    // }
 }
 
 void Engine::loop(GLFWwindow *window) {
@@ -86,27 +69,25 @@ void Engine::loop(GLFWwindow *window) {
     deltaTime = currentFrame - lastFrame;
     lastFrame = currentFrame;
 
-
-
     this->keyHandler(window);
 
     glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    for(auto &s  : shaders){
+    for(auto &s : shaders){
         s->use();
         camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+
+        //camera->updateCamera(s,(float )SCR_WIDTH,(float ) SCR_HEIGHT);
     }
 
-    for(std::unique_ptr<BaseModel>& c : this->models){
-        shaders[c->getShaderType()]->use();
-        c->draw(shaders[c->getShaderType()].get());
-    }
+    sceneone->drawing(shaders);
 
-    tessHeightMapShader->use();
-    camera->updateCamera(tessHeightMapShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
 
-    terrain->draw(tessHeightMapShader.get());
+    // tessHeightMapShader->use();
+    // camera->updateCamera(tessHeightMapShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+
+    // terrain->draw(tessHeightMapShader.get());
 
     fpsTime += deltaTime;
     if(fpsTime >= 1){
@@ -122,9 +103,9 @@ void Engine::loop(GLFWwindow *window) {
     textRenderer->RenderText(textShader.get(),fps, ((float )SCR_WIDTH)-100, 25.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
 
 
-    skyboxShader->use();
-    camera->updateCamera(skyboxShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-    skybox->draw(skyboxShader.get());
+    // skyboxShader->use();
+    // camera->updateCamera(skyboxShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+    // skybox->draw(skyboxShader.get());
 }
 
 void Engine::keyHandler(GLFWwindow *window) {
@@ -174,13 +155,9 @@ void Engine::mouseHandler(GLFWwindow* window, double xposIn, double yposIn)
     std::cout << "mouse movement" << std::endl;
 }
 
-
 void Engine::remove() {
-    for(std::unique_ptr<BaseModel>& c : this->models){
-        c->remove();
-    }
+    sceneone->remove();
 }
-
 
 // glfw: whenever the mouse scroll wheel scrolls, this callback is called
 // ----------------------------------------------------------------------
