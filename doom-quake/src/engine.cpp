@@ -10,8 +10,11 @@ Engine::Engine()
 {
 
     std::string currentDir = (fs::current_path()).string();
-
     std::cout << currentDir << std::endl;
+
+
+    game = Game();
+
 
     shaders = std::vector<std::unique_ptr<Shader>>(3);
 //    shaders[0] = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
@@ -75,8 +78,9 @@ Engine::Engine()
 
 
 //    textShader = std::make_unique<Shader>("shader-files/text.vs","shader-files/text.fs");
-    textShader = std::make_unique<Shader>((currentDir + shaderPaths[textVertex]).c_str(),shaderPaths[textFragment]);
+    textShader = std::make_unique<Shader>((currentDir + shaderPaths[textVertex]).c_str(),(currentDir + shaderPaths[textFragment]).c_str());
     textRenderer = std::make_unique<TextRenderer>(SCR_WIDTH,SCR_HEIGHT);
+
 }
 
 void Engine::loop(GLFWwindow *window) {
@@ -103,29 +107,87 @@ void Engine::loop(GLFWwindow *window) {
         c->draw(shaders[c->getShaderType()].get());
     }
 
-    tessHeightMapShader->use();
-    camera->updateCamera(tessHeightMapShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+//    tessHeightMapShader->use();
+//    camera->updateCamera(tessHeightMapShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+//
+//    terrain->draw(tessHeightMapShader.get());
 
-    terrain->draw(tessHeightMapShader.get());
+//    fpsTime += deltaTime;
+//    if(fpsTime >= 1){
+//        fpsTime = fpsTime - 1;
+//        frameSetPoint = frames;
+//        frames = 0;
+//    } else{
+//        frames ++;
+//    }
 
-    fpsTime += deltaTime;
-    if(fpsTime >= 1){
-        fpsTime = fpsTime - 1;
-        frameSetPoint = frames;
-        frames = 0;
-    } else{
-        frames ++;
+//    textShader->use();
+//    std::string fps = std::to_string(frameSetPoint) + std::string(" FPS");
+//    textRenderer->RenderText(textShader.get(),fps, ((float )SCR_WIDTH)-100, 25.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+//
+//
+//    skyboxShader->use();
+//    camera->updateCamera(skyboxShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
+//    skybox->draw(skyboxShader.get());
+
+    if(game.changed()){
+        std::cout<< "state changed" << std::endl;
+        if(game.getState() == ROOM_D){
+            std::cout<< "room d" << std::endl;
+        }
+
+        game.reset();
     }
 
-    textShader->use();
-    std::string fps = std::to_string(frameSetPoint) + std::string(" FPS");
-    textRenderer->RenderText(textShader.get(),fps, ((float )SCR_WIDTH)-100, 25.0f, 1.0f, glm::vec3(1.0f, 1.0f, 1.0f));
-
-
-    skyboxShader->use();
-    camera->updateCamera(skyboxShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-    skybox->draw(skyboxShader.get());
+    drawControls(window);
 }
+
+
+void Engine::drawControls(GLFWwindow *window) {
+    // Start the Dear ImGui frame
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
+
+    static float f = 0.0f;
+    static int counter = 0;
+
+    ImGui::Begin("Controls");
+
+    ImGui::Text("Room selection:");
+
+
+    ImGui::NewLine();
+    ImGui::SameLine();
+    if (ImGui::Button("Room A"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+        game.setStateRoomA();
+    ImGui::SameLine();
+    if (ImGui::Button("Room B"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+        game.setStateRoomB();
+    ImGui::SameLine();
+    if (ImGui::Button("Room C"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+        game.setStateRoomC();
+    ImGui::SameLine();
+    if (ImGui::Button("Room D"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+        game.setStateRoomD();
+    ImGui::SameLine();
+    if (ImGui::Button("Room E"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+        game.setStateRoomE();
+
+    ImGui::NewLine();
+    ImGui::Text("counter = %d", counter);
+
+    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+    ImGui::End();
+
+
+    // Rendering
+    ImGui::Render();
+    int display_w, display_h;
+    glfwGetFramebufferSize(window, &display_w, &display_h);
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+}
+
 
 void Engine::keyHandler(GLFWwindow *window) {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)

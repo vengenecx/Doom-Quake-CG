@@ -20,6 +20,15 @@
 #include <Shaders/EShader.h>
 #include <Camera/Camera.h>
 
+//#include "imgui.h"
+//#include "imgui_impl_glfw.h"
+//#include "imgui_impl_opengl3.h"
+
+
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+#include "Game/Game.h"
 
 #include<filesystem>
 namespace fs = std::filesystem;
@@ -43,7 +52,10 @@ private:
     void keyHandler(GLFWwindow *window);
 
 
+    void drawControls(GLFWwindow *window);
 
+
+    Game game;
 
     std::unique_ptr<Texture> containerTexture;
     std::unique_ptr<Texture> awesomeTexture;
@@ -94,5 +106,7 @@ private:
     int frames = 0;
 
     int frameSetPoint = 0;
+
+    ImVec4 clear_color;
 };
 #endif //DOOM_QUAKE_ENGINE_H

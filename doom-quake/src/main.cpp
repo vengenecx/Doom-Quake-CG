@@ -24,6 +24,8 @@
 
      /* Create a windowed mode window and its OpenGL context */
      window = glfwCreateWindow(800, 600, "Doom-Quake", NULL, NULL);
+//     window = glfwCreateWindow(800, 600, "Doom-Quake",glfwGetPrimaryMonitor(), NULL);
+
 
 
      if (!window)
@@ -40,7 +42,13 @@
          std::cout << "Failed to initialize GLAD" << std::endl;
          return -1;
      }
+
+
      std::unique_ptr<Engine> engine = std::make_unique<Engine>();
+
+
+
+
      glfwSetWindowUserPointer(window, engine.get());
      glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
      glfwSetCursorPosCallback(window, engine->mouseHandler_static);
@@ -48,7 +56,12 @@
 
 
      // tell GLFW to capture our mouse
-     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+//     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+
+
+//     glfwSetCursorPos(window, 800/2, 600/2);
+     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
      //stbi_set_flip_vertically_on_load(true);
      glEnable(GL_DEPTH_TEST);
@@ -57,6 +70,19 @@
 
      glEnable(GL_BLEND);
      glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+     // Setup Dear ImGui context
+     IMGUI_CHECKVERSION();
+     ImGui::CreateContext();
+     ImGuiIO& io = ImGui::GetIO(); (void)io;
+
+     ImGui::StyleColorsDark();
+     ImGui_ImplGlfw_InitForOpenGL(window, true);
+
+     const char* glsl_version = "#version 150";
+     ImGui_ImplOpenGL3_Init(glsl_version);
+
+
 
      // Wireframe
      //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -75,11 +101,9 @@
 
          /* Poll for and process events */
          glfwPollEvents();
-
-
      }
 
-     engine->remove();
+//     engine->remove();
      glfwTerminate();
      return 0;
  }
