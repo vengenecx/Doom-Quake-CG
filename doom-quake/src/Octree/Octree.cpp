@@ -191,6 +191,7 @@ std::unique_ptr<NodeCluster> Octree::query(BoundingBox& b){
     return move(n);
 }
 
-void Octree::draw(BoundingBox &b) {
+void Octree::draw(Shader* shader) {
     //TODO
+    root->draw(shader);
 }

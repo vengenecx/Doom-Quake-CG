@@ -17,13 +17,13 @@ Engine::Engine()
     game = Game();
 
 
-    shaders = std::vector<std::unique_ptr<Shader>>(4);
+    shaders = std::vector<std::unique_ptr<Shader>>(5);
 //    shaders[0] = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
     shaders[0] = std::make_unique<Shader>((currentDir + shaderPaths[doubleTextureColorVertex]).c_str(),(currentDir + shaderPaths[doubleTextureColorFragment]).c_str());
     shaders[1] = std::make_unique<Shader>((currentDir + shaderPaths[modelLoadingVertex]).c_str(),(currentDir + shaderPaths[modelLoadingFragment]).c_str());
     shaders[2] = std::make_unique<Shader>((currentDir + shaderPaths[defaultVertex]).c_str(),(currentDir + shaderPaths[defaultFragment]).c_str());
     shaders[3] = std::make_unique<Shader>((currentDir + shaderPaths[crossVertex]).c_str(),(currentDir + shaderPaths[crossFragment]).c_str());
-
+    shaders[4] = std::make_unique<Shader>((currentDir + shaderPaths[lineVertex]).c_str(),(currentDir + shaderPaths[lineFragment]).c_str());
 
     //  Model shader (assimp)
     //meshModelShader = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
@@ -35,7 +35,7 @@ Engine::Engine()
     //model = std::make_unique<Model>("model-files/Humvee_models/Humvee.obj");
 
 
-    camera = std::make_unique<Camera>(false,glm::vec3(0.0f, 10.0f, 3.0f));
+    camera = std::make_unique<Camera>(false,glm::vec3(60.0f, 60.0f, -60.0f));
 
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
@@ -57,9 +57,58 @@ Engine::Engine()
 //    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, -5.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 //    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 5.0f,  5.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 
-    models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DEFAULT));
 
     models.push_back(std::make_unique<CrossModel>(CROSS));
+
+//    std::unique_ptr<BoundingBox> boxm1 = std::make_unique<BoundingBox>();
+//    boxm1->centre = glm::vec3(0.0,0.0,0.0);
+//    boxm1->dimensions = glm::vec3(10.0,10.0,10.0);
+//
+//    models.push_back(std::make_unique<TestModel>(LINE,std::move(boxm1)));
+
+
+
+//    BoundingBox boxm1 = BoundingBox();
+//    boxm1.centre = glm::vec3(0.0,0.0,-10.0);
+//    boxm1.dimensions = glm::vec3(10.0,10.0,10.0);
+//
+//    models.push_back(std::make_unique<TestModel>(LINE,boxm1));
+
+    BoundingBox box = BoundingBox();
+    box.centre = glm::vec3(0.0,0.0,0.0);
+    box.dimensions = glm::vec3(50.0,50.0,50.0);
+
+
+    octree = std::make_unique<Octree>(box, 10);
+
+    BoundingBox boxm1 = BoundingBox();
+    boxm1.centre = glm::vec3(0.0,0.0,0.0);
+    boxm1.dimensions = glm::vec3(10.0,10.0,10.0);
+//     boxm1.centre = glm::vec3(10.0,10.0,10.0);
+//     boxm1.dimensions = glm::vec3(20.0,20.0,20.0);
+    BaseModel * m1 = new TestModel(DEFAULT,boxm1);
+
+    octree->addModel(m1);
+
+
+     BoundingBox boxm2 = BoundingBox();
+     boxm2.centre = glm::vec3(5.0,5.0,5.0);
+     boxm2.dimensions = glm::vec3(10.0,10.0,10.0);
+     BaseModel * m2 = new TestModel(DEFAULT,boxm2);
+
+     octree->addModel(m2);
+
+    BoundingBox boxm3 = BoundingBox();
+    boxm3.centre = glm::vec3(15.0,15.0,15.0);
+    boxm3.dimensions = glm::vec3(10.0,10.0,10.0);
+    BaseModel * m3 = new TestModel(DEFAULT,boxm3);
+
+    octree->addModel(m3);
+
+
+
+
 
 
 //    skyboxShader = std::make_unique<Shader>((currentDir + "/shader-files/skybox.vs").c_str(), (currentDir  + "/shader-files/skybox.fs").c_str());
@@ -135,6 +184,9 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
         std::cout<< "release shoot" << std::endl;
         realeaseShoot = false;
     }
+
+    shaders[LINE]->use();
+    octree->draw(shaders[LINE].get());
 
 //    tessHeightMapShader->use();
 //    camera->updateCamera(tessHeightMapShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);

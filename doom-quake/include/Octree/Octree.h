@@ -24,7 +24,7 @@ public:
     Node* shoot(Ray& ray);
 
 
-    void draw(BoundingBox& b);
+    void draw(Shader* shader);
 
 
 

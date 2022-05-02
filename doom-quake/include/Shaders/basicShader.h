@@ -38,7 +38,9 @@ static const char* shaderPaths[] = {
         "/shader-files/skybox.vs",
         "/shader-files/skybox.fs",
         "/shader-files/cross.vs",
-        "/shader-files/cross.fs"
+        "/shader-files/cross.fs",
+        "/shader-files/line.vs",
+        "/shader-files/line.fs"
 };
 
 static std::vector<std::string> skybox_a

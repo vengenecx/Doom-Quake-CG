@@ -18,6 +18,7 @@
 class BaseModel {
 public:
     BaseModel(ShaderType type);
+//    BaseModel(ShaderType type, std::unique_ptr<BoundingBox> bb);
     BaseModel(ShaderType type, BoundingBox bb);
     virtual void draw(Shader * shader) = 0;
     virtual void updatePosition(glm::vec3 pos) = 0;
@@ -29,10 +30,13 @@ public:
     virtual void resetShoot();
 
     ShaderType getShaderType();
+//    BoundingBox* getBoundingBox();
+
     BoundingBox getBoundingBox();
 
 protected:
     ShaderType type;
+//    std::unique_ptr<BoundingBox> bb;
     BoundingBox bb;
 };
 

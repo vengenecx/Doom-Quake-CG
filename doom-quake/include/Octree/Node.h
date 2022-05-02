@@ -16,7 +16,7 @@ class Node
     public:
         //Node* parent;
 
-        Node(BoundingBox bb, int depth);
+        Node(BoundingBox bb, int depth, bool draw=true);
 
         // Octant children
         std::unique_ptr<Node> children[OCTREE_CHILDREN];
@@ -27,7 +27,9 @@ class Node
 
         unsigned char activeOctants;
 
-        std::vector<Octants> matchChild(BoundingBox bb);
+//        std::vector<Octants> matchChild(BoundingBox* bb);
+
+    std::vector<Octants> matchChild(BoundingBox bb);
 //        Node* getChild(Octants oc);
 
         BoundingBox boundingBox;
@@ -38,11 +40,27 @@ class Node
 
         int getDepth();
 
+
+        void draw(Shader* shader);
+
 private:
     int depth;
 
     bool overlap(BoundingBox bb1, BoundingBox bb2);
 
+    void fillVertices(BoundingBox bx);
+
+    std::unique_ptr<VAO> vao;
+    std::unique_ptr<VBO> vbo;
+    std::unique_ptr<EBO> ebo;
+
+//    std::unique_ptr<Texture> texture_1;
+//    std::unique_ptr<Texture> texture_2;
+
+    std::vector<float>  vertices;
+    std::vector<GLuint> indices;
+
+    glm::vec3 position;
 
 };
 #endif //DOOM_QUAKE_NODE_H

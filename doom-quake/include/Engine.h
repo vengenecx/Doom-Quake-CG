@@ -92,7 +92,10 @@ private:
 
     // settings
     unsigned int SCR_WIDTH = 800;
-    unsigned int SCR_HEIGHT = 600;
+    unsigned int SCR_HEIGHT = 800;
+
+
+    std::unique_ptr<Octree> octree;
 
 
 
