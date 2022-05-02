@@ -58,6 +58,22 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
     if (direction == RIGHT) {
         Position += Right * velocity;
     }
+
+    if(direction == LEFTSTRAFE){
+        Position -= Right * ((float )(velocity/2.0));
+        if (grounded)
+            Position += glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * ((float )(velocity/2.0));
+        else
+            Position += Front * ((float )(velocity/2.0));
+    }
+
+    if(direction == RIGHTSTRAFE){
+        Position += Right * ((float )(velocity/2.0));
+        if (grounded)
+            Position += glm::vec3(glm::cos(glm::radians(Yaw)), 0, glm::sin(glm::radians(Yaw))) * ((float )(velocity/2.0));
+        else
+            Position += Front * ((float )(velocity/2.0));
+    }
 }
 
 // processes input received from a mouse input system. Expects the offset value in both the x and y direction.

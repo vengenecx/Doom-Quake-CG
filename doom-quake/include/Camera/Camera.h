@@ -20,7 +20,9 @@ enum Camera_Movement {
     FORWARD,
     BACKWARD,
     LEFT,
-    RIGHT
+    RIGHT,
+    LEFTSTRAFE,
+    RIGHTSTRAFE
 };
 
 // Default camera values
