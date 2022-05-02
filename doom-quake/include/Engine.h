@@ -22,6 +22,7 @@
 
 // added to make scenes!
 #include "Scenes/SceneOne.h"
+#include "Scenes/SceneTwo.h"
 
 
 #include<filesystem>
@@ -100,7 +101,10 @@ private:
     int frameSetPoint = 0;
 
     //==============================================
-    std::unique_ptr<SceneOne> sceneone;
+    // std::unique_ptr<SceneOne> sceneone;
+    // std::unique_ptr<SceneTwo> scenetwo;
+    std::unique_ptr<SceneTwo> currentScene;
+
 
 
     

@@ -1,5 +1,5 @@
-#ifndef DOOM_QUAKE_SCENEONE_H
-#define DOOM_QUAKE_SCENEONE_H
+#ifndef DOOM_QUAKE_SCENETWO_H
+#define DOOM_QUAKE_SCENETWO_H
 
 #include "Model/BaseModel.h"
 #include "Model/Cube/CubeModel.h"
@@ -17,13 +17,10 @@ namespace fs = std::filesystem;
 #include <vector>
 #include <memory>
 
-class SceneOne{
+class SceneTwo{
     public:
-        // old: 
         void drawing(std::vector<std::unique_ptr<Shader>> & shaders);
-        //void drawing(std::vector<Shader*> & shaders);
-        // new:
-        SceneOne();
+        SceneTwo();
         void remove();
     
     private:
@@ -39,15 +36,15 @@ class SceneOne{
         std::unique_ptr<Texture> concreteTexture;
         std::unique_ptr<Texture> bulletHoleTexture;
 
-
         std::string currentDir = (fs::current_path()).string();
 
         std::vector<float>  vertices;
 
+
         std::vector<float> groundVerticesOne{
                 // positions          // colors           // texture coords
-                3.0f,  -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-                3.0f, -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                5.0f,  -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                5.0f, -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
                 0.0f, -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
                 0.0f,  -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
@@ -67,7 +64,6 @@ class SceneOne{
                 0.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
                 0.0f,  -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
-
 
         std::vector<float> wallVerticesTwo{
                 // positions          // colors           // texture coords
@@ -129,4 +125,4 @@ class SceneOne{
 
 };
 
-#endif //DOOM_QUAKE_SCENEONE_H
+#endif //DOOM_QUAKE_SCENETWO_H

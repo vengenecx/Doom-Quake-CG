@@ -13,7 +13,8 @@ Engine::Engine(){
 
     std::cout << currentDir << std::endl;
 
-    sceneone = std::make_unique<SceneOne>();
+    currentScene = std::make_unique<SceneTwo>(); //  also change the scene in engine.h
+    // scenetwo = std::make_unique<SceneTwo>();
 
     shaders = std::vector<std::unique_ptr<Shader>>(3);
 
@@ -81,7 +82,7 @@ void Engine::loop(GLFWwindow *window) {
         //camera->updateCamera(s,(float )SCR_WIDTH,(float ) SCR_HEIGHT);
     }
 
-    sceneone->drawing(shaders);
+    currentScene->drawing(shaders);
 
 
     // tessHeightMapShader->use();
@@ -164,7 +165,7 @@ void Engine::mouseHandler(GLFWwindow* window, double xposIn, double yposIn)
 }
 
 void Engine::remove() {
-    sceneone->remove();
+    currentScene->remove();
 }
 
 // glfw: whenever the mouse scroll wheel scrolls, this callback is called
