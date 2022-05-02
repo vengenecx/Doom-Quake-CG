@@ -43,43 +43,94 @@ void Octree::addModel(BaseModel * model) {
     this->addModelRecursive(node,model);
 }
 
+//void Octree::addModelRecursive(Node* node, BaseModel * model){
+//    if(node->depthEnd()){
+//        node->models.push_back(model); // Add model
+//    } else{
+//
+//        if(!node->models.empty()) {
+//
+//            if (!node->hasChildren()) {
+//                generateChildren(node); // generate children
+//
+//                std::vector<BaseModel *> remainingModels = std::vector<BaseModel*>();
+//
+//                for (auto m: node->models) {
+//                    std::vector<Octants> octants = node->matchChild(m->getBoundingBox());
+//
+////                    for (Octants &oc: octants) {
+////                        node->children[static_cast<int>(oc)]->models.push_back(m);
+////                    }
+//
+//                    if (octants.size() < 8) {
+//                        for (Octants &oc: octants) {
+//                            node->children[static_cast<int>(oc)]->models.push_back(m);
+//                        }
+//                    } else {
+//                        remainingModels.push_back(m);
+//                    }
+//                }
+//                node->models = remainingModels;
+//            }
+//
+//            std::vector<Octants> overlap = node->matchChild(model->getBoundingBox());
+//
+//            if (overlap.size() != 8) { // No full overlap new model
+//
+//                for (Octants &oc: overlap) {
+//                    addModelRecursive(node->children[static_cast<int>(oc)].get(), model);
+//                }
+//
+//            } else { // Full overlap
+//                node->models.push_back(model);
+////                for (Octants &oc: overlap) {
+////                    addModelRecursive(node->children[static_cast<int>(oc)].get(), model);
+////                }
+//            }
+//        } else{
+////            if (node->hasChildren()) {
+////                std::vector<Octants> overlap = node->matchChild(model->getBoundingBox());
+////
+////                for (Octants &oc: overlap) {
+////                    addModelRecursive(node->children[static_cast<int>(oc)].get(), model);
+////                }
+////
+////            } else{
+////                node->models.push_back(model);
+////            }
+//           node->models.push_back(model);
+//        }
+//    }
+//}
+
 void Octree::addModelRecursive(Node* node, BaseModel * model){
     if(node->depthEnd()){
+        std::cout<< "end" << std::endl;
         node->models.push_back(model); // Add model
     } else{
 
         if(!node->models.empty()) {
-
             if (!node->hasChildren()) {
                 generateChildren(node); // generate children
-
-                std::vector<BaseModel *> remainingModels = std::vector<BaseModel*>();
-
-                for (auto m: node->models) {
-                    std::vector<Octants> octants = node->matchChild(m->getBoundingBox());
-
-                    if (octants.size() < 8) {
-                        for (Octants &oc: octants) {
-                            node->children[static_cast<int>(oc)]->models.push_back(m);
-                        }
-                    } else {
-                        remainingModels.push_back(m);
-                    }
-                }
-                node->models = remainingModels;
             }
 
-            std::vector<Octants> overlap = node->matchChild(model->getBoundingBox());
-
-            if (overlap.size() != 8) { // No full overlap new model
-
-                for (Octants &oc: overlap) {
-                    addModelRecursive(node->children[static_cast<int>(oc)].get(), model);
+            // Copy models down
+            for(auto m : node->models){
+                std::vector<Octants> octants = node->matchChild(m->getBoundingBox());
+                for (Octants &oc: octants) {
+                    addModelRecursive(node->children[static_cast<int>(oc)].get(), m);
                 }
-
-            } else { // Full overlap
-                node->models.push_back(model);
             }
+            node->models.clear();
+
+
+            //  Add new model
+
+            std::vector<Octants> octants = node->matchChild(model->getBoundingBox());
+            for (Octants &oc: octants) {
+                addModelRecursive(node->children[static_cast<int>(oc)].get(), model);
+            }
+
         } else{
             node->models.push_back(model);
         }
@@ -107,7 +158,7 @@ void Octree::generateChildren(Node *node) {
                                       node->boundingBox.centre.z-zDimensionHalve);
     frontUpperLeft.dimensions = glm::vec3(xDimension,yDimension,zDimension);
 
-    node->children[static_cast<int>(Octants::FRONTUPLEFT)] = std::make_unique<Node>(frontUpperLeft,depth);
+    node->children[static_cast<int>(Octants::FRONTUPLEFT)] = std::make_unique<Node>(frontUpperLeft,depth-1);
 
     BoundingBox frontUpperRight = BoundingBox();
     frontUpperRight.centre = glm::vec3(node->boundingBox.centre.x+xDimensionHalve,
@@ -115,7 +166,7 @@ void Octree::generateChildren(Node *node) {
                                       node->boundingBox.centre.z-zDimensionHalve);
     frontUpperRight.dimensions = glm::vec3(xDimension,yDimension,zDimension);
 
-    node->children[static_cast<int>(Octants::FRONTUPRIGHT)] = std::make_unique<Node>(frontUpperRight,depth);
+    node->children[static_cast<int>(Octants::FRONTUPRIGHT)] = std::make_unique<Node>(frontUpperRight,depth-1);
 
     BoundingBox frontBottomRight = BoundingBox();
     frontBottomRight.centre = glm::vec3(node->boundingBox.centre.x+xDimensionHalve,
@@ -123,7 +174,7 @@ void Octree::generateChildren(Node *node) {
                                        node->boundingBox.centre.z-zDimensionHalve);
     frontBottomRight.dimensions = glm::vec3(xDimension,yDimension,zDimension);
 
-    node->children[static_cast<int>(Octants::FRONTBOTTOMRIGHT)] = std::make_unique<Node>(frontBottomRight,depth);
+    node->children[static_cast<int>(Octants::FRONTBOTTOMRIGHT)] = std::make_unique<Node>(frontBottomRight,depth-1);
 
     BoundingBox frontBottomLeft = BoundingBox();
     frontBottomLeft.centre = glm::vec3(node->boundingBox.centre.x-xDimensionHalve,
@@ -131,12 +182,10 @@ void Octree::generateChildren(Node *node) {
                                         node->boundingBox.centre.z-zDimensionHalve);
     frontBottomLeft.dimensions = glm::vec3(xDimension,yDimension,zDimension);
 
-    node->children[static_cast<int>(Octants::FRONTBOTTOMLEFT)] = std::make_unique<Node>(frontBottomLeft,depth);
-
+    node->children[static_cast<int>(Octants::FRONTBOTTOMLEFT)] = std::make_unique<Node>(frontBottomLeft,depth-1);
 
 
     // BACK
-
 
     BoundingBox backUpperLeft = BoundingBox();
     backUpperLeft.centre = glm::vec3(node->boundingBox.centre.x-xDimensionHalve,

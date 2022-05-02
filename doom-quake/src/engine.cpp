@@ -84,7 +84,7 @@ Engine::Engine()
 
     BoundingBox boxm1 = BoundingBox();
     boxm1.centre = glm::vec3(0.0,0.0,0.0);
-    boxm1.dimensions = glm::vec3(10.0,10.0,10.0);
+    boxm1.dimensions = glm::vec3(4.0,4.0,4.0);
 //     boxm1.centre = glm::vec3(10.0,10.0,10.0);
 //     boxm1.dimensions = glm::vec3(20.0,20.0,20.0);
     BaseModel * m1 = new TestModel(DEFAULT,boxm1);
@@ -94,14 +94,14 @@ Engine::Engine()
 
      BoundingBox boxm2 = BoundingBox();
      boxm2.centre = glm::vec3(5.0,5.0,5.0);
-     boxm2.dimensions = glm::vec3(10.0,10.0,10.0);
+     boxm2.dimensions = glm::vec3(4.0,4.0,4.0);
      BaseModel * m2 = new TestModel(DEFAULT,boxm2);
 
      octree->addModel(m2);
 
     BoundingBox boxm3 = BoundingBox();
     boxm3.centre = glm::vec3(15.0,15.0,15.0);
-    boxm3.dimensions = glm::vec3(10.0,10.0,10.0);
+    boxm3.dimensions = glm::vec3(4.0,4.0,4.0);
     BaseModel * m3 = new TestModel(DEFAULT,boxm3);
 
     octree->addModel(m3);
