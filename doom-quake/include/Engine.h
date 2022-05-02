@@ -16,10 +16,15 @@
 #include "Model/Triangle/TriangleModel.h"
 #include "Model/Skybox/Skybox.h"
 #include "Model/Cross/CrossModel.h"
+#include "Model/Test/TestModel.cpp"
+
+
 #include "Map/Terrain/Terrain.h"
 #include "Text/TextRenderer.h"
 #include <Shaders/EShader.h>
 #include <Camera/Camera.h>
+
+#include "Octree/Octree.h"
 
 //#include "imgui.h"
 //#include "imgui_impl_glfw.h"

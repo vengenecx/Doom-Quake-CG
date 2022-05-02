@@ -6,6 +6,8 @@
 
 BaseModel::BaseModel(ShaderType type) : type(type) {}
 
+BaseModel::BaseModel(ShaderType type, BoundingBox bb) : type(type),  bb(bb) {}
+
 ShaderType BaseModel::getShaderType(){
     return type;
 }
@@ -13,3 +15,8 @@ ShaderType BaseModel::getShaderType(){
 void BaseModel::shoot() {}
 
 void BaseModel::resetShoot() {}
+
+
+BoundingBox BaseModel::getBoundingBox() {
+    return bb;
+}
