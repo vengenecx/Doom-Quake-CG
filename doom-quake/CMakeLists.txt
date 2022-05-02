@@ -73,7 +73,7 @@ add_executable( doom_quake src/main.cpp
                 include/imgui_demo.cpp
                 include/imgui.h
                 include/imgui.cpp
-                include/imconfig.h)
+                include/imconfig.h include/Model/Cross/CrossModel.h src/Model/Cross/CrossModel.cpp)
 
                
 

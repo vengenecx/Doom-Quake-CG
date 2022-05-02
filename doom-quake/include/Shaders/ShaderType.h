@@ -7,6 +7,7 @@
 static enum ShaderType {
     DOUBLE_TEXTURE_COLOR_SHADER = 0,
     MODEL_LOADER_SHADER = 1,
-    DEFAULT = 2
+    DEFAULT = 2,
+    CROSS = 3
 } shaderType;
 #endif //DOOM_QUAKE_SHADERTYPE_H

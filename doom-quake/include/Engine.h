@@ -15,6 +15,7 @@
 #include "Model/Cube/CubeModel.h"
 #include "Model/Triangle/TriangleModel.h"
 #include "Model/Skybox/Skybox.h"
+#include "Model/Cross/CrossModel.h"
 #include "Map/Terrain/Terrain.h"
 #include "Text/TextRenderer.h"
 #include <Shaders/EShader.h>
@@ -108,5 +109,9 @@ private:
     int frameSetPoint = 0;
 
     ImVec4 clear_color;
+
+    bool executeShoot= false;
+    bool activeShoot = false;
+    bool realeaseShoot = false;
 };
 #endif //DOOM_QUAKE_ENGINE_H

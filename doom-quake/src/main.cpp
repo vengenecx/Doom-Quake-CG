@@ -7,7 +7,7 @@
  // which was changed everytime we implemented something new
 
  int width = 800;
- int height = 600;
+ int height = 800;
 
  int main(void)
  {

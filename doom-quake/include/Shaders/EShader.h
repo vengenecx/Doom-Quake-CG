@@ -18,6 +18,8 @@ static enum EShader {
     textVertex = 10,
     textFragment = 11,
     skyboxVertex = 12,
-    skyboxFragment = 13
+    skyboxFragment = 13,
+    crossVertex = 14,
+    crossFragment = 15
 } eShader;
 #endif //DOOM_QUAKE_ESHADER_H

@@ -6,6 +6,7 @@
 #include "Model/Plane/PlaneModel.h"
 
 
+
 Engine::Engine()
 {
 
@@ -16,11 +17,13 @@ Engine::Engine()
     game = Game();
 
 
-    shaders = std::vector<std::unique_ptr<Shader>>(3);
+    shaders = std::vector<std::unique_ptr<Shader>>(4);
 //    shaders[0] = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
     shaders[0] = std::make_unique<Shader>((currentDir + shaderPaths[doubleTextureColorVertex]).c_str(),(currentDir + shaderPaths[doubleTextureColorFragment]).c_str());
     shaders[1] = std::make_unique<Shader>((currentDir + shaderPaths[modelLoadingVertex]).c_str(),(currentDir + shaderPaths[modelLoadingFragment]).c_str());
     shaders[2] = std::make_unique<Shader>((currentDir + shaderPaths[defaultVertex]).c_str(),(currentDir + shaderPaths[defaultFragment]).c_str());
+    shaders[3] = std::make_unique<Shader>((currentDir + shaderPaths[crossVertex]).c_str(),(currentDir + shaderPaths[crossFragment]).c_str());
+
 
     //  Model shader (assimp)
     //meshModelShader = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
@@ -49,14 +52,14 @@ Engine::Engine()
 
     models = std::vector<std::unique_ptr<BaseModel>>();
 
-    models.push_back(std::make_unique<Model>("model-files/backpack/backpack.obj",glm::vec3(0.0f, 2.0f, -8.0f),MODEL_LOADER_SHADER));
-    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, -5.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 5.0f,  5.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+//    models.push_back(std::make_unique<Model>("model-files/backpack/backpack.obj",glm::vec3(0.0f, 2.0f, -8.0f),MODEL_LOADER_SHADER));
+//    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+//    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, -5.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+//    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 5.0f,  5.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 
     models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DEFAULT));
 
-
+    models.push_back(std::make_unique<CrossModel>(CROSS));
 
 
 //    skyboxShader = std::make_unique<Shader>((currentDir + "/shader-files/skybox.vs").c_str(), (currentDir  + "/shader-files/skybox.fs").c_str());
@@ -90,9 +93,20 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
     deltaTime = currentFrame - lastFrame;
     lastFrame = currentFrame;
 
-
-
     this->keyHandler(window);
+
+    if(activeShoot){
+        fpsTime += deltaTime;
+    }
+    if(fpsTime >= 0.1){
+        fpsTime = 0;
+        frameSetPoint = frames;
+        frames = 0;
+        realeaseShoot = true;
+        activeShoot = false;
+    } else{
+        frames ++;
+    }
 
     glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -105,7 +119,21 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
 
     for(std::unique_ptr<BaseModel>& c : this->models){
         shaders[c->getShaderType()]->use();
+        if(executeShoot)
+            c->shoot();
+        if(realeaseShoot)
+            c->resetShoot();
         c->draw(shaders[c->getShaderType()].get());
+    }
+
+    if(executeShoot){
+        std::cout<< "shoot" << std::endl;
+        executeShoot = false;
+        activeShoot = true;
+    }
+    if(realeaseShoot){
+        std::cout<< "release shoot" << std::endl;
+        realeaseShoot = false;
     }
 
 //    tessHeightMapShader->use();
@@ -113,14 +141,6 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
 //
 //    terrain->draw(tessHeightMapShader.get());
 
-//    fpsTime += deltaTime;
-//    if(fpsTime >= 1){
-//        fpsTime = fpsTime - 1;
-//        frameSetPoint = frames;
-//        frames = 0;
-//    } else{
-//        frames ++;
-//    }
 
 //    textShader->use();
 //    std::string fps = std::to_string(frameSetPoint) + std::string(" FPS");
@@ -211,6 +231,11 @@ void Engine::keyHandler(GLFWwindow *window) {
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
         std::cout << "D pressed" << std::endl;
         camera->ProcessKeyboard(RIGHT, deltaTime);
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+        std::cout << "Space pressed" << std::endl;
+        executeShoot = true;
     }
 }
 // glfw: whenever the mouse moves, this callback is called
