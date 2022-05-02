@@ -28,7 +28,7 @@ SceneTwo::SceneTwo(){
 //     models.push_back(std::make_unique<Model>("model-files/backpack/backpack.obj",glm::vec3(4.0f, -0.5f, 10.0f),MODEL_LOADER_SHADER));
 
     // all vertices can be found back in the header file (SceneTwo.h)
-    models.push_back(std::make_unique<PlaneModel>(groundVerticesOne, metalTexture.get(), glm::vec3(0.0f, 0.0f, 0.0f), DEFAULT));
+    models.push_back(std::make_unique<PlaneModel>(groundVerticesOne, grassTexture.get(), glm::vec3(0.0f, 0.0f, 0.0f), DEFAULT));
     // models.push_back(std::make_unique<PlaneModel>(groundVerticesTwo, containerTexture.get(), glm::vec3(0.0f, 0.0f, 0.0f), DEFAULT));
     // models.push_back(std::make_unique<PlaneModel>(wallVerticesOne, concreteTexture.get(), glm::vec3(0.0f, 0.0f, 0.0f), DEFAULT));
     // models.push_back(std::make_unique<PlaneModel>(wallVerticesTwo, concreteTexture.get(), glm::vec3(0.0f, 0.0f, 0.0f), DEFAULT));

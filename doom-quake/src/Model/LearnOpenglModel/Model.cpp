@@ -37,7 +37,7 @@ void Model::draw(Shader *shader)
 
     m = glm::translate(m, position);
 
-    m = glm::scale(m, glm::vec3(0.3f, 0.3f, 0.3f));	// it's a bit too big for our scene, so scale it down
+    m = glm::scale(m, glm::vec3(0.1f, 0.1f, 0.1f));	// it's a bit too big for our scene, so scale it down
 
 
     shader->setMat4("model", m);
