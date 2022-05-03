@@ -150,9 +150,9 @@ void Node::draw(Shader* shader){
             children[i]->draw(shader);
     }
 
-    for(auto m : models){
-        m->draw(shader);
-    }
+//    for(auto m : models){
+//        m->draw(shader);
+//    }
 }
 
 

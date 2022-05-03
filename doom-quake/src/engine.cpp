@@ -55,9 +55,9 @@ Engine::Engine()
 //    models.push_back(std::make_unique<Model>("model-files/backpack/backpack.obj",glm::vec3(0.0f, 2.0f, -8.0f),MODEL_LOADER_SHADER));
 //    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 //    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, -5.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-//    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 5.0f,  5.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-
-//    models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DEFAULT));
+    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -10.0f,  -10.0f, -10.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -12.0f,  -12.0f, -12.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+    //models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DEFAULT));
 
     models.push_back(std::make_unique<CrossModel>(CROSS));
 
@@ -82,14 +82,14 @@ Engine::Engine()
 
     octree = std::make_unique<Octree>(box, 10);
 
-    BoundingBox boxm1 = BoundingBox();
-    boxm1.centre = glm::vec3(0.0,0.0,0.0);
-    boxm1.dimensions = glm::vec3(4.0,4.0,4.0);
-//     boxm1.centre = glm::vec3(10.0,10.0,10.0);
-//     boxm1.dimensions = glm::vec3(20.0,20.0,20.0);
-    BaseModel * m1 = new TestModel(DEFAULT,boxm1);
-
-    octree->addModel(m1);
+//    BoundingBox boxm1 = BoundingBox();
+//    boxm1.centre = glm::vec3(0.0,0.0,0.0);
+//    boxm1.dimensions = glm::vec3(4.0,4.0,4.0);
+////     boxm1.centre = glm::vec3(10.0,10.0,10.0);
+////     boxm1.dimensions = glm::vec3(20.0,20.0,20.0);
+//    BaseModel * m1 = new TestModel(DEFAULT,boxm1);
+//
+//    octree->addModel(m1);
 
 
      BoundingBox boxm2 = BoundingBox();
@@ -107,8 +107,18 @@ Engine::Engine()
     octree->addModel(m3);
 
 
+    BoundingBox boxm4 = BoundingBox();
+    boxm4.centre = glm::vec3(20.0,20.0,20.0);
+    boxm4.dimensions = glm::vec3(4.0,4.0,4.0);
+    BaseModel * m4 = new TestModel(DEFAULT,boxm4);
+
+    octree->addModel(m4);
 
 
+    //model = std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -10.0f,  -10.0f, -10.0f),DOUBLE_TEXTURE_COLOR_SHADER);
+
+    octree->addModel(models[0].get());
+    octree->addModel(models[1].get());
 
 
 //    skyboxShader = std::make_unique<Shader>((currentDir + "/shader-files/skybox.vs").c_str(), (currentDir  + "/shader-files/skybox.fs").c_str());

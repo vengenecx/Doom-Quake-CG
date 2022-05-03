@@ -103,6 +103,40 @@ void Octree::addModel(BaseModel * model) {
 //    }
 //}
 
+//void Octree::addModelRecursive(Node* node, BaseModel * model){
+//    if(node->depthEnd()){
+//        std::cout<< "end" << std::endl;
+//        node->models.push_back(model); // Add model
+//    } else{
+//
+//        if(!node->models.empty()) {
+//            if (!node->hasChildren()) {
+//                generateChildren(node); // generate children
+//            }
+//
+//            // Copy models down
+//            for(auto m : node->models){
+//                std::vector<Octants> octants = node->matchChild(m->getBoundingBox());
+//                for (Octants &oc: octants) {
+//                    addModelRecursive(node->children[static_cast<int>(oc)].get(), m);
+//                }
+//            }
+//            node->models.clear();
+//
+//
+//            //  Add new model
+//
+//            std::vector<Octants> octants = node->matchChild(model->getBoundingBox());
+//            for (Octants &oc: octants) {
+//                addModelRecursive(node->children[static_cast<int>(oc)].get(), model);
+//            }
+//
+//        } else{
+//            node->models.push_back(model);
+//        }
+//    }
+//}
+
 void Octree::addModelRecursive(Node* node, BaseModel * model){
     if(node->depthEnd()){
         std::cout<< "end" << std::endl;
@@ -132,10 +166,18 @@ void Octree::addModelRecursive(Node* node, BaseModel * model){
             }
 
         } else{
-            node->models.push_back(model);
+            if(!node->hasChildren()){
+                node->models.push_back(model);
+            } else{
+                std::vector<Octants> octants = node->matchChild(model->getBoundingBox());
+                for (Octants &oc: octants) {
+                    addModelRecursive(node->children[static_cast<int>(oc)].get(), model);
+                }
+            }
         }
     }
 }
+
 
 void Octree::generateChildren(Node *node) {
     // TODO

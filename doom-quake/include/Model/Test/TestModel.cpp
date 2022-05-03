@@ -87,56 +87,59 @@ public:
 //        this->vertices.push_back(0.0);
 
 
+
+        glm::vec3 col = glm::vec3(0.0,0.0,1.0);
+
         // Upper left to right front
         this->vertices.push_back(bx.centre.x-bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y+bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z-bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         this->vertices.push_back(bx.centre.x+bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y+bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z-bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         // Uper right to bottom front
         this->vertices.push_back(bx.centre.x+bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y+bx.dimensions.y/2); // +y
         this->vertices.push_back(bx.centre.z-bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         this->vertices.push_back(bx.centre.x+bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y-bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z-bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 //
 //        // Bottom right front to left
         this->vertices.push_back(bx.centre.x+bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y-bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z-bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         this->vertices.push_back(bx.centre.x-bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y-bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z-bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         // Bottom left front to up left
 
@@ -144,17 +147,17 @@ public:
         this->vertices.push_back(bx.centre.y-bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z-bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         this->vertices.push_back(bx.centre.x-bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y+bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z-bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
 
     // Added
@@ -162,68 +165,68 @@ public:
         this->vertices.push_back(bx.centre.y+bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z-bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         this->vertices.push_back(bx.centre.x-bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y+bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z+bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
 
         this->vertices.push_back(bx.centre.x+bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y+bx.dimensions.y/2); // +y
         this->vertices.push_back(bx.centre.z-bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         this->vertices.push_back(bx.centre.x+bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y+bx.dimensions.y/2); // +y
         this->vertices.push_back(bx.centre.z+bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
 
         this->vertices.push_back(bx.centre.x+bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y-bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z-bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         this->vertices.push_back(bx.centre.x+bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y-bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z+bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
 
         this->vertices.push_back(bx.centre.x-bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y-bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z-bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         this->vertices.push_back(bx.centre.x-bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y-bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z+bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
 
         // Back
@@ -233,51 +236,51 @@ public:
         this->vertices.push_back(bx.centre.y+bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z+bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         this->vertices.push_back(bx.centre.x+bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y+bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z+bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         // Uper right to bottom front
         this->vertices.push_back(bx.centre.x+bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y+bx.dimensions.y/2); // +y
         this->vertices.push_back(bx.centre.z+bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         this->vertices.push_back(bx.centre.x+bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y-bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z+bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 //
 //        // Bottom right front to left
         this->vertices.push_back(bx.centre.x+bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y-bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z+bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         this->vertices.push_back(bx.centre.x-bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y-bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z+bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         // Bottom left front to up left
 
@@ -285,17 +288,17 @@ public:
         this->vertices.push_back(bx.centre.y-bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z+bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
         this->vertices.push_back(bx.centre.x-bx.dimensions.x/2);
         this->vertices.push_back(bx.centre.y+bx.dimensions.y/2);
         this->vertices.push_back(bx.centre.z+bx.dimensions.z/2);
 
-        this->vertices.push_back(1.0);
-        this->vertices.push_back(0.0);
-        this->vertices.push_back(0.0);
+        this->vertices.push_back(col.x);
+        this->vertices.push_back(col.y);
+        this->vertices.push_back(col.z);
 
 
 
