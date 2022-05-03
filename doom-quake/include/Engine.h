@@ -90,6 +90,9 @@ private:
 
     std::unique_ptr<TextRenderer> textRenderer;
 
+
+    std::unique_ptr<Ray> ray;
+
     // settings
     unsigned int SCR_WIDTH = 800;
     unsigned int SCR_HEIGHT = 800;

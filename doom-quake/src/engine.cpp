@@ -120,6 +120,8 @@ Engine::Engine()
     octree->addModel(models[0].get());
     octree->addModel(models[1].get());
 
+    ray = std::make_unique<Ray>(glm::vec3(0.0,0.0,0.0),glm::vec3(1.0,1.0,1.0));
+
 
 //    skyboxShader = std::make_unique<Shader>((currentDir + "/shader-files/skybox.vs").c_str(), (currentDir  + "/shader-files/skybox.fs").c_str());
 
@@ -197,6 +199,9 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
 
     shaders[LINE]->use();
     octree->draw(shaders[LINE].get());
+
+    shaders[LINE]->use();
+    ray->draw(shaders[LINE].get());
 
 //    tessHeightMapShader->use();
 //    camera->updateCamera(tessHeightMapShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
@@ -298,6 +303,10 @@ void Engine::keyHandler(GLFWwindow *window) {
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
         std::cout << "Space pressed" << std::endl;
         executeShoot = true;
+
+        std::cout << camera->Front.x << " ," <<  camera->Front.y << " ,"   <<  camera->Front.z << std::endl;
+        std::cout << camera->Position.x << " ," <<  camera->Position.y << " ,"   <<  camera->Position.z << std::endl;
+        ray->setRay(camera->Position,camera->Front);
     }
 }
 // glfw: whenever the mouse moves, this callback is called
