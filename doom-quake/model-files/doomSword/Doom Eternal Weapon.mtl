@@ -10,6 +10,10 @@ Ke 0.0 0.0 0.0
 Ni 1.000000
 d 1.000000
 illum 2
+map_Kd diffuse.jpg
+map_Bump normal.png
+map_Ks specular.jpg
+
 
 newmtl Material.002
 Ns 225.000000
@@ -20,6 +24,9 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 2
+map_Kd diffuse.jpg
+map_Bump normal.png
+map_Ks specular.jpg
 
 newmtl Material.003
 Ns 225.000000
@@ -30,6 +37,9 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 2
+map_Kd diffuse.jpg
+map_Bump normal.png
+map_Ks specular.jpg
 
 newmtl Material.004
 Ns 225.000000
@@ -40,6 +50,9 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 2
+map_Kd diffuse.jpg
+map_Bump normal.png
+map_Ks specular.jpg
 
 newmtl Material.005
 Ns 225.000000
@@ -50,6 +63,9 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 2
+map_Kd diffuse.jpg
+map_Bump normal.png
+map_Ks specular.jpg
 
 newmtl Material.006
 Ns 323.999994
@@ -60,6 +76,10 @@ Ke 0.0 0.0 0.0
 Ni 1.000000
 d 1.000000
 illum 2
+map_Kd diffuse.jpg
+map_Bump normal.png
+map_Ks specular.jpg
+
 
 newmtl Material.007
 Ns 323.999994
@@ -70,6 +90,9 @@ Ke 0.0 0.0 0.0
 Ni 1.000000
 d 1.000000
 illum 2
+map_Kd diffuse.jpg
+map_Bump normal.png
+map_Ks specular.jpg
 
 newmtl Material.008
 Ns 323.999994
@@ -80,6 +103,9 @@ Ke 0.0 0.0 0.0
 Ni 1.000000
 d 1.000000
 illum 2
+map_Kd diffuse.jpg
+map_Bump normal.png
+map_Ks specular.jpg
 
 newmtl aasd
 Ns 323.999994
@@ -90,3 +116,6 @@ Ke 0.0 0.0 0.0
 Ni 1.000000
 d 1.000000
 illum 2
+map_Kd diffuse.jpg
+map_Bump normal.png
+map_Ks specular.jpg

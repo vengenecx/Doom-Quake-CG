@@ -18,7 +18,7 @@ Model::~Model(){
     boundingBox.release();
 }
 
-void Model::remove() {
+void Model::remove(){
     for(auto& m : meshes){
         m.remove();
     }
@@ -234,6 +234,5 @@ unsigned int Model::textureFromFile(const char *path, const std::string &directo
         std::cout << "Texture failed to load at path: " << path << std::endl;
         stbi_image_free(data);
     }
-
     return textureID;
 }

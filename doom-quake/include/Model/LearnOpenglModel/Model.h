@@ -11,7 +11,6 @@
 #include "assimp/postprocess.h"
 #include "stb_image.h"
 
-
 #include "Octree/BoundingBox.h"
 #include "Model/BaseModel.h"
 
@@ -20,7 +19,6 @@ public:
     // constructor, expects a filepath to a 3D model.
     Model(std::string const &path, glm::vec3 position, glm::vec3 sizeOfScaling, ShaderType type, bool gamma = false);
     ~Model();
-
 
     void draw(Shader *shader);
     void remove();
