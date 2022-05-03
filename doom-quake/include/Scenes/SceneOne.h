@@ -38,6 +38,7 @@ class SceneOne{
         std::unique_ptr<Texture> metalTexture;
         std::unique_ptr<Texture> concreteTexture;
         std::unique_ptr<Texture> bulletHoleTexture;
+        std::unique_ptr<Texture> woodFLoorTexture;
 
 
         std::string currentDir = (fs::current_path()).string();
@@ -124,8 +125,6 @@ class SceneOne{
                 3.0f, 2.0f, 6.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
                 3.0f,  2.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
-
-
 
 };
 

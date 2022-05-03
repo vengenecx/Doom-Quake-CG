@@ -35,6 +35,9 @@ class SceneTwo{
         std::unique_ptr<Texture> metalTexture;
         std::unique_ptr<Texture> concreteTexture;
         std::unique_ptr<Texture> bulletHoleTexture;
+        std::unique_ptr<Texture> woodFLoorTexture;
+        std::unique_ptr<Texture> doorWallTexture;
+
 
         std::string currentDir = (fs::current_path()).string();
 
@@ -51,77 +54,142 @@ class SceneTwo{
 
         std::vector<float> groundVerticesTwo{
                 // positions          // colors           // texture coords
-                10.0f,  -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-                10.0f, -1.0f, 6.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
-                3.0f, -1.0f, 6.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-                3.0f,  -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+                0.0f,  -1.0f, 2.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                0.0f, -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                -3.0f, -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                -3.0f,  -1.0f, 2.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+        };
+
+        std::vector<float> groundVerticesThree{
+                // positions          // colors           // texture coords
+                -3.0f,  -1.0f, 9.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                -3.0f, -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                -5.0f, -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                -5.0f,  -1.0f, 9.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+        };
+
+        std::vector<float> groundVerticesFour{
+                // positions          // colors           // texture coords
+                0.0f,  -1.0f, 9.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                0.0f, -1.0f, 7.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                -3.0f, -1.0f, 7.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                -3.0f,  -1.0f, 9.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
 
         std::vector<float> wallVerticesOne{
                 // positions          // colors           // texture coords
-                3.0f,  -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-                3.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
-                0.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-                0.0f,  -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+                5.0f,  -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                5.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                5.0f, 2.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                5.0f,  -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
 
         std::vector<float> wallVerticesTwo{
                 // positions          // colors           // texture coords
-                0.0f,  -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-                0.0f, -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
-                0.0f, 2.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-                0.0f,  2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+                5.0f,  -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                5.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                -5.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                -5.0f,  -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
 
         std::vector<float> wallVerticesThree{
                 // positions          // colors           // texture coords
-                0.0f,  -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-                10.0f, -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
-                10.0f, 2.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-                0.0f,  2.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+                -5.0f,  -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                -5.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                -5.0f, 2.0f, 9.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                -5.0f,  -1.0f, 9.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
 
         std::vector<float> wallVerticesFour{
                 // positions          // colors           // texture coords
-                10.0f,  -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-                10.0f, -1.0f, 6.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
-                10.0f, 2.0f, 6.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-                10.0f,  2.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+                -5.0f,  -1.0f, 9.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                -5.0f, 2.0f, 9.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                0.0f, 2.0f, 9.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                0.0f,  -1.0f, 9.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
 
         std::vector<float> wallVerticesFive{
                 // positions          // colors           // texture coords
-                10.0f,  -1.0f, 6.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-                3.0f, -1.0f, 6.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
-                3.0f, 2.0f, 6.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-                10.0f,  2.0f, 6.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+                0.0f,  -1.0f, 9.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                0.0f, 2.0f, 9.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                0.0f, 2.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                0.0f,  -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
+
 
         std::vector<float> wallVerticesSix{
                 // positions          // colors           // texture coords
-                3.0f,  -1.0f, 6.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-                3.0f, -1.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
-                3.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-                3.0f,  2.0f, 6.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+                0.0f,  2.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                0.0f, -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                5.0f, -1.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                5.0f,  2.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
+
+        std::vector<float> wallVerticesSeven{
+                // positions          // colors           // texture coords
+                0.0f,  2.0f, 2.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                0.0f, -1.0f, 2.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                0.0f, -1.0f, 7.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                0.0f,  2.0f, 7.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+        };
+
+        std::vector<float> wallVerticesEight{
+                // positions          // colors           // texture coords
+                0.0f,  2.0f, 2.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                0.0f, -1.0f, 2.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                -3.0f, -1.0f, 2.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                -3.0f,  2.0f, 2.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+        };
+
+        std::vector<float> wallVerticesNine{
+                // positions          // colors           // texture coords
+                -3.0f,  2.0f, 2.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                -3.0f, -1.0f, 2.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                -3.0f, -1.0f, 7.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                -3.0f,  2.0f, 7.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+        };
+
+        std::vector<float> wallVerticesTen{
+                // positions          // colors           // texture coords
+                0.0f,  2.0f, 7.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                0.0f, -1.0f, 7.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                -3.0f, -1.0f, 7.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                -3.0f,  2.0f, 7.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+        };
+
+
 
         std::vector<float> roofVerticesOne{
                 // positions          // colors           // texture coords
-                3.0f,  2.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-                3.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                5.0f,  2.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                5.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
                 0.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
                 0.0f,  2.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
 
         std::vector<float> roofVerticesTwo{
                 // positions          // colors           // texture coords
-                10.0f,  2.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-                10.0f, 2.0f, 6.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
-                3.0f, 2.0f, 6.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-                3.0f,  2.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+                0.0f,  2.0f, 2.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                0.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                -3.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                -3.0f,  2.0f, 2.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
 
+        std::vector<float> roofVerticesThree{
+                // positions          // colors           // texture coords
+                -3.0f,  2.0f, 9.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                -3.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                -5.0f, 2.0f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                -5.0f,  2.0f, 9.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+        };
 
+        std::vector<float> roofVerticesFour{
+                // positions          // colors           // texture coords
+                0.0f,  2.0f, 9.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                0.0f, 2.0f, 7.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                -3.0f, 2.0f, 7.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                -3.0f,  2.0f, 9.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+        };
 
 };
 

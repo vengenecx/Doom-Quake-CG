@@ -3,16 +3,19 @@
 // default constructor
 SceneOne::SceneOne(){
 
+    // 8-bit/color RGB gives least issues!
     std::string stoneImg = (currentDir + "/model-files/grass/stone.png");
     std::string grassImg = (currentDir + "/model-files/grass/grass_lennert.png");
     std::string awsomeFaceImg = (currentDir + "/model-files/cube/awesomeface.png");
     std::string containerImg = (currentDir + "/model-files/cube/container.jpg");
     std::string metalImg = (currentDir + "/model-files/grass/metal.png");
     std::string concreteImg = (currentDir + "/model-files/grass/concrete_image.png");
-    std::string bulletHoleImage = (currentDir + "model-files/grass/bulletHole.png");
+    std::string bulletHoleImage = (currentDir + "/model-files/grass/bulletHole.png");
+    std::string woodFloorImage = (currentDir + "/model-files/grass/woodFloorOne.png");
+    
+    std::cout << "path: " << currentDir + "/model-files/grass/woodFloorOne.png" << std::endl;
 
-    std::cout << "path: " << currentDir + "/model-files/grass/ground.png" << std::endl;
-
+    this->woodFLoorTexture = std::make_unique<Texture>(woodFloorImage.c_str(),GL_TEXTURE_2D,6,GL_RGB,GL_UNSIGNED_BYTE);
     this->concreteTexture = std::make_unique<Texture>(concreteImg.c_str(),GL_TEXTURE_2D,5,GL_RGB,GL_UNSIGNED_BYTE);
     this->metalTexture = std::make_unique<Texture>(metalImg.c_str(),GL_TEXTURE_2D,4,GL_RGB,GL_UNSIGNED_BYTE);
     this->containerTexture = std::make_unique<Texture>(containerImg.c_str(),GL_TEXTURE_2D,0,GL_RGB,GL_UNSIGNED_BYTE);

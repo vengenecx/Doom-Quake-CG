@@ -103,7 +103,7 @@ private:
     //==============================================
     // std::unique_ptr<SceneOne> sceneone;
     // std::unique_ptr<SceneTwo> scenetwo;
-    std::unique_ptr<SceneOne> currentScene;
+    std::unique_ptr<SceneTwo> currentScene;
 
 
 
