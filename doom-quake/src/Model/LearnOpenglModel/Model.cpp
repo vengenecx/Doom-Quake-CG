@@ -8,7 +8,7 @@
 #include"Model/LearnOpenglModel/Model.h"
 
 
-Model::Model(std::string const &path, glm::vec3 position, ShaderType type, bool gamma) : BaseModel(type), position(position),gammaCorrection(gamma)
+Model::Model(std::string const &path, glm::vec3 position, glm::vec3 sizeOfScaling, ShaderType type, bool gamma) : BaseModel(type), position(position), sizeOfScaling(sizeOfScaling), gammaCorrection(gamma)
 {
     loadModel(path);
 }
@@ -37,8 +37,7 @@ void Model::draw(Shader *shader)
 
     m = glm::translate(m, position);
 
-    m = glm::scale(m, glm::vec3(0.1f, 0.1f, 0.1f));	// it's a bit too big for our scene, so scale it down
-
+    m = glm::scale(m, sizeOfScaling);	// it's a bit too big for our scene, so scale it down
 
     shader->setMat4("model", m);
 

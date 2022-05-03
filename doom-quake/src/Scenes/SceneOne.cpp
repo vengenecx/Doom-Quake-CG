@@ -24,8 +24,8 @@ SceneOne::SceneOne(){
     this->grassTexture = std::make_unique<Texture>(grassImg.c_str(),GL_TEXTURE_2D,3,GL_RGB,GL_UNSIGNED_BYTE);
 
     models = std::vector<std::unique_ptr<BaseModel>>();
-
-    models.push_back(std::make_unique<Model>("model-files/Humvee_models/Humvee.obj",glm::vec3(2.0f, 0.5f, 5.0f),MODEL_LOADER_SHADER));
+    
+    models.push_back(std::make_unique<Model>("model-files/Humvee_models/Humvee.obj",glm::vec3(2.0f, 0.5f, 5.0f),glm::vec3(0.1f, 0.1f, 0.1f),MODEL_LOADER_SHADER));
     models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3(0.5f,  -0.5f, 9.5f),DOUBLE_TEXTURE_COLOR_SHADER));
     models.push_back(std::make_unique<CubeModel>(concreteTexture.get(),concreteTexture.get(), glm::vec3(2.0f,  -0.5f, 3.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 //     models.push_back(std::make_unique<Model>("model-files/backpack/backpack.obj",glm::vec3(4.0f, -0.5f, 10.0f),MODEL_LOADER_SHADER));

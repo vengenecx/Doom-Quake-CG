@@ -18,7 +18,7 @@
 class Model : public BaseModel{
 public:
     // constructor, expects a filepath to a 3D model.
-    Model(std::string const &path, glm::vec3 position, ShaderType type, bool gamma = false);
+    Model(std::string const &path, glm::vec3 position, glm::vec3 sizeOfScaling, ShaderType type, bool gamma = false);
     ~Model();
 
 
@@ -36,6 +36,7 @@ private:
     bool gammaCorrection;
 
     glm::vec3 position;
+    glm::vec3 sizeOfScaling;
 
 
     // TODO
