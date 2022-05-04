@@ -22,7 +22,7 @@
 
 // added to make scenes!
 #include "Scenes/SceneOne.h"
-#include "Scenes/SceneTwo.h"
+#include "Scenes/SceneBig.h"
 
 
 #include<filesystem>
@@ -103,7 +103,7 @@ private:
     //==============================================
     // std::unique_ptr<SceneOne> sceneone;
     // std::unique_ptr<SceneTwo> scenetwo;
-    std::unique_ptr<SceneTwo> currentScene;
+    std::unique_ptr<SceneBig> currentScene;
 
 
 

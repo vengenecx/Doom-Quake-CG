@@ -13,7 +13,7 @@ Engine::Engine(){
 
     std::cout << currentDir << std::endl;
 
-    currentScene = std::make_unique<SceneTwo>(); //  also change the scene in engine.h
+    currentScene = std::make_unique<SceneBig>(); //  also change the scene in engine.h
 
     shaders = std::vector<std::unique_ptr<Shader>>(3);
 
