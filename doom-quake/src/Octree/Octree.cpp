@@ -205,7 +205,7 @@ void Octree::generateChildren(Node *node) {
                                       node->boundingBox.centre.z+zDimensionHalve);
     backUpperLeft.dimensions = glm::vec3(xDimension,yDimension,zDimension);
 
-    node->children[static_cast<int>(Octants::BACKUPLEFT)] = std::make_unique<Node>(backUpperLeft,depth);
+    node->children[static_cast<int>(Octants::BACKUPLEFT)] = std::make_unique<Node>(backUpperLeft,depth-1);
 
     BoundingBox backUpperRight = BoundingBox();
     backUpperRight.centre = glm::vec3(node->boundingBox.centre.x+xDimensionHalve,
@@ -213,7 +213,7 @@ void Octree::generateChildren(Node *node) {
                                        node->boundingBox.centre.z+zDimensionHalve);
     backUpperRight.dimensions = glm::vec3(xDimension,yDimension,zDimension);
 
-    node->children[static_cast<int>(Octants::BACKUPRIGHT)] = std::make_unique<Node>(backUpperRight,depth);
+    node->children[static_cast<int>(Octants::BACKUPRIGHT)] = std::make_unique<Node>(backUpperRight,depth-1);
 
     BoundingBox backBottomRight = BoundingBox();
     backBottomRight.centre = glm::vec3(node->boundingBox.centre.x+xDimensionHalve,
@@ -221,7 +221,7 @@ void Octree::generateChildren(Node *node) {
                                         node->boundingBox.centre.z+zDimensionHalve);
     backBottomRight.dimensions = glm::vec3(xDimension,yDimension,zDimension);
 
-    node->children[static_cast<int>(Octants::BACKBOTTOMRIGHT)] = std::make_unique<Node>(backBottomRight,depth);
+    node->children[static_cast<int>(Octants::BACKBOTTOMRIGHT)] = std::make_unique<Node>(backBottomRight,depth-1);
 
     BoundingBox backBottomLeft = BoundingBox();
     backBottomLeft.centre = glm::vec3(node->boundingBox.centre.x-xDimensionHalve,
@@ -229,7 +229,7 @@ void Octree::generateChildren(Node *node) {
                                        node->boundingBox.centre.z+zDimensionHalve);
     backBottomLeft.dimensions = glm::vec3(xDimension,yDimension,zDimension);
 
-    node->children[static_cast<int>(Octants::BACKBOTTOMLEFT)] = std::make_unique<Node>(backBottomLeft,depth);
+    node->children[static_cast<int>(Octants::BACKBOTTOMLEFT)] = std::make_unique<Node>(backBottomLeft,depth-1);
 }
 
 

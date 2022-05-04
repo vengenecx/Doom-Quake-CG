@@ -62,7 +62,9 @@ Engine::Engine()
 //    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, -5.0f),DOUBLE_TEXTURE_COLOR_SHADER));
     models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -10.0f,  -10.0f, -10.0f),DOUBLE_TEXTURE_COLOR_SHADER));
     models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -12.0f,  -12.0f, -12.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-    //models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DEFAULT));
+
+
+    models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( -10.0f,  -10.0f, 0.0f),DEFAULT));
 
     models.push_back(std::make_unique<CrossModel>(CROSS));
 
@@ -124,6 +126,7 @@ Engine::Engine()
 
     octree->addModel(models[0].get());
     octree->addModel(models[1].get());
+    octree->addModel(models[2].get());
 
     ray = std::make_unique<Ray>(glm::vec3(0.0,0.0,0.0),glm::vec3(1.0,1.0,1.0));
 
