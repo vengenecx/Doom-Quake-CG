@@ -84,7 +84,7 @@ private:
     std::unique_ptr<Terrain> terrain;
 
 
-    // std::vector<std::unique_ptr<BaseModel>> models;
+     std::vector<std::unique_ptr<BaseModel>> models;
     
     
     
@@ -151,6 +151,8 @@ private:
 
 
     bool showOctree= false;
+
+    bool lennert = false;
 
 };
 #endif //DOOM_QUAKE_ENGINE_H

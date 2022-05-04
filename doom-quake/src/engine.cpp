@@ -15,9 +15,9 @@ Engine::Engine()
     std::cout << currentDir << std::endl;
 
 
-    currentScene = std::make_unique<SceneOne>(); //  also change the scene in engine.h
-
-
+    if(!lennert){
+        currentScene = std::make_unique<SceneOne>();
+    }
 
     game = Game();
 
@@ -201,8 +201,9 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
     glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    for(auto &s : shaders){
-        s->use();
+    if(lennert){
+        for(auto &s : shaders){
+            s->use();
 // <<<<<<< HEAD
 //         camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
 
@@ -226,44 +227,44 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
 //         frames ++;
 // =======
 //        camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-        camera->updateCamera(s.get(),(float )width,(float ) height);
-    }
+            camera->updateCamera(s.get(),(float )width,(float ) height);
+        }
 
-    for(std::unique_ptr<BaseModel>& c : this->models){
-        shaders[c->getShaderType()]->use();
-        if(executeShoot)
-            c->shoot();
-        if(realeaseShoot)
-            c->resetShoot();
-        c->draw(shaders[c->getShaderType()].get());
-    }
+        for(std::unique_ptr<BaseModel>& c : this->models){
+            shaders[c->getShaderType()]->use();
+            if(executeShoot)
+                c->shoot();
+            if(realeaseShoot)
+                c->resetShoot();
+            c->draw(shaders[c->getShaderType()].get());
+        }
 
-    if(executeShoot){
-        std::cout<< "shoot" << std::endl;
-        executeShoot = false;
-        activeShoot = true;
-    }
-    if(realeaseShoot){
-        std::cout<< "release shoot" << std::endl;
-        realeaseShoot = false;
-    }
+        if(executeShoot){
+            std::cout<< "shoot" << std::endl;
+            executeShoot = false;
+            activeShoot = true;
+        }
+        if(realeaseShoot){
+            std::cout<< "release shoot" << std::endl;
+            realeaseShoot = false;
+        }
 
-    if(showOctree){
-        shaders[LINE]->use();
-        octree->draw(shaders[LINE].get());
-    }
+        if(showOctree){
+            shaders[LINE]->use();
+            octree->draw(shaders[LINE].get());
+        }
 
 //    shaders[LINE]->use();
 //    ray->draw(shaders[LINE].get());
 
-    while(hitPoints.size() >= 30){
-        hitPoints.erase(hitPoints.begin());
-    }
+        while(hitPoints.size() >= 30){
+            hitPoints.erase(hitPoints.begin());
+        }
 
-    shaders[DEFAULT]->use();
-    for(auto& hp: hitPoints){
-        hp->draw(shaders[DEFAULT].get(), potholeTexture.get());
-    }
+        shaders[DEFAULT]->use();
+        for(auto& hp: hitPoints){
+            hp->draw(shaders[DEFAULT].get(), potholeTexture.get());
+        }
 
 //    tessHeightMapShader->use();
 //    camera->updateCamera(tessHeightMapShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
@@ -280,6 +281,14 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
 //    skyboxShader->use();
 //    camera->updateCamera(skyboxShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
 //    skybox->draw(skyboxShader.get());
+
+    } else{
+        for(auto &s : shaders){
+            s->use();
+            camera->updateCamera(s.get(),(float )width,(float ) height);
+        }
+        currentScene->draw(shaders);
+    }
 
     if(game.changed()){
         std::cout<< "state changed" << std::endl;

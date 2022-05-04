@@ -5,6 +5,49 @@
 #include "Model/Plane/PlaneModel.h"
 
 
+
+PlaneModel::PlaneModel(Texture * texture, glm::vec3 pos, ShaderType type) : BaseModel(type){
+    this->vao = std::make_unique<VAO>();
+    this->vao->bind();
+
+
+     this->vertices = std::vector<float> {
+ //            // positions          // colors           // texture coords
+             10.0f,  0.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+             10.0f, 0.0f, -10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+             -10.0f, 0.0f, -10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+             -10.0f,  0.0f, 10.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+     };
+
+    this->indices = std::vector<GLuint>
+            {
+                    0, 1, 3, // first triangle
+                    1, 2, 3  // second triangle
+            };
+
+    this->vbo = std::make_unique<VBO>(vertices,vertices.size());
+    this->ebo = std::make_unique<EBO>(indices,indices.size());
+
+    vao->linkAttrib(vbo.get(), 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
+    vao->linkAttrib(vbo.get(), 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    vao->linkAttrib(vbo.get(), 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    //vao.linkAttrib(vbo, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+
+    // Unbind all to prevent accidentally modifying them
+    vao->unbind();
+    vbo->unbind();
+    ebo->unbind();
+
+
+    this->texture = texture;
+
+    this->position = pos;
+
+    this->bb = BoundingBox();
+    this->bb.centre = pos;
+    this->bb.dimensions  =  glm::vec3(20,0.1,20);
+}
+
 PlaneModel::PlaneModel(std::vector<float> vertices,  Texture * texture, glm::vec3 pos, ShaderType type) : BaseModel(type){
     this->vao = std::make_unique<VAO>();
     this->vao->bind();
@@ -42,9 +85,9 @@ PlaneModel::PlaneModel(std::vector<float> vertices,  Texture * texture, glm::vec
 
     this->position = pos;
 
-    this->bb = BoundingBox();
-    this->bb.centre = pos;
-    this->bb.dimensions  =  glm::vec3(20,0.1,20);
+//    this->bb = BoundingBox();
+//    this->bb.centre = pos;
+//    this->bb.dimensions  =  glm::vec3(20,0.1,20);
 }
 
 
