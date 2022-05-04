@@ -128,5 +128,9 @@ private:
     bool executeShoot= false;
     bool activeShoot = false;
     bool realeaseShoot = false;
+
+
+
+    bool showOctree= false;
 };
 #endif //DOOM_QUAKE_ENGINE_H

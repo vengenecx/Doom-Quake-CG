@@ -10,35 +10,6 @@ Octree::Octree(BoundingBox& boundingBox, int depth) {
 
 void Octree::addModel(BaseModel * model) {
     //TODO
-//    Node * node = this->root.get();
-//    int child= 0;
-//
-//    while(node){
-//        if(!node->isLeaf()){ // Node has no children
-//            if(!node->models.empty()){ // Node contains models
-//
-//                // Create children
-//                generateChildren(node);
-//
-//                // Push current models to node
-//                assignModelsToChildren(node,node->models);
-//                node->models.clear();  // Clear models
-//
-//                // Push new model to all children
-//                assignModelToChildren(node, model);
-//
-//                child = 0;
-//
-//            } else{
-//                node->model = model;
-//            }
-//
-//        } else{ // Node has children
-//
-//
-//
-//        }
-//    }
     Node * node = this->root.get();
     this->addModelRecursive(node,model);
 }
@@ -262,19 +233,10 @@ void Octree::generateChildren(Node *node) {
 }
 
 
-bool Octree::query(Ray &ray) {
-    //TODO
-
-
-    return false;
-}
 
 void Octree::shoot(Ray& ray, std::vector<std::unique_ptr<Hit>> & hitPoints){
 
     Node * node = root.get();
-
-//    std::vector<std::unique_ptr<Hit>> hitPoints = std::vector<std::unique_ptr<Hit>>();
-
     bool res = searchRecursive(node,ray,hitPoints);
 }
 
@@ -334,14 +296,7 @@ bool Octree::intersect(BoundingBox& bb1, Ray& ray){
     if (!clipLine(2, bb1, v0, v1, f_low, f_high))
         return false;
 
-//    // The formula for I: http://youtu.be/USjbg5QXk3g?t=6m24s
-//    Vector b = v1 - v0;
-//    vecIntersection = v0 + b * f_low;
-//
-//    flFraction = f_low;
-
     return true;
-
 }
 
 bool Octree::intersect(BoundingBox& bb1, Ray& ray, glm::vec3 & vecIntersection, float & flFraction){
@@ -410,17 +365,6 @@ bool Octree::clipLine(int d, BoundingBox& bb,const glm::vec3& v0, const glm::vec
         return false;
 
     return true;
-}
-
-bool Octree::containsBoundaries(Node * node, BoundingBox* boundingBox){
-    return true;
-}
-
-
-std::unique_ptr<NodeCluster> Octree::query(BoundingBox& b){
-    //TODO
-    std::unique_ptr<NodeCluster> n = std::make_unique<NodeCluster>();
-    return move(n);
 }
 
 void Octree::draw(Shader* shader) {

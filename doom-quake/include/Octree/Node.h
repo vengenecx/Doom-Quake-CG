@@ -50,6 +50,8 @@ private:
 
     void fillVertices(BoundingBox bx);
 
+    bool drawState;
+
     std::unique_ptr<VAO> vao;
     std::unique_ptr<VBO> vbo;
     std::unique_ptr<EBO> ebo;

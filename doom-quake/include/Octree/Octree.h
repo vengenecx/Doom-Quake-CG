@@ -18,14 +18,7 @@ public:
     void addModel(BaseModel* model);
 
 
-    bool query(Ray & ray);
-
-    std::unique_ptr<NodeCluster> query(BoundingBox& b);
-
     void shoot(Ray& ray, std::vector<std::unique_ptr<Hit>> & hitPoints);
-
-    bool searchRecursive(Node* node, Ray& ray, std::vector<std::unique_ptr<Hit>>& hitPoints);
-
 
     void draw(Shader* shader);
 
@@ -34,9 +27,10 @@ public:
 private:
     std::unique_ptr<Node> root;
 
-    bool containsBoundaries(Node * node, BoundingBox* boundingBox);
+
     void generateChildren(Node* node);
-    void assignCurrentModelToChildren(Node* node);
+
+    bool searchRecursive(Node* node, Ray& ray, std::vector<std::unique_ptr<Hit>>& hitPoints);
 
 
     bool intersect(BoundingBox& b1, Ray& ray);

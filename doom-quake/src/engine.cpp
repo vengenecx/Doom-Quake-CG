@@ -35,7 +35,9 @@ Engine::Engine()
     //model = std::make_unique<Model>("model-files/Humvee_models/Humvee.obj");
 
 
-    camera = std::make_unique<Camera>(false,glm::vec3(60.0f, 60.0f, -60.0f));
+//    camera = std::make_unique<Camera>(false,glm::vec3(60.0f, 60.0f, -60.0f));
+
+    camera = std::make_unique<Camera>(false,glm::vec3(0.0f, 0.0f, 0.0f));
 
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
@@ -205,8 +207,10 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
         realeaseShoot = false;
     }
 
-    shaders[LINE]->use();
-    octree->draw(shaders[LINE].get());
+    if(showOctree){
+        shaders[LINE]->use();
+        octree->draw(shaders[LINE].get());
+    }
 
 //    shaders[LINE]->use();
 //    ray->draw(shaders[LINE].get());
@@ -280,7 +284,7 @@ void Engine::drawControls(GLFWwindow *window) {
         game.setStateRoomE();
 
     ImGui::NewLine();
-    ImGui::Text("counter = %d", counter);
+    ImGui::Checkbox("Octree", &showOctree);
 
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
     ImGui::End();

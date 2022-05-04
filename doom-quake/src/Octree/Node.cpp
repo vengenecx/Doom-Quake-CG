@@ -4,7 +4,7 @@
 
 #include "Octree/Node.h"
 
-Node::Node(BoundingBox bb, int depth, bool draw) : depth(depth), boundingBox(bb){
+Node::Node(BoundingBox bb, int depth, bool draw) : depth(depth), boundingBox(bb), drawState(draw){
     //TODO
     for(int i=0; i<8;i++){
         children[i] = NULL;
@@ -130,29 +130,28 @@ int Node::getDepth() {
 
 
 void Node::draw(Shader* shader){
-    shader->use();
 
-    glm::mat4 m = glm::mat4(1.0f);
-    m = glm::translate(m, position); // translate it down so it's at the center of the scene
-    shader->setMat4("model", m);
+    if(drawState){
+        shader->use();
+
+        glm::mat4 m = glm::mat4(1.0f);
+        m = glm::translate(m, position); // translate it down so it's at the center of the scene
+        shader->setMat4("model", m);
 
 
-    this->vao->bind();
-    this->ebo->bind();
+        this->vao->bind();
+        this->ebo->bind();
 
-    glDrawElements(GL_LINES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_LINES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
 
-    this->vao->unbind();
-    this->ebo->unbind();
+        this->vao->unbind();
+        this->ebo->unbind();
 
-    for(int i=0;  i<8; i++){
-        if(children[i] != NULL)
-            children[i]->draw(shader);
+        for(int i=0;  i<8; i++){
+            if(children[i] != NULL)
+                children[i]->draw(shader);
+        }
     }
-
-//    for(auto m : models){
-//        m->draw(shader);
-//    }
 }
 
 
