@@ -40,14 +40,17 @@ Engine::Engine()
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
 
-//    std::string img_1 = (currentDir + "/model-files/cube/container.jpg");
+    std::string img_1 = (currentDir + "/model-files/cube/container.jpg");
 //    std::string img_1 = (currentDir + "/model-files/grass/grass.jpeg");
 
-    std::string img_1 = (currentDir + "/model-files/grass/stone.png");
+    //std::string img_1 = (currentDir + "/model-files/grass/stone.png");
     std::string img_2 = (currentDir + "/model-files/cube/awesomeface.png");
 
-    this->containerTexture = std::make_unique<Texture>(img_1.c_str(),GL_TEXTURE_2D,0,GL_RGBA,GL_UNSIGNED_BYTE);
+    std::string img_3 = (currentDir + "/model-files/pothole/pothole.png");
+
+    this->containerTexture = std::make_unique<Texture>(img_1.c_str(),GL_TEXTURE_2D,0,GL_RGB,GL_UNSIGNED_BYTE);
     this->awesomeTexture = std::make_unique<Texture>(img_2.c_str(),GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
+    this->potholeTexture = std::make_unique<Texture>(img_3.c_str(),GL_TEXTURE_2D,2,GL_RGBA,GL_UNSIGNED_BYTE);
 
 
     models = std::vector<std::unique_ptr<BaseModel>>();
@@ -145,6 +148,11 @@ Engine::Engine()
     textShader = std::make_unique<Shader>((currentDir + shaderPaths[textVertex]).c_str(),(currentDir + shaderPaths[textFragment]).c_str());
     textRenderer = std::make_unique<TextRenderer>(SCR_WIDTH,SCR_HEIGHT);
 
+
+    // Hitpoints
+
+    hitPoints = std::vector<std::unique_ptr<Hit>>();
+
 }
 
 void Engine::loop(GLFWwindow *window, int width, int height) {
@@ -200,8 +208,13 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
     shaders[LINE]->use();
     octree->draw(shaders[LINE].get());
 
-    shaders[LINE]->use();
-    ray->draw(shaders[LINE].get());
+//    shaders[LINE]->use();
+//    ray->draw(shaders[LINE].get());
+
+    shaders[DEFAULT]->use();
+    for(auto& hp: hitPoints){
+        hp->draw(shaders[DEFAULT].get(), potholeTexture.get());
+    }
 
 //    tessHeightMapShader->use();
 //    camera->updateCamera(tessHeightMapShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
@@ -307,7 +320,7 @@ void Engine::keyHandler(GLFWwindow *window) {
         std::cout << camera->Front.x << " ," <<  camera->Front.y << " ,"   <<  camera->Front.z << std::endl;
         std::cout << camera->Position.x << " ," <<  camera->Position.y << " ,"   <<  camera->Position.z << std::endl;
         ray->setRay(camera->Position,camera->Front);
-        octree->shoot(*ray.get());
+        octree->shoot(*ray.get(), hitPoints);
     }
 }
 // glfw: whenever the mouse moves, this callback is called

@@ -66,6 +66,8 @@ private:
     std::unique_ptr<Texture> containerTexture;
     std::unique_ptr<Texture> awesomeTexture;
 
+    std::unique_ptr<Texture> potholeTexture;
+
 
     std::unique_ptr<Shader> doubleTextureColShader;
     std::unique_ptr<Shader> meshModelShader;
@@ -92,6 +94,8 @@ private:
 
 
     std::unique_ptr<Ray> ray;
+
+    std::vector<std::unique_ptr<Hit>> hitPoints;
 
     // settings
     unsigned int SCR_WIDTH = 800;

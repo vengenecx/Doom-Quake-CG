@@ -8,6 +8,7 @@
 #include "Node.h"
 #include "Ray/Ray.h"
 #include "NodeCluster.h"
+#include "Hit/Hit.h"
 
 class Octree
 {
@@ -21,9 +22,9 @@ public:
 
     std::unique_ptr<NodeCluster> query(BoundingBox& b);
 
-    Node* shoot(Ray& ray);
+    void shoot(Ray& ray, std::vector<std::unique_ptr<Hit>> & hitPoints);
 
-    bool searchRecursive(Node* node, Ray& ray);
+    bool searchRecursive(Node* node, Ray& ray, std::vector<std::unique_ptr<Hit>>& hitPoints);
 
 
     void draw(Shader* shader);
@@ -39,6 +40,8 @@ private:
 
 
     bool intersect(BoundingBox& b1, Ray& ray);
+
+    bool intersect(BoundingBox& b1, Ray& ray,glm::vec3 & vecIntersection, float & flFraction);
 
 
     void addModelRecursive(Node* node, BaseModel * model);
