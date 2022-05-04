@@ -21,8 +21,8 @@
 #include <Camera/Camera.h>
 
 // added to make scenes!
-#include "Scenes/SceneOne.h"
-#include "Scenes/SceneBig.h"
+#include "Scenes/SceneTwo/SceneTwo.h"
+#include "Scenes/SceneOne/SceneOne.h"
 
 
 #include<filesystem>
@@ -103,12 +103,7 @@ private:
     //==============================================
     // std::unique_ptr<SceneOne> sceneone;
     // std::unique_ptr<SceneTwo> scenetwo;
-    std::unique_ptr<SceneBig> currentScene;
-
-
-
-    
-
+    std::unique_ptr<Scene> currentScene;
 
 };
 #endif //DOOM_QUAKE_ENGINE_H

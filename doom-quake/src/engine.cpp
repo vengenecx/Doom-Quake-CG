@@ -13,7 +13,7 @@ Engine::Engine(){
 
     std::cout << currentDir << std::endl;
 
-    currentScene = std::make_unique<SceneBig>(); //  also change the scene in engine.h
+    currentScene = std::make_unique<SceneOne>(); //  also change the scene in engine.h
 
     shaders = std::vector<std::unique_ptr<Shader>>(3);
 
@@ -81,7 +81,7 @@ void Engine::loop(GLFWwindow *window) {
         //camera->updateCamera(s,(float )SCR_WIDTH,(float ) SCR_HEIGHT);
     }
 
-    currentScene->drawing(shaders);
+    currentScene->draw(shaders);
 
 
     // tessHeightMapShader->use();

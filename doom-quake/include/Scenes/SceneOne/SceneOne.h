@@ -1,5 +1,5 @@
-#ifndef DOOM_QUAKE_SCENETWO_H
-#define DOOM_QUAKE_SCENETWO_H
+#ifndef DOOM_QUAKE_SCENEONE_H
+#define DOOM_QUAKE_SCENEONE_H
 
 #include "Model/BaseModel.h"
 #include "Model/Cube/CubeModel.h"
@@ -8,24 +8,29 @@
 #include "Texture/Texture.h"
 #include "Shaders/ShaderType.h"
 #include<filesystem>
-#include <Camera/Camera.h>
-#include <Shaders/basicShader.h>
-#include <Shaders/EShader.h>
+#include "Camera/Camera.h"
+#include "Shaders/basicShader.h"
+#include "Shaders/EShader.h"
+
+#include "Scenes/Scene.h"
 
 namespace fs = std::filesystem;
 
-#include <vector>
-#include <memory>
 
-class SceneBig{
+class SceneOne : public Scene {
     public:
-        void drawing(std::vector<std::unique_ptr<Shader>> & shaders);
-        SceneBig();
+        void draw(std::vector<std::unique_ptr<Shader>> & shaders);
+        SceneOne();
         void remove();
     
     private:
-        // to append al the models to:
+        std::string currentDir = (fs::current_path()).string();
+
         std::vector<std::unique_ptr<BaseModel>> models;
+
+
+        std::vector<std::unique_ptr<Texture>> textures;
+
 
         // all the textures:
         std::unique_ptr<Texture> containerTexture;
@@ -38,8 +43,6 @@ class SceneBig{
         std::unique_ptr<Texture> woodFLoorTexture;
         std::unique_ptr<Texture> doorWallTexture;
 
-
-        std::string currentDir = (fs::current_path()).string();
 
         std::vector<float>  vertices;
 
@@ -437,4 +440,4 @@ class SceneBig{
         };        
 };
 
-#endif //DOOM_QUAKE_SCENEBIG_H
+#endif

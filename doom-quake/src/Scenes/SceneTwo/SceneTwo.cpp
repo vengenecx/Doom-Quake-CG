@@ -1,7 +1,7 @@
-#include "Scenes/SceneOne.h"
+#include "Scenes/SceneTwo/SceneTwo.h"
 
 // default constructor
-SceneOne::SceneOne(){
+SceneTwo::SceneTwo(){
 
     // 8-bit/color RGB gives least issues!
     std::string stoneImg = (currentDir + "/model-files/grass/stone.png");
@@ -47,14 +47,14 @@ SceneOne::SceneOne(){
     std::cout << "SceneOne.cpp: models pushed back..." << std::endl;
 }
 
-void SceneOne::drawing(std::vector<std::unique_ptr<Shader>> & shaders){
+void SceneTwo::draw(std::vector<std::unique_ptr<Shader>> & shaders){
     for(std::unique_ptr<BaseModel>& c : this->models){
         shaders[c->getShaderType()]->use();
         c->draw(shaders[c->getShaderType()].get());
     }
 }
 
-void SceneOne::remove(){
+void SceneTwo::remove(){
     for(std::unique_ptr<BaseModel>& c : this->models){
         c->remove();
     }

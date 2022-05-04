@@ -36,8 +36,8 @@ add_executable( doom_quake src/main.cpp
                 include/Register/VBO.h
 
                 include/Model/Triangle/TriangleModel.h
-                include/Scenes/SceneOne.h
-                include/Scenes/SceneBig.h
+        include/Scenes/SceneTwo/SceneTwo.h
+        include/Scenes/SceneOne/SceneOne.h
 
                 src/Octree/Node.cpp 
                 src/Octree/NodeCluster.cpp 
@@ -48,9 +48,9 @@ add_executable( doom_quake src/main.cpp
                 src/Register/VBO.cpp
                 src/Model/Cube/CubeModel.cpp
                 
-                src/Model/Triangle/TriangleModel.cpp 
-                src/Scenes/SceneOne.cpp
-                src/Scenes/SceneBig.cpp
+                src/Model/Triangle/TriangleModel.cpp
+        src/Scenes/SceneTwo/SceneTwo.cpp
+        src/Scenes/SceneOne/SceneOne.cpp
                 
 
                 include/Texture/Texture.h
@@ -62,7 +62,7 @@ add_executable( doom_quake src/main.cpp
                 src/Model/Skybox/Skybox.cpp include/Model/Plane/PlaneModel.h
                 src/Model/Plane/PlaneModel.cpp include/Map/Terrain/Terrain.h
                 src/Map/Terrain/Terrain.cpp
-                include/Text/TextRenderer.h src/Text/TextRenderer.cpp)
+                include/Text/TextRenderer.h src/Text/TextRenderer.cpp include/Scenes/Scene.h)
 
                
 

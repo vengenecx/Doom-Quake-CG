@@ -1,5 +1,5 @@
-#ifndef DOOM_QUAKE_SCENEONE_H
-#define DOOM_QUAKE_SCENEONE_H
+#ifndef DOOM_QUAKE_SCENETWO_H
+#define DOOM_QUAKE_SCENETWO_H
 
 #include "Model/BaseModel.h"
 #include "Model/Cube/CubeModel.h"
@@ -7,23 +7,21 @@
 #include "Model/Plane/PlaneModel.h"
 #include "Texture/Texture.h"
 #include "Shaders/ShaderType.h"
-#include<filesystem>
-#include <Camera/Camera.h>
-#include <Shaders/basicShader.h>
-#include <Shaders/EShader.h>
+#include <filesystem>
+#include "Camera/Camera.h"
+#include "Shaders/basicShader.h"
+#include "Shaders/EShader.h"
+#include "Scenes/Scene.h"
 
 namespace fs = std::filesystem;
 
-#include <vector>
-#include <memory>
 
-class SceneOne{
+
+class SceneTwo : public Scene {
     public:
-        // old: 
-        void drawing(std::vector<std::unique_ptr<Shader>> & shaders);
-        //void drawing(std::vector<Shader*> & shaders);
-        // new:
-        SceneOne();
+
+        SceneTwo();
+        void draw(std::vector<std::unique_ptr<Shader>> & shaders);
         void remove();
     
     private:
@@ -128,4 +126,4 @@ class SceneOne{
 
 };
 
-#endif //DOOM_QUAKE_SCENEONE_H
+#endif //DOOM_QUAKE_SCENETWO_H

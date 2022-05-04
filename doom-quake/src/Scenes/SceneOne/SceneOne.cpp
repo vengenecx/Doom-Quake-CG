@@ -1,7 +1,7 @@
-#include "Scenes/SceneBig.h"
+#include "Scenes/SceneOne/SceneOne.h"
 
 // default constructor
-SceneBig::SceneBig(){
+SceneOne::SceneOne(){
     // 8-bit/color RGB gives least issues!
     std::string stoneImg = (currentDir + "/model-files/grass/stone.png");
     std::string grassImg = (currentDir + "/model-files/grass/grass_lennert.png");
@@ -15,14 +15,20 @@ SceneBig::SceneBig(){
     
     std::cout << "path: " << currentDir + "/model-files/grass/woodFloorOne.png" << std::endl;
 
-    this->doorWallTexture = std::make_unique<Texture>(doorWallImage.c_str(), GL_TEXTURE_2D,7,GL_RGB,GL_UNSIGNED_BYTE);
-    this->woodFLoorTexture = std::make_unique<Texture>(woodFloorImage.c_str(),GL_TEXTURE_2D,6,GL_RGB,GL_UNSIGNED_BYTE);
-    this->concreteTexture = std::make_unique<Texture>(concreteImg.c_str(),GL_TEXTURE_2D,5,GL_RGB,GL_UNSIGNED_BYTE);
-    this->metalTexture = std::make_unique<Texture>(metalImg.c_str(),GL_TEXTURE_2D,4,GL_RGB,GL_UNSIGNED_BYTE);
+
+
+    this->textures = std::vector<std::unique_ptr<Texture>>();
+
     this->containerTexture = std::make_unique<Texture>(containerImg.c_str(),GL_TEXTURE_2D,0,GL_RGB,GL_UNSIGNED_BYTE);
     this->awesomeTexture = std::make_unique<Texture>(awsomeFaceImg.c_str(),GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
     this->stoneTexture = std::make_unique<Texture>(stoneImg.c_str(),GL_TEXTURE_2D,2,GL_RGBA,GL_UNSIGNED_BYTE);
     this->grassTexture = std::make_unique<Texture>(grassImg.c_str(),GL_TEXTURE_2D,3,GL_RGB,GL_UNSIGNED_BYTE);
+    this->metalTexture = std::make_unique<Texture>(metalImg.c_str(),GL_TEXTURE_2D,4,GL_RGB,GL_UNSIGNED_BYTE);
+    this->concreteTexture = std::make_unique<Texture>(concreteImg.c_str(),GL_TEXTURE_2D,5,GL_RGB,GL_UNSIGNED_BYTE);
+    this->woodFLoorTexture = std::make_unique<Texture>(woodFloorImage.c_str(),GL_TEXTURE_2D,6,GL_RGB,GL_UNSIGNED_BYTE);
+    this->doorWallTexture = std::make_unique<Texture>(doorWallImage.c_str(), GL_TEXTURE_2D,7,GL_RGB,GL_UNSIGNED_BYTE);
+
+
 
     models = std::vector<std::unique_ptr<BaseModel>>();
 
@@ -99,17 +105,16 @@ SceneBig::SceneBig(){
     models.push_back(std::make_unique<PlaneModel>(roofVerticesEleven, woodFLoorTexture.get(), glm::vec3(0.0f, 0.0f, 0.0f), DEFAULT));
 
 
-    std::cout << "SceneTwo.cpp: models pushed back..." << std::endl;
 }
 
-void SceneBig::drawing(std::vector<std::unique_ptr<Shader>> & shaders){
+void SceneOne::draw(std::vector<std::unique_ptr<Shader>> & shaders){
     for(std::unique_ptr<BaseModel>& c : this->models){
         shaders[c->getShaderType()]->use();
         c->draw(shaders[c->getShaderType()].get());
     }
 }
 
-void SceneBig::remove(){
+void SceneOne::remove(){
     for(std::unique_ptr<BaseModel>& c : this->models){
         c->remove();
     }
