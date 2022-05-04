@@ -57,6 +57,8 @@ private:
 //    std::unique_ptr<Texture> texture_1;
 //    std::unique_ptr<Texture> texture_2;
 
+    bool clipLine(int d, BoundingBox& bb,const glm::vec3& v0, const glm::vec3& v1, float& f_low, float& f_high);
+
     std::vector<float>  vertices;
     std::vector<GLuint> indices;
 

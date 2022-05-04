@@ -127,7 +127,8 @@ void Camera::updateCamera(Shader *shader, float SCR_WIDTH, float SCR_HEIGHT, boo
 //    Position = position;
 //}
 //
-//void Camera::updateMatrix(float FOVdeg, float nearPlane, float farPlane)
+//void Camera::updateMatrix(float FOVdeg, float nearP
+// lane, float farPlane)
 //{
 //    // Initializes matrices since otherwise they will be the null matrix
 //    glm::mat4 view = glm::mat4(1.0f);

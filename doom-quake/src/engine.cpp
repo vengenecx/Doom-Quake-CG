@@ -92,27 +92,27 @@ Engine::Engine()
 //    octree->addModel(m1);
 
 
-     BoundingBox boxm2 = BoundingBox();
-     boxm2.centre = glm::vec3(5.0,5.0,5.0);
-     boxm2.dimensions = glm::vec3(4.0,4.0,4.0);
-     BaseModel * m2 = new TestModel(DEFAULT,boxm2);
-
-     octree->addModel(m2);
-
-    BoundingBox boxm3 = BoundingBox();
-    boxm3.centre = glm::vec3(15.0,15.0,15.0);
-    boxm3.dimensions = glm::vec3(4.0,4.0,4.0);
-    BaseModel * m3 = new TestModel(DEFAULT,boxm3);
-
-    octree->addModel(m3);
-
-
-    BoundingBox boxm4 = BoundingBox();
-    boxm4.centre = glm::vec3(20.0,20.0,20.0);
-    boxm4.dimensions = glm::vec3(4.0,4.0,4.0);
-    BaseModel * m4 = new TestModel(DEFAULT,boxm4);
-
-    octree->addModel(m4);
+//     BoundingBox boxm2 = BoundingBox();
+//     boxm2.centre = glm::vec3(5.0,5.0,5.0);
+//     boxm2.dimensions = glm::vec3(4.0,4.0,4.0);
+//     BaseModel * m2 = new TestModel(DEFAULT,boxm2);
+//
+//     octree->addModel(m2);
+//
+//    BoundingBox boxm3 = BoundingBox();
+//    boxm3.centre = glm::vec3(15.0,15.0,15.0);
+//    boxm3.dimensions = glm::vec3(4.0,4.0,4.0);
+//    BaseModel * m3 = new TestModel(DEFAULT,boxm3);
+//
+//    octree->addModel(m3);
+//
+//
+//    BoundingBox boxm4 = BoundingBox();
+//    boxm4.centre = glm::vec3(20.0,20.0,20.0);
+//    boxm4.dimensions = glm::vec3(4.0,4.0,4.0);
+//    BaseModel * m4 = new TestModel(DEFAULT,boxm4);
+//
+//    octree->addModel(m4);
 
 
     //model = std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -10.0f,  -10.0f, -10.0f),DOUBLE_TEXTURE_COLOR_SHADER);
@@ -307,6 +307,7 @@ void Engine::keyHandler(GLFWwindow *window) {
         std::cout << camera->Front.x << " ," <<  camera->Front.y << " ,"   <<  camera->Front.z << std::endl;
         std::cout << camera->Position.x << " ," <<  camera->Position.y << " ,"   <<  camera->Position.z << std::endl;
         ray->setRay(camera->Position,camera->Front);
+        octree->shoot(*ray.get());
     }
 }
 // glfw: whenever the mouse moves, this callback is called

@@ -23,6 +23,8 @@ public:
 
     Node* shoot(Ray& ray);
 
+    bool searchRecursive(Node* node, Ray& ray);
+
 
     void draw(Shader* shader);
 
@@ -36,7 +38,12 @@ private:
     void assignCurrentModelToChildren(Node* node);
 
 
+    bool intersect(BoundingBox& b1, Ray& ray);
+
+
     void addModelRecursive(Node* node, BaseModel * model);
+
+    bool clipLine(int d, BoundingBox &bb, const glm::vec3 &v0, const glm::vec3 &v1, float &f_low, float &f_high);
 };
 
 #endif //DOOM_QUAKE_OCTREE_H
