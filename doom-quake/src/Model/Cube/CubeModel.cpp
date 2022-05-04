@@ -103,6 +103,10 @@ CubeModel::CubeModel(Texture * texture_1, Texture * texture_2, glm::vec3 pos, Sh
     this->texture_2 = texture_2;
 
     this->position = pos;
+
+    this->bb = BoundingBox();
+    this->bb.centre = pos;
+    this->bb.dimensions  =  glm::vec3(1,1,1);
 }
 
 

@@ -62,12 +62,35 @@ add_executable( doom_quake src/main.cpp
                 src/Model/Skybox/Skybox.cpp include/Model/Plane/PlaneModel.h
                 src/Model/Plane/PlaneModel.cpp include/Map/Terrain/Terrain.h
                 src/Map/Terrain/Terrain.cpp
-                include/Text/TextRenderer.h src/Text/TextRenderer.cpp include/Scenes/Scene.h)
+
+                include/Scenes/Scene.h
+
+                include/Text/TextRenderer.h src/Text/TextRenderer.cpp include/Game/Game.h src/Game/Game.cpp
+
+                include/imgui_impl_opengl3_loader.h
+                include/imgui_impl_opengl3.h
+                include/imgui_impl_opengl3.cpp
+                include/imstb_truetype.h
+                include/imstb_rectpack.h
+                include/imstb_textedit.h
+                include/imgui_impl_glfw.h
+                include/imgui_impl_glfw.cpp
+                include/imgui_widgets.cpp
+                include/imgui_internal.h
+                include/imgui_tables.cpp
+                include/imgui_draw.cpp
+                include/imgui_demo.cpp
+                include/imgui.h
+                include/imgui.cpp
+                include/imconfig.h include/Model/Cross/CrossModel.h src/Model/Cross/CrossModel.cpp include/Model/Test/TestModel.cpp include/Hit/Hit.h src/Hit/Hit.cpp)
+
 
                
 
 # GLFW
 add_subdirectory(glfw-3.3.6)
+include_directories(${GLFW_INCLUDE_DIRS})
+link_libraries(${GLFW_LIBRARY_DIRS})
 target_link_libraries(doom_quake glfw)
 
 
@@ -86,6 +109,43 @@ target_link_libraries(doom_quake glm)
 
 # STB
 include_directories(stb-master)
+
+# IMGUI
+#include_directories(imgui-master)
+#add_subdirectory(imgui-master)
+#link_libraries(doom_quake imgui-master)
+
+#find_package(SDL2 REQUIRED)
+#include_directories(${SDL2_INCLUDE_DIRS})
+#target_link_libraries(doom_quake ${SDL2_LIBRARIES})
+
+
+#find_package(ALEGRO REQUIRED)
+#include_directories(${ALERGO5_INCLUDE_DIRS})
+#target_link_libraries(doom_quake ${ALERGO5_LIBRARIES})
+
+#INCLUDE_DIRECTORIES(  /opt/homebrew/Cellar/allegro/5.2.7.0/include )
+#LINK_DIRECTORIES(  /opt/homebrew/Cellar/allegro/5.2.7.0/lib )
+#
+#file(GLOB LIBRARIES "/opt/homebrew/Cellar/allegro/5.2.7.0/lib/*.dylib")
+#message("LIBRARIES = ${LIBRARIES}")
+#
+#TARGET_LINK_LIBRARIES(doom_quake  ${LIBRARIES})
+
+# Set where the ImGui files are stored
+#set(IMGUI_PATH  imgui-master)
+#file(GLOB IMGUI_SOURCES ${IMGUI_PATH}/*.cpp)
+#add_library("ImGui" ${IMGUI_SOURCES})
+#target_include_directories(ImGui PUBLIC ${IMGUI_PATH})
+#target_include_directories(IMGUI PUBLIC ${IMGUI_PATH})
+#target_link_libraries(doom_quake ImGui)
+
+#
+#add_subdirectory(imgui-master)
+#include_directories(${PROJECT_SOURCE_DIR})
+#target_link_libraries(doom_quake imgui)
+
+
 
 # Shader files include
 file(COPY shader-files DESTINATION .)

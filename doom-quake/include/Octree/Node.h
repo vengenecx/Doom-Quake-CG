@@ -6,9 +6,9 @@
 #define DOOM_QUAKE_NODE_H
 
 #include <iostream>
-#include "Model/LearnOpenglModel/Model.h"
 #include "Octree/BoundingBox.h"
 #include "Octants.h"
+#include "Model/BaseModel.h"
 
 #define OCTREE_CHILDREN 8
 class Node
@@ -16,18 +16,55 @@ class Node
     public:
         //Node* parent;
 
-        Node(BoundingBox& bb);
+        Node(BoundingBox bb, int depth, bool draw=true);
 
         // Octant children
         std::unique_ptr<Node> children[OCTREE_CHILDREN];
-        // Only leafs contain a model
-        std::unique_ptr<Model> model;
-        // Bounding box of leafnodes present in model
-        BoundingBox boundingBox;
+//        // Only leafs contain a model
+//        BaseModel* model;
+
+        std::vector<BaseModel*> models;
 
         unsigned char activeOctants;
 
-        Octants matchChild(BoundingBox*  bb);
-        Node* getChild(Octants oc);
+//        std::vector<Octants> matchChild(BoundingBox* bb);
+
+    std::vector<Octants> matchChild(BoundingBox bb);
+//        Node* getChild(Octants oc);
+
+        BoundingBox boundingBox;
+
+        bool hasChildren();
+
+        bool depthEnd();
+
+        int getDepth();
+
+
+        void draw(Shader* shader);
+
+private:
+    int depth;
+
+    bool overlap(BoundingBox bb1, BoundingBox bb2);
+
+    void fillVertices(BoundingBox bx);
+
+    bool drawState;
+
+    std::unique_ptr<VAO> vao;
+    std::unique_ptr<VBO> vbo;
+    std::unique_ptr<EBO> ebo;
+
+//    std::unique_ptr<Texture> texture_1;
+//    std::unique_ptr<Texture> texture_2;
+
+    bool clipLine(int d, BoundingBox& bb,const glm::vec3& v0, const glm::vec3& v1, float& f_low, float& f_high);
+
+    std::vector<float>  vertices;
+    std::vector<GLuint> indices;
+
+    glm::vec3 position;
+
 };
 #endif //DOOM_QUAKE_NODE_H

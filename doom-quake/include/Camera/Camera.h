@@ -70,6 +70,7 @@ public:
 
     void updateCamera(Shader* shader, float SCR_WIDTH, float SCR_HEIGHT, bool translation=true);
 
+
 private:
     // calculates the front vector from the Camera's (updated) Euler Angles
     void updateCameraVectors();

@@ -15,14 +15,27 @@
 #include "Model/Cube/CubeModel.h"
 #include "Model/Triangle/TriangleModel.h"
 #include "Model/Skybox/Skybox.h"
+#include "Model/Cross/CrossModel.h"
+#include "Model/Test/TestModel.cpp"
+
+
 #include "Map/Terrain/Terrain.h"
 #include "Text/TextRenderer.h"
 // #include <Shaders/EShader.h>
 #include <Camera/Camera.h>
 
-// added to make scenes!
+
+
 #include "Scenes/SceneTwo/SceneTwo.h"
 #include "Scenes/SceneOne/SceneOne.h"
+
+
+#include "Octree/Octree.h"
+
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+#include "Game/Game.h"
 
 
 #include<filesystem>
@@ -35,7 +48,7 @@ public:
     Engine();
     ~Engine();
 
-    void loop(GLFWwindow *window);
+    void loop(GLFWwindow *window, int width, int height);
     void mouseHandler(GLFWwindow* window, double xposIn, double yposIn);
     void scrollHandler(GLFWwindow* window, double xoffset, double yoffset);
 
@@ -48,8 +61,17 @@ private:
     void keyHandler(GLFWwindow *window);
 
 
-    // std::unique_ptr<Texture> containerTexture;
-    // std::unique_ptr<Texture> awesomeTexture;
+
+    void drawControls(GLFWwindow *window);
+
+
+    Game game;
+
+    std::unique_ptr<Texture> containerTexture;
+    std::unique_ptr<Texture> awesomeTexture;
+
+
+    std::unique_ptr<Texture> potholeTexture;
 
 
     std::unique_ptr<Shader> doubleTextureColShader;
@@ -80,9 +102,22 @@ private:
 
     std::unique_ptr<TextRenderer> textRenderer;
 
+
+    std::unique_ptr<Ray> ray;
+
+    std::vector<std::unique_ptr<Hit>> hitPoints;
+
     // settings
-    const unsigned int SCR_WIDTH = 800;
-    const unsigned int SCR_HEIGHT = 600;
+    unsigned int SCR_WIDTH = 800;
+    unsigned int SCR_HEIGHT = 800;
+
+
+
+    std::unique_ptr<Octree> octree;
+
+
+    bool spaceActive = false;
+
 
     // camera
     //Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
@@ -100,10 +135,22 @@ private:
 
     int frameSetPoint = 0;
 
+
     //==============================================
     // std::unique_ptr<SceneOne> sceneone;
     // std::unique_ptr<SceneTwo> scenetwo;
     std::unique_ptr<Scene> currentScene;
+
+
+    ImVec4 clear_color;
+
+    bool executeShoot= false;
+    bool activeShoot = false;
+    bool realeaseShoot = false;
+
+
+
+    bool showOctree= false;
 
 };
 #endif //DOOM_QUAKE_ENGINE_H
