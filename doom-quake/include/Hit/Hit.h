@@ -21,6 +21,7 @@ class Hit {
 public:
 
     Hit(glm::vec3 pos, BoundingBox& bb);
+    ~Hit();
 
     glm::vec3 getPoint();
     EAligment getAlignment();
@@ -28,14 +29,19 @@ public:
 
     void draw(Shader * shader, Texture* texture);
 
+    void remove();
+
 private:
     glm::vec3 point;
     EAligment alignment;
+
 
     void calculateAlignment(BoundingBox& bx);
     void initDraw();
 
     void setTextures(Shader* shader, Texture* texture);
+
+
 
     std::unique_ptr<VAO> vao;
     std::unique_ptr<VBO> vbo;

@@ -9,6 +9,12 @@ Hit::Hit(glm::vec3 pos, BoundingBox& bb) : point(pos){
     initDraw();
 }
 
+Hit::~Hit() {
+    this->vao.release();
+    this->vbo.release();
+    this->ebo.release();
+}
+
 void Hit::calculateAlignment(BoundingBox& bx) {
     float min_x = bx.centre.x - bx.dimensions.x/2.0;
     float max_x = bx.centre.x + bx.dimensions.x/2.0;
@@ -238,6 +244,12 @@ void Hit::initDraw() {
     ebo->unbind();
 
 //    this->texture = texture;
+}
+
+void Hit::remove() {
+    this->vao->remove();
+    this->vbo->remove();
+    this->ebo->remove();
 }
 
 void Hit::setTextures(Shader* shader, Texture* texture) {

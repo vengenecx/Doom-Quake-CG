@@ -211,6 +211,10 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
 //    shaders[LINE]->use();
 //    ray->draw(shaders[LINE].get());
 
+    while(hitPoints.size() >= 30){
+        hitPoints.erase(hitPoints.begin());
+    }
+
     shaders[DEFAULT]->use();
     for(auto& hp: hitPoints){
         hp->draw(shaders[DEFAULT].get(), potholeTexture.get());
@@ -313,7 +317,7 @@ void Engine::keyHandler(GLFWwindow *window) {
         camera->ProcessKeyboard(RIGHT, deltaTime);
     }
 
-    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && !spaceActive) {
         std::cout << "Space pressed" << std::endl;
         executeShoot = true;
 
@@ -321,6 +325,12 @@ void Engine::keyHandler(GLFWwindow *window) {
         std::cout << camera->Position.x << " ," <<  camera->Position.y << " ,"   <<  camera->Position.z << std::endl;
         ray->setRay(camera->Position,camera->Front);
         octree->shoot(*ray.get(), hitPoints);
+
+        spaceActive = true;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_RELEASE && spaceActive) {
+        spaceActive= false;
     }
 }
 // glfw: whenever the mouse moves, this callback is called
@@ -344,7 +354,7 @@ void Engine::mouseHandler(GLFWwindow* window, double xposIn, double yposIn)
     lastY = ypos;
 
     camera->ProcessMouseMovement(xoffset, yoffset);
-    std::cout << "mouse movement" << std::endl;
+//    std::cout << "mouse movement" << std::endl;
 }
 
 
@@ -359,7 +369,7 @@ void Engine::remove() {
 // ----------------------------------------------------------------------
 void Engine::scrollHandler(GLFWwindow* window, double xoffset, double yoffset)
 {
-    std::cout << "mouse scroll" <<  std::endl;
+//    std::cout << "mouse scroll" <<  std::endl;
     camera->ProcessMouseScroll(static_cast<float>(yoffset));
 }
 
