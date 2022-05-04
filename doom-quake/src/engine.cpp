@@ -95,7 +95,7 @@ Engine::Engine()
 ////     boxm1.centre = glm::vec3(10.0,10.0,10.0);
 ////     boxm1.dimensions = glm::vec3(20.0,20.0,20.0);
 //    BaseModel * m1 = new TestModel(DEFAULT,boxm1);
-//
+////
 //    octree->addModel(m1);
 
 
@@ -290,6 +290,10 @@ void Engine::drawControls(GLFWwindow *window) {
     ImGui::Checkbox("Octree", &showOctree);
 
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+    ImGui::NewLine();
+    ImGui::Text("Pos: (%.3f,%.3f,%.3f)", camera->Position.x, camera->Position.y, camera->Position.z);
+
     ImGui::End();
 
 
@@ -328,8 +332,8 @@ void Engine::keyHandler(GLFWwindow *window) {
         std::cout << "Space pressed" << std::endl;
         executeShoot = true;
 
-        std::cout << camera->Front.x << " ," <<  camera->Front.y << " ,"   <<  camera->Front.z << std::endl;
-        std::cout << camera->Position.x << " ," <<  camera->Position.y << " ,"   <<  camera->Position.z << std::endl;
+//        std::cout << camera->Front.x << " ," <<  camera->Front.y << " ,"   <<  camera->Front.z << std::endl;
+//        std::cout << camera->Position.x << " ," <<  camera->Position.y << " ,"   <<  camera->Position.z << std::endl;
         ray->setRay(camera->Position,camera->Front);
         octree->shoot(*ray.get(), hitPoints);
 
