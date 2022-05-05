@@ -149,6 +149,9 @@ private:
     bool realeaseShoot = false;
 
 
+    bool mouse_visible = false;
+    bool m_pressed = false;
+
 
     bool showOctree= false;
 

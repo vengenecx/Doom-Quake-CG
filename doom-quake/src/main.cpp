@@ -64,7 +64,10 @@
 
 
 //     glfwSetCursorPos(window, 800/2, 600/2);
-     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+     //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+
 
      //stbi_set_flip_vertically_on_load(true);
      glEnable(GL_DEPTH_TEST);

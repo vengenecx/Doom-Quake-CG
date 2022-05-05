@@ -401,6 +401,28 @@ void Engine::keyHandler(GLFWwindow *window) {
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_RELEASE && spaceActive) {
         spaceActive= false;
     }
+
+
+    if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS && !m_pressed) {
+        std::cout<< "M pressed" << std::endl;
+        if(!mouse_visible){
+            std::cout<< "normal mouse" << std::endl;
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        } else{
+            std::cout<< "disabled mouse" << std::endl;
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        }
+
+        mouse_visible = !mouse_visible;
+        m_pressed = true;
+    }
+    if (glfwGetKey(window, GLFW_KEY_M) == GLFW_RELEASE && m_pressed) {
+        m_pressed = false;
+    }
+
+    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
 }
 // glfw: whenever the mouse moves, this callback is called
 // -------------------------------------------------------
