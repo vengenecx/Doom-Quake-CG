@@ -52,7 +52,7 @@ PlaneModel::PlaneModel(std::vector<float> vertices,  Texture * texture, glm::vec
     this->vao = std::make_unique<VAO>();
     this->vao->bind();
 
-
+    this->vertices = vertices;
 //     this->vertices = std::vector<float> {
 // //            // positions          // colors           // texture coords
 //             10.0f,  0.0f, 10.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
@@ -88,6 +88,41 @@ PlaneModel::PlaneModel(std::vector<float> vertices,  Texture * texture, glm::vec
 //    this->bb = BoundingBox();
 //    this->bb.centre = pos;
 //    this->bb.dimensions  =  glm::vec3(20,0.1,20);
+
+    generateBoundingbox();
+}
+
+
+
+PlaneModel::PlaneModel(std::vector<float> vertices, BoundingBox& bx,  Texture * texture, glm::vec3 pos, ShaderType type) : BaseModel(type){
+    this->vao = std::make_unique<VAO>();
+    this->vao->bind();
+
+    this->vertices = vertices;
+
+    this->indices = std::vector<GLuint>
+            {
+                    0, 1, 3, // first triangle
+                    1, 2, 3  // second triangle
+            };
+
+    this->vbo = std::make_unique<VBO>(vertices,vertices.size());
+    this->ebo = std::make_unique<EBO>(indices,indices.size());
+
+    vao->linkAttrib(vbo.get(), 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
+    vao->linkAttrib(vbo.get(), 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    vao->linkAttrib(vbo.get(), 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    //vao.linkAttrib(vbo, 3, 3, GL_FLOAT, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+
+    // Unbind all to prevent accidentally modifying them
+    vao->unbind();
+    vbo->unbind();
+    ebo->unbind();
+
+
+    this->texture = texture;
+    this->position = pos;
+    this->bb = bx;
 }
 
 
@@ -98,6 +133,39 @@ PlaneModel::~PlaneModel() {
     ebo.release();
 }
 
+void PlaneModel::generateBoundingbox() {
+    float x_min = this->vertices[0];
+    float x_max = this->vertices[0];
+    float y_min = this->vertices[1];
+    float y_max = this->vertices[1];
+    float z_min = this->vertices[2];
+    float z_max = this->vertices[2];
+
+    for(int i=0; i<this->vertices.size()-8; i+=8){
+        if(x_min > this->vertices[i])
+            x_min = this->vertices[i];
+        if(x_max < this->vertices[i])
+            x_max = this->vertices[i];
+
+        if(y_min > this->vertices[i+1])
+            y_min = this->vertices[i+1];
+        if(y_max < this->vertices[i+1])
+            y_max = this->vertices[i+1];
+
+        if(z_min > this->vertices[i+2])
+            z_min = this->vertices[i+2];
+        if(z_max < this->vertices[i+2])
+            z_max = this->vertices[i+2];
+    }
+
+    if(y_min ==  y_max){
+        this->bb  = BoundingBox{position,glm::vec3(x_max-x_min,0.1,z_max-z_min)};
+    } else if(x_min == x_max){
+        this->bb  = BoundingBox{position,glm::vec3(0.1,y_max-y_min,z_max-z_min)};
+    } else{
+        this->bb  = BoundingBox{position,glm::vec3(x_max-x_min,y_max-y_min,0.1)};
+    }
+}
 
 void PlaneModel::updatePosition(glm::vec3 pos){
     this->position = pos;

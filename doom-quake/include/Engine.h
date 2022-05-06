@@ -85,9 +85,9 @@ private:
 
 
      std::vector<std::unique_ptr<BaseModel>> models;
-    
-    
-    
+
+    std::unique_ptr<CrossModel> crosshair;
+
     std::vector<std::unique_ptr<Shader>> shaders;
 
     // std::vector<Shader* > shaders;

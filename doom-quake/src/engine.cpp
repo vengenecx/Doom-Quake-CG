@@ -51,32 +51,35 @@ Engine::Engine()
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
 
-    std::string img_1 = (currentDir + "/model-files/cube/container.jpg");
+
+    if(lennert){
+
+        std::string img_1 = (currentDir + "/model-files/cube/container.jpg");
 //    std::string img_1 = (currentDir + "/model-files/grass/grass.jpeg");
 
-    //std::string img_1 = (currentDir + "/model-files/grass/stone.png");
-    std::string img_2 = (currentDir + "/model-files/cube/awesomeface.png");
+        //std::string img_1 = (currentDir + "/model-files/grass/stone.png");
+        std::string img_2 = (currentDir + "/model-files/cube/awesomeface.png");
 
-    std::string img_3 = (currentDir + "/model-files/pothole/pothole.png");
+        std::string img_3 = (currentDir + "/model-files/pothole/pothole.png");
 
-    this->containerTexture = std::make_unique<Texture>(img_1.c_str(),GL_TEXTURE_2D,0,GL_RGB,GL_UNSIGNED_BYTE);
-    this->awesomeTexture = std::make_unique<Texture>(img_2.c_str(),GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
-    this->potholeTexture = std::make_unique<Texture>(img_3.c_str(),GL_TEXTURE_2D,2,GL_RGBA,GL_UNSIGNED_BYTE);
+        this->containerTexture = std::make_unique<Texture>(img_1.c_str(),GL_TEXTURE_2D,0,GL_RGB,GL_UNSIGNED_BYTE);
+        this->awesomeTexture = std::make_unique<Texture>(img_2.c_str(),GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
+        this->potholeTexture = std::make_unique<Texture>(img_3.c_str(),GL_TEXTURE_2D,2,GL_RGBA,GL_UNSIGNED_BYTE);
 
 
-    models = std::vector<std::unique_ptr<BaseModel>>();
+        models = std::vector<std::unique_ptr<BaseModel>>();
 
 //    models.push_back(std::make_unique<Model>("model-files/backpack/backpack.obj",glm::vec3(0.0f, 2.0f, -8.0f),MODEL_LOADER_SHADER));
 //    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 //    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, -5.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -10.0f,  -10.0f, -10.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -12.0f,  -12.0f, -12.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+        models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -10.0f,  -10.0f, -10.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+        models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -12.0f,  -12.0f, -12.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 
 
 
-    models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( -10.0f,  -10.0f, 0.0f),DEFAULT));
+        models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( -10.0f,  -10.0f, 0.0f),DEFAULT));
 
-    models.push_back(std::make_unique<CrossModel>(CROSS));
+        //models.push_back(std::make_unique<CrossModel>(CROSS));
 
 //    std::unique_ptr<BoundingBox> boxm1 = std::make_unique<BoundingBox>();
 //    boxm1->centre = glm::vec3(0.0,0.0,0.0);
@@ -92,12 +95,12 @@ Engine::Engine()
 //
 //    models.push_back(std::make_unique<TestModel>(LINE,boxm1));
 
-    BoundingBox box = BoundingBox();
-    box.centre = glm::vec3(0.0,0.0,0.0);
-    box.dimensions = glm::vec3(50.0,50.0,50.0);
+        BoundingBox box = BoundingBox();
+        box.centre = glm::vec3(0.0,0.0,0.0);
+        box.dimensions = glm::vec3(50.0,50.0,50.0);
 
 
-    octree = std::make_unique<Octree>(box, 10);
+        octree = std::make_unique<Octree>(box, 10);
 
 //    BoundingBox boxm1 = BoundingBox();
 //    boxm1.centre = glm::vec3(0.0,0.0,0.0);
@@ -132,17 +135,14 @@ Engine::Engine()
 //    octree->addModel(m4);
 
 
-    //model = std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -10.0f,  -10.0f, -10.0f),DOUBLE_TEXTURE_COLOR_SHADER);
+        //model = std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -10.0f,  -10.0f, -10.0f),DOUBLE_TEXTURE_COLOR_SHADER);
 
-    octree->addModel(models[0].get());
-    octree->addModel(models[1].get());
-    octree->addModel(models[2].get());
+        octree->addModel(models[0].get());
+        octree->addModel(models[1].get());
+        octree->addModel(models[2].get());
+        // skyboxShader = std::make_unique<Shader>((currentDir + shaderPaths[skyboxVertex]).c_str(), (currentDir  + shaderPaths[skyboxFragment]).c_str());
 
-    ray = std::make_unique<Ray>(glm::vec3(0.0,0.0,0.0),glm::vec3(1.0,1.0,1.0));
-
-    // skyboxShader = std::make_unique<Shader>((currentDir + shaderPaths[skyboxVertex]).c_str(), (currentDir  + shaderPaths[skyboxFragment]).c_str());
-
-    // skybox = std::make_unique<Skybox>(skybox_b,currentDir,true);
+        // skybox = std::make_unique<Skybox>(skybox_b,currentDir,true);
 
 
 //    tessHeightMapShader = std::make_unique<Shader>("shader-files/gpuheight.vs","shader-files/gpuheight.fs", nullptr,            // if wishing to render as is
@@ -157,12 +157,13 @@ Engine::Engine()
 
 
 //    textShader = std::make_unique<Shader>("shader-files/text.vs","shader-files/text.fs");
-    textShader = std::make_unique<Shader>((currentDir + shaderPaths[textVertex]).c_str(),(currentDir + shaderPaths[textFragment]).c_str());
-    textRenderer = std::make_unique<TextRenderer>(SCR_WIDTH,SCR_HEIGHT);
+        textShader = std::make_unique<Shader>((currentDir + shaderPaths[textVertex]).c_str(),(currentDir + shaderPaths[textFragment]).c_str());
+        textRenderer = std::make_unique<TextRenderer>(SCR_WIDTH,SCR_HEIGHT);
+    }
 
-
+    ray = std::make_unique<Ray>(glm::vec3(0.0,0.0,0.0),glm::vec3(1.0,1.0,1.0));
+    crosshair = std::make_unique<CrossModel>(CROSS);
     // Hitpoints
-
     hitPoints = std::vector<std::unique_ptr<Hit>>();
 
 }
@@ -200,6 +201,10 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
 
     glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    while(hitPoints.size() >= 30){
+        hitPoints.erase(hitPoints.begin());
+    }
 
     if(lennert){
         for(auto &s : shaders){
@@ -257,9 +262,7 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
 //    shaders[LINE]->use();
 //    ray->draw(shaders[LINE].get());
 
-        while(hitPoints.size() >= 30){
-            hitPoints.erase(hitPoints.begin());
-        }
+
 
         shaders[DEFAULT]->use();
         for(auto& hp: hitPoints){
@@ -287,8 +290,11 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
             s->use();
             camera->updateCamera(s.get(),(float )width,(float ) height);
         }
-        currentScene->draw(shaders);
+        currentScene->draw(shaders,hitPoints,showOctree);
     }
+
+    shaders[crosshair->getShaderType()]->use();
+    crosshair->draw(shaders[crosshair->getShaderType()].get());
 
     if(game.changed()){
         std::cout<< "state changed" << std::endl;
@@ -393,7 +399,12 @@ void Engine::keyHandler(GLFWwindow *window) {
 //        std::cout << camera->Front.x << " ," <<  camera->Front.y << " ,"   <<  camera->Front.z << std::endl;
 //        std::cout << camera->Position.x << " ," <<  camera->Position.y << " ,"   <<  camera->Position.z << std::endl;
         ray->setRay(camera->Position,camera->Front);
-        octree->shoot(*ray.get(), hitPoints);
+
+        if(!lennert){
+            currentScene->shoot(ray.get(),hitPoints);
+        } else{
+            octree->shoot(*ray.get(), hitPoints);
+        }
 
         spaceActive = true;
     }
@@ -419,10 +430,6 @@ void Engine::keyHandler(GLFWwindow *window) {
     if (glfwGetKey(window, GLFW_KEY_M) == GLFW_RELEASE && m_pressed) {
         m_pressed = false;
     }
-
-    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
 }
 // glfw: whenever the mouse moves, this callback is called
 // -------------------------------------------------------

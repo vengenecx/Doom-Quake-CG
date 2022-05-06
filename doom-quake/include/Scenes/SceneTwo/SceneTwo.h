@@ -21,8 +21,9 @@ class SceneTwo : public Scene {
     public:
 
         SceneTwo();
-        void draw(std::vector<std::unique_ptr<Shader>> & shaders);
+        void draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints, bool octreeVisible);
         void remove();
+        void shoot(Ray* ray, std::vector<std::unique_ptr<Hit>> & hitPoints);
     
     private:
         // to append al the models to:
@@ -37,6 +38,8 @@ class SceneTwo : public Scene {
         std::unique_ptr<Texture> concreteTexture;
         std::unique_ptr<Texture> bulletHoleTexture;
         std::unique_ptr<Texture> woodFLoorTexture;
+
+
 
 
         std::string currentDir = (fs::current_path()).string();

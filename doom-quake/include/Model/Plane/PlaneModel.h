@@ -13,6 +13,7 @@ public:
     // mesh data
     PlaneModel(Texture * texture_1, glm::vec3, ShaderType type);
     PlaneModel(std::vector<float> vertices, Texture * texture_1, glm::vec3, ShaderType type);
+    PlaneModel(std::vector<float> vertices, BoundingBox&bx, Texture * texture_1, glm::vec3, ShaderType type);
     void updatePosition(glm::vec3 pos);
     void draw(Shader * shader);
     void remove();
@@ -32,6 +33,8 @@ private:
     glm::vec3 position;
 
     void setTextures(Shader* shader);
+
+    void generateBoundingbox();
 };
 
 #endif //DOOM_QUAKE_PLANEMODEL_H

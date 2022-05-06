@@ -47,17 +47,23 @@ SceneTwo::SceneTwo(){
     std::cout << "SceneOne.cpp: models pushed back..." << std::endl;
 }
 
-void SceneTwo::draw(std::vector<std::unique_ptr<Shader>> & shaders){
+void SceneTwo::draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints, bool octreeVisible){
     for(std::unique_ptr<BaseModel>& c : this->models){
         shaders[c->getShaderType()]->use();
         c->draw(shaders[c->getShaderType()].get());
     }
+
+
 }
 
 void SceneTwo::remove(){
     for(std::unique_ptr<BaseModel>& c : this->models){
         c->remove();
     }
+}
+
+void SceneTwo::shoot(Ray* ray, std::vector<std::unique_ptr<Hit>> & hitPoints){
+
 }
 
 
