@@ -382,15 +382,15 @@ void Engine::keyHandler(GLFWwindow *window) {
         std::cout << "D pressed" << std::endl;
         camera->ProcessKeyboard(RIGHT, deltaTime);
     }
-// <<<<<<< HEAD
-//     if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-//         std::cout << "Q pressed" << std::endl;
-//         camera->ProcessKeyboard(LEFTSTRAFE, deltaTime);
-//     }
-//     if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-//         std::cout << "E pressed" << std::endl;
-//         camera->ProcessKeyboard(RIGHTSTRAFE, deltaTime);
-// =======
+
+     if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
+         std::cout << "Q pressed" << std::endl;
+         camera->ProcessKeyboard(LEFTSTRAFE, deltaTime);
+     }
+     if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
+         std::cout << "E pressed" << std::endl;
+         camera->ProcessKeyboard(RIGHTSTRAFE, deltaTime);
+     }
 
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && !spaceActive) {
         std::cout << "Space pressed" << std::endl;
