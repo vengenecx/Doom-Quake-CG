@@ -46,7 +46,9 @@ Engine::Engine()
 
 //    camera = std::make_unique<Camera>(false,glm::vec3(60.0f, 60.0f, -60.0f));
 
-    camera = std::make_unique<Camera>(false,glm::vec3(0.0f, 0.0f, 0.0f));
+//    camera = std::make_unique<Camera>(true,glm::vec3(0.0f, 0.0f, 0.0f));
+
+    camera = std::make_unique<Camera>(true,glm::vec3(0.0f, 0.2f, 0.2f));
 
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
@@ -244,15 +246,7 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
             c->draw(shaders[c->getShaderType()].get());
         }
 
-        if(executeShoot){
-            std::cout<< "shoot" << std::endl;
-            executeShoot = false;
-            activeShoot = true;
-        }
-        if(realeaseShoot){
-            std::cout<< "release shoot" << std::endl;
-            realeaseShoot = false;
-        }
+
 
         if(showOctree){
             shaders[LINE]->use();
@@ -294,7 +288,22 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
     }
 
     shaders[crosshair->getShaderType()]->use();
+    if(executeShoot)
+        crosshair->shoot();
+    if(realeaseShoot)
+        crosshair->resetShoot();
     crosshair->draw(shaders[crosshair->getShaderType()].get());
+
+
+    if(executeShoot){
+        std::cout<< "shoot" << std::endl;
+        executeShoot = false;
+        activeShoot = true;
+    }
+    if(realeaseShoot){
+        std::cout<< "release shoot" << std::endl;
+        realeaseShoot = false;
+    }
 
     if(game.changed()){
         std::cout<< "state changed" << std::endl;

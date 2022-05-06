@@ -498,10 +498,10 @@ class SceneOne : public Scene {
 
         std::vector<float> wallVerticesFourteen{
                 // positions          // colors           // texture coords
-                0.0f,  1.5f, 1.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-                0.0f, -1.5f, 1.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
-                0.0f, -1.5f, -1.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-                0.0f,  1.5f, -1.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+                0.0f,  1.5f, -1.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                0.0f, -1.5f, -1.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                0.0f, -1.5f, 1.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                0.0f,  1.5f, 1.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
 
 //        std::vector<float> wallVerticesFifteenOne{
@@ -514,10 +514,10 @@ class SceneOne : public Scene {
 
         std::vector<float> wallVerticesFifteenOne{
                 // positions          // colors           // texture coords
-                4.0f,  1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-                4.0f, -1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
-                -4.0f, -1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-                -4.0f,  1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+                -4.0f,  1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                -4.0f, -1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                4.0f, -1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                4.0f,  1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
 
 //    std::vector<float> wallVerticesFifteenTwo{
@@ -575,10 +575,10 @@ class SceneOne : public Scene {
 
         std::vector<float> wallVerticesEighteen{
                 // positions          // colors           // texture coords
-                2.5f,  1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-                2.5f, -1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
-                -2.5f, -1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-                -2.5f,  1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+                -2.5f,  1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                -2.5f, -1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                2.5f, -1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                2.5f,  1.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
 //    std::vector<float> wallVerticesNineteenOne{
 //                // positions          // colors           // texture coords
@@ -715,10 +715,10 @@ class SceneOne : public Scene {
 
         std::vector<float> wallVerticesTwentysix{
                 // positions          // colors           // texture coords
-                0.0f,  1.5f, 1.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
-                0.0f, -1.5f, 1.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
-                0.0f, -1.5f, -1.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-                0.0f,  1.5f, -1.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
+                0.0f,  1.5f, -1.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f,   // top right
+                0.0f, -1.5f, -1.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f,   // bottom right
+                0.0f, -1.5f, 1.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+                0.0f,  1.5f, 1.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f,   // top left
         };
 //        std::vector<float> wallVerticesTwentyseven{
 //                // positions          // colors           // texture coords
