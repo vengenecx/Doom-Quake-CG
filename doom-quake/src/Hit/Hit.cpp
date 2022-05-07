@@ -29,36 +29,79 @@ void Hit::calculateAlignment(BoundingBox& bx) {
 //
 //    }
 
-    if(bx.dimensions.x != 0.1 && (min_x == point.x || max_x == point.x)){
-        std::cout << "1,2" << std::endl;
-        alignment = X;
+//    if(bx.dimensions.x != 0.1 && (min_x == point.x || max_x == point.x)){
+//        std::cout << "1,2" << std::endl;
+//        alignment = X;
+//
+//        if(min_x == point.x )
+//            point.x -= 0.01;
+//        else
+//            point.x += 0.01;
+//
+//    }
+//
+//    if(bx.dimensions.y != 0.1 && (min_y == point.y || max_y == point.y)) {
+//        std::cout << "3,4" << std::endl;
+//        alignment = EAligment::Y;
+//
+//        if(min_y == point.y )
+//            point.y -= 0.01;
+//        else
+//            point.y += 0.01;
+//
+//    }
+//
+//    if(bx.dimensions.z != 0.1 && (min_z == point.z || max_z == point.z)) {
+//        std::cout << "5,6" << std::endl;
+//        alignment = Z;
+//
+//        if(min_z == point.z )
+//            point.z -= 0.01;
+//        else
+//            point.z += 0.01;
+//    }
 
-        if(min_x == point.x )
-            point.x -= 0.01;
-        else
-            point.x += 0.01;
+    if(bx.dimensions.x == 0.0 ||bx.dimensions.y == 0.0 ||bx.dimensions.z == 0.0){
+        if(bx.dimensions.x == 0.0){
+            alignment = X;
+        } else if(bx.dimensions.y == 0.0){
+            alignment = Y;
+        }  else{
+            alignment = Z;
+        }
+        twoSides = true;
+    } else{
+        if((min_x == point.x || max_x == point.x)){
+            std::cout << "1,2" << std::endl;
+            alignment = X;
 
-    }
+            if(min_x == point.x )
+                point.x -= 0.01;
+            else
+                point.x += 0.01;
 
-    if(bx.dimensions.y != 0.1 && (min_y == point.y || max_y == point.y)) {
-        std::cout << "3,4" << std::endl;
-        alignment = EAligment::Y;
+        }
 
-        if(min_y == point.y )
-            point.y -= 0.01;
-        else
-            point.y += 0.01;
+        if((min_y == point.y || max_y == point.y)) {
+            std::cout << "3,4" << std::endl;
+            alignment = EAligment::Y;
 
-    }
+            if(min_y == point.y )
+                point.y -= 0.01;
+            else
+                point.y += 0.01;
 
-    if(bx.dimensions.z != 0.1 && (min_z == point.z || max_z == point.z)) {
-        std::cout << "5,6" << std::endl;
-        alignment = Z;
+        }
 
-        if(min_z == point.z )
-            point.z -= 0.01;
-        else
-            point.z += 0.01;
+        if((min_z == point.z || max_z == point.z)) {
+            std::cout << "5,6" << std::endl;
+            alignment = Z;
+
+            if(min_z == point.z )
+                point.z -= 0.01;
+            else
+                point.z += 0.01;
+        }
     }
 }
 
@@ -265,19 +308,57 @@ void Hit::setTextures(Shader* shader, Texture* texture) {
 void Hit::draw(Shader* shader,Texture* texture){
     shader->use();
 
-    glm::mat4 m = glm::mat4(1.0f);
+    if(!twoSides){
+        glm::mat4 m = glm::mat4(1.0f);
 
-    m = glm::translate(m, point);
-    shader->setMat4("model", m);
+        m = glm::translate(m, point);
 
-    setTextures(shader, texture);
+        shader->setMat4("model", m);
 
-    texture->bind();
+        setTextures(shader, texture);
 
-    this->vao->bind();
-    this->ebo->bind();
+        texture->bind();
 
-    glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
+        this->vao->bind();
+        this->ebo->bind();
+
+        glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
+    } else{
+        glm::mat4 m1 = glm::mat4(1.0f);
+        glm::mat4 m2 = glm::mat4(1.0f);
+
+        glm::vec3 p1  = point;
+        glm::vec3 p2  = point;
+
+        if(alignment == EAligment::X){
+            p1.x += 0.02;
+            p2.x -= 0.02;
+        } else if(alignment == EAligment::Y){
+            p1.y += 0.02;
+            p2.y -= 0.02;
+        } else{
+            p1.y += 0.02;
+            p2.y -= 0.02;
+        }
+
+        m1 = glm::translate(m1, p1);
+        m2 = glm::translate(m2, p2);
+        shader->setMat4("model", m1);
+
+
+        setTextures(shader, texture);
+
+        texture->bind();
+
+        this->vao->bind();
+        this->ebo->bind();
+
+        glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
+
+        shader->setMat4("model", m2);
+        glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
+    }
+
 
     this->vao->unbind();
     this->ebo->unbind();

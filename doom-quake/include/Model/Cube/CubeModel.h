@@ -10,7 +10,7 @@
 class CubeModel : public BaseModel {
 public:
     // mesh data
-
+    CubeModel(glm::vec3 dimensions,Texture * texture_1, Texture * texture_2, glm::vec3 position, ShaderType type);
     CubeModel(Texture * texture_1, Texture * texture_2, glm::vec3, ShaderType type);
     void updatePosition(glm::vec3 pos);
     void draw(Shader * shader);
@@ -33,6 +33,8 @@ private:
     glm::vec3 position;
 
     void setTextures(Shader* shader);
+
+    void fillVertices(glm::vec3 dimensions);
 };
 
 #endif //DOOM_QUAKE_CUBEMODEL_H

@@ -186,11 +186,11 @@ PlaneModel::PlaneModel(glm::vec3 dimensions, bool wall,  Texture * texture, glm:
 
     this->position = pos;
 
-//    this->bb = BoundingBox();
-//    this->bb.centre = pos;
-//    this->bb.dimensions  =  glm::vec3(20,0.1,20);
+    this->bb = BoundingBox();
+    this->bb.centre = pos;
+    this->bb.dimensions  =  glm::vec3(dimensions.x,dimensions.y,dimensions.z);
 
-    generateBoundingbox();
+//    generateBoundingbox();
 }
 
 
@@ -304,13 +304,15 @@ void PlaneModel::generateBoundingbox() {
             z_max = this->vertices[i+2];
     }
 
-    if(y_min ==  y_max){
-        this->bb  = BoundingBox{position,glm::vec3(x_max-x_min,0.1,z_max-z_min)};
-    } else if(x_min == x_max){
-        this->bb  = BoundingBox{position,glm::vec3(0.1,y_max-y_min,z_max-z_min)};
-    } else{
-        this->bb  = BoundingBox{position,glm::vec3(x_max-x_min,y_max-y_min,0.1)};
-    }
+//    if(y_min ==  y_max){
+//        this->bb  = BoundingBox{position,glm::vec3(x_max-x_min,0.1,z_max-z_min)};
+//    } else if(x_min == x_max){
+//        this->bb  = BoundingBox{position,glm::vec3(0.1,y_max-y_min,z_max-z_min)};
+//    } else{
+//        this->bb  = BoundingBox{position,glm::vec3(x_max-x_min,y_max-y_min,0.1)};
+//    }
+
+    this->bb  = BoundingBox{position,glm::vec3(x_max-x_min,y_max-y_min,z_max-z_min)};
 }
 
 void PlaneModel::updatePosition(glm::vec3 pos){
