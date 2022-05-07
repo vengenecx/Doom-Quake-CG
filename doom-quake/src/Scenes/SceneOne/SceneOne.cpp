@@ -27,7 +27,7 @@ SceneOne::SceneOne(){
     this->textures.push_back(std::make_unique<Texture>(grassImg.c_str(),GL_TEXTURE_2D,3,GL_RGB,GL_UNSIGNED_BYTE));
 
     
-    this->textures.push_back(std::make_unique<Texture>(metalImg.c_str(),GL_TEXTURE_2D,3,GL_RGB,GL_SRGB));
+    this->textures.push_back(std::make_unique<Texture>(metalImg.c_str(),GL_TEXTURE_2D,3,GL_RGB,GL_SRGB)); // important change!
 
 
     this->textures.push_back(std::make_unique<Texture>(concreteImg.c_str(),GL_TEXTURE_2D,5,GL_RGB,GL_UNSIGNED_BYTE));
@@ -199,6 +199,8 @@ SceneOne::SceneOne(){
 ////
 
 
+
+    // the first pair of coordinates represent the current drawn plane, the secondpair of coordinates represent the shifted position of the plane!
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(2.5f, -1.0f, 5.0f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-1.5,-1.0,1.0), DEFAULT));
 
@@ -218,8 +220,6 @@ SceneOne::SceneOne(){
 
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(3.5f, -1.0f, -4.0f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(1.5f, -1.0f, -4.0f), DEFAULT));
-
-
 
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,3), true, textures[ETexture::CONTAINER].get(), glm::vec3(5.0f, 0.5f, 1.5f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,6), true, textures[ETexture::CONTAINER].get(), glm::vec3(5.0f, 0.5f, 7.0f), DEFAULT));

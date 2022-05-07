@@ -12,8 +12,8 @@ class PlaneModel : public BaseModel {
 public:
     // mesh data
     PlaneModel(Texture * texture_1, glm::vec3, ShaderType type);
-    PlaneModel(std::vector<float> vertices, Texture * texture_1, glm::vec3, ShaderType type);
-    PlaneModel(std::vector<float> vertices, BoundingBox&bx, Texture * texture_1, glm::vec3, ShaderType type);
+    PlaneModel(std::vector<float> vertices, Texture * texture_1, glm::vec3, ShaderType type); // deprecated
+    PlaneModel(std::vector<float> vertices, BoundingBox&bx, Texture * texture_1, glm::vec3, ShaderType type); // deprecated
     PlaneModel(glm::vec3 dimensions, bool wall,  Texture * texture, glm::vec3 pos, ShaderType type);
     void updatePosition(glm::vec3 pos);
     void draw(Shader * shader);
@@ -30,7 +30,6 @@ private:
     std::vector<GLuint> indices;
 
     std::vector<float> vertices;
-
 
     glm::vec3 position;
 
