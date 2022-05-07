@@ -43,7 +43,10 @@ Texture::Texture(const char* image, GLenum texType, GLuint slot, GLenum format, 
     // glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, flatColor);
 
     // Assigns the image to the OpenGL Texture object
+    //glTexImage2D(texType, 0, INTERNAL_FORMAT, width, height, 0, format, pixelType, bytes);
     glTexImage2D(texType, 0, GL_RGBA, width, height, 0, format, pixelType, bytes);
+    
+    
     // Generates MipMaps
     glGenerateMipmap(texType);
 
