@@ -324,20 +324,23 @@ void PlaneModel::setTextures(Shader* shader) {
 }
 
 void PlaneModel::draw(Shader *shader) {
-    shader->use();
+    if(!show){
+        shader->use();
 
-    glm::mat4 m = glm::mat4(1.0f);
-    m = glm::translate(m, position); // translate it down so it's at the center of the scene
-    shader->setMat4("model", m);
+        glm::mat4 m = glm::mat4(1.0f);
+        m = glm::translate(m, position); // translate it down so it's at the center of the scene
+        shader->setMat4("model", m);
 
-    setTextures(shader);
+        setTextures(shader);
 
-    this->texture->bind();
+        this->texture->bind();
 
-    this->vao->bind();
-    this->ebo->bind();
+        this->vao->bind();
+        this->ebo->bind();
 
-    glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
+    }
+    show = true;
 }
 
 void PlaneModel::remove() {

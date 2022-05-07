@@ -129,9 +129,99 @@ int Node::getDepth() {
 }
 
 
-void Node::draw(Shader* shader){
+bool Node::fit(Culling* culling){
+    float min_x = boundingBox.centre.x - boundingBox.dimensions.x/2;
+    float max_x = boundingBox.centre.x + boundingBox.dimensions.x/2;
+    float min_z = boundingBox.centre.z - boundingBox.dimensions.z/2;
+//    float max_z = boundingBox.centre.z + boundingBox.dimensions.z/2;
 
-    if(drawState){
+    glm::vec3 point = culling->getOrigin();
+    glm::vec3 left = culling->getRight();
+    glm::vec3 right = culling->getLeft();
+
+    float a1 = (min_z-point.z)/(left.z);
+    float a2 = (min_z-point.z)/(right.z);
+
+    float x1 = point.x + a1*left.x;
+    float x2 = point.x + a2*right.x;
+
+    if(x2 < x1)
+        std::swap(x1,x2);
+
+    if(min_x > x1 && x2 > max_x)
+        return true;
+    return false;
+}
+
+void Node::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling, bool octreeVisible){
+
+    if(!hasChildren()){ // Leaf
+        for(auto m : models){
+            if(!m->shown()) {
+                shaders[m->getShaderType()]->use();
+                m->draw(shaders[m->getShaderType()].get());
+            }
+        }
+        drawBounds(shaders, octreeVisible);
+    } else{
+        if(fit(culling)){
+            for(auto m : models){
+                if(!m->shown()){
+                    shaders[m->getShaderType()]->use();
+                    m->draw(shaders[m->getShaderType()].get());
+                }
+            }
+            drawBounds(shaders, octreeVisible);
+        } else{
+            for(int i=0;  i<8; i++){
+                if(children[i] != NULL)
+                    children[i]->draw(shaders,culling, octreeVisible);
+            }
+        }
+    }
+
+
+
+    if(!hasChildren()){ // Leaf
+//        for(auto m : models){
+//            shaders[m->getShaderType()]->use();
+//            m->draw(shaders[m->getShaderType()].get());
+//        }
+    }
+
+//    for(auto m : models){
+//        shaders[m->getShaderType()]->use();
+//        m->draw(shaders[m->getShaderType()].get());
+//    }
+
+//    if(octreeVisible && drawState){
+//        Shader* shader = shaders[LINE].get();
+//        shader->use();
+//
+//        glm::mat4 m = glm::mat4(1.0f);
+//        m = glm::translate(m, position); // translate it down so it's at the center of the scene
+//        shader->setMat4("model", m);
+//
+//
+//        this->vao->bind();
+//        this->ebo->bind();
+//
+//        glDrawElements(GL_LINES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
+//
+//        this->vao->unbind();
+//        this->ebo->unbind();
+//    }
+
+//    for(int i=0;  i<8; i++){
+//        if(children[i] != NULL)
+//            children[i]->draw(shaders,octreeVisible);
+//    }
+}
+
+
+void Node::drawBounds(std::vector<std::unique_ptr<Shader>> & shaders, bool octreeVisible){
+    if(octreeVisible){
+        Shader* shader = shaders[LINE].get();
         shader->use();
 
         glm::mat4 m = glm::mat4(1.0f);
@@ -146,11 +236,6 @@ void Node::draw(Shader* shader){
 
         this->vao->unbind();
         this->ebo->unbind();
-
-        for(int i=0;  i<8; i++){
-            if(children[i] != NULL)
-                children[i]->draw(shader);
-        }
     }
 }
 

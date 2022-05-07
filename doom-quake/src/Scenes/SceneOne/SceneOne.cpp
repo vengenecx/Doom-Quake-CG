@@ -204,6 +204,7 @@ SceneOne::SceneOne(){
 
 
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,9), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-5.5f, -1.0f, 4.5f), DEFAULT));
+
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-1.5f, -1.0f, 8.0f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,0,1), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(6.0f, -1.0f, 3.5f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,6), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(9.5f, -1.0f, 1.0f), DEFAULT));
@@ -292,16 +293,21 @@ SceneOne::SceneOne(){
 //    octree->addModel(models[1].get());
 }
 
-void SceneOne::draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints, bool octreeVisible){
-    for(std::unique_ptr<BaseModel>& c : this->models){
-        shaders[c->getShaderType()]->use();
-        c->draw(shaders[c->getShaderType()].get());
-    }
+void SceneOne::draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints, Culling* culling, bool octreeVisible){
+//    for(std::unique_ptr<BaseModel>& c : this->models){
+//        shaders[c->getShaderType()]->use();
+//        c->draw(shaders[c->getShaderType()].get());
+//    }
 
-    if(octreeVisible){
-        shaders[LINE]->use();
-        octree->draw(shaders[LINE].get());
-    }
+//    if(octreeVisible){
+//        shaders[LINE]->use();
+//        octree->draw(shaders[LINE].get());
+//    }
+
+
+
+    octree->draw(shaders,culling,octreeVisible);
+
 
     shaders[DEFAULT]->use();
     for(auto& hp: hitPoints){

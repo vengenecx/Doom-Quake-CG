@@ -12,7 +12,7 @@
 
 class Scene {
 public:
-    virtual void draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints, bool octreeVisible) = 0;
+    virtual void draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints,Culling* culling, bool octreeVisible) = 0;
     virtual void remove() = 0;
 
 

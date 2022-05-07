@@ -36,6 +36,7 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include "Game/Game.h"
+#include "Culling/Culling.h"
 
 
 #include<filesystem>
@@ -104,6 +105,7 @@ private:
 
 
     std::unique_ptr<Ray> ray;
+    std::unique_ptr<Culling> culling;
 
     std::vector<std::unique_ptr<Hit>> hitPoints;
 

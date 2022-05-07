@@ -48,7 +48,7 @@ Engine::Engine()
 
 //    camera = std::make_unique<Camera>(true,glm::vec3(0.0f, 0.0f, 0.0f));
 
-    camera = std::make_unique<Camera>(false,glm::vec3(0.0f, 0.2f, 0.2f));
+    camera = std::make_unique<Camera>(false,glm::vec3(0.0f, 0.2f, -2.0f));
 
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
@@ -166,6 +166,9 @@ Engine::Engine()
     }
 
     ray = std::make_unique<Ray>(glm::vec3(0.0,0.0,0.0),glm::vec3(1.0,1.0,1.0));
+
+    culling = std::make_unique<Culling>(camera->Position,camera->Front);
+
     crosshair = std::make_unique<CrossModel>(CROSS);
     // Hitpoints
     hitPoints = std::vector<std::unique_ptr<Hit>>();
@@ -221,10 +224,10 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
             c->draw(shaders[c->getShaderType()].get());
         }
 
-        if(showOctree){
-            shaders[LINE]->use();
-            octree->draw(shaders[LINE].get());
-        }
+//        if(showOctree){
+//            shaders[LINE]->use();
+//            octree->draw(shaders[LINE].get());
+//        }
 
         shaders[DEFAULT]->use();
         for(auto& hp: hitPoints){
@@ -248,7 +251,7 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
 //    skybox->draw(skyboxShader.get());
 
     } else{
-        currentScene->draw(shaders,hitPoints,showOctree);
+        currentScene->draw(shaders,hitPoints,culling.get(),showOctree);
     }
 
     shaders[crosshair->getShaderType()]->use();
@@ -258,6 +261,8 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
         crosshair->resetShoot();
     crosshair->draw(shaders[crosshair->getShaderType()].get());
 
+    shaders[LINE]->use();
+    culling->draw(shaders[LINE].get());
 
     if(executeShoot){
         std::cout<< "shoot" << std::endl;
@@ -403,6 +408,8 @@ void Engine::keyHandler(GLFWwindow *window) {
     if (glfwGetKey(window, GLFW_KEY_M) == GLFW_RELEASE && m_pressed) {
         m_pressed = false;
     }
+
+    culling->setCulling(camera->Position,camera->Front);
 }
 // glfw: whenever the mouse moves, this callback is called
 // -------------------------------------------------------
@@ -425,6 +432,7 @@ void Engine::mouseHandler(GLFWwindow* window, double xposIn, double yposIn)
     lastY = ypos;
 
     camera->ProcessMouseMovement(xoffset, yoffset);
+    culling->setCulling(camera->Position,camera->Front);
 //    std::cout << "mouse movement" << std::endl;
 }
 

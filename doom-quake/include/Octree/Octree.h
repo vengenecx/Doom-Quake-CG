@@ -10,6 +10,8 @@
 #include "NodeCluster.h"
 #include "Hit/Hit.h"
 
+#include "Culling/Culling.h"
+
 class Octree
 {
 public:
@@ -20,7 +22,7 @@ public:
 
     void shoot(Ray& ray, std::vector<std::unique_ptr<Hit>> & hitPoints);
 
-    void draw(Shader* shader);
+    void draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling * culling, bool octreeVisible);
 
 
 

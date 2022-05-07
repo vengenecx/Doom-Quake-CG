@@ -4,6 +4,7 @@
 
 #include "Octree/Octree.h"
 
+
 Octree::Octree(BoundingBox& boundingBox, int depth) {
     this->root = std::make_unique<Node>(boundingBox,depth);
 }
@@ -14,77 +15,27 @@ void Octree::addModel(BaseModel * model) {
     this->addModelRecursive(node,model);
 }
 
-//void Octree::addModelRecursive(Node* node, BaseModel * model){
-//    if(node->depthEnd()){
-//        node->models.push_back(model); // Add model
-//    } else{
-//
-//        if(!node->models.empty()) {
-//
-//            if (!node->hasChildren()) {
-//                generateChildren(node); // generate children
-//
-//                std::vector<BaseModel *> remainingModels = std::vector<BaseModel*>();
-//
-//                for (auto m: node->models) {
-//                    std::vector<Octants> octants = node->matchChild(m->getBoundingBox());
-//
-////                    for (Octants &oc: octants) {
-////                        node->children[static_cast<int>(oc)]->models.push_back(m);
-////                    }
-//
-//                    if (octants.size() < 8) {
-//                        for (Octants &oc: octants) {
-//                            node->children[static_cast<int>(oc)]->models.push_back(m);
-//                        }
-//                    } else {
-//                        remainingModels.push_back(m);
-//                    }
-//                }
-//                node->models = remainingModels;
-//            }
-//
-//            std::vector<Octants> overlap = node->matchChild(model->getBoundingBox());
-//
-//            if (overlap.size() != 8) { // No full overlap new model
-//
-//                for (Octants &oc: overlap) {
-//                    addModelRecursive(node->children[static_cast<int>(oc)].get(), model);
-//                }
-//
-//            } else { // Full overlap
-//                node->models.push_back(model);
-////                for (Octants &oc: overlap) {
-////                    addModelRecursive(node->children[static_cast<int>(oc)].get(), model);
-////                }
-//            }
-//        } else{
-////            if (node->hasChildren()) {
-////                std::vector<Octants> overlap = node->matchChild(model->getBoundingBox());
-////
-////                for (Octants &oc: overlap) {
-////                    addModelRecursive(node->children[static_cast<int>(oc)].get(), model);
-////                }
-////
-////            } else{
-////                node->models.push_back(model);
-////            }
-//           node->models.push_back(model);
-//        }
-//    }
-//}
 
-//void Octree::addModelRecursive(Node* node, BaseModel * model){
-//    if(node->depthEnd()){
-//        std::cout<< "end" << std::endl;
-//        node->models.push_back(model); // Add model
-//    } else{
-//
-//        if(!node->models.empty()) {
-//            if (!node->hasChildren()) {
-//                generateChildren(node); // generate children
-//            }
-//
+void Octree::addModelRecursive(Node* node, BaseModel * model){
+    if(node->depthEnd()){
+        std::cout<< "end" << std::endl;
+        //node->models.push_back(model); // Add model
+    } else{
+        if(!node->models.empty()) {
+            if (!node->hasChildren()) {
+                generateChildren(node); // generate children
+
+                // Copy models down store in nodes
+                for(auto m : node->models){
+                    std::vector<Octants> octants = node->matchChild(m->getBoundingBox());
+                    for (Octants &oc: octants) {
+                        addModelRecursive(node->children[static_cast<int>(oc)].get(), m);
+                    }
+                }
+            }
+
+            // Without storing nodes
+
 //            // Copy models down
 //            for(auto m : node->models){
 //                std::vector<Octants> octants = node->matchChild(m->getBoundingBox());
@@ -92,41 +43,7 @@ void Octree::addModel(BaseModel * model) {
 //                    addModelRecursive(node->children[static_cast<int>(oc)].get(), m);
 //                }
 //            }
-//            node->models.clear();
-//
-//
-//            //  Add new model
-//
-//            std::vector<Octants> octants = node->matchChild(model->getBoundingBox());
-//            for (Octants &oc: octants) {
-//                addModelRecursive(node->children[static_cast<int>(oc)].get(), model);
-//            }
-//
-//        } else{
-//            node->models.push_back(model);
-//        }
-//    }
-//}
-
-void Octree::addModelRecursive(Node* node, BaseModel * model){
-    if(node->depthEnd()){
-        std::cout<< "end" << std::endl;
-        node->models.push_back(model); // Add model
-    } else{
-
-        if(!node->models.empty()) {
-            if (!node->hasChildren()) {
-                generateChildren(node); // generate children
-            }
-
-            // Copy models down
-            for(auto m : node->models){
-                std::vector<Octants> octants = node->matchChild(m->getBoundingBox());
-                for (Octants &oc: octants) {
-                    addModelRecursive(node->children[static_cast<int>(oc)].get(), m);
-                }
-            }
-            node->models.clear();
+//            node->models.clear(); // clear?
 
             //  Add new model
 
@@ -137,7 +54,7 @@ void Octree::addModelRecursive(Node* node, BaseModel * model){
 
         } else{
             if(!node->hasChildren()){
-                node->models.push_back(model);
+                //node->models.push_back(model);
             } else{
                 std::vector<Octants> octants = node->matchChild(model->getBoundingBox());
                 for (Octants &oc: octants) {
@@ -146,6 +63,7 @@ void Octree::addModelRecursive(Node* node, BaseModel * model){
             }
         }
     }
+    node->models.push_back(model);
 }
 
 
@@ -367,7 +285,12 @@ bool Octree::clipLine(int d, BoundingBox& bb,const glm::vec3& v0, const glm::vec
     return true;
 }
 
-void Octree::draw(Shader* shader) {
+void Octree::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling,bool octreeVisible) {
     //TODO
-    root->draw(shader);
+
+    for(auto m: root->models){
+        m->resetDraw();
+    }
+
+    root->draw(shaders, culling,octreeVisible);
 }

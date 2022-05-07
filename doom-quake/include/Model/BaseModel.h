@@ -29,6 +29,10 @@ public:
     virtual void shoot();
     virtual void resetShoot();
 
+    virtual void resetDraw();
+
+    virtual bool shown();
+
     ShaderType getShaderType();
 //    BoundingBox* getBoundingBox();
 
@@ -38,6 +42,8 @@ protected:
     ShaderType type;
 //    std::unique_ptr<BoundingBox> bb;
     BoundingBox bb;
+
+    bool show = false;
 };
 
 #endif //DOOM_QUAKE_BASEMODEL_H

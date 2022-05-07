@@ -19,6 +19,14 @@ void BaseModel::shoot() {}
 
 void BaseModel::resetShoot() {}
 
+void BaseModel::resetDraw(){
+    show = false;
+}
+
+bool BaseModel::shown(){
+    return show;
+}
+
 
 //BoundingBox* BaseModel::getBoundingBox() {
 //    return bb.get();

@@ -21,7 +21,7 @@ namespace fs = std::filesystem;
 
 class SceneOne : public Scene {
     public:
-        void draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints, bool octreeVisible);
+        void draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints, Culling* culling, bool octreeVisible);
         SceneOne();
         void remove();
 
