@@ -37,6 +37,8 @@
 #include "imgui_impl_opengl3.h"
 #include "Game/Game.h"
 
+#include "ShaderMap.h"
+
 
 #include<filesystem>
 namespace fs = std::filesystem;

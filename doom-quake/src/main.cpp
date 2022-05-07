@@ -50,6 +50,7 @@
      std::unique_ptr<Engine> engine = std::make_unique<Engine>();
 
 
+    // ShaderMap shaderProgram("shader-files/default.vert", "shader-files/default.frag");
 
 
      glfwSetWindowUserPointer(window, engine.get());
