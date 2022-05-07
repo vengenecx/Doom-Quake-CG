@@ -35,7 +35,6 @@ add_executable( doom_quake src/main.cpp
                 include/Register/VAO.h
                 include/Register/VBO.h
 
-                include/ShaderMap.h
 
                 include/Model/Triangle/TriangleModel.h
                 include/Scenes/SceneTwo/SceneTwo.h
@@ -55,8 +54,6 @@ add_executable( doom_quake src/main.cpp
                 src/Scenes/SceneTwo/SceneTwo.cpp
                 src/Scenes/SceneOne/SceneOne.cpp
                 
-                src/ShaderMap.cpp
-
                 include/Texture/Texture.h
                 src/Texture/Texture.cpp
                 src/Model/BaseModel.cpp

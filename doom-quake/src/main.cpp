@@ -12,8 +12,6 @@
  int main(void)
  {
      GLFWwindow* window;
-
-
      /* Initialize the library */
      if (!glfwInit())
          return -1;
@@ -23,7 +21,6 @@
      glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
      glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
      glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-
 
      /* Create a windowed mode window and its OpenGL context */
      window = glfwCreateWindow(width, height, "Doom-Quake", NULL, NULL);
@@ -47,6 +44,8 @@
      }
 
      std::unique_ptr<Engine> engine = std::make_unique<Engine>();
+
+
 
      glfwSetWindowUserPointer(window, engine.get());
      glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
