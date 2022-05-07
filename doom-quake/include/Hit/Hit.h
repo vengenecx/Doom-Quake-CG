@@ -53,6 +53,8 @@ private:
 
     glm::vec3 position;
 
+    bool twoSides = false;
+
 
 };
 

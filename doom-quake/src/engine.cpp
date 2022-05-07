@@ -48,7 +48,7 @@ Engine::Engine()
 
 //    camera = std::make_unique<Camera>(true,glm::vec3(0.0f, 0.0f, 0.0f));
 
-    camera = std::make_unique<Camera>(true,glm::vec3(0.0f, 0.2f, 0.2f));
+    camera = std::make_unique<Camera>(false,glm::vec3(0.0f, 0.2f, 0.2f));
 
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
@@ -74,10 +74,12 @@ Engine::Engine()
 //    models.push_back(std::make_unique<Model>("model-files/backpack/backpack.obj",glm::vec3(0.0f, 2.0f, -8.0f),MODEL_LOADER_SHADER));
 //    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 //    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, -5.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-        models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -10.0f,  -10.0f, -10.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-        models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -12.0f,  -12.0f, -12.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+//        models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -10.0f,  -10.0f, -10.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 
+        models.push_back(std::make_unique<CubeModel>(glm::vec3( 2.0f,  2.0f, 2.0f),containerTexture.get(),awesomeTexture.get(), glm::vec3( -10.0f,  -10.0f, -10.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 
+        //        models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -12.0f,  -12.0f, -12.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+        models.push_back(std::make_unique<CubeModel>(glm::vec3( 1.0f,  1.0f, 1.0f),containerTexture.get(),awesomeTexture.get(), glm::vec3( -12.0f,  -12.0f, -12.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 
         models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( -10.0f,  -10.0f, 0.0f),DEFAULT));
 
@@ -208,55 +210,21 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
         hitPoints.erase(hitPoints.begin());
     }
 
+    for(auto &s : shaders){
+        s->use();
+        camera->updateCamera(s.get(),(float )width,(float ) height);
+    }
+
     if(lennert){
-        for(auto &s : shaders){
-            s->use();
-// <<<<<<< HEAD
-//         camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-
-//         //camera->updateCamera(s,(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-//     }
-
-//     currentScene->draw(shaders);
-
-
-//     // tessHeightMapShader->use();
-//     // camera->updateCamera(tessHeightMapShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-
-//     // terrain->draw(tessHeightMapShader.get());
-
-//     fpsTime += deltaTime;
-//     if(fpsTime >= 1){
-//         fpsTime = fpsTime - 1;
-//         frameSetPoint = frames;
-//         frames = 0;
-//     } else{
-//         frames ++;
-// =======
-//        camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-            camera->updateCamera(s.get(),(float )width,(float ) height);
-        }
-
         for(std::unique_ptr<BaseModel>& c : this->models){
             shaders[c->getShaderType()]->use();
-            if(executeShoot)
-                c->shoot();
-            if(realeaseShoot)
-                c->resetShoot();
             c->draw(shaders[c->getShaderType()].get());
         }
-
-
 
         if(showOctree){
             shaders[LINE]->use();
             octree->draw(shaders[LINE].get());
         }
-
-//    shaders[LINE]->use();
-//    ray->draw(shaders[LINE].get());
-
-
 
         shaders[DEFAULT]->use();
         for(auto& hp: hitPoints){
@@ -280,10 +248,6 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
 //    skybox->draw(skyboxShader.get());
 
     } else{
-        for(auto &s : shaders){
-            s->use();
-            camera->updateCamera(s.get(),(float )width,(float ) height);
-        }
         currentScene->draw(shaders,hitPoints,showOctree);
     }
 
