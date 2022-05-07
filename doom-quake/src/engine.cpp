@@ -208,55 +208,21 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
         hitPoints.erase(hitPoints.begin());
     }
 
+    for(auto &s : shaders){
+        s->use();
+        camera->updateCamera(s.get(),(float )width,(float ) height);
+    }
+
     if(lennert){
-        for(auto &s : shaders){
-            s->use();
-// <<<<<<< HEAD
-//         camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-
-//         //camera->updateCamera(s,(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-//     }
-
-//     currentScene->draw(shaders);
-
-
-//     // tessHeightMapShader->use();
-//     // camera->updateCamera(tessHeightMapShader.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-
-//     // terrain->draw(tessHeightMapShader.get());
-
-//     fpsTime += deltaTime;
-//     if(fpsTime >= 1){
-//         fpsTime = fpsTime - 1;
-//         frameSetPoint = frames;
-//         frames = 0;
-//     } else{
-//         frames ++;
-// =======
-//        camera->updateCamera(s.get(),(float )SCR_WIDTH,(float ) SCR_HEIGHT);
-            camera->updateCamera(s.get(),(float )width,(float ) height);
-        }
-
         for(std::unique_ptr<BaseModel>& c : this->models){
             shaders[c->getShaderType()]->use();
-            if(executeShoot)
-                c->shoot();
-            if(realeaseShoot)
-                c->resetShoot();
             c->draw(shaders[c->getShaderType()].get());
         }
-
-
 
         if(showOctree){
             shaders[LINE]->use();
             octree->draw(shaders[LINE].get());
         }
-
-//    shaders[LINE]->use();
-//    ray->draw(shaders[LINE].get());
-
-
 
         shaders[DEFAULT]->use();
         for(auto& hp: hitPoints){
@@ -280,10 +246,6 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
 //    skybox->draw(skyboxShader.get());
 
     } else{
-        for(auto &s : shaders){
-            s->use();
-            camera->updateCamera(s.get(),(float )width,(float ) height);
-        }
         currentScene->draw(shaders,hitPoints,showOctree);
     }
 
