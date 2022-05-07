@@ -251,8 +251,7 @@ SceneOne::SceneOne(){
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(9.5f, 0.5f, -2.0f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,5), true, textures[ETexture::CONCRETE].get(), glm::vec3(7.0f, 0.5f, 0.5f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(6.0f, 0.5f, 3.0f), DEFAULT));
-
-
+    
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(3.0f, 0.5f, -1.0f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(3.5f, 0.5f, -2.5f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(4.0f, 0.5f, -4.0f), DEFAULT));
@@ -262,8 +261,6 @@ SceneOne::SceneOne(){
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(1.0f, 0.5f, -4.0f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(-1,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(1.5f, 0.5f, -2.5f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(2.0f, 0.5f, -1.0f), DEFAULT));
-
-
 
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, textures[ETexture::CONCRETE].get(), glm::vec3(2.5f, 2.0f, 5.0f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, textures[ETexture::CONCRETE].get(), glm::vec3(-1.5f, 2.0f, 1.0f), DEFAULT));
