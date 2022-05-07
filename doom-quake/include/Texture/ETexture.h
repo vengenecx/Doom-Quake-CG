@@ -5,7 +5,7 @@
 #ifndef DOOM_QUAKE_ETEXTURE_H
 #define DOOM_QUAKE_ETEXTURE_H
 
-static enum ETexture {
+enum ETexture {
     AWESOMEFACE = 0,
     STONE = 1,
     GRASS = 2,
