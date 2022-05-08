@@ -10,6 +10,7 @@ include_directories(include)
 # include_directories (/usr/include/freetype2)
 
 add_executable( doom_quake src/main.cpp
+                #doom_quake src/1.colors/colors.cpp
                 include/Engine.h include/glad.h
                 include/khrplatform.h
                 src/glad/glad.c
@@ -63,8 +64,10 @@ add_executable( doom_quake src/main.cpp
                 src/Model/Skybox/Skybox.cpp include/Model/Plane/PlaneModel.h
                 src/Model/Plane/PlaneModel.cpp include/Map/Terrain/Terrain.h
                 src/Map/Terrain/Terrain.cpp
-
                 include/Scenes/Scene.h
+
+                src/1.colors/shader_m.h
+                # src/1.colors/colors.cpp
 
                 include/Text/TextRenderer.h src/Text/TextRenderer.cpp include/Game/Game.h src/Game/Game.cpp
 
