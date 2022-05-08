@@ -99,7 +99,7 @@
 #include"Map/VAO.h"
 #include"Map/VBO.h"
 #include"Map/EBO.h"
-#include"Map/Camera.h"
+#include"Map/CameraMap.h"
 
 #include<filesystem>
 namespace fs = std::filesystem;

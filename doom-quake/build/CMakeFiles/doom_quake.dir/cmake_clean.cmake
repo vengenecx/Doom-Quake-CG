@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o"
   "CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o.d"
-  "CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o"
-  "CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o.d"
+  "CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.o"
+  "CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.o.d"
   "CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o"
   "CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o.d"
   "CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o"

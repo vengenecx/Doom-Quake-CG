@@ -211,29 +211,29 @@ src/Camera/Camera.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/doom_quake.dir/build.make CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.s
 .PHONY : src/Camera/Camera.cpp.s
 
-src/Map/Camera.o: src/Map/Camera.cpp.o
-.PHONY : src/Map/Camera.o
+src/Map/CameraMap.o: src/Map/CameraMap.cpp.o
+.PHONY : src/Map/CameraMap.o
 
 # target to build an object file
-src/Map/Camera.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/doom_quake.dir/build.make CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o
-.PHONY : src/Map/Camera.cpp.o
+src/Map/CameraMap.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/doom_quake.dir/build.make CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.o
+.PHONY : src/Map/CameraMap.cpp.o
 
-src/Map/Camera.i: src/Map/Camera.cpp.i
-.PHONY : src/Map/Camera.i
+src/Map/CameraMap.i: src/Map/CameraMap.cpp.i
+.PHONY : src/Map/CameraMap.i
 
 # target to preprocess a source file
-src/Map/Camera.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/doom_quake.dir/build.make CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.i
-.PHONY : src/Map/Camera.cpp.i
+src/Map/CameraMap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/doom_quake.dir/build.make CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.i
+.PHONY : src/Map/CameraMap.cpp.i
 
-src/Map/Camera.s: src/Map/Camera.cpp.s
-.PHONY : src/Map/Camera.s
+src/Map/CameraMap.s: src/Map/CameraMap.cpp.s
+.PHONY : src/Map/CameraMap.s
 
 # target to generate assembly for a file
-src/Map/Camera.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/doom_quake.dir/build.make CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.s
-.PHONY : src/Map/Camera.cpp.s
+src/Map/CameraMap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/doom_quake.dir/build.make CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.s
+.PHONY : src/Map/CameraMap.cpp.s
 
 src/Map/EBO.o: src/Map/EBO.cpp.o
 .PHONY : src/Map/EBO.o
@@ -636,9 +636,9 @@ help:
 	@echo "... src/Camera/Camera.o"
 	@echo "... src/Camera/Camera.i"
 	@echo "... src/Camera/Camera.s"
-	@echo "... src/Map/Camera.o"
-	@echo "... src/Map/Camera.i"
-	@echo "... src/Map/Camera.s"
+	@echo "... src/Map/CameraMap.o"
+	@echo "... src/Map/CameraMap.i"
+	@echo "... src/Map/CameraMap.s"
 	@echo "... src/Map/EBO.o"
 	@echo "... src/Map/EBO.i"
 	@echo "... src/Map/EBO.s"

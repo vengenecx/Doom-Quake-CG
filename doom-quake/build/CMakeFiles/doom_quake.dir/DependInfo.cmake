@@ -10,7 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/glad/glad.c" "CMakeFiles/doom_quake.dir/src/glad/glad.c.o" "gcc" "CMakeFiles/doom_quake.dir/src/glad/glad.c.o.d"
   "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Camera/Camera.cpp" "CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o" "gcc" "CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o.d"
-  "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Camera.cpp" "CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o" "gcc" "CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o.d"
+  "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/CameraMap.cpp" "CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.o" "gcc" "CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.o.d"
   "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/EBO.cpp" "CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o" "gcc" "CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o.d"
   "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Texture.cpp" "CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o" "gcc" "CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o.d"
   "/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VAO.cpp" "CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o" "gcc" "CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o.d"

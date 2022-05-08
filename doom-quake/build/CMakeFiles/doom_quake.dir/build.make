@@ -73,253 +73,253 @@ CMakeFiles/doom_quake.dir/src/main.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/doom_quake.dir/src/main.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/doom_quake.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/main.cpp.o -MF CMakeFiles/doom_quake.dir/src/main.cpp.o.d -o CMakeFiles/doom_quake.dir/src/main.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/main.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/main.cpp.o -MF CMakeFiles/doom_quake.dir/src/main.cpp.o.d -o CMakeFiles/doom_quake.dir/src/main.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/main.cpp
 
 CMakeFiles/doom_quake.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/main.cpp > CMakeFiles/doom_quake.dir/src/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/main.cpp > CMakeFiles/doom_quake.dir/src/main.cpp.i
 
 CMakeFiles/doom_quake.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/main.cpp -o CMakeFiles/doom_quake.dir/src/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/main.cpp -o CMakeFiles/doom_quake.dir/src/main.cpp.s
 
 CMakeFiles/doom_quake.dir/src/glad/glad.c.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/glad/glad.c.o: ../src/glad/glad.c
 CMakeFiles/doom_quake.dir/src/glad/glad.c.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/doom_quake.dir/src/glad/glad.c.o"
-	/usr/bin/c89-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/glad/glad.c.o -MF CMakeFiles/doom_quake.dir/src/glad/glad.c.o.d -o CMakeFiles/doom_quake.dir/src/glad/glad.c.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/glad/glad.c
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/glad/glad.c.o -MF CMakeFiles/doom_quake.dir/src/glad/glad.c.o.d -o CMakeFiles/doom_quake.dir/src/glad/glad.c.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/glad/glad.c
 
 CMakeFiles/doom_quake.dir/src/glad/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/doom_quake.dir/src/glad/glad.c.i"
-	/usr/bin/c89-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/glad/glad.c > CMakeFiles/doom_quake.dir/src/glad/glad.c.i
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/glad/glad.c > CMakeFiles/doom_quake.dir/src/glad/glad.c.i
 
 CMakeFiles/doom_quake.dir/src/glad/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/doom_quake.dir/src/glad/glad.c.s"
-	/usr/bin/c89-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/glad/glad.c -o CMakeFiles/doom_quake.dir/src/glad/glad.c.s
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/glad/glad.c -o CMakeFiles/doom_quake.dir/src/glad/glad.c.s
 
 CMakeFiles/doom_quake.dir/src/engine.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/engine.cpp.o: ../src/engine.cpp
 CMakeFiles/doom_quake.dir/src/engine.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/doom_quake.dir/src/engine.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/engine.cpp.o -MF CMakeFiles/doom_quake.dir/src/engine.cpp.o.d -o CMakeFiles/doom_quake.dir/src/engine.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/engine.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/engine.cpp.o -MF CMakeFiles/doom_quake.dir/src/engine.cpp.o.d -o CMakeFiles/doom_quake.dir/src/engine.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/engine.cpp
 
 CMakeFiles/doom_quake.dir/src/engine.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/engine.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/engine.cpp > CMakeFiles/doom_quake.dir/src/engine.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/engine.cpp > CMakeFiles/doom_quake.dir/src/engine.cpp.i
 
 CMakeFiles/doom_quake.dir/src/engine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/engine.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/engine.cpp -o CMakeFiles/doom_quake.dir/src/engine.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/engine.cpp -o CMakeFiles/doom_quake.dir/src/engine.cpp.s
 
 CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.o: ../src/Shaders/Shader.cpp
 CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.o -MF CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Shaders/Shader.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.o -MF CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Shaders/Shader.cpp
 
 CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Shaders/Shader.cpp > CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Shaders/Shader.cpp > CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.i
 
 CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Shaders/Shader.cpp -o CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Shaders/Shader.cpp -o CMakeFiles/doom_quake.dir/src/Shaders/Shader.cpp.s
 
 CMakeFiles/doom_quake.dir/src/Mesh.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/Mesh.cpp.o: ../src/Mesh.cpp
 CMakeFiles/doom_quake.dir/src/Mesh.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/doom_quake.dir/src/Mesh.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Mesh.cpp.o -MF CMakeFiles/doom_quake.dir/src/Mesh.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Mesh.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Mesh.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Mesh.cpp.o -MF CMakeFiles/doom_quake.dir/src/Mesh.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Mesh.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Mesh.cpp
 
 CMakeFiles/doom_quake.dir/src/Mesh.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Mesh.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Mesh.cpp > CMakeFiles/doom_quake.dir/src/Mesh.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Mesh.cpp > CMakeFiles/doom_quake.dir/src/Mesh.cpp.i
 
 CMakeFiles/doom_quake.dir/src/Mesh.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Mesh.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Mesh.cpp -o CMakeFiles/doom_quake.dir/src/Mesh.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Mesh.cpp -o CMakeFiles/doom_quake.dir/src/Mesh.cpp.s
 
 CMakeFiles/doom_quake.dir/src/Model.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/Model.cpp.o: ../src/Model.cpp
 CMakeFiles/doom_quake.dir/src/Model.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/doom_quake.dir/src/Model.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Model.cpp.o -MF CMakeFiles/doom_quake.dir/src/Model.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Model.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Model.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Model.cpp.o -MF CMakeFiles/doom_quake.dir/src/Model.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Model.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Model.cpp
 
 CMakeFiles/doom_quake.dir/src/Model.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Model.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Model.cpp > CMakeFiles/doom_quake.dir/src/Model.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Model.cpp > CMakeFiles/doom_quake.dir/src/Model.cpp.i
 
 CMakeFiles/doom_quake.dir/src/Model.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Model.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Model.cpp -o CMakeFiles/doom_quake.dir/src/Model.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Model.cpp -o CMakeFiles/doom_quake.dir/src/Model.cpp.s
 
 CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o: ../src/Camera/Camera.cpp
 CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o -MF CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Camera/Camera.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o -MF CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Camera/Camera.cpp
 
 CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Camera/Camera.cpp > CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Camera/Camera.cpp > CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.i
 
 CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Camera/Camera.cpp -o CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Camera/Camera.cpp -o CMakeFiles/doom_quake.dir/src/Camera/Camera.cpp.s
 
 CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.o: ../src/Octree/Node.cpp
 CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.o -MF CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Node.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.o -MF CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Node.cpp
 
 CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Node.cpp > CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Node.cpp > CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.i
 
 CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Node.cpp -o CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Node.cpp -o CMakeFiles/doom_quake.dir/src/Octree/Node.cpp.s
 
 CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.o: ../src/Octree/NodeCluster.cpp
 CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.o -MF CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/NodeCluster.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.o -MF CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/NodeCluster.cpp
 
 CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/NodeCluster.cpp > CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/NodeCluster.cpp > CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.i
 
 CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/NodeCluster.cpp -o CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/NodeCluster.cpp -o CMakeFiles/doom_quake.dir/src/Octree/NodeCluster.cpp.s
 
 CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.o: ../src/Octree/Octree.cpp
 CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.o -MF CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Octree.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.o -MF CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Octree.cpp
 
 CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Octree.cpp > CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Octree.cpp > CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.i
 
 CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Octree.cpp -o CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Octree/Octree.cpp -o CMakeFiles/doom_quake.dir/src/Octree/Octree.cpp.s
 
 CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.o: ../src/Ray/Ray.cpp
 CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.o -MF CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Ray/Ray.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.o -MF CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Ray/Ray.cpp
 
 CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Ray/Ray.cpp > CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Ray/Ray.cpp > CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.i
 
 CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Ray/Ray.cpp -o CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Ray/Ray.cpp -o CMakeFiles/doom_quake.dir/src/Ray/Ray.cpp.s
 
 CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o: ../src/Map/EBO.cpp
 CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o -MF CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/EBO.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o -MF CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/EBO.cpp
 
 CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/EBO.cpp > CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/EBO.cpp > CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.i
 
 CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/EBO.cpp -o CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/EBO.cpp -o CMakeFiles/doom_quake.dir/src/Map/EBO.cpp.s
 
 CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.o: ../src/Map/shaderClass.cpp
 CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.o -MF CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/shaderClass.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.o -MF CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/shaderClass.cpp
 
 CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/shaderClass.cpp > CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/shaderClass.cpp > CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.i
 
 CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/shaderClass.cpp -o CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/shaderClass.cpp -o CMakeFiles/doom_quake.dir/src/Map/shaderClass.cpp.s
 
 CMakeFiles/doom_quake.dir/src/Map/stb.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/Map/stb.cpp.o: ../src/Map/stb.cpp
 CMakeFiles/doom_quake.dir/src/Map/stb.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/doom_quake.dir/src/Map/stb.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Map/stb.cpp.o -MF CMakeFiles/doom_quake.dir/src/Map/stb.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Map/stb.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/stb.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Map/stb.cpp.o -MF CMakeFiles/doom_quake.dir/src/Map/stb.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Map/stb.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/stb.cpp
 
 CMakeFiles/doom_quake.dir/src/Map/stb.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Map/stb.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/stb.cpp > CMakeFiles/doom_quake.dir/src/Map/stb.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/stb.cpp > CMakeFiles/doom_quake.dir/src/Map/stb.cpp.i
 
 CMakeFiles/doom_quake.dir/src/Map/stb.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Map/stb.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/stb.cpp -o CMakeFiles/doom_quake.dir/src/Map/stb.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/stb.cpp -o CMakeFiles/doom_quake.dir/src/Map/stb.cpp.s
 
 CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o: ../src/Map/Texture.cpp
 CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o -MF CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Texture.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o -MF CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Texture.cpp
 
 CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Texture.cpp > CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Texture.cpp > CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.i
 
 CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Texture.cpp -o CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Texture.cpp -o CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.s
 
 CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o: ../src/Map/VAO.cpp
 CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o -MF CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VAO.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o -MF CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VAO.cpp
 
 CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VAO.cpp > CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VAO.cpp > CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.i
 
 CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VAO.cpp -o CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VAO.cpp -o CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.s
 
 CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.o: CMakeFiles/doom_quake.dir/flags.make
 CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.o: ../src/Map/VBO.cpp
 CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.o -MF CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VBO.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.o -MF CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VBO.cpp
 
 CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VBO.cpp > CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VBO.cpp > CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.i
 
 CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VBO.cpp -o CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/VBO.cpp -o CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.s
 
-CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o: CMakeFiles/doom_quake.dir/flags.make
-CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o: ../src/Map/Camera.cpp
-CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o -MF CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Camera.cpp
+CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.o: CMakeFiles/doom_quake.dir/flags.make
+CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.o: ../src/Map/CameraMap.cpp
+CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.o: CMakeFiles/doom_quake.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.o -MF CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.o.d -o CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.o -c /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/CameraMap.cpp
 
-CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Camera.cpp > CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.i
+CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/CameraMap.cpp > CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.i
 
-CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/Camera.cpp -o CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.s
+CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/benoit/Documents/GitHub/Doom-Quake-CG/doom-quake/src/Map/CameraMap.cpp -o CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.s
 
 # Object files for target doom_quake
 doom_quake_OBJECTS = \
@@ -340,7 +340,7 @@ doom_quake_OBJECTS = \
 "CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o" \
 "CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o" \
 "CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.o" \
-"CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o"
+"CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.o"
 
 # External object files for target doom_quake
 doom_quake_EXTERNAL_OBJECTS =
@@ -362,7 +362,7 @@ doom_quake: CMakeFiles/doom_quake.dir/src/Map/stb.cpp.o
 doom_quake: CMakeFiles/doom_quake.dir/src/Map/Texture.cpp.o
 doom_quake: CMakeFiles/doom_quake.dir/src/Map/VAO.cpp.o
 doom_quake: CMakeFiles/doom_quake.dir/src/Map/VBO.cpp.o
-doom_quake: CMakeFiles/doom_quake.dir/src/Map/Camera.cpp.o
+doom_quake: CMakeFiles/doom_quake.dir/src/Map/CameraMap.cpp.o
 doom_quake: CMakeFiles/doom_quake.dir/build.make
 doom_quake: /usr/lib/x86_64-linux-gnu/libassimp.so
 doom_quake: /usr/lib/x86_64-linux-gnu/libGLX.so
