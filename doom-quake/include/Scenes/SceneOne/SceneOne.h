@@ -16,6 +16,9 @@
 
 #include "Scenes/Scene.h"
 
+#include "Model/LightBox/LightBox.h"
+
+
 namespace fs = std::filesystem;
 
 

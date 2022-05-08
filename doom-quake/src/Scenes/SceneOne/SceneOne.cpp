@@ -46,14 +46,14 @@ SceneOne::SceneOne(){
     models = std::vector<std::unique_ptr<BaseModel>>();
 
 //    models.push_back(std::make_unique<Model>("model-files/hellknight/Hellknight_LATEST.obj", glm::vec3(2.0f, 0.0f, 5.0f), glm::vec3(0.7f, 0.7f, 0.7f), MODEL_LOADER_SHADER));
-//    models.push_back(std::make_unique<Model>("model-files/doomSword/Doom Eternal Weapon.obj", glm::vec3(-6.0f, 0.2f, 8.9f), glm::vec3(4.0f, 4.0f, 4.0f), MODEL_LOADER_SHADER));
-
-
+   
+   // cool object, but program crashes a lot
+    // models.push_back(std::make_unique<Model>("model-files/doomSword/Doom Eternal Weapon.obj", glm::vec3(-6.0f, 0.2f, 8.9f), glm::vec3(4.0f, 4.0f, 4.0f), MODEL_LOADER_SHADER));
 
     // models.push_back(std::make_unique<Model>("model-files/doomSword/Doom Eternal Weapon.obj", glm::vec3(4.0f, 0.0f, 10.0f), glm::vec3(2.0f, 2.0f, 2.0f), MODEL_LOADER_SHADER));
 
-    // models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3(0.5f,  -0.5f, 9.5f),DOUBLE_TEXTURE_COLOR_SHADER));
-    // models.push_back(std::make_unique<CubeModel>(concreteTexture.get(),concreteTexture.get(), glm::vec3(2.0f,  -0.5f, 3.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+    models.push_back(std::make_unique<CubeModel>(textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR].get(), glm::vec3(0.5f,  -0.5f, 9.5f),DOUBLE_TEXTURE_COLOR_SHADER));
+    models.push_back(std::make_unique<CubeModel>(textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR].get(), glm::vec3(2.0f,  -0.5f, 3.0f),DOUBLE_TEXTURE_COLOR_SHADER));
     // models.push_back(std::make_unique<Model>("model-files/backpack/backpack.obj",glm::vec3(4.0f, -0.5f, 10.0f),MODEL_LOADER_SHADER));
 
 
@@ -271,6 +271,11 @@ SceneOne::SceneOne(){
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(3.5f, 2.0f, -4.0f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(1.5f, 2.0f, -4.0f), DEFAULT));
 
+    models.push_back(std::make_unique<LightBox>(textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR].get(), glm::vec3(0.5f,  -0.5f, 5.5f),DOUBLE_TEXTURE_COLOR_SHADER));
+
+
+
+
     BoundingBox box = BoundingBox();
     box.centre = glm::vec3(0.0,0.0,0.0);
     box.dimensions = glm::vec3(50.0,50.0,50.0);
@@ -312,10 +317,3 @@ void SceneOne::remove(){
 void SceneOne::shoot(Ray* ray, std::vector<std::unique_ptr<Hit>> & hitPoints){
     octree->shoot(*ray,hitPoints);
 }
-
-
-
-
-
-
-

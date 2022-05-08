@@ -1,18 +1,12 @@
-//
-// Created by Lennert Steyaert on 24/04/2022.
-//
+#include "Model/LightBox/LightBox.h"
 
-#include "Model/Cube/CubeModel.h"
-
-
-CubeModel::CubeModel(glm::vec3 dimensions,Texture * texture_1, Texture * texture_2, glm::vec3 position, ShaderType type) : BaseModel(type){
+LightBox::LightBox(glm::vec3 dimensions,Texture * texture_1, Texture * texture_2, glm::vec3 position, ShaderType type) : BaseModel(type){
     this->vao = std::make_unique<VAO>();
     this->vao->bind();
 
     this->position =  position;
 
     fillVertices(dimensions);
-
 
     this->indices = std::vector<GLuint>
             {
@@ -64,7 +58,7 @@ CubeModel::CubeModel(glm::vec3 dimensions,Texture * texture_1, Texture * texture
 }
 
 
-CubeModel::CubeModel(Texture * texture_1, Texture * texture_2, glm::vec3 pos, ShaderType type) : BaseModel(type){
+LightBox::LightBox(Texture * texture_1, Texture * texture_2, glm::vec3 pos, ShaderType type) : BaseModel(type){
     this->vao = std::make_unique<VAO>();
     this->vao->bind();
 
@@ -144,6 +138,9 @@ CubeModel::CubeModel(Texture * texture_1, Texture * texture_2, glm::vec3 pos, Sh
     this->vbo = std::make_unique<VBO>(vertices,vertices.size());
     this->ebo = std::make_unique<EBO>(indices,indices.size());
 
+
+
+
     vao->linkAttrib(vbo.get(), 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
     vao->linkAttrib(vbo.get(), 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
     vao->linkAttrib(vbo.get(), 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
@@ -165,7 +162,7 @@ CubeModel::CubeModel(Texture * texture_1, Texture * texture_2, glm::vec3 pos, Sh
     this->bb.dimensions  =  glm::vec3(1,1,1);
 }
 
-void CubeModel::fillVertices(glm::vec3 dimensions){
+void LightBox::fillVertices(glm::vec3 dimensions){
 
     glm::vec3 color = glm::vec3(1,1,1);
 
@@ -443,7 +440,7 @@ void CubeModel::fillVertices(glm::vec3 dimensions){
 }
 
 
-CubeModel::~CubeModel() {
+LightBox::~LightBox() {
     std::cout << "deleted cubemodel" << std::endl;
     vao.release();
     vbo.release();
@@ -451,16 +448,16 @@ CubeModel::~CubeModel() {
 }
 
 
-void CubeModel::updatePosition(glm::vec3 pos){
+void LightBox::updatePosition(glm::vec3 pos){
     this->position = pos;
 }
 
-void CubeModel::setTextures(Shader* shader) {
+void LightBox::setTextures(Shader* shader) {
     this->texture_1->texUnit(shader,"texture1");
     this->texture_2->texUnit(shader,"texture2");
 }
 
-void CubeModel::draw(Shader *shader) {
+void LightBox::draw(Shader *shader) {
     shader->use();
 
     glm::mat4 m = glm::mat4(1.0f);
@@ -478,7 +475,7 @@ void CubeModel::draw(Shader *shader) {
     glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
 }
 
-void CubeModel::remove() {
+void LightBox::remove() {
     this->vao->remove();
     this->vbo->remove();
     this->ebo->remove();

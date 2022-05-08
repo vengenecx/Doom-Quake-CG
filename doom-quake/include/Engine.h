@@ -18,17 +18,13 @@
 #include "Model/Cross/CrossModel.h"
 #include "Model/Test/TestModel.cpp"
 
-
 #include "Map/Terrain/Terrain.h"
 #include "Text/TextRenderer.h"
 // #include <Shaders/EShader.h>
 #include <Camera/Camera.h>
 
-
-
 #include "Scenes/SceneTwo/SceneTwo.h"
 #include "Scenes/SceneOne/SceneOne.h"
-
 
 #include "Octree/Octree.h"
 
@@ -37,12 +33,10 @@
 #include "imgui_impl_opengl3.h"
 #include "Game/Game.h"
 
-
-
 #include<filesystem>
 namespace fs = std::filesystem;
 
-
+// lighting
 
 class Engine {
 public:
@@ -61,19 +55,14 @@ public:
 private:
     void keyHandler(GLFWwindow *window);
 
-
-
     void drawControls(GLFWwindow *window);
-
 
     Game game;
 
     std::unique_ptr<Texture> containerTexture;
     std::unique_ptr<Texture> awesomeTexture;
 
-
     std::unique_ptr<Texture> potholeTexture;
-
 
     std::unique_ptr<Shader> doubleTextureColShader;
     std::unique_ptr<Shader> meshModelShader;
