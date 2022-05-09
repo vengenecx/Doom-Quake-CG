@@ -17,7 +17,7 @@ Node::Node(BoundingBox bb, int depth, bool draw) : depth(depth), boundingBox(bb)
 
         this->vertices = std::vector<float>();
 
-        std::cout<< "draw" << std::endl;
+//        std::cout<< "draw" << std::endl;
         fillVertices(bb);
         this->indices = std::vector<GLuint>
                 {
@@ -148,8 +148,44 @@ bool Node::fit(Culling* culling){
     if(x2 < x1)
         std::swap(x1,x2);
 
-    if(min_x > x1 && x2 > max_x)
+//    if(min_x > x1 && x2 > max_x && min_x  < x2){
+//        return true;
+//    }
+
+    if(min_x > x1 && x2 > max_x && min_x  < x2 && max_x >x1){
         return true;
+    }
+
+    return false;
+}
+
+bool Node::fitBox(Culling* culling, BoundingBox bx){
+    float min_x = bx.centre.x - bx.dimensions.x/2;
+    float max_x = bx.centre.x + bx.dimensions.x/2;
+    float min_z = bx.centre.z - bx.dimensions.z/2;
+//    float max_z = boundingBox.centre.z + boundingBox.dimensions.z/2;
+
+    glm::vec3 point = culling->getOrigin();
+    glm::vec3 left = culling->getRight();
+    glm::vec3 right = culling->getLeft();
+
+    float a1 = (min_z-point.z)/(left.z);
+    float a2 = (min_z-point.z)/(right.z);
+
+    float x1 = point.x + a1*left.x;
+    float x2 = point.x + a2*right.x;
+
+    if(x2 < x1)
+        std::swap(x1,x2);
+
+//    if(x2 < x1){
+//        std::cout << "omgekeerd" << std::endl;
+//    }
+
+    if(min_x > x1 && x2 > max_x && min_x  < x2 && max_x >x1){
+        return true;
+    }
+
     return false;
 }
 
@@ -158,16 +194,20 @@ void Node::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling
     if(!hasChildren()){ // Leaf
         for(auto m : models){
             if(!m->shown()) {
-                shaders[m->getShaderType()]->use();
-                if(m->getShaderType() == LIGHT){
-                    shaders[m->getShaderType()]->setVec3("viewPos", culling->getOrigin());
+                if(fitBox(culling,m->getBoundingBox())) {
+                    shaders[m->getShaderType()]->use();
+                    if (m->getShaderType() == LIGHT) {
+//                    std::cout << "lennert" << std::endl;
+                        shaders[m->getShaderType()]->setVec3("viewPos", culling->getOrigin());
+                    }
+                    m->draw(shaders[m->getShaderType()].get());
                 }
-                m->draw(shaders[m->getShaderType()].get());
             }
         }
         drawBounds(shaders, octreeVisible);
     } else{
         if(fit(culling)){
+            std::cout << "niks";
             for(auto m : models){
                 if(!m->shown()){
                     shaders[m->getShaderType()]->use();

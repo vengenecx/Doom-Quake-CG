@@ -42,7 +42,6 @@ public:
 
 protected:
     ShaderType type;
-//    std::unique_ptr<BoundingBox> bb;
     BoundingBox bb;
 
     bool show = false;

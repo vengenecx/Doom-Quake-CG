@@ -53,6 +53,8 @@ private:
 
     void fillVertices(BoundingBox bx);
 
+    bool fitBox(Culling* culling, BoundingBox bx);
+
     bool drawState;
 
     std::unique_ptr<VAO> vao;

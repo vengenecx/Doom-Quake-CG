@@ -13,7 +13,7 @@ Model::Model(std::string const &path, glm::vec3 position, glm::vec3 sizeOfScalin
     loadModel(path);
     this->bb = BoundingBox();
     this->bb.centre = position;
-    this->bb.dimensions = glm::vec3(4,4,4);
+    this->bb.dimensions  =  glm::vec3(1.0f,1.0f,1.0f);
 }
 
 

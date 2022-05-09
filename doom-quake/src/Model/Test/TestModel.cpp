@@ -15,6 +15,7 @@ TestModel::TestModel(glm::vec3 dimensions,Texture * texture_1, glm::vec3 positio
 
     this->indices = std::vector<GLuint>
                     {
+       // 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35
                             // First surface
                             0, 1, 3, // first triangle
                             1, 2, 3, // second triangle
@@ -70,8 +71,57 @@ void TestModel::fillVertices(glm::vec3 dimensions){
 
     glm::vec3 color = glm::vec3(1,1,1);
 
+//    float v[] = {
+//            // positions          // normals           // texture coords
+//            -0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f, 0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
+//            0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f, -1.0f,  1.0f,  0.0f,
+//            0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
+//            0.5f,  0.5f, -0.5f, 1.0f,1.0f,1.0f, 0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
+//            -0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f, -1.0f,  0.0f,  1.0f,
+//            -0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
+//
+//            -0.5f, -0.5f,  0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
+//            0.5f, -0.5f,  0.5f, 1.0f,1.0f,1.0f, 0.0f,  0.0f,  1.0f,  1.0f,  0.0f,
+//            0.5f,  0.5f,  0.5f, 1.0f,1.0f,1.0f, 0.0f,  0.0f,  1.0f,  1.0f,  1.0f,
+//            0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f,  1.0f,  1.0f,  1.0f,
+//            -0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f,  1.0f,  0.0f,  1.0f,
+//            -0.5f, -0.5f,  0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
+//
+//            -0.5f,  0.5f,  0.5f, 1.0f,1.0f,1.0f,-1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
+//            -0.5f,  0.5f, -0.5f,1.0f,1.0f,1.0f, -1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
+//            -0.5f, -0.5f, -0.5f, 1.0f,1.0f,1.0f,-1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
+//            -0.5f, -0.5f, -0.5f, 1.0f,1.0f,1.0f,-1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
+//            -0.5f, -0.5f,  0.5f, 1.0f,1.0f,1.0f,-1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
+//            -0.5f,  0.5f,  0.5f, 1.0f,1.0f,1.0f,-1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
+//
+//            0.5f,  0.5f,  0.5f, 1.0f,1.0f,1.0f, 1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
+//            0.5f,  0.5f, -0.5f, 1.0f,1.0f,1.0f, 1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
+//            0.5f, -0.5f, -0.5f, 1.0f,1.0f,1.0f, 1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
+//            0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
+//            0.5f, -0.5f,  0.5f, 1.0f,1.0f,1.0f, 1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
+//            0.5f,  0.5f,  0.5f, 1.0f,1.0f,1.0f, 1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
+//
+//            -0.5f, -0.5f, -0.5f, 1.0f,1.0f,1.0f, 0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
+//            0.5f, -0.5f, -0.5f, 1.0f,1.0f,1.0f, 0.0f, -1.0f,  0.0f,  1.0f,  1.0f,
+//            0.5f, -0.5f,  0.5f, 1.0f,1.0f,1.0f, 0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
+//            0.5f, -0.5f,  0.5f, 1.0f,1.0f,1.0f, 0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
+//            -0.5f, -0.5f,  0.5f, 1.0f,1.0f,1.0f, 0.0f, -1.0f,  0.0f,  0.0f,  0.0f,
+//            -0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
+//
+//            -0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f,  1.0f,  0.0f,  0.0f,  1.0f,
+//            0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f,  1.0f,  0.0f,  1.0f,  1.0f,
+//            0.5f,  0.5f,  0.5f, 1.0f,1.0f,1.0f, 0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
+//            0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
+//            -0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,0.0f,  1.0f,  0.0f,  0.0f,  0.0f,
+//            -0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f,  1.0f,  0.0f,  0.0f,  1.0f
+//    };
+//
+//    for(float f:v){
+//        this->vertices.push_back(f);
+//    }
 
-    // Surface 1
+
+     //Surface 1
     this->vertices.push_back(-dimensions.x/2);
     this->vertices.push_back(-dimensions.y/2);
     this->vertices.push_back(-dimensions.z/2);
@@ -475,6 +525,11 @@ void TestModel::draw(Shader *shader) {
     m = glm::translate(m, position); // translate it down so it's at the center of the scene
     shader->setMat4("model", m);
 
+    std::cout << "pos: " << position.x << std::endl;
+//
+//    std::cout << "pos light: " << positionLight.z << std::endl;
+
+    setTextures(shader);
 
     shader->setFloat("material.shininess", 32.0f);
 
@@ -487,14 +542,17 @@ void TestModel::draw(Shader *shader) {
     shader->setFloat("pointLights[0].quadratic", 0.032f);
 
 
-    setTextures(shader);
+
 
     this->texture_1->bind();
 
     this->vao->bind();
     this->ebo->bind();
 
-    glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
+   glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
+    //glDrawArrays(GL_TRIANGLES, 0, static_cast<unsigned int>(indices.size()));
+
+    show = true;
 }
 
 void TestModel::remove() {
