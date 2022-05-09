@@ -129,62 +129,182 @@ int Node::getDepth() {
 }
 
 
-bool Node::fit(Culling* culling){
-    float min_x = boundingBox.centre.x - boundingBox.dimensions.x/2;
-    float max_x = boundingBox.centre.x + boundingBox.dimensions.x/2;
-    float min_z = boundingBox.centre.z - boundingBox.dimensions.z/2;
+//bool Node::fit(Culling* culling){
+//    float min_x = boundingBox.centre.x - boundingBox.dimensions.x/2;
+//    float max_x = boundingBox.centre.x + boundingBox.dimensions.x/2;
+//    float min_z = boundingBox.centre.z - boundingBox.dimensions.z/2;
 //    float max_z = boundingBox.centre.z + boundingBox.dimensions.z/2;
+//
+//    glm::vec3 point = culling->getOrigin();
+//    glm::vec3 left = culling->getRight();
+//    glm::vec3 right = culling->getLeft();
+//
+//    float a1 = (min_z-point.z)/(left.z);
+//    float a2 = (min_z-point.z)/(right.z);
+//
+//    float x1 = point.x + a1*left.x;
+//    float x2 = point.x + a2*right.x;
+//
+//    float z1 = point.z + a2*left.z;
+////    float z2 = point.z + a2*right.z;
+//    float z2 = point.z;
+//
+//    if(x2 < x1)
+//        std::swap(x1,x2);
+//
+//    if(z1 < z2)
+//        std::swap(z1,z2);
+//
+//
+//
+////    if(min_x > x1 && x2 > max_x && min_x  < x2){
+////        return true;
+////    }
+//
+//    if(min_x > x1 && x2 > max_x && min_z > z1 && z2 > max_z ){
+//        return true;
+//    }
+//
+//    return false;
+//}
 
-    glm::vec3 point = culling->getOrigin();
-    glm::vec3 left = culling->getRight();
-    glm::vec3 right = culling->getLeft();
+bool Node::fit(Culling* culling){
+    // vector
 
+    glm::vec2 center_left = glm::vec2(boundingBox.centre.x- boundingBox.dimensions.x/2-culling->getOrigin().x,boundingBox.centre.z - boundingBox.dimensions.z/2-culling->getOrigin().z);
+    glm::vec2 dir = glm::vec2(culling->getDirection().x,culling->getDirection().z);
+
+    glm::vec2 da=glm::normalize(center_left);
+    glm::vec2 db=glm::normalize(dir);
+    float angle = glm::acos(glm::dot(da, db));
+
+//    std::cout << angle*180/3.14 << std::endl;
+    //return true;
+
+    if(angle > -0.7853981634 && angle < 0.7853981634){
+        float min_x = boundingBox.centre.x - boundingBox.dimensions.x/2;
+        float max_x = boundingBox.centre.x + boundingBox.dimensions.x/2;
+        float min_z = boundingBox.centre.z - boundingBox.dimensions.z/2;
+
+       glm::vec3 point = culling->getOrigin();
+        glm::vec3 left = culling->getRight();
+        glm::vec3 right = culling->getLeft();
+//
     float a1 = (min_z-point.z)/(left.z);
     float a2 = (min_z-point.z)/(right.z);
 
-    float x1 = point.x + a1*left.x;
-    float x2 = point.x + a2*right.x;
+//
+       float x1 = point.x + a1*left.x;
+       float x2 = point.x + a2*right.x;
 
-    if(x2 < x1)
-        std::swap(x1,x2);
+       if(x2 < x1)
+           std::swap(x1,x2);
 
-//    if(min_x > x1 && x2 > max_x && min_x  < x2){
-//        return true;
-//    }
 
-    if(min_x > x1 && x2 > max_x && min_x  < x2 && max_x >x1){
-        return true;
+       if(min_x > x1 && x2 > max_x && min_x  < x2){
+           return true;
+       }
+
+
+    } else{
+        glm::vec2 center_right = glm::vec2(boundingBox.centre.x + boundingBox.dimensions.x/2 -culling->getOrigin().x,boundingBox.centre.z + boundingBox.dimensions.z/2-culling->getOrigin().z);
+
+
+        da=glm::normalize(center_right);
+        angle = glm::acos(glm::dot(da, db));
+
+        if(angle > -0.7853981634 && angle < 0.7853981634){
+            float min_x = boundingBox.centre.x - boundingBox.dimensions.x/2;
+            float max_x = boundingBox.centre.x + boundingBox.dimensions.x/2;
+            float min_z = boundingBox.centre.z - boundingBox.dimensions.z/2;
+
+            glm::vec3 point = culling->getOrigin();
+            glm::vec3 left = culling->getRight();
+            glm::vec3 right = culling->getLeft();
+//
+            float a1 = (min_z-point.z)/(left.z);
+            float a2 = (min_z-point.z)/(right.z);
+
+//
+            float x1 = point.x + a1*left.x;
+            float x2 = point.x + a2*right.x;
+
+            if(x2 < x1)
+                std::swap(x1,x2);
+
+
+            if(min_x > x1 && x2 > max_x && min_x  < x2){
+                std::cout << "toch hier";
+                return true;
+            }
+
+       }
+
     }
 
     return false;
 }
 
 bool Node::fitBox(Culling* culling, BoundingBox bx){
-    float min_x = bx.centre.x - bx.dimensions.x/2;
-    float max_x = bx.centre.x + bx.dimensions.x/2;
-    float min_z = bx.centre.z - bx.dimensions.z/2;
-//    float max_z = boundingBox.centre.z + boundingBox.dimensions.z/2;
-
-    glm::vec3 point = culling->getOrigin();
-    glm::vec3 left = culling->getRight();
-    glm::vec3 right = culling->getLeft();
-
-    float a1 = (min_z-point.z)/(left.z);
-    float a2 = (min_z-point.z)/(right.z);
-
-    float x1 = point.x + a1*left.x;
-    float x2 = point.x + a2*right.x;
-
-    if(x2 < x1)
-        std::swap(x1,x2);
-
-//    if(x2 < x1){
-//        std::cout << "omgekeerd" << std::endl;
+//    float min_x = bx.centre.x - bx.dimensions.x/2;
+//    float max_x = bx.centre.x + bx.dimensions.x/2;
+//    float min_z = bx.centre.z - bx.dimensions.z/2;
+//    float max_z = bx.centre.z + bx.dimensions.z/2;
+//
+//    glm::vec3 point = culling->getOrigin();
+//    glm::vec3 left = culling->getRight();
+//    glm::vec3 right = culling->getLeft();
+//
+//    float a1 = (min_z-point.z)/(left.z);
+//    float a2 = (min_z-point.z)/(right.z);
+//
+//    float x1 = point.x + a1*left.x;
+//    float x2 = point.x + a2*right.x;
+//
+//    float z1 = point.z + a2*left.z;
+////    float z2 = point.z + a2*right.z;
+//
+//    float z2 = point.z;
+//
+//    if(x2 < x1)
+//        std::swap(x1,x2);
+//
+//    if(z1 < z2)
+//        std::swap(z1,z2);
+//
+////    if(x2 < x1){
+////        std::cout << "omgekeerd" << std::endl;
+////    }
+//
+//    std::cout << "POS{ " << min_z << " , " << z1 << " }" << std::endl;
+//
+//    if(min_x > x1 && x2 > max_x ){
+//        return true;
 //    }
+//
+//    return false;
 
-    if(min_x > x1 && x2 > max_x && min_x  < x2 && max_x >x1){
+    glm::vec2 center_left = glm::vec2(bx.centre.x- bx.dimensions.x/2-culling->getOrigin().x,bx.centre.z - bx.dimensions.z/2-culling->getOrigin().z);
+    glm::vec2 dir = glm::vec2(culling->getDirection().x,culling->getDirection().z);
+
+    glm::vec2 da=glm::normalize(center_left);
+    glm::vec2 db=glm::normalize(dir);
+    float angle = glm::acos(glm::dot(da, db));
+
+//    std::cout << angle*180/3.14 << std::endl;
+    //return true;
+
+    if(angle > -0.7853981634 && angle < 0.7853981634)
         return true;
-    }
+
+    glm::vec2 center_right = glm::vec2(bx.centre.x + bx.dimensions.x/2 -culling->getOrigin().x,bx.centre.z + bx.dimensions.z/2-culling->getOrigin().z);
+
+
+    da=glm::normalize(center_right);
+    angle = glm::acos(glm::dot(da, db));
+
+    if(angle > -0.7853981634 && angle < 0.7853981634)
+        return true;
 
     return false;
 }
@@ -192,22 +312,36 @@ bool Node::fitBox(Culling* culling, BoundingBox bx){
 void Node::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling, bool octreeVisible){
 
     if(!hasChildren()){ // Leaf
-        for(auto m : models){
-            if(!m->shown()) {
-                if(fitBox(culling,m->getBoundingBox())) {
-                    shaders[m->getShaderType()]->use();
-                    if (m->getShaderType() == LIGHT) {
+        // check boundaries
+
+        glm::vec2 center = glm::vec2(boundingBox.centre.x-culling->getOrigin().x,boundingBox.centre.z-culling->getOrigin().z);
+        glm::vec2 dir = glm::vec2(culling->getDirection().x,culling->getDirection().z);
+
+        glm::vec2 da=glm::normalize(center);
+        glm::vec2 db=glm::normalize(dir);
+        float angle = glm::acos(glm::dot(da, db));
+
+//    std::cout << angle*180/3.14 << std::endl;
+        //return true;
+
+        if(angle > -0.7853981634 && angle < 0.7853981634){
+            for(auto m : models){
+                if(!m->shown()) {
+                    if(fitBox(culling,m->getBoundingBox())) {
+                        shaders[m->getShaderType()]->use();
+                        if (m->getShaderType() == LIGHT) {
 //                    std::cout << "lennert" << std::endl;
-                        shaders[m->getShaderType()]->setVec3("viewPos", culling->getOrigin());
+                            shaders[m->getShaderType()]->setVec3("viewPos", culling->getOrigin());
+                        }
+                        m->draw(shaders[m->getShaderType()].get());
                     }
-                    m->draw(shaders[m->getShaderType()].get());
                 }
             }
+            drawBounds(shaders, octreeVisible);
         }
-        drawBounds(shaders, octreeVisible);
+
     } else{
         if(fit(culling)){
-            std::cout << "niks";
             for(auto m : models){
                 if(!m->shown()){
                     shaders[m->getShaderType()]->use();

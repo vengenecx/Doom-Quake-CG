@@ -24,6 +24,8 @@ public:
 
     glm::vec3 getLeft();
     glm::vec3 getRight();
+    glm::vec3 getDirection();
+
     glm::vec3 getOrigin();
 
 //
@@ -35,6 +37,7 @@ public:
 //        return orig + t*dir;
 //    }
 private:
+    glm::vec3 direction;
     glm::vec3 left;
     glm::vec3 right;
     glm::vec3 origin;

@@ -18,6 +18,7 @@ Culling::Culling(const glm::vec3  origin, const glm::vec3 direction, bool draw) 
 void Culling::setCulling(const glm::vec3  origin, const glm::vec3 direction){
 //    glm::vec3 col = glm::vec3(0.0,0.0,1.0);
     this->origin = origin;
+    this->direction = direction;
 
     calculateVectors(direction);
 
@@ -100,6 +101,12 @@ glm::vec3 Culling::getLeft(){
 glm::vec3 Culling::getRight() {
     return right;
 }
+
+
+glm::vec3 Culling::getDirection() {
+    return direction;
+}
+
 
 //void Culling::initDraw(){
 //    this->vao = std::make_unique<VAO>();
