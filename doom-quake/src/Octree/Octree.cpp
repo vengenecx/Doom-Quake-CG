@@ -18,7 +18,7 @@ void Octree::addModel(BaseModel * model) {
 
 void Octree::addModelRecursive(Node* node, BaseModel * model){
     if(node->depthEnd()){
-        std::cout<< "end" << std::endl;
+//        std::cout<< "end" << std::endl;
         //node->models.push_back(model); // Add model
     } else{
         if(!node->models.empty()) {
@@ -295,7 +295,7 @@ bool Octree::clipLine(int d, BoundingBox& bb,const glm::vec3& v0, const glm::vec
     return true;
 }
 
-void Octree::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling,bool octreeVisible) {
+void Octree::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling, bool octreeVisible) {
     //TODO
 
     for(auto m: root->models){

@@ -16,7 +16,7 @@
 #include "Model/Triangle/TriangleModel.h"
 #include "Model/Skybox/Skybox.h"
 #include "Model/Cross/CrossModel.h"
-#include "Model/Test/TestModel.cpp"
+#include "Model/Test/TestModel.h"
 
 
 #include "Map/Terrain/Terrain.h"
@@ -138,6 +138,10 @@ private:
     int frameSetPoint = 0;
 
 
+    float speed =  2.5;
+    float zoom =  45.0;
+
+
     //==============================================
     // std::unique_ptr<SceneOne> sceneone;
     // std::unique_ptr<SceneTwo> scenetwo;
@@ -158,7 +162,7 @@ private:
     bool showOctree= false;
 
     bool lennert = false;
-    bool flightCamera = true;
+    bool fpsCamera = true;
 
 };
 #endif //DOOM_QUAKE_ENGINE_H

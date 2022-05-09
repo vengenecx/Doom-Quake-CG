@@ -22,7 +22,7 @@ Engine::Engine()
     game = Game();
 
 
-    shaders = std::vector<std::unique_ptr<Shader>>(5);
+    shaders = std::vector<std::unique_ptr<Shader>>(6);
 //    shaders[0] = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
 
     shaders[0] = std::make_unique<Shader>((currentDir + shaderPaths[doubleTextureColorVertex]).c_str(),(currentDir + shaderPaths[doubleTextureColorFragment]).c_str());
@@ -30,7 +30,7 @@ Engine::Engine()
     shaders[2] = std::make_unique<Shader>((currentDir + shaderPaths[defaultVertex]).c_str(),(currentDir + shaderPaths[defaultFragment]).c_str());
     shaders[3] = std::make_unique<Shader>((currentDir + shaderPaths[crossVertex]).c_str(),(currentDir + shaderPaths[crossFragment]).c_str());
     shaders[4] = std::make_unique<Shader>((currentDir + shaderPaths[lineVertex]).c_str(),(currentDir + shaderPaths[lineFragment]).c_str());
-
+    shaders[5] = std::make_unique<Shader>((currentDir + shaderPaths[lightVertex]).c_str(),(currentDir + shaderPaths[lightFragment]).c_str());
     //  Model shader (assimp)
     //meshModelShader = std::make_unique<Shader>(shaderPaths[defaultVertex],shaderPaths[defaultFragment]);
 
@@ -48,7 +48,7 @@ Engine::Engine()
 
 //    camera = std::make_unique<Camera>(true,glm::vec3(0.0f, 0.0f, 0.0f));
 
-    camera = std::make_unique<Camera>(!flightCamera,glm::vec3(0.0f, 0.2f, -2.0f));
+    camera = std::make_unique<Camera>(fpsCamera,glm::vec3(0.0f, 0.2f, -2.0f));
 
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
@@ -261,8 +261,8 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
         crosshair->resetShoot();
     crosshair->draw(shaders[crosshair->getShaderType()].get());
 
-    shaders[LINE]->use();
-    culling->draw(shaders[LINE].get());
+    //shaders[LINE]->use();
+    //culling->draw(shaders[LINE].get());
 
     if(executeShoot){
 //        std::cout<< "shoot" << std::endl;
@@ -321,7 +321,10 @@ void Engine::drawControls(GLFWwindow *window) {
 
     ImGui::NewLine();
     ImGui::Checkbox("Octree", &showOctree);
-    ImGui::Checkbox("FPS-camera", &flightCamera);
+    ImGui::SameLine();
+    ImGui::SliderFloat("Speed", &speed, 0.0f, 6.0f);
+
+    ImGui::Checkbox("FPS-camera", &fpsCamera);
 
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
@@ -336,6 +339,9 @@ void Engine::drawControls(GLFWwindow *window) {
     int display_w, display_h;
     glfwGetFramebufferSize(window, &display_w, &display_h);
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+
+    camera->updateSpeed(speed);
 }
 
 
@@ -411,7 +417,7 @@ void Engine::keyHandler(GLFWwindow *window) {
     }
 
     culling->setCulling(camera->Position,camera->Front);
-    camera->cameraGrounded(!flightCamera);
+    camera->cameraGrounded(fpsCamera);
 }
 // glfw: whenever the mouse moves, this callback is called
 // -------------------------------------------------------

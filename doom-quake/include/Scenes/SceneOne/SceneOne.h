@@ -16,6 +16,8 @@
 
 #include "Scenes/Scene.h"
 
+#include "Model/PointLight/PointLight.h"
+
 namespace fs = std::filesystem;
 
 

@@ -140,6 +140,12 @@ void Camera::cameraGrounded(bool grounded){
     this->grounded = grounded;
 }
 
+
+void Camera::updateSpeed(float speed) {
+    this->MovementSpeed = speed;
+}
+
+
 //
 //Camera::Camera(float width, float height, glm::vec3 position)
 //{

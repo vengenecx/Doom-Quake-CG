@@ -85,7 +85,6 @@ void CrossModel::resetShoot() {
 }
 
 void CrossModel::updateColor(glm::vec3 color) {
-    std::cout << "color update" << std::endl;
     for(int i = 3;  i<94;i += 6){
         vertices[i] = color.x;
         vertices[i+1] = color.y;

@@ -10,7 +10,8 @@ static enum ShaderType {
     MODEL_LOADER_SHADER = 1,
     DEFAULT = 2,
     CROSS = 3,
-    LINE = 4
+    LINE = 4,
+    LIGHT =  5
 } shaderType;
 
 #endif //DOOM_QUAKE_SHADERTYPE_H

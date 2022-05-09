@@ -11,6 +11,9 @@
 Model::Model(std::string const &path, glm::vec3 position, glm::vec3 sizeOfScaling, ShaderType type, bool gamma) : BaseModel(type), position(position), sizeOfScaling(sizeOfScaling), gammaCorrection(gamma)
 {
     loadModel(path);
+    this->bb = BoundingBox();
+    this->bb.centre = position;
+    this->bb.dimensions = glm::vec3(4,4,4);
 }
 
 
@@ -43,6 +46,9 @@ void Model::draw(Shader *shader)
 
     for(unsigned int i = 0; i < meshes.size(); i++)
         meshes[i].draw(shader);
+
+
+    show = true;
 }
 
 BoundingBox* Model::getBoundingbox(){

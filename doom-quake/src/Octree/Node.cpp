@@ -159,6 +159,9 @@ void Node::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling
         for(auto m : models){
             if(!m->shown()) {
                 shaders[m->getShaderType()]->use();
+                if(m->getShaderType() == LIGHT){
+                    shaders[m->getShaderType()]->setVec3("viewPos", culling->getOrigin());
+                }
                 m->draw(shaders[m->getShaderType()].get());
             }
         }
@@ -168,6 +171,9 @@ void Node::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling
             for(auto m : models){
                 if(!m->shown()){
                     shaders[m->getShaderType()]->use();
+                    if(m->getShaderType() == LIGHT){
+                        shaders[m->getShaderType()]->setVec3("viewPos", culling->getOrigin());
+                    }
                     m->draw(shaders[m->getShaderType()].get());
                 }
             }

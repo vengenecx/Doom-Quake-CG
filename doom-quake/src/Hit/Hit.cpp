@@ -37,7 +37,7 @@ void Hit::calculateAlignment(BoundingBox& bx) {
         twoSides = true;
     } else{
         if((min_x == point.x || max_x == point.x)){
-            std::cout << "1,2" << std::endl;
+//            std::cout << "1,2" << std::endl;
             alignment = X;
 
             if(min_x == point.x )
@@ -48,7 +48,7 @@ void Hit::calculateAlignment(BoundingBox& bx) {
         }
 
         if((min_y == point.y || max_y == point.y)) {
-            std::cout << "3,4" << std::endl;
+//            std::cout << "3,4" << std::endl;
             alignment = EAligment::Y;
 
             if(min_y == point.y )
@@ -59,7 +59,7 @@ void Hit::calculateAlignment(BoundingBox& bx) {
         }
 
         if((min_z == point.z || max_z == point.z)) {
-            std::cout << "5,6" << std::endl;
+//            std::cout << "5,6" << std::endl;
             alignment = Z;
 
             if(min_z == point.z )

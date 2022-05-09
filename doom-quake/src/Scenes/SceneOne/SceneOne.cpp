@@ -1,4 +1,6 @@
 #include "Scenes/SceneOne/SceneOne.h"
+#include "Model/Test/TestModel.h"
+
 
 // default constructor
 SceneOne::SceneOne(){
@@ -49,7 +51,7 @@ SceneOne::SceneOne(){
     models = std::vector<std::unique_ptr<BaseModel>>();
 
 //    models.push_back(std::make_unique<Model>("model-files/hellknight/Hellknight_LATEST.obj", glm::vec3(2.0f, 0.0f, 5.0f), glm::vec3(0.7f, 0.7f, 0.7f), MODEL_LOADER_SHADER));
-//    models.push_back(std::make_unique<Model>("model-files/doomSword/Doom Eternal Weapon.obj", glm::vec3(-6.0f, 0.2f, 8.9f), glm::vec3(4.0f, 4.0f, 4.0f), MODEL_LOADER_SHADER));
+    models.push_back(std::make_unique<Model>("model-files/doomSword/Doom Eternal Weapon.obj", glm::vec3(-6.0f, 0.2f, 8.9f), glm::vec3(4.0f, 4.0f, 4.0f), MODEL_LOADER_SHADER));
 
 
 
@@ -277,6 +279,14 @@ SceneOne::SceneOne(){
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,6), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(2.5f, 2.0f, -3.0f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(3.5f, 2.0f, -4.0f), DEFAULT));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(1.5f, 2.0f, -4.0f), DEFAULT));
+
+
+    // Lights
+    models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(0.2f, 0.8f, -1.0f), LINE));
+
+    std::unique_ptr<TestModel> test = std::make_unique<TestModel>(glm::vec3( 0.1f,  0.1f, 0.1f),textures[ETexture::WOODFLOOR].get(), glm::vec3(0.2f, 0.4f, -1.0f), LIGHT);
+    test->setPositionLight(glm::vec3(0.2f, 0.8f, -1.0f));
+    models.push_back(move(test));
 
 
     BoundingBox box = BoundingBox();

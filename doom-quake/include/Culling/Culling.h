@@ -39,14 +39,7 @@ private:
     glm::vec3 right;
     glm::vec3 origin;
 
-    std::unique_ptr<VAO> vao;
-    std::unique_ptr<VBO> vbo;
-    std::unique_ptr<EBO> ebo;
 
-    std::vector<float>  vertices;
-    std::vector<GLuint> indices;
-
-    void initDraw();
 
     void calculateVectors(glm::vec3 direction);
 };
