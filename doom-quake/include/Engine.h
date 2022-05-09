@@ -158,6 +158,7 @@ private:
     bool showOctree= false;
 
     bool lennert = false;
+    bool flightCamera = true;
 
 };
 #endif //DOOM_QUAKE_ENGINE_H

@@ -33,6 +33,8 @@ public:
 
     virtual bool shown();
 
+    virtual bool alreadyHit();
+
     ShaderType getShaderType();
 //    BoundingBox* getBoundingBox();
 
@@ -44,6 +46,7 @@ protected:
     BoundingBox bb;
 
     bool show = false;
+    bool hit = false;
 };
 
 #endif //DOOM_QUAKE_BASEMODEL_H

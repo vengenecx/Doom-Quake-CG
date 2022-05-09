@@ -15,9 +15,13 @@ ShaderType BaseModel::getShaderType(){
     return type;
 }
 
-void BaseModel::shoot() {}
+void BaseModel::shoot() {
+    hit = true;
+}
 
-void BaseModel::resetShoot() {}
+void BaseModel::resetShoot() {
+    hit = false;
+}
 
 void BaseModel::resetDraw(){
     show = false;
@@ -25,6 +29,11 @@ void BaseModel::resetDraw(){
 
 bool BaseModel::shown(){
     return show;
+}
+
+
+bool BaseModel::alreadyHit() {
+    return hit;
 }
 
 

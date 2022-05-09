@@ -25,6 +25,10 @@
      glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
 
+     // MSAA
+     glfwWindowHint(GLFW_SAMPLES, 4);
+
+
      /* Create a windowed mode window and its OpenGL context */
      window = glfwCreateWindow(width, height, "Doom-Quake", NULL, NULL);
 //     window = glfwCreateWindow(800, 600, "Doom-Quake",glfwGetPrimaryMonitor(), NULL);
@@ -71,6 +75,8 @@
 
      //stbi_set_flip_vertically_on_load(true);
      glEnable(GL_DEPTH_TEST);
+
+     glEnable(GL_MULTISAMPLE);
 
      // Text
 

@@ -48,7 +48,7 @@ Engine::Engine()
 
 //    camera = std::make_unique<Camera>(true,glm::vec3(0.0f, 0.0f, 0.0f));
 
-    camera = std::make_unique<Camera>(false,glm::vec3(0.0f, 0.2f, -2.0f));
+    camera = std::make_unique<Camera>(!flightCamera,glm::vec3(0.0f, 0.2f, -2.0f));
 
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
@@ -265,19 +265,19 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
     culling->draw(shaders[LINE].get());
 
     if(executeShoot){
-        std::cout<< "shoot" << std::endl;
+//        std::cout<< "shoot" << std::endl;
         executeShoot = false;
         activeShoot = true;
     }
     if(realeaseShoot){
-        std::cout<< "release shoot" << std::endl;
+//        std::cout<< "release shoot" << std::endl;
         realeaseShoot = false;
     }
 
     if(game.changed()){
-        std::cout<< "state changed" << std::endl;
+//        std::cout<< "state changed" << std::endl;
         if(game.getState() == ROOM_D){
-            std::cout<< "room d" << std::endl;
+//            std::cout<< "room d" << std::endl;
         }
 
         game.reset();
@@ -321,6 +321,7 @@ void Engine::drawControls(GLFWwindow *window) {
 
     ImGui::NewLine();
     ImGui::Checkbox("Octree", &showOctree);
+    ImGui::Checkbox("FPS-camera", &flightCamera);
 
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
@@ -343,35 +344,35 @@ void Engine::keyHandler(GLFWwindow *window) {
         glfwSetWindowShouldClose(window, true);
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        std::cout << "W pressed" << std::endl;
+//        std::cout << "W pressed" << std::endl;
         camera->ProcessKeyboard(FORWARD, deltaTime);
     }
 
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-        std::cout << "S pressed" << std::endl;
+//        std::cout << "S pressed" << std::endl;
         camera->ProcessKeyboard(BACKWARD, deltaTime);
     }
 
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-        std::cout << "A pressed" << std::endl;
+//        std::cout << "A pressed" << std::endl;
        camera->ProcessKeyboard(LEFT, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-        std::cout << "D pressed" << std::endl;
+//        std::cout << "D pressed" << std::endl;
         camera->ProcessKeyboard(RIGHT, deltaTime);
     }
 
      if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-         std::cout << "Q pressed" << std::endl;
+//         std::cout << "Q pressed" << std::endl;
          camera->ProcessKeyboard(LEFTSTRAFE, deltaTime);
      }
      if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-         std::cout << "E pressed" << std::endl;
+//         std::cout << "E pressed" << std::endl;
          camera->ProcessKeyboard(RIGHTSTRAFE, deltaTime);
      }
 
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && !spaceActive) {
-        std::cout << "Space pressed" << std::endl;
+//        std::cout << "Space pressed" << std::endl;
         executeShoot = true;
 
 //        std::cout << camera->Front.x << " ," <<  camera->Front.y << " ,"   <<  camera->Front.z << std::endl;
@@ -393,12 +394,12 @@ void Engine::keyHandler(GLFWwindow *window) {
 
 
     if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS && !m_pressed) {
-        std::cout<< "M pressed" << std::endl;
+//        std::cout<< "M pressed" << std::endl;
         if(!mouse_visible){
-            std::cout<< "normal mouse" << std::endl;
+//            std::cout<< "normal mouse" << std::endl;
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
         } else{
-            std::cout<< "disabled mouse" << std::endl;
+//            std::cout<< "disabled mouse" << std::endl;
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
         }
 
@@ -410,6 +411,7 @@ void Engine::keyHandler(GLFWwindow *window) {
     }
 
     culling->setCulling(camera->Position,camera->Front);
+    camera->cameraGrounded(!flightCamera);
 }
 // glfw: whenever the mouse moves, this callback is called
 // -------------------------------------------------------

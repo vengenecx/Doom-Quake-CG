@@ -25,41 +25,6 @@ void Hit::calculateAlignment(BoundingBox& bx) {
     float min_z = bx.centre.z - bx.dimensions.z/2.0;
     float max_z = bx.centre.z + bx.dimensions.z/2.0;
 
-//    if(bx.dimensions.x == 0.1){
-//
-//    }
-
-//    if(bx.dimensions.x != 0.1 && (min_x == point.x || max_x == point.x)){
-//        std::cout << "1,2" << std::endl;
-//        alignment = X;
-//
-//        if(min_x == point.x )
-//            point.x -= 0.01;
-//        else
-//            point.x += 0.01;
-//
-//    }
-//
-//    if(bx.dimensions.y != 0.1 && (min_y == point.y || max_y == point.y)) {
-//        std::cout << "3,4" << std::endl;
-//        alignment = EAligment::Y;
-//
-//        if(min_y == point.y )
-//            point.y -= 0.01;
-//        else
-//            point.y += 0.01;
-//
-//    }
-//
-//    if(bx.dimensions.z != 0.1 && (min_z == point.z || max_z == point.z)) {
-//        std::cout << "5,6" << std::endl;
-//        alignment = Z;
-//
-//        if(min_z == point.z )
-//            point.z -= 0.01;
-//        else
-//            point.z += 0.01;
-//    }
 
     if(bx.dimensions.x == 0.0 ||bx.dimensions.y == 0.0 ||bx.dimensions.z == 0.0){
         if(bx.dimensions.x == 0.0){
@@ -133,7 +98,7 @@ void Hit::initDraw() {
     std:: cout << static_cast<int>(alignment)  << std::endl;
 
     if(alignment == EAligment::Z){
-        std::cout<< "z"  << std::endl;
+//        std::cout<< "z"  << std::endl;
         this->vertices.push_back(x_pos);
         this->vertices.push_back(y_pos);
         this->vertices.push_back(0);
@@ -178,7 +143,7 @@ void Hit::initDraw() {
         this->vertices.push_back(0);
         this->vertices.push_back(1);
     } else if(alignment == Y){
-        std::cout<< "y"  << std::endl;
+//        std::cout<< "y"  << std::endl;
         this->vertices.push_back(x_pos);
         this->vertices.push_back(0);
         this->vertices.push_back(z_pos);
@@ -223,7 +188,7 @@ void Hit::initDraw() {
         this->vertices.push_back(0);
         this->vertices.push_back(1);
     } else{
-        std::cout<< "x"  << std::endl;
+//        std::cout<< "x"  << std::endl;
         this->vertices.push_back(0);
         this->vertices.push_back(y_pos);
         this->vertices.push_back(z_pos);
@@ -331,14 +296,14 @@ void Hit::draw(Shader* shader,Texture* texture){
         glm::vec3 p2  = point;
 
         if(alignment == EAligment::X){
-            p1.x += 0.02;
-            p2.x -= 0.02;
+            p1.x += 0.01;
+            p2.x -= 0.01;
         } else if(alignment == EAligment::Y){
-            p1.y += 0.02;
-            p2.y -= 0.02;
+            p1.y += 0.01;
+            p2.y -= 0.01;
         } else{
-            p1.y += 0.02;
-            p2.y -= 0.02;
+            p1.z += 0.01;
+            p2.z -= 0.01;
         }
 
         m1 = glm::translate(m1, p1);

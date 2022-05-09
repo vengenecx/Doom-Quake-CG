@@ -171,7 +171,7 @@ void Node::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling
                     m->draw(shaders[m->getShaderType()].get());
                 }
             }
-            drawBounds(shaders, octreeVisible);
+//            drawBounds(shaders, octreeVisible);
         } else{
             for(int i=0;  i<8; i++){
                 if(children[i] != NULL)

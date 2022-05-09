@@ -155,6 +155,10 @@ void Octree::generateChildren(Node *node) {
 void Octree::shoot(Ray& ray, std::vector<std::unique_ptr<Hit>> & hitPoints){
 
     Node * node = root.get();
+
+    for(auto m : node->models){
+        m->resetShoot();
+    }
     bool res = searchRecursive(node,ray,hitPoints);
 }
 
@@ -169,23 +173,29 @@ bool Octree::searchRecursive(Node* node, Ray& ray, std::vector<std::unique_ptr<H
             }
         }
         return res;
-    }
-    if(!node->models.empty()){
-        std::cout << "NOT EMPTY" << std::endl;
-        for(auto m :node->models){
-            BoundingBox bx = m->getBoundingBox();
-            glm::vec3 vecIntersection;
-            float flFraction;
+    } else{
+        if(!node->models.empty()){
+//        std::cout << "NOT EMPTY" << std::endl;
+            for(auto m :node->models){
+                if(!m->alreadyHit()){
+                    BoundingBox bx = m->getBoundingBox();
+                    glm::vec3 vecIntersection;
+                    float flFraction;
 
-            bool hit = intersect(bx,ray,  vecIntersection, flFraction);
+                    bool hit = intersect(bx,ray,  vecIntersection, flFraction);
 
-            if(hit){
-                std::cout << "HIT" << std::endl;
+                    if(hit){
+                        std::cout << "HIT" << std::endl;
 
-                hitPoints.push_back(std::make_unique<Hit>(vecIntersection,bx));
-            }
-            else{
-                std::cout << "MISSED" << std::endl;
+                        hitPoints.push_back(std::make_unique<Hit>(vecIntersection,bx));
+                        m->shoot();
+                    }
+                    else{
+                        std::cout << "MISSED" << std::endl;
+                    }
+                } else{
+                    std::cout << "dsfsdf" << std::endl;
+                }
             }
         }
     }
