@@ -26,6 +26,8 @@ public:
     glm::vec3 getRight();
     glm::vec3 getDirection();
 
+    glm::vec2 getDirectioPlaneY();
+
     glm::vec3 getOrigin();
 
 //
@@ -38,6 +40,7 @@ public:
 //    }
 private:
     glm::vec3 direction;
+    glm::vec2 dir;
     glm::vec3 left;
     glm::vec3 right;
     glm::vec3 origin;

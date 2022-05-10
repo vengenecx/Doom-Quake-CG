@@ -171,142 +171,149 @@ int Node::getDepth() {
 bool Node::fit(Culling* culling){
     // vector
 
-    glm::vec2 center_left = glm::vec2(boundingBox.centre.x- boundingBox.dimensions.x/2-culling->getOrigin().x,boundingBox.centre.z - boundingBox.dimensions.z/2-culling->getOrigin().z);
-    glm::vec2 dir = glm::vec2(culling->getDirection().x,culling->getDirection().z);
-
-    glm::vec2 da=glm::normalize(center_left);
-    glm::vec2 db=glm::normalize(dir);
-    float angle = glm::acos(glm::dot(da, db));
+//    glm::vec2 center_left = glm::vec2(boundingBox.centre.x- boundingBox.dimensions.x/2-culling->getOrigin().x,boundingBox.centre.z - boundingBox.dimensions.z/2-culling->getOrigin().z);
+//    glm::vec2 dir = glm::vec2(culling->getDirection().x,culling->getDirection().z);
+//
+//    glm::vec2 da=glm::normalize(center_left);
+//    glm::vec2 db=glm::normalize(dir);
+//    float angle = glm::acos(glm::dot(da, db));
 
 //    std::cout << angle*180/3.14 << std::endl;
     //return true;
 
-    if(angle > -0.7853981634 && angle < 0.7853981634){
-        float min_x = boundingBox.centre.x - boundingBox.dimensions.x/2;
-        float max_x = boundingBox.centre.x + boundingBox.dimensions.x/2;
-        float min_z = boundingBox.centre.z - boundingBox.dimensions.z/2;
-
-       glm::vec3 point = culling->getOrigin();
-        glm::vec3 left = culling->getRight();
-        glm::vec3 right = culling->getLeft();
+//    float min_x = boundingBox.centre.x - boundingBox.dimensions.x/2;
+//    float max_x = boundingBox.centre.x + boundingBox.dimensions.x/2;
+//    float min_z = boundingBox.centre.z - boundingBox.dimensions.z/2;
 //
-    float a1 = (min_z-point.z)/(left.z);
-    float a2 = (min_z-point.z)/(right.z);
-
-//
-       float x1 = point.x + a1*left.x;
-       float x2 = point.x + a2*right.x;
-
-       if(x2 < x1)
-           std::swap(x1,x2);
-
-
-       if(min_x > x1 && x2 > max_x && min_x  < x2){
-           return true;
-       }
-
-
-    } else{
-        glm::vec2 center_right = glm::vec2(boundingBox.centre.x + boundingBox.dimensions.x/2 -culling->getOrigin().x,boundingBox.centre.z + boundingBox.dimensions.z/2-culling->getOrigin().z);
-
-
-        da=glm::normalize(center_right);
-        angle = glm::acos(glm::dot(da, db));
-
-        if(angle > -0.7853981634 && angle < 0.7853981634){
-            float min_x = boundingBox.centre.x - boundingBox.dimensions.x/2;
-            float max_x = boundingBox.centre.x + boundingBox.dimensions.x/2;
-            float min_z = boundingBox.centre.z - boundingBox.dimensions.z/2;
-
-            glm::vec3 point = culling->getOrigin();
-            glm::vec3 left = culling->getRight();
-            glm::vec3 right = culling->getLeft();
-//
-            float a1 = (min_z-point.z)/(left.z);
-            float a2 = (min_z-point.z)/(right.z);
-
-//
-            float x1 = point.x + a1*left.x;
-            float x2 = point.x + a2*right.x;
-
-            if(x2 < x1)
-                std::swap(x1,x2);
-
-
-            if(min_x > x1 && x2 > max_x && min_x  < x2){
-                std::cout << "toch hier";
-                return true;
-            }
-
-       }
-
-    }
-
-    return false;
-}
-
-bool Node::fitBox(Culling* culling, BoundingBox bx){
-//    float min_x = bx.centre.x - bx.dimensions.x/2;
-//    float max_x = bx.centre.x + bx.dimensions.x/2;
-//    float min_z = bx.centre.z - bx.dimensions.z/2;
-//    float max_z = bx.centre.z + bx.dimensions.z/2;
-//
-//    glm::vec3 point = culling->getOrigin();
-//    glm::vec3 left = culling->getRight();
-//    glm::vec3 right = culling->getLeft();
-//
+//   glm::vec3 point = culling->getOrigin();
+//   glm::vec3 left = culling->getRight();
+//   glm::vec3 right = culling->getLeft();
+////
 //    float a1 = (min_z-point.z)/(left.z);
 //    float a2 = (min_z-point.z)/(right.z);
 //
-//    float x1 = point.x + a1*left.x;
-//    float x2 = point.x + a2*right.x;
+////
+//   float x1 = point.x + a1*left.x;
+//   float x2 = point.x + a2*right.x;
 //
-//    float z1 = point.z + a2*left.z;
-////    float z2 = point.z + a2*right.z;
+//   if(x2 < x1)
+//       std::swap(x1,x2);
 //
-//    float z2 = point.z;
 //
-//    if(x2 < x1)
-//        std::swap(x1,x2);
+//   if(min_x > x1 && x2 > max_x && min_x  < x2){
+//       glm::vec2 center = glm::vec2(boundingBox.centre.x-culling->getOrigin().x,boundingBox.centre.z-culling->getOrigin().z);
+//       glm::vec2 dir = glm::vec2(culling->getDirection().x,culling->getDirection().z);
 //
-//    if(z1 < z2)
-//        std::swap(z1,z2);
+//       glm::vec2 da=glm::normalize(center);
+//       glm::vec2 db=glm::normalize(dir);
+//       float angle = glm::acos(glm::dot(da, db));
 //
-////    if(x2 < x1){
-////        std::cout << "omgekeerd" << std::endl;
-////    }
+//       if(angle > -0.7853981634 && angle < 0.7853981634){
+//           return true;
+//       }
+//   }
+
+    return true;
+
+
+
+//    if(angle > -0.7853981634 && angle < 0.7853981634){
+//        float min_x = boundingBox.centre.x - boundingBox.dimensions.x/2;
+//        float max_x = boundingBox.centre.x + boundingBox.dimensions.x/2;
+//        float min_z = boundingBox.centre.z - boundingBox.dimensions.z/2;
 //
-//    std::cout << "POS{ " << min_z << " , " << z1 << " }" << std::endl;
+//       glm::vec3 point = culling->getOrigin();
+//        glm::vec3 left = culling->getRight();
+//        glm::vec3 right = culling->getLeft();
+////
+//    float a1 = (min_z-point.z)/(left.z);
+//    float a2 = (min_z-point.z)/(right.z);
 //
-//    if(min_x > x1 && x2 > max_x ){
-//        return true;
+////
+//       float x1 = point.x + a1*left.x;
+//       float x2 = point.x + a2*right.x;
+//
+//       if(x2 < x1)
+//           std::swap(x1,x2);
+//
+//
+//       if(min_x > x1 && x2 > max_x && min_x  < x2){
+//           return true;
+//       }
+//
+//
+//    } else{
+//        glm::vec2 center_right = glm::vec2(boundingBox.centre.x + boundingBox.dimensions.x/2 -culling->getOrigin().x,boundingBox.centre.z + boundingBox.dimensions.z/2-culling->getOrigin().z);
+//
+//
+//        da=glm::normalize(center_right);
+//        angle = glm::acos(glm::dot(da, db));
+//
+//        if(angle > -0.7853981634 && angle < 0.7853981634){
+//            float min_x = boundingBox.centre.x - boundingBox.dimensions.x/2;
+//            float max_x = boundingBox.centre.x + boundingBox.dimensions.x/2;
+//            float min_z = boundingBox.centre.z - boundingBox.dimensions.z/2;
+//
+//            glm::vec3 point = culling->getOrigin();
+//            glm::vec3 left = culling->getRight();
+//            glm::vec3 right = culling->getLeft();
+////
+//            float a1 = (min_z-point.z)/(left.z);
+//            float a2 = (min_z-point.z)/(right.z);
+//
+////
+//            float x1 = point.x + a1*left.x;
+//            float x2 = point.x + a2*right.x;
+//
+//            if(x2 < x1)
+//                std::swap(x1,x2);
+//
+//
+//            if(min_x > x1 && x2 > max_x && min_x  < x2){
+//                std::cout << "toch hier";
+//                return true;
+//            }
+//
+//       }
+//
 //    }
 //
 //    return false;
+}
 
-    glm::vec2 center_left = glm::vec2(bx.centre.x- bx.dimensions.x/2-culling->getOrigin().x,bx.centre.z - bx.dimensions.z/2-culling->getOrigin().z);
-    glm::vec2 dir = glm::vec2(culling->getDirection().x,culling->getDirection().z);
-
-    glm::vec2 da=glm::normalize(center_left);
-    glm::vec2 db=glm::normalize(dir);
-    float angle = glm::acos(glm::dot(da, db));
-
-//    std::cout << angle*180/3.14 << std::endl;
-    //return true;
-
-    if(angle > -0.7853981634 && angle < 0.7853981634)
-        return true;
-
-    glm::vec2 center_right = glm::vec2(bx.centre.x + bx.dimensions.x/2 -culling->getOrigin().x,bx.centre.z + bx.dimensions.z/2-culling->getOrigin().z);
+bool Node::fitBox(Culling* culling, BoundingBox bx){
 
 
-    da=glm::normalize(center_right);
-    angle = glm::acos(glm::dot(da, db));
+//    glm::vec2 center_left = glm::vec2(bx.centre.x- bx.dimensions.x/2-culling->getOrigin().x,bx.centre.z - bx.dimensions.z/2-culling->getOrigin().z);
+//
+//    glm::vec2 da=glm::normalize(center_left);
+//    float angle = glm::acos(glm::dot(da, culling->getDirectioPlaneY()));
+//
+////    std::cout << angle*180/3.14 << std::endl;
+//    //return true;
+//
+//    if(angle > -0.7853981634 && angle < 0.7853981634)
+//        return true;
+//
+//    glm::vec2 center_right = glm::vec2(bx.centre.x + bx.dimensions.x/2 -culling->getOrigin().x,bx.centre.z + bx.dimensions.z/2-culling->getOrigin().z);
+//
+//
+//    da=glm::normalize(center_right);
+//    angle = glm::acos(glm::dot(da, culling->getDirectioPlaneY()));
+//
+//    if(angle > -0.7853981634 && angle < 0.7853981634)
+//        return true;
 
-    if(angle > -0.7853981634 && angle < 0.7853981634)
-        return true;
 
-    return false;
+//    glm::vec2 center = glm::vec2(bx.centre.x-culling->getOrigin().x,bx.centre.z-culling->getOrigin().z);
+//
+//    glm::vec2 da=glm::normalize(center);
+//    float angle = glm::acos(glm::dot(da, culling->getDirectioPlaneY()));
+//
+//    if(angle > -1.5707963268 && angle < 1.5707963268)
+//        return true;
+
+    return true;
 }
 
 void Node::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling, bool octreeVisible){
@@ -314,17 +321,17 @@ void Node::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling
     if(!hasChildren()){ // Leaf
         // check boundaries
 
-        glm::vec2 center = glm::vec2(boundingBox.centre.x-culling->getOrigin().x,boundingBox.centre.z-culling->getOrigin().z);
-        glm::vec2 dir = glm::vec2(culling->getDirection().x,culling->getDirection().z);
-
-        glm::vec2 da=glm::normalize(center);
-        glm::vec2 db=glm::normalize(dir);
-        float angle = glm::acos(glm::dot(da, db));
-
-//    std::cout << angle*180/3.14 << std::endl;
-        //return true;
-
-        if(angle > -0.7853981634 && angle < 0.7853981634){
+//        glm::vec2 center = glm::vec2(boundingBox.centre.x-culling->getOrigin().x,boundingBox.centre.z-culling->getOrigin().z);
+//        glm::vec2 dir = glm::vec2(culling->getDirection().x,culling->getDirection().z);
+//
+//        glm::vec2 da=glm::normalize(center);
+//        glm::vec2 db=glm::normalize(dir);
+//        float angle = glm::acos(glm::dot(da, db));
+//
+////    std::cout << angle*180/3.14 << std::endl;
+//        //return true;
+//
+//        if(angle > -0.7853981634 && angle < 0.7853981634){
             for(auto m : models){
                 if(!m->shown()) {
                     if(fitBox(culling,m->getBoundingBox())) {
@@ -338,7 +345,7 @@ void Node::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling
                 }
             }
             drawBounds(shaders, octreeVisible);
-        }
+//        }
 
     } else{
         if(fit(culling)){

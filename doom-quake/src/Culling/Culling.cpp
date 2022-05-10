@@ -60,18 +60,26 @@ void Culling::setCulling(const glm::vec3  origin, const glm::vec3 direction){
 //    this->vbo->update(vertices,vertices.size());
 }
 
+glm::vec2 Culling::getDirectioPlaneY(){
+    return dir;
+}
+
 
 void Culling::calculateVectors(glm::vec3 direction){
-    glm::mat4 rotationMat1(1);
-    glm::mat4 rotationMat2(1);
+//    glm::mat4 rotationMat1(1);
+//    glm::mat4 rotationMat2(1);
 
 //    direction.y = 0;
 
-    rotationMat1 = glm::rotate(rotationMat1, 0.7853981634f, glm::vec3(0.0, 1.0, 0.0));
-    rotationMat2 = glm::rotate(rotationMat2, -0.7853981634f, glm::vec3(0.0, 1.0, 0.0));
+//    rotationMat1 = glm::rotate(rotationMat1, 0.7853981634f, glm::vec3(0.0, 1.0, 0.0));
+//    rotationMat2 = glm::rotate(rotationMat2, -0.7853981634f, glm::vec3(0.0, 1.0, 0.0));
+//
+//    left = glm::vec3(rotationMat1 * glm::vec4(direction, 1.0));
+//    right = glm::vec3(rotationMat2 * glm::vec4(direction, 1.0));
+//
 
-    left = glm::vec3(rotationMat1 * glm::vec4(direction, 1.0));
-    right = glm::vec3(rotationMat2 * glm::vec4(direction, 1.0));
+    dir = glm::vec2(direction.x,direction.z);
+    dir =glm::normalize(dir);
 
 //    left.y = 0;
 //    right.y = 0;
