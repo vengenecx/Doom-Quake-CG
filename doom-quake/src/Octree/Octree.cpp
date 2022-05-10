@@ -303,4 +303,6 @@ void Octree::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culli
     }
 
     root->draw(shaders, culling,octreeVisible);
+
+    std::cout << std::endl;
 }

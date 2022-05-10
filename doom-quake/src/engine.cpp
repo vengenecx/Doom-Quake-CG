@@ -261,8 +261,8 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
         crosshair->resetShoot();
     crosshair->draw(shaders[crosshair->getShaderType()].get());
 
-    //shaders[LINE]->use();
-    //culling->draw(shaders[LINE].get());
+    shaders[LINE]->use();
+    culling->draw(shaders[LINE].get());
 
     if(executeShoot){
 //        std::cout<< "shoot" << std::endl;

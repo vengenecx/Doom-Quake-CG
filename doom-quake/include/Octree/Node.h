@@ -48,12 +48,17 @@ private:
     int depth;
 
     bool overlap(BoundingBox bb1, BoundingBox bb2);
+    bool overlapPlane(BoundingBox bb1, BoundingBox bb2);
 
     bool fit(Culling* culling);
 
     void fillVertices(BoundingBox bx);
 
     bool fitBox(Culling* culling, BoundingBox bx);
+    bool fitPlane(Culling* culling);
+    bool fitAngle(Culling* culling);
+
+    bool boxIn(BoundingBox bb1, BoundingBox bb2);
 
     bool drawState;
 

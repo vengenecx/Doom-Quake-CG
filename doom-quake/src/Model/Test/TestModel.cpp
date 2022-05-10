@@ -525,7 +525,7 @@ void TestModel::draw(Shader *shader) {
     m = glm::translate(m, position); // translate it down so it's at the center of the scene
     shader->setMat4("model", m);
 
-    std::cout << "pos: " << position.x << std::endl;
+//    std::cout << "pos: " << position.x << std::endl;
 //
 //    std::cout << "pos light: " << positionLight.z << std::endl;
 

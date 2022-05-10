@@ -11,10 +11,14 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/rotate_vector.hpp>
 
+
+#include "glm/gtx/fast_square_root.hpp"
+
 #include <vector>
 #include "Register/VAO.h"
 #include "Register/EBO.h"
 #include "Shaders/Shader.h"
+#include "Octree/BoundingBox.h"
 
 class Culling {
 public:
@@ -29,6 +33,10 @@ public:
     glm::vec2 getDirectioPlaneY();
 
     glm::vec3 getOrigin();
+
+    BoundingBox getBounding();
+
+    void initDraw();
 
 //
     void draw(Shader* shader);
@@ -45,6 +53,16 @@ private:
     glm::vec3 right;
     glm::vec3 origin;
 
+    glm::vec3 dimensions;
+
+    BoundingBox bounding;
+
+    std::unique_ptr<VAO> vao;
+    std::unique_ptr<VBO> vbo;
+    std::unique_ptr<EBO> ebo;
+
+    std::vector<GLuint> indices;
+    std::vector<float> vertices;
 
 
     void calculateVectors(glm::vec3 direction);
