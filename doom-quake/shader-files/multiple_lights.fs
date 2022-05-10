@@ -44,9 +44,18 @@ struct SpotLight {
 
 #define NR_POINT_LIGHTS 4
 
+//in vec3 FragPos;
+//in vec3 Normal;
+//in vec2 TexCoords;
+
+
+
 in vec3 FragPos;
-in vec3 Normal;
 in vec2 TexCoords;
+//out vec3 TangentLightPos;
+//out vec3 TangentViewPos;
+//out vec3 TangentFragPos;
+in mat3 TBN;
 
 uniform vec3 viewPos;
 uniform DirLight dirLight;
@@ -61,9 +70,19 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir);
 
 void main()
 {
+
+    vec3 TangentLightPos = TBN * pointLights[0].position;
+    vec3 TangentViewPos  = TBN * viewPos;
+    vec3 TangentFragPos  = TBN * FragPos;
+
     // properties
-    vec3 norm = normalize(Normal);
-    vec3 viewDir = normalize(viewPos - FragPos);
+    //vec3 norm = normalize(Normal);
+         // obtain normal from normal map in range [0,1]
+    vec3 normal = texture(material.specular, TexCoords).rgb;
+    // transform normal vector to range [-1,1]
+    normal = normalize(normal * 2.0 - 1.0);  // this normal is in tangent space
+
+    //vec3 viewDir = normalize(viewPos - FragPos);
 
     // == =====================================================
     // Our lighting is set up in 3 phases: directional, point lights and an optional flashlight
@@ -72,15 +91,32 @@ void main()
     // this fragment's final color.
     // == =====================================================
     // phase 1: directional lighting
-    vec3 result = CalcPointLight(pointLights[0], norm, FragPos, viewDir);
+    //vec3 result = CalcPointLight(pointLights[0], norm, FragPos, viewDir);
     // phase 2: point lights
 //     for(int i = 1; i < NR_POINT_LIGHTS; i++)
 //         result += CalcPointLight(pointLights[i], norm, FragPos, viewDir);
     // phase 3: spot light
 //     result += CalcSpotLight(spotLight, norm, FragPos, viewDir);
 
-    FragColor = vec4(result, 1.0);
+    //FragColor = vec4(result, 1.0);
 //     FragColor = texture(material.diffuse, TexCoords);
+
+    // get diffuse color
+    vec3 color = texture(material.diffuse, TexCoords).rgb;
+    // ambient
+    vec3 ambient = 0.1 * color;
+    // diffuse
+    vec3 lightDir = normalize(TangentLightPos - TangentFragPos);
+    float diff = max(dot(lightDir, normal), 0.0);
+    vec3 diffuse = diff * color;
+    // specular
+    vec3 viewDir = normalize(TangentViewPos - TangentFragPos);
+    vec3 reflectDir = reflect(-lightDir, normal);
+    vec3 halfwayDir = normalize(lightDir + viewDir);
+    float spec = pow(max(dot(normal, halfwayDir), 0.0), 32.0);
+
+    vec3 specular = vec3(0.2) * spec;
+    FragColor = vec4(ambient + diffuse + specular, 1.0);
 }
 
 // // calculates the color when using a directional light.

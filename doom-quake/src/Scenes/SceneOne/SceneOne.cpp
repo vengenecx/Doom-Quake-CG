@@ -16,6 +16,9 @@ SceneOne::SceneOne(){
     std::string doorWallImage = (currentDir + "/model-files/grass/doorWall.png");
     std::string potholeImage = (currentDir + "/model-files/pothole/pothole.png");
 
+    std::string wall = (currentDir + "/model-files/wall/brickwall.jpg");
+    std::string wallNormal = (currentDir + "/model-files/wall/brickwall_normal.jpg");
+
     
 //    std::cout << "path: " << currentDir + "/model-files/grass/woodFloorOne.png" << std::endl;
 
@@ -37,6 +40,9 @@ SceneOne::SceneOne(){
     this->textures.push_back(std::make_unique<Texture>(doorWallImage.c_str(), GL_TEXTURE_2D,7,GL_RGB,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(containerImg.c_str(), GL_TEXTURE_2D,8,GL_RGB,GL_UNSIGNED_BYTE));
 
+
+    this->textures.push_back(std::make_unique<Texture>(wall.c_str(), GL_TEXTURE_2D,9,GL_RGB,GL_UNSIGNED_BYTE));
+    this->textures.push_back(std::make_unique<Texture>(wallNormal.c_str(), GL_TEXTURE_2D,10,GL_RGB,GL_UNSIGNED_BYTE));
 
 //    this->awesomeTexture = std::make_unique<Texture>(awsomeFaceImg.c_str(),GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE);
 //    this->stoneTexture = std::make_unique<Texture>(stoneImg.c_str(),GL_TEXTURE_2D,2,GL_RGBA,GL_UNSIGNED_BYTE);
@@ -62,87 +68,93 @@ SceneOne::SceneOne(){
 
 
 
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(2.5f, -1.0f, 5.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-1.5,-1.0,1.0), DEFAULT));
-
-
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,9), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-5.5f, -1.0f, 4.5f), DEFAULT));
-
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-1.5f, -1.0f, 8.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,0,1), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(6.0f, -1.0f, 3.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,6), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(9.5f, -1.0f, 1.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,1), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(7.5f, -1.0f, 4.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(9,0,2), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(11.5f, -1.0f, 6.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,6), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(2.5f, -1.0f, -3.0f), DEFAULT));
-
-
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(3.5f, -1.0f, -4.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(1.5f, -1.0f, -4.0f), DEFAULT));
-
-
-
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,3), true, textures[ETexture::CONTAINER].get(), glm::vec3(5.0f, 0.5f, 1.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,6), true, textures[ETexture::CONTAINER].get(), glm::vec3(5.0f, 0.5f, 7.0f), DEFAULT));
-
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(4.0f, 0.5f, 0.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(10,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(-3.0f, 0.5f, 0.0f), DEFAULT));
-
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,9), true, textures[ETexture::CONCRETE].get(), glm::vec3(-8.0f, 0.5f, 4.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(8,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(-4.0f, 0.5f, 9.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(0.0f, 0.5f, 9.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,3,0), true, textures[ETexture::DOORWALL].get(), glm::vec3(2.5f, 0.5f, 10.0f), DEFAULT));
-
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,5), true, textures[ETexture::CONCRETE].get(), glm::vec3(0.0f, 0.5f, 4.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(-1.5f, 0.5f, 2.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,5), true, textures[ETexture::CONCRETE].get(), glm::vec3(-3.0f, 0.5f, 4.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,3,0), true, textures[ETexture::DOORWALL].get(), glm::vec3(-1.5f, 0.5f, 7.0f), DEFAULT));
-
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(6.0f, 0.5f, 4.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,3), true, textures[ETexture::CONCRETE].get(), glm::vec3(7.0f, 0.5f, 5.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(9,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(11.5f, 0.5f, 7.0f), DEFAULT));
-
-
-
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(16.0f, 0.5f, 6.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(8,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(12.0f, 0.5f, 5.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(8.0f, 0.5f, 4.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(4,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(10.0f, 0.5f, 4.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,6), true, textures[ETexture::CONCRETE].get(), glm::vec3(12.0f, 0.5f, 1.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(9.5f, 0.5f, -2.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,5), true, textures[ETexture::CONCRETE].get(), glm::vec3(7.0f, 0.5f, 0.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(6.0f, 0.5f, 3.0f), DEFAULT));
-
-
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(3.0f, 0.5f, -1.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(3.5f, 0.5f, -2.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(4.0f, 0.5f, -4.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(-1,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(3.5f, 0.5f, -5.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(2.5f, 0.5f, -6.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(1.5f, 0.5f, -5.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(1.0f, 0.5f, -4.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(-1,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(1.5f, 0.5f, -2.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(2.0f, 0.5f, -1.0f), DEFAULT));
-
-
-
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, textures[ETexture::CONCRETE].get(), glm::vec3(2.5f, 2.0f, 5.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, textures[ETexture::CONCRETE].get(), glm::vec3(-1.5f, 2.0f, 1.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,9), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-5.5f, 2.0f, 4.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, textures[ETexture::CONCRETE].get(), glm::vec3(-1.5f, 2.0f, 8.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,0,1), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(6.0f, 2.0f, 3.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,6), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(9.5f, 2.0f, 1.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,1), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(7.5f, 2.0f, 4.5f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(9,0,2), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(11.5f, 2.0f, 6.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,6), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(2.5f, 2.0f, -3.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(3.5f, 2.0f, -4.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(1.5f, 2.0f, -4.0f), DEFAULT));
-
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(2.5f, -1.0f, 5.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-1.5,-1.0,1.0), DEFAULT));
+//
+//
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,9), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-5.5f, -1.0f, 4.5f), DEFAULT));
+//
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-1.5f, -1.0f, 8.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,0,1), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(6.0f, -1.0f, 3.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,6), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(9.5f, -1.0f, 1.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,1), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(7.5f, -1.0f, 4.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(9,0,2), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(11.5f, -1.0f, 6.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,6), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(2.5f, -1.0f, -3.0f), DEFAULT));
+//
+//
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(3.5f, -1.0f, -4.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(1.5f, -1.0f, -4.0f), DEFAULT));
+//
+//
+//
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,3), true, textures[ETexture::CONTAINER].get(), glm::vec3(5.0f, 0.5f, 1.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,6), true, textures[ETexture::CONTAINER].get(), glm::vec3(5.0f, 0.5f, 7.0f), DEFAULT));
+//
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(4.0f, 0.5f, 0.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(10,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(-3.0f, 0.5f, 0.0f), DEFAULT));
+//
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,9), true, textures[ETexture::CONCRETE].get(), glm::vec3(-8.0f, 0.5f, 4.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(8,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(-4.0f, 0.5f, 9.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(0.0f, 0.5f, 9.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,3,0), true, textures[ETexture::DOORWALL].get(), glm::vec3(2.5f, 0.5f, 10.0f), DEFAULT));
+//
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,5), true, textures[ETexture::CONCRETE].get(), glm::vec3(0.0f, 0.5f, 4.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(-1.5f, 0.5f, 2.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,5), true, textures[ETexture::CONCRETE].get(), glm::vec3(-3.0f, 0.5f, 4.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,3,0), true, textures[ETexture::DOORWALL].get(), glm::vec3(-1.5f, 0.5f, 7.0f), DEFAULT));
+//
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(6.0f, 0.5f, 4.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,3), true, textures[ETexture::CONCRETE].get(), glm::vec3(7.0f, 0.5f, 5.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(9,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(11.5f, 0.5f, 7.0f), DEFAULT));
+//
+//
+//
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(16.0f, 0.5f, 6.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(8,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(12.0f, 0.5f, 5.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(8.0f, 0.5f, 4.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(4,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(10.0f, 0.5f, 4.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,6), true, textures[ETexture::CONCRETE].get(), glm::vec3(12.0f, 0.5f, 1.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(9.5f, 0.5f, -2.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,5), true, textures[ETexture::CONCRETE].get(), glm::vec3(7.0f, 0.5f, 0.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(6.0f, 0.5f, 3.0f), DEFAULT));
+//
+//
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(3.0f, 0.5f, -1.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(3.5f, 0.5f, -2.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(4.0f, 0.5f, -4.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(-1,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(3.5f, 0.5f, -5.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(2.5f, 0.5f, -6.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(1.5f, 0.5f, -5.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(1.0f, 0.5f, -4.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(-1,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(1.5f, 0.5f, -2.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(2.0f, 0.5f, -1.0f), DEFAULT));
+//
+//
+//
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, textures[ETexture::CONCRETE].get(), glm::vec3(2.5f, 2.0f, 5.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, textures[ETexture::CONCRETE].get(), glm::vec3(-1.5f, 2.0f, 1.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,9), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-5.5f, 2.0f, 4.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, textures[ETexture::CONCRETE].get(), glm::vec3(-1.5f, 2.0f, 8.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,0,1), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(6.0f, 2.0f, 3.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,6), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(9.5f, 2.0f, 1.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,1), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(7.5f, 2.0f, 4.5f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(9,0,2), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(11.5f, 2.0f, 6.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,6), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(2.5f, 2.0f, -3.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(3.5f, 2.0f, -4.0f), DEFAULT));
+//    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(1.5f, 2.0f, -4.0f), DEFAULT));
+//
 
     // Lights
-    models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(0.7f,  0.8f,  2.0f), LINE));
+//    models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(0.7f,  0.8f,  2.0f), LINE));
 
-    std::unique_ptr<TestModel> test = std::make_unique<TestModel>(glm::vec3( 1.0f,  1.0f, 1.0f),textures[ETexture::WOODFLOOR].get(), glm::vec3( 0.7f,  -6.1f,  2.0f), LIGHT);
-    test->setPositionLight(glm::vec3(0.7f,  0.8f,  2.0f));
+    models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(0.55f, 1.5f, 5.35f), LINE));
+
+//    std::unique_ptr<TestModel> test = std::make_unique<TestModel>(glm::vec3( 1.0f,  1.0f, 1.0f),textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3( 0.7f,  -6.1f,  2.0f), LIGHT);
+    std::unique_ptr<TestModel> test = std::make_unique<TestModel>(glm::vec3( 1.0f,  1.0f, 1.0f),textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3( 0.0f,  0.0f,  0.0f), LIGHT);
+
+//    test->setPositionLight(glm::vec3(0.7f,  0.8f,  2.0f));
+    test->setPositionLight(glm::vec3(0.5f, 1.0f, 5.3f));
+
     models.push_back(move(test));
 
 

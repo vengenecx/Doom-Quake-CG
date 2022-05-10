@@ -13,7 +13,9 @@ enum ETexture {
     CONCRETE = 4,
     WOODFLOOR = 5,
     DOORWALL = 6,
-    CONTAINER = 7
+    CONTAINER = 7,
+    WALL = 8,
+    WALL_NORMAL = 9
 };
 
 #endif //DOOM_QUAKE_ETEXTURE_H
