@@ -8,9 +8,12 @@
 #include"Model/LearnOpenglModel/Model.h"
 
 
-Model::Model(std::string const &path, glm::vec3 position, glm::vec3 sizeOfScaling, ShaderType type, bool gamma) : BaseModel(type), position(position), sizeOfScaling(sizeOfScaling), gammaCorrection(gamma)
+Model::Model(std::string const &path, glm::vec3 position, glm::vec3 sizeOfScaling, glm::vec3 boundingBoxSize, ShaderType type, bool gamma) : BaseModel(type), position(position), sizeOfScaling(sizeOfScaling), boundingBoxSize(boundingBoxSize),gammaCorrection(gamma)
 {
     loadModel(path);
+    this->bb = BoundingBox();
+    this->bb.centre = position;
+    this->bb.dimensions  =  boundingBoxSize;
 }
 
 
