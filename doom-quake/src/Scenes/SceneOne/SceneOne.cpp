@@ -184,7 +184,7 @@ SceneOne::SceneOne(){
 
 
     // Test Cube
-    models.push_back(std::make_unique<TestModel>(glm::vec3( 2.0f,  2.0f, 2.0f),textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3( 0.0f,  0.0f,  0.0f), LIGHT,lights));
+    //models.push_back(std::make_unique<TestModel>(glm::vec3( 2.0f,  2.0f, 2.0f),textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3( 0.0f,  0.0f,  0.0f), LIGHT,lights));
 
 
     BoundingBox box = BoundingBox();
