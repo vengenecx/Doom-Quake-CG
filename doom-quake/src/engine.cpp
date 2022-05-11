@@ -69,19 +69,19 @@ Engine::Engine()
         this->potholeTexture = std::make_unique<Texture>(img_3.c_str(),GL_TEXTURE_2D,2,GL_RGBA,GL_UNSIGNED_BYTE);
 
 
-        models = std::vector<std::unique_ptr<BaseModel>>();
+        //models = std::vector<std::unique_ptr<BaseModel>>();
 
 //    models.push_back(std::make_unique<Model>("model-files/backpack/backpack.obj",glm::vec3(0.0f, 2.0f, -8.0f),MODEL_LOADER_SHADER));
 //    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, 0.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 //    models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( 0.0f,  0.0f, -5.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 //        models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -10.0f,  -10.0f, -10.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 
-        models.push_back(std::make_unique<CubeModel>(glm::vec3( 2.0f,  2.0f, 2.0f),containerTexture.get(),awesomeTexture.get(), glm::vec3( -10.0f,  -10.0f, -10.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+        //models.push_back(std::make_unique<CubeModel>(glm::vec3( 2.0f,  2.0f, 2.0f),containerTexture.get(),awesomeTexture.get(), glm::vec3( -10.0f,  -10.0f, -10.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 
         //        models.push_back(std::make_unique<CubeModel>(containerTexture.get(),awesomeTexture.get(), glm::vec3( -12.0f,  -12.0f, -12.0f),DOUBLE_TEXTURE_COLOR_SHADER));
-        models.push_back(std::make_unique<CubeModel>(glm::vec3( 1.0f,  1.0f, 1.0f),containerTexture.get(),awesomeTexture.get(), glm::vec3( -12.0f,  -12.0f, -12.0f),DOUBLE_TEXTURE_COLOR_SHADER));
+        //models.push_back(std::make_unique<CubeModel>(glm::vec3( 1.0f,  1.0f, 1.0f),containerTexture.get(),awesomeTexture.get(), glm::vec3( -12.0f,  -12.0f, -12.0f),DOUBLE_TEXTURE_COLOR_SHADER));
 
-        models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( -10.0f,  -10.0f, 0.0f),DEFAULT));
+        //models.push_back(std::make_unique<PlaneModel>(containerTexture.get(), glm::vec3( -10.0f,  -10.0f, 0.0f),DEFAULT));
 
         //models.push_back(std::make_unique<CrossModel>(CROSS));
 

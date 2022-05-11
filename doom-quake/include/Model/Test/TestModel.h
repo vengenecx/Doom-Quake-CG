@@ -20,7 +20,7 @@ public:
 
     ~TestModel();
 
-    void setPositionLight(glm::vec3 positionLight);
+//    void setPositionLight(glm::vec3 positionLight);
     void setLights(Shader* shader);
 
 private:
@@ -38,8 +38,6 @@ private:
 
     glm::vec3 position;
 
-
-    glm::vec3 positionLight;
 
     void setTextures(Shader* shader);
 

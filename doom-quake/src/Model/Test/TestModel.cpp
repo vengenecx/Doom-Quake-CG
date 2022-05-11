@@ -64,7 +64,6 @@ TestModel::TestModel(glm::vec3 dimensions,Texture * texture_1, Texture * texture
     this->bb.centre = position;
     this->bb.dimensions  =  glm::vec3(dimensions.x,dimensions.y,dimensions.z);
 
-    std::cout << "testmodel initiated" << std::endl;
 }
 
 TestModel::TestModel(glm::vec3 dimensions,Texture * texture_1, Texture * texture_2, glm::vec3 position, ShaderType type,std::vector<BaseModel*> &light) : BaseModel(type,light){
@@ -1202,10 +1201,10 @@ void TestModel::setLights(Shader* shader) {
 
 }
 
-
-void TestModel::setPositionLight(glm::vec3 positionLight){
-    this->positionLight = positionLight;
-}
+//
+//void TestModel::setPositionLight(glm::vec3 positionLight){
+//    this->positionLight = positionLight;
+//}
 
 void TestModel::draw(Shader *shader) {
     shader->use();
