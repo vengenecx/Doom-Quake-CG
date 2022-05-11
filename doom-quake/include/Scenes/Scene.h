@@ -14,7 +14,7 @@ class Scene {
 public:
     virtual void draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints,Culling* culling, bool octreeVisible) = 0;
     virtual void remove() = 0;
-
+    virtual void spotLightToggle(bool state) = 0;
 
     virtual void shoot(Ray* ray, std::vector<std::unique_ptr<Hit>> & hitPoints) = 0;
 protected:

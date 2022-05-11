@@ -17,6 +17,9 @@
 #include "Scenes/Scene.h"
 
 #include "Model/PointLight/PointLight.h"
+#include "Model/Test/TestModel.h"
+#include "Model/DirectionLight/DirectionLight.h"
+#include "Model/SpotLight/SpotLight.h"
 
 namespace fs = std::filesystem;
 
@@ -28,31 +31,23 @@ class SceneOne : public Scene {
         void remove();
 
         void shoot(Ray* ray, std::vector<std::unique_ptr<Hit>> & hitPoints);
+
+        void spotLightToggle(bool state);
     
     private:
         std::string currentDir = (fs::current_path()).string();
-
         std::vector<std::unique_ptr<BaseModel>> models;
-
-
         std::vector<std::unique_ptr<Texture>> textures;
-
-
-        // all the textures:
-//        std::unique_ptr<Texture> containerTexture;
-//        std::unique_ptr<Texture> awesomeTexture;
-//        std::unique_ptr<Texture> stoneTexture;
-//        std::unique_ptr<Texture> grassTexture;
-//        std::unique_ptr<Texture> metalTexture;
-//        std::unique_ptr<Texture> concreteTexture;
-//        std::unique_ptr<Texture> bulletHoleTexture;
-//        std::unique_ptr<Texture> woodFLoorTexture;
-//        std::unique_ptr<Texture> doorWallTexture;
 
 
         std::unique_ptr<Texture> potholeTexture;
 
-        std::vector<float>  vertices;
+        std::unique_ptr<SpotLight> spotLight;
+
+
+
+
+
 
         // start ground vertices
 //        std::vector<float> groundVerticesOne{

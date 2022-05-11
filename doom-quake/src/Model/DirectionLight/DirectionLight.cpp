@@ -1,12 +1,13 @@
 //
-// Created by Lennert Steyaert on 09/05/2022.
+// Created by Lennert Steyaert on 11/05/2022.
 //
 
-#include "Model/PointLight/PointLight.h"
+#include "Model/DirectionLight/DirectionLight.h"
 
 
-PointLight::PointLight(glm::vec3 dimensions, glm::vec3 position, ShaderType type, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, float constant, float linear, float quadratic) :
-    BaseModel(type), ambient(ambient), diffuse(diffuse), specular(specular), constant(constant), linear(linear), quadratic(quadratic){
+
+DirectionLight::DirectionLight(glm::vec3 dimensions, glm::vec3 position, ShaderType type, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular) :
+        BaseModel(type), ambient(ambient), diffuse(diffuse), specular(specular){
 
     this->vao = std::make_unique<VAO>();
     this->vao->bind();
@@ -57,7 +58,7 @@ PointLight::PointLight(glm::vec3 dimensions, glm::vec3 position, ShaderType type
 }
 
 
-void PointLight::fillVertices(glm::vec3 dimensions){
+void DirectionLight::fillVertices(glm::vec3 dimensions){
 
     glm::vec3 color = glm::vec3(1,1,1);
     glm::vec3 colorBlack = glm::vec3(0,0,0);
@@ -283,7 +284,7 @@ void PointLight::fillVertices(glm::vec3 dimensions){
 }
 
 
-PointLight::~PointLight()  {
+DirectionLight::~DirectionLight()  {
     std::cout << "deleted cubemodel" << std::endl;
     vao.release();
     vbo.release();
@@ -291,23 +292,21 @@ PointLight::~PointLight()  {
 }
 
 
-void PointLight::updatePosition(glm::vec3 pos){
+void DirectionLight::updatePosition(glm::vec3 pos){
     this->position = pos;
 }
 
-void PointLight::setupShader(Shader * shader,uint &pos){
-    shader->setVec3("pointLights[" + std::to_string(pos) + "].position", position);
-    shader->setVec3("pointLights[" + std::to_string(pos) + "].ambient", ambient);
-    shader->setVec3("pointLights[" + std::to_string(pos) + "].diffuse", diffuse);
-    shader->setVec3("pointLights[" + std::to_string(pos) + "].specular", specular);
-    shader->setFloat("pointLights[" + std::to_string(pos) + "].constant", constant);
-    shader->setFloat("pointLights[" + std::to_string(pos) + "].linear", linear);
-    shader->setFloat("pointLights[" + std::to_string(pos) + "].quadratic", quadratic);
+void DirectionLight::setupShader(Shader * shader,uint &pos){
 
-    pos++;
+    shader->setBool("directionLightState", true);
+
+    shader->setVec3("dirLight.position", position);
+    shader->setVec3("dirLight.ambient", ambient);
+    shader->setVec3("dirLight.diffuse", diffuse);
+    shader->setVec3("dirLight.specular", specular);
 }
 
-void PointLight::draw(Shader *shader) {
+void DirectionLight::draw(Shader *shader) {
     shader->use();
 
     glm::mat4 m = glm::mat4(1.0f);
@@ -323,7 +322,7 @@ void PointLight::draw(Shader *shader) {
     this->ebo->unbind();
 }
 
-void PointLight::remove() {
+void DirectionLight::remove() {
     this->vao->remove();
     this->vbo->remove();
     this->ebo->remove();

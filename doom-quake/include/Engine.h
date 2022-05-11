@@ -60,9 +60,6 @@ public:
 
 private:
     void keyHandler(GLFWwindow *window);
-
-
-
     void drawControls(GLFWwindow *window);
 
 
@@ -163,6 +160,7 @@ private:
 
     bool lennert = false;
     bool fpsCamera = true;
+    bool spotLight = false;
 
 };
 #endif //DOOM_QUAKE_ENGINE_H

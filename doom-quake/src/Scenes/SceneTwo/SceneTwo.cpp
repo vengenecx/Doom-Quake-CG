@@ -66,7 +66,9 @@ void SceneTwo::shoot(Ray* ray, std::vector<std::unique_ptr<Hit>> & hitPoints){
 
 }
 
-
+void SceneTwo::spotLightToggle(bool state){
+    
+}
 
 
 

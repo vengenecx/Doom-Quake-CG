@@ -309,15 +309,15 @@ void Engine::drawControls(GLFWwindow *window) {
     ImGui::SameLine();
     if (ImGui::Button("Room B"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
         game.setStateRoomB();
-    ImGui::SameLine();
-    if (ImGui::Button("Room C"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-        game.setStateRoomC();
-    ImGui::SameLine();
-    if (ImGui::Button("Room D"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-        game.setStateRoomD();
-    ImGui::SameLine();
-    if (ImGui::Button("Room E"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-        game.setStateRoomE();
+//    ImGui::SameLine();
+//    if (ImGui::Button("Room C"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+//        game.setStateRoomC();
+//    ImGui::SameLine();
+//    if (ImGui::Button("Room D"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+//        game.setStateRoomD();
+//    ImGui::SameLine();
+//    if (ImGui::Button("Room E"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+//        game.setStateRoomE();
 
     ImGui::NewLine();
     ImGui::Checkbox("Octree", &showOctree);
@@ -325,6 +325,10 @@ void Engine::drawControls(GLFWwindow *window) {
     ImGui::SliderFloat("Speed", &speed, 0.0f, 6.0f);
 
     ImGui::Checkbox("FPS-camera", &fpsCamera);
+    ImGui::SameLine();
+    ImGui::Checkbox("Spotlight", &spotLight);
+
+    currentScene->spotLightToggle(spotLight);
 
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
