@@ -7,6 +7,7 @@
 
 enum ETexture {
     AWESOMEFACE = 0,
+    // AWESOMEFACE_NORMAL= 1,
     STONE = 1,
     GRASS = 2,
     METAL = 3,

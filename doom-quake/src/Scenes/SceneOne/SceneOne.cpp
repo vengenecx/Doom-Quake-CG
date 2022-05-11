@@ -27,7 +27,13 @@ SceneOne::SceneOne(){
 
     this->textures = std::vector<std::unique_ptr<Texture>>();
 
+
+
     this->textures.push_back(std::make_unique<Texture>(awsomeFaceImg.c_str(),GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE));
+    // this->textures.push_back(std::make_unique<Texture>(awsomeFaceImgNormal.c_str(),GL_TEXTURE_2D,2,GL_RGBA,GL_UNSIGNED_BYTE));
+    // CHANGE /include/Texture/Etecture.h (    AWESOMEFACE = 0,    AWESOMEFACE = 1).....
+
+    // SHIFT ALL SLOTS!!!!
     this->textures.push_back(std::make_unique<Texture>(stoneImg.c_str(),GL_TEXTURE_2D,2,GL_RGBA,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(grassImg.c_str(),GL_TEXTURE_2D,3,GL_RGB,GL_UNSIGNED_BYTE));
 
@@ -46,6 +52,8 @@ SceneOne::SceneOne(){
 
 
     spotLight = std::make_unique<SpotLight>(LINE);
+
+    // For each light list don't forget to add spotlight
 
     std::vector<BaseModel*> lights = std::vector<BaseModel*>(); // As example
     lights.push_back(spotLight.get());
