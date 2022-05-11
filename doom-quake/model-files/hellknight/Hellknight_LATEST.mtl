@@ -11,8 +11,8 @@ Ni 1.000000
 d 1.000000
 illum 2
 map_Kd red.png
-map_Bump red.png
-map_Ks red.png
+#map_Bump red.png
+#map_Ks red.png
 
 newmtl blood_dk
 Ns 390.196078
@@ -24,8 +24,8 @@ Ni 1.000000
 d 1.000000
 illum 2
 map_Kd river_heightmap.png
-map_Bump river_heightmap.png
-map_Ks river_heightmap.png
+# map_Bump river_heightmap.png
+# map_Ks river_heightmap.png
 
 
 newmtl claw
@@ -38,8 +38,8 @@ Ni 1.000000
 d 1.000000
 illum 2
 map_Kd iceland_heightmap.png
-map_Bump iceland_heightmap.png
-map_Ks iceland_heightmap.png
+# map_Bump iceland_heightmap.png
+# map_Ks iceland_heightmap.png
 
 newmtl skin
 Ns 92.156863
@@ -51,8 +51,8 @@ Ni 1.000000
 d 1.000000
 illum 2
 map_Kd red.png
-map_Bump red.png
-map_Ks red.png
+# map_Bump red.png
+# map_Ks red.png
 
 newmtl skin_dk
 Ns 45.098039
@@ -64,5 +64,5 @@ Ni 1.000000
 d 1.000000
 illum 2
 map_Kd river_heightmap.png
-map_Bump river_heightmap.png
-map_Ks river_heightmap.png
+# map_Bump river_heightmap.png
+# map_Ks river_heightmap.png
