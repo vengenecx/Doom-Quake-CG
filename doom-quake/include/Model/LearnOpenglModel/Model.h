@@ -17,7 +17,7 @@
 class Model : public BaseModel{
 public:
     // constructor, expects a filepath to a 3D model.
-    Model(std::string const &path, glm::vec3 position, glm::vec3 sizeOfScaling, ShaderType type, bool gamma = false);
+    Model(std::string const &path, glm::vec3 position, glm::vec3 sizeOfScaling, glm::vec3 boundingBoxSize, ShaderType type, bool gamma = false);
     ~Model();
 
     void draw(Shader *shader);
@@ -35,7 +35,7 @@ private:
 
     glm::vec3 position;
     glm::vec3 sizeOfScaling;
-
+    glm::vec3 boundingBoxSize;
 
     // TODO
     // Boundingbox calculation

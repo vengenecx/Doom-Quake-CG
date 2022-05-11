@@ -39,13 +39,9 @@ class SceneOne : public Scene {
         std::vector<std::unique_ptr<BaseModel>> models;
         std::vector<std::unique_ptr<Texture>> textures;
 
-
         std::unique_ptr<Texture> potholeTexture;
 
         std::unique_ptr<SpotLight> spotLight;
-
-
-
 
 
 

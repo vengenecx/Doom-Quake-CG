@@ -50,6 +50,7 @@ Engine::Engine()
 
     camera = std::make_unique<Camera>(fpsCamera,glm::vec3(0.0f, 0.2f, -2.0f));
 
+
 //    // Cube test
     //doubleTextureColShader = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
 

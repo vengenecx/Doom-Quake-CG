@@ -12,8 +12,6 @@
  int main(void)
  {
      GLFWwindow* window;
-
-
      /* Initialize the library */
      if (!glfwInit())
          return -1;
@@ -50,9 +48,7 @@
          return -1;
      }
 
-
      std::unique_ptr<Engine> engine = std::make_unique<Engine>();
-
 
 
 

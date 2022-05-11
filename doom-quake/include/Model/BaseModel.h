@@ -27,7 +27,6 @@ public:
     virtual void remove() = 0;
     virtual ~BaseModel() {}
 
-
     virtual void shoot();
     virtual void resetShoot();
 

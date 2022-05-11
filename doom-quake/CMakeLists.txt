@@ -10,6 +10,7 @@ include_directories(include)
 # include_directories (/usr/include/freetype2)
 
 add_executable( doom_quake src/main.cpp
+                
                 include/Engine.h include/glad.h
                 include/khrplatform.h
                 src/glad/glad.c
@@ -35,9 +36,11 @@ add_executable( doom_quake src/main.cpp
                 include/Register/VAO.h
                 include/Register/VBO.h
 
+
                 include/Model/Triangle/TriangleModel.h
-        include/Scenes/SceneTwo/SceneTwo.h
-        include/Scenes/SceneOne/SceneOne.h
+                include/Scenes/SceneTwo/SceneTwo.h
+                include/Scenes/SceneOne/SceneOne.h
+                
 
                 src/Octree/Node.cpp 
                 src/Octree/NodeCluster.cpp 
@@ -49,10 +52,9 @@ add_executable( doom_quake src/main.cpp
                 src/Model/Cube/CubeModel.cpp
                 
                 src/Model/Triangle/TriangleModel.cpp
-        src/Scenes/SceneTwo/SceneTwo.cpp
-        src/Scenes/SceneOne/SceneOne.cpp
+                src/Scenes/SceneTwo/SceneTwo.cpp
+                src/Scenes/SceneOne/SceneOne.cpp
                 
-
                 include/Texture/Texture.h
                 src/Texture/Texture.cpp
                 src/Model/BaseModel.cpp
@@ -62,8 +64,11 @@ add_executable( doom_quake src/main.cpp
                 src/Model/Skybox/Skybox.cpp include/Model/Plane/PlaneModel.h
                 src/Model/Plane/PlaneModel.cpp include/Map/Terrain/Terrain.h
                 src/Map/Terrain/Terrain.cpp
+                include/Model/LightBox/LightBox.h               
 
-                include/Scenes/Scene.h
+                src/Model/LightBox/LightBox.cpp
+
+                include/Scenes/Scene.h                
 
                 include/Text/TextRenderer.h src/Text/TextRenderer.cpp include/Game/Game.h src/Game/Game.cpp
 
@@ -83,9 +88,6 @@ add_executable( doom_quake src/main.cpp
                 include/imgui.h
                 include/imgui.cpp
                 include/imconfig.h include/Model/Cross/CrossModel.h src/Model/Cross/CrossModel.cpp include/Model/Test/TestModel.h include/Hit/Hit.h src/Hit/Hit.cpp include/Texture/ETexture.h include/Culling/Culling.h src/Culling/Culling.cpp include/Model/PointLight/PointLight.h src/Model/PointLight/PointLight.cpp src/Model/Test/TestModel.cpp include/Model/DirectionLight/DirectionLight.h src/Model/DirectionLight/DirectionLight.cpp include/Model/SpotLight/SpotLight.h src/Model/SpotLight/SpotLight.cpp)
-
-
-               
 
 # GLFW
 add_subdirectory(glfw-3.3.6)

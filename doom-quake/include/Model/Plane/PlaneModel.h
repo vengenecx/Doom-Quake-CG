@@ -31,7 +31,6 @@ private:
     std::vector<float> vertices;
     std::vector<GLuint> indices;
 
-
     glm::vec3 position;
 
     void fillVertices(glm::vec3 dimensions, bool wall, bool inside);
