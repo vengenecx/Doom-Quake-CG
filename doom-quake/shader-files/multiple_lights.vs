@@ -25,6 +25,8 @@ out vec2 TexCoords;
 //out vec3 TangentFragPos;
 out mat3 TBN;
 
+out vec3 N;
+
 
 uniform mat4 model;
 uniform mat4 view;
@@ -45,7 +47,7 @@ void main()
 
     mat3 normalMatrix = transpose(inverse(mat3(model)));
     vec3 T = normalize(normalMatrix * aTangent);
-    vec3 N = normalize(normalMatrix * aNormal);
+    N = normalize(normalMatrix * aNormal);
     T = normalize(T - dot(T, N) * N);
     vec3 B = cross(N, T);
 

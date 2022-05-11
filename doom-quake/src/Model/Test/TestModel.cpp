@@ -71,79 +71,17 @@ TestModel::TestModel(glm::vec3 dimensions,Texture * texture_1, Texture * texture
 
 void TestModel::fillVertices(glm::vec3 dimensions){
 
-    glm::vec3 color = glm::vec3(1,1,1);
-
-//    float v[] = {
-//            // positions          // normals           // texture coords
-//            -0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f, 0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
-//            0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f, -1.0f,  1.0f,  0.0f,
-//            0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
-//            0.5f,  0.5f, -0.5f, 1.0f,1.0f,1.0f, 0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
-//            -0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f, -1.0f,  0.0f,  1.0f,
-//            -0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
-//
-//            -0.5f, -0.5f,  0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
-//            0.5f, -0.5f,  0.5f, 1.0f,1.0f,1.0f, 0.0f,  0.0f,  1.0f,  1.0f,  0.0f,
-//            0.5f,  0.5f,  0.5f, 1.0f,1.0f,1.0f, 0.0f,  0.0f,  1.0f,  1.0f,  1.0f,
-//            0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f,  1.0f,  1.0f,  1.0f,
-//            -0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f,  1.0f,  0.0f,  1.0f,
-//            -0.5f, -0.5f,  0.5f,  1.0f,1.0f,1.0f,0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
-//
-//            -0.5f,  0.5f,  0.5f, 1.0f,1.0f,1.0f,-1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-//            -0.5f,  0.5f, -0.5f,1.0f,1.0f,1.0f, -1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
-//            -0.5f, -0.5f, -0.5f, 1.0f,1.0f,1.0f,-1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-//            -0.5f, -0.5f, -0.5f, 1.0f,1.0f,1.0f,-1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-//            -0.5f, -0.5f,  0.5f, 1.0f,1.0f,1.0f,-1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
-//            -0.5f,  0.5f,  0.5f, 1.0f,1.0f,1.0f,-1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-//
-//            0.5f,  0.5f,  0.5f, 1.0f,1.0f,1.0f, 1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-//            0.5f,  0.5f, -0.5f, 1.0f,1.0f,1.0f, 1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
-//            0.5f, -0.5f, -0.5f, 1.0f,1.0f,1.0f, 1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-//            0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-//            0.5f, -0.5f,  0.5f, 1.0f,1.0f,1.0f, 1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
-//            0.5f,  0.5f,  0.5f, 1.0f,1.0f,1.0f, 1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-//
-//            -0.5f, -0.5f, -0.5f, 1.0f,1.0f,1.0f, 0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
-//            0.5f, -0.5f, -0.5f, 1.0f,1.0f,1.0f, 0.0f, -1.0f,  0.0f,  1.0f,  1.0f,
-//            0.5f, -0.5f,  0.5f, 1.0f,1.0f,1.0f, 0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
-//            0.5f, -0.5f,  0.5f, 1.0f,1.0f,1.0f, 0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
-//            -0.5f, -0.5f,  0.5f, 1.0f,1.0f,1.0f, 0.0f, -1.0f,  0.0f,  0.0f,  0.0f,
-//            -0.5f, -0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
-//
-//            -0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f,  1.0f,  0.0f,  0.0f,  1.0f,
-//            0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f,  1.0f,  0.0f,  1.0f,  1.0f,
-//            0.5f,  0.5f,  0.5f, 1.0f,1.0f,1.0f, 0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
-//            0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
-//            -0.5f,  0.5f,  0.5f,  1.0f,1.0f,1.0f,0.0f,  1.0f,  0.0f,  0.0f,  0.0f,
-//            -0.5f,  0.5f, -0.5f,  1.0f,1.0f,1.0f,0.0f,  1.0f,  0.0f,  0.0f,  1.0f
-//    };
-//
-//    for(float f:v){
-//        this->vertices.push_back(f);
-//    }
-
-
     // positions
     glm::vec3 pos1(-1.0f,  1.0f, 0.0f);
     glm::vec3 pos2(-1.0f, -1.0f, 0.0f);
     glm::vec3 pos3( 1.0f, -1.0f, 0.0f);
     glm::vec3 pos4( 1.0f,  1.0f, 0.0f);
 
+
     pos1 = glm::vec3(-dimensions.x/2,+dimensions.y/2,-dimensions.z/2);
     pos2 = glm::vec3(-dimensions.x/2,-dimensions.y/2,-dimensions.z/2);
     pos3 = glm::vec3(dimensions.x/2,-dimensions.y/2,-dimensions.z/2);
     pos4 = glm::vec3(dimensions.x/2,dimensions.y/2,-dimensions.z/2);
-
-//    pos1 = glm::vec3(-dimensions.x/2,dimensions.y/2,dimensions.z/2);
-//    pos2 = glm::vec3(-dimensions.x/2,dimensions.y/2,-dimensions.z/2);
-//    pos3 = glm::vec3(dimensions.x/2,dimensions.y/2,-dimensions.z/2);
-//    pos4 = glm::vec3(dimensions.x/2,dimensions.y/2,dimensions.z/2);
-
-    //    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(-dimensions.y/2);
-
-
 
     // texture coordinates
     glm::vec2 uv1(0.0f, 1.0f);
@@ -163,6 +101,7 @@ void TestModel::fillVertices(glm::vec3 dimensions){
     glm::vec3 edge2 = pos3 - pos1;
     glm::vec2 deltaUV1 = uv2 - uv1;
     glm::vec2 deltaUV2 = uv3 - uv1;
+
 
     float f = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV2.x * deltaUV1.y);
 
@@ -192,22 +131,6 @@ void TestModel::fillVertices(glm::vec3 dimensions){
     bitangent2.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
     bitangent2.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
 
-
-//    float quadVertices[] = {
-//            // positions            // normal         // texcoords  // tangent                          // bitangent
-//            pos1.x, pos1.y, pos1.z, nm.x, nm.y, nm.z, uv1.x, uv1.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//            pos2.x, pos2.y, pos2.z, nm.x, nm.y, nm.z, uv2.x, uv2.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//            pos3.x, pos3.y, pos3.z, nm.x, nm.y, nm.z, uv3.x, uv3.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//
-//            pos1.x, pos1.y, pos1.z, nm.x, nm.y, nm.z, uv1.x, uv1.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z,
-//            pos3.x, pos3.y, pos3.z, nm.x, nm.y, nm.z, uv3.x, uv3.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z,
-//            pos4.x, pos4.y, pos4.z, nm.x, nm.y, nm.z, uv4.x, uv4.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z
-//    };
-//
-//
-//    for(auto f:quadVertices){
-//        this->vertices.push_back(f);
-//    }
 
     this->vertices.push_back(pos1.x);
     this->vertices.push_back(pos1.y);
@@ -258,6 +181,7 @@ void TestModel::fillVertices(glm::vec3 dimensions){
     this->vertices.push_back(uv3.x);
     this->vertices.push_back(uv3.y);
 
+
     this->vertices.push_back(tangent1.x);
     this->vertices.push_back(tangent1.y);
     this->vertices.push_back(tangent1.z);
@@ -277,6 +201,7 @@ void TestModel::fillVertices(glm::vec3 dimensions){
     this->vertices.push_back(uv1.x);
     this->vertices.push_back(uv1.y);
 
+
     this->vertices.push_back(tangent2.x);
     this->vertices.push_back(tangent2.y);
     this->vertices.push_back(tangent2.z);
@@ -295,6 +220,9 @@ void TestModel::fillVertices(glm::vec3 dimensions){
 
     this->vertices.push_back(uv3.x);
     this->vertices.push_back(uv3.y);
+
+//    this->vertices.push_back(uv2.x);
+//    this->vertices.push_back(uv2.y);
 
     this->vertices.push_back(tangent2.x);
     this->vertices.push_back(tangent2.y);
@@ -371,23 +299,6 @@ void TestModel::fillVertices(glm::vec3 dimensions){
     bitangent2.x = f * (-deltaUV2.x * edge1.x + deltaUV1.x * edge2.x);
     bitangent2.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
     bitangent2.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
-
-
-//    float quadVertices3[] = {
-//            // positions            // normal         // texcoords  // tangent                          // bitangent
-//            pos1.x, pos1.y, pos1.z, nm.x, nm.y, nm.z, uv1.x, uv1.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//            pos2.x, pos2.y, pos2.z, nm.x, nm.y, nm.z, uv2.x, uv2.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//            pos3.x, pos3.y, pos3.z, nm.x, nm.y, nm.z, uv3.x, uv3.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//
-//            pos1.x, pos1.y, pos1.z, nm.x, nm.y, nm.z, uv1.x, uv1.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z,
-//            pos3.x, pos3.y, pos3.z, nm.x, nm.y, nm.z, uv3.x, uv3.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z,
-//            pos4.x, pos4.y, pos4.z, nm.x, nm.y, nm.z, uv4.x, uv4.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z
-//    };
-//
-//
-//    for(auto f:quadVertices3){
-//        this->vertices.push_back(f);
-//    }
 
 
     this->vertices.push_back(pos1.x);
@@ -561,22 +472,6 @@ void TestModel::fillVertices(glm::vec3 dimensions){
     bitangent2.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
 
 
-//    float quadVertices2[] = {
-//            // positions            // normal         // texcoords  // tangent                          // bitangent
-//            pos1.x, pos1.y, pos1.z, nm.x, nm.y, nm.z, uv1.x, uv1.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//            pos2.x, pos2.y, pos2.z, nm.x, nm.y, nm.z, uv2.x, uv2.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//            pos3.x, pos3.y, pos3.z, nm.x, nm.y, nm.z, uv3.x, uv3.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//
-//            pos1.x, pos1.y, pos1.z, nm.x, nm.y, nm.z, uv1.x, uv1.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z,
-//            pos3.x, pos3.y, pos3.z, nm.x, nm.y, nm.z, uv3.x, uv3.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z,
-//            pos4.x, pos4.y, pos4.z, nm.x, nm.y, nm.z, uv4.x, uv4.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z
-//    };
-//
-//
-//    for(auto f:quadVertices2){
-//        this->vertices.push_back(f);
-//    }
-
     this->vertices.push_back(pos1.x);
     this->vertices.push_back(pos1.y);
     this->vertices.push_back(pos1.z);
@@ -697,11 +592,6 @@ void TestModel::fillVertices(glm::vec3 dimensions){
     pos3 = glm::vec3(dimensions.x/2,-dimensions.y/2,-dimensions.z/2);
     pos4 = glm::vec3(dimensions.x/2,-dimensions.y/2,dimensions.z/2);
 
-    //    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(-dimensions.y/2);
-
-
     // normal vector
     nm = glm::vec3(0.0f, -1.0f, 0.0f);
 
@@ -741,22 +631,6 @@ void TestModel::fillVertices(glm::vec3 dimensions){
     bitangent2.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
     bitangent2.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
 
-
-//    float quadVertices3[] = {
-//            // positions            // normal         // texcoords  // tangent                          // bitangent
-//            pos1.x, pos1.y, pos1.z, nm.x, nm.y, nm.z, uv1.x, uv1.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//            pos2.x, pos2.y, pos2.z, nm.x, nm.y, nm.z, uv2.x, uv2.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//            pos3.x, pos3.y, pos3.z, nm.x, nm.y, nm.z, uv3.x, uv3.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//
-//            pos1.x, pos1.y, pos1.z, nm.x, nm.y, nm.z, uv1.x, uv1.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z,
-//            pos3.x, pos3.y, pos3.z, nm.x, nm.y, nm.z, uv3.x, uv3.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z,
-//            pos4.x, pos4.y, pos4.z, nm.x, nm.y, nm.z, uv4.x, uv4.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z
-//    };
-//
-//
-//    for(auto f:quadVertices3){
-//        this->vertices.push_back(f);
-//    }
 
     this->vertices.push_back(pos1.x);
     this->vertices.push_back(pos1.y);
@@ -880,14 +754,8 @@ void TestModel::fillVertices(glm::vec3 dimensions){
     pos3 = glm::vec3(dimensions.x/2,dimensions.y/2,-dimensions.z/2);
     pos4 = glm::vec3(dimensions.x/2,dimensions.y/2,dimensions.z/2);
 
-    //    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(-dimensions.y/2);
-
-
     // normal vector
     nm = glm::vec3(1.0f, 0.0f, 0.0f);
-
 
     // triangle 1
     // ----------
@@ -924,22 +792,6 @@ void TestModel::fillVertices(glm::vec3 dimensions){
     bitangent2.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
     bitangent2.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
 
-
-//    float quadVertices3[] = {
-//            // positions            // normal         // texcoords  // tangent                          // bitangent
-//            pos1.x, pos1.y, pos1.z, nm.x, nm.y, nm.z, uv1.x, uv1.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//            pos2.x, pos2.y, pos2.z, nm.x, nm.y, nm.z, uv2.x, uv2.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//            pos3.x, pos3.y, pos3.z, nm.x, nm.y, nm.z, uv3.x, uv3.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//
-//            pos1.x, pos1.y, pos1.z, nm.x, nm.y, nm.z, uv1.x, uv1.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z,
-//            pos3.x, pos3.y, pos3.z, nm.x, nm.y, nm.z, uv3.x, uv3.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z,
-//            pos4.x, pos4.y, pos4.z, nm.x, nm.y, nm.z, uv4.x, uv4.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z
-//    };
-//
-//
-//    for(auto f:quadVertices3){
-//        this->vertices.push_back(f);
-//    }
 
     this->vertices.push_back(pos1.x);
     this->vertices.push_back(pos1.y);
@@ -1061,14 +913,9 @@ void TestModel::fillVertices(glm::vec3 dimensions){
     pos3 = glm::vec3(-dimensions.x/2,dimensions.y/2,-dimensions.z/2);
     pos4 = glm::vec3(-dimensions.x/2,dimensions.y/2,dimensions.z/2);
 
-    //    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(-dimensions.y/2);
-
 
     // normal vector
     nm = glm::vec3(-1.0f, 0.0f, 0.0f);
-
 
     // triangle 1
     // ----------
@@ -1105,22 +952,6 @@ void TestModel::fillVertices(glm::vec3 dimensions){
     bitangent2.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
     bitangent2.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
 
-
-//    float quadVertices3[] = {
-//            // positions            // normal         // texcoords  // tangent                          // bitangent
-//            pos1.x, pos1.y, pos1.z, nm.x, nm.y, nm.z, uv1.x, uv1.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//            pos2.x, pos2.y, pos2.z, nm.x, nm.y, nm.z, uv2.x, uv2.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//            pos3.x, pos3.y, pos3.z, nm.x, nm.y, nm.z, uv3.x, uv3.y, tangent1.x, tangent1.y, tangent1.z, bitangent1.x, bitangent1.y, bitangent1.z,
-//
-//            pos1.x, pos1.y, pos1.z, nm.x, nm.y, nm.z, uv1.x, uv1.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z,
-//            pos3.x, pos3.y, pos3.z, nm.x, nm.y, nm.z, uv3.x, uv3.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z,
-//            pos4.x, pos4.y, pos4.z, nm.x, nm.y, nm.z, uv4.x, uv4.y, tangent2.x, tangent2.y, tangent2.z, bitangent2.x, bitangent2.y, bitangent2.z
-//    };
-//
-//
-//    for(auto f:quadVertices3){
-//        this->vertices.push_back(f);
-//    }
 
     this->vertices.push_back(pos1.x);
     this->vertices.push_back(pos1.y);
@@ -1235,380 +1066,6 @@ void TestModel::fillVertices(glm::vec3 dimensions){
     this->vertices.push_back(bitangent2.x);
     this->vertices.push_back(bitangent2.y);
     this->vertices.push_back(bitangent2.z);
-
-//     //Surface 1
-//    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(-dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(-1);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(-dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(-1);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(dimensions.x/2);
-//    this->vertices.push_back(dimensions.y/2);
-//    this->vertices.push_back(-dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(-1);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(1);
-//
-//    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(dimensions.y/2);
-//    this->vertices.push_back(-dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(-1);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(1);
-//
-//
-//    // Surface 2
-//    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(1);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(1);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(dimensions.x/2);
-//    this->vertices.push_back(dimensions.y/2);
-//    this->vertices.push_back(dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(1);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(1);
-//
-//    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(dimensions.y/2);
-//    this->vertices.push_back(dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(1);
-//
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(1);
-//
-//    // Surface 3
-//    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(-dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(-1);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(dimensions.y/2);
-//    this->vertices.push_back(-dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(-1);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(1);
-//
-//    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(dimensions.y/2);
-//    this->vertices.push_back(dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(-1);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(1);
-//
-//    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(-1);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//
-//    // Surface 4
-//    this->vertices.push_back(dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(-dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(dimensions.x/2);
-//    this->vertices.push_back(dimensions.y/2);
-//    this->vertices.push_back(-dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(1);
-//
-//    this->vertices.push_back(dimensions.x/2);
-//    this->vertices.push_back(dimensions.y/2);
-//    this->vertices.push_back(dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(1);
-//
-//    this->vertices.push_back(dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//
-//    // Surface 5
-//    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(-dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(-1);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(-dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(-1);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(-1);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(1);
-//
-//    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(-dimensions.y/2);
-//    this->vertices.push_back(dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(-1);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(1);
-//
-//    // Surface 6
-//    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(dimensions.y/2);
-//    this->vertices.push_back(-dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(dimensions.x/2);
-//    this->vertices.push_back(dimensions.y/2);
-//    this->vertices.push_back(-dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(dimensions.x/2);
-//    this->vertices.push_back(dimensions.y/2);
-//    this->vertices.push_back(dimensions.z/2);
-//
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(0);
-//
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(1);
-//
-//
-//    // Vertex
-//    // Pos
-//    this->vertices.push_back(-dimensions.x/2);
-//    this->vertices.push_back(dimensions.y/2);
-//    this->vertices.push_back(dimensions.z/2);
-//
-//    // Color
-//    this->vertices.push_back(color.x);
-//    this->vertices.push_back(color.y);
-//    this->vertices.push_back(color.z);
-//
-//    // Normal
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(1);
-//    this->vertices.push_back(0);
-//
-//    // Texture coordinate
-//    this->vertices.push_back(0);
-//    this->vertices.push_back(1);
 }
 
 
@@ -1647,14 +1104,42 @@ void TestModel::draw(Shader *shader) {
     setTextures(shader);
 
     shader->setFloat("material.shininess", 32.0f);
+    shader->setBool("directionLightState", false);
+    shader->setBool("pointLightState", true);
+    shader->setBool("spotLightState", true);
+
+    shader->setInt("numberOfPointLights", 1);
 
     shader->setVec3("pointLights[0].position", positionLight);
-    shader->setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
+    shader->setVec3("pointLights[0].ambient", 0.00f, 0.00f, 0.00f);
     shader->setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
-    shader->setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
+    shader->setVec3("pointLights[0].specular", 0.2f, 0.2f, 0.2f);
+
+//    shader->setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
+//    shader->setVec3("pointLights[0].specular", 0.2f, 0.2f, 0.0f);
+
     shader->setFloat("pointLights[0].constant", 1.0f);
-    shader->setFloat("pointLights[0].linear", 0.09f);
-    shader->setFloat("pointLights[0].quadratic", 0.032f);
+    shader->setFloat("pointLights[0].linear", 0.014f);
+    shader->setFloat("pointLights[0].quadratic", 0.0007f);
+
+//    glm::vec3 t = glm::vec3(positionLight.x,positionLight.y-2,positionLight.z);
+//    shader->setVec3("dirLight.position", positionLight);
+//    shader->setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
+//    shader->setVec3("dirLight.diffuse", 0.6f, 0.6f, 0.6f);
+//    shader->setVec3("dirLight.specular", 0.2f, 0.2f, 0.2f);
+
+//    shader->setVec3("spotLight.position", positionLight);
+//    shader->setVec3("spotLight.direction", camera.Front);
+
+
+    shader->setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
+    shader->setVec3("spotLight.diffuse", 0.6f, 0.8f, 0.8f);
+    shader->setVec3("spotLight.specular", 0.2f, 0.2f, 0.2f);
+    shader->setFloat("spotLight.constant", 1.0f);
+    shader->setFloat("spotLight.linear", 0.09f);
+    shader->setFloat("spotLight.quadratic", 0.032f);
+    shader->setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
+    shader->setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
 
 
 

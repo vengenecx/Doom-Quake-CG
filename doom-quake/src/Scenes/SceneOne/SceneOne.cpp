@@ -147,13 +147,15 @@ SceneOne::SceneOne(){
     // Lights
 //    models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(0.7f,  0.8f,  2.0f), LINE));
 
-    models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(1.2f,  -1.8f,  1.7f), LINE));
+    models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(2.2f,  1.8f,  1.7f), LINE));
 
 //    std::unique_ptr<TestModel> test = std::make_unique<TestModel>(glm::vec3( 1.0f,  1.0f, 1.0f),textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3( 0.7f,  -6.1f,  2.0f), LIGHT);
 //    std::unique_ptr<TestModel> test = std::make_unique<TestModel>(glm::vec3( 1.0f,  1.0f, 1.0f),textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3( 0.0f,  0.0f,  0.0f), LIGHT);
     std::unique_ptr<TestModel> test = std::make_unique<TestModel>(glm::vec3( 2.0f,  2.0f, 2.0f),textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3( 0.0f,  0.0f,  0.0f), LIGHT);
 
-    test->setPositionLight(glm::vec3(1.2f,  -1.8f,  1.7f));
+    //test->setPositionLight(glm::vec3(2.2f,  -1.8f,  1.7f));
+
+    test->setPositionLight(glm::vec3(2.2f,  8.8f,  -3.7f));
 //    test->setPositionLight(glm::vec3(0.5f, 1.0f, 5.3f));
 
     models.push_back(move(test));
