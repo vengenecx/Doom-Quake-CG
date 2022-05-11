@@ -7,16 +7,21 @@
 
 #include "Model/BaseModel.h"
 
+
 class CubeModel : public BaseModel {
 public:
     // mesh data
-    CubeModel(glm::vec3 dimensions,Texture * texture_1, Texture * texture_2, glm::vec3 position, ShaderType type);
-    CubeModel(Texture * texture_1, Texture * texture_2, glm::vec3, ShaderType type);
+    //TestModel(glm::vec3 dimensions,Texture * texture_1,Texture * texture_2, glm::vec3 position, ShaderType type);
+    CubeModel(glm::vec3 dimensions,Texture * texture_1,Texture * texture_2, glm::vec3 position, ShaderType type,  std::vector<BaseModel*> &light);
     void updatePosition(glm::vec3 pos);
     void draw(Shader * shader);
     void remove();
 
     ~CubeModel();
+
+//    void setPositionLight(glm::vec3 positionLight);
+    void setLights(Shader* shader);
+
 private:
     std::unique_ptr<VAO> vao;
     std::unique_ptr<VBO> vbo;
@@ -31,6 +36,7 @@ private:
     std::vector<GLuint> indices;
 
     glm::vec3 position;
+
 
     void setTextures(Shader* shader);
 
