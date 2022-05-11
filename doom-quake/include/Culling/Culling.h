@@ -19,6 +19,7 @@
 #include "Register/EBO.h"
 #include "Shaders/Shader.h"
 #include "Octree/BoundingBox.h"
+#include <memory>
 
 class Culling {
 public:

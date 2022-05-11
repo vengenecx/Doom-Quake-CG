@@ -18,6 +18,7 @@ SceneOne::SceneOne(){
 
     std::string wall = (currentDir + "/model-files/wall/brickwall.jpg");
     std::string wallNormal = (currentDir + "/model-files/wall/brickwall_normal.jpg");
+    std::string woodFloorImageNormal = (currentDir + "/model-files/grass/woodFloorNormal.png");
 
     
 //    std::cout << "path: " << currentDir + "/model-files/grass/woodFloorOne.png" << std::endl;
@@ -43,12 +44,16 @@ SceneOne::SceneOne(){
 
     this->textures.push_back(std::make_unique<Texture>(concreteImg.c_str(),GL_TEXTURE_2D,5,GL_RGB,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(woodFloorImage.c_str(),GL_TEXTURE_2D,6,GL_RGB,GL_UNSIGNED_BYTE));
+    
     this->textures.push_back(std::make_unique<Texture>(doorWallImage.c_str(), GL_TEXTURE_2D,7,GL_RGB,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(containerImg.c_str(), GL_TEXTURE_2D,8,GL_RGB,GL_UNSIGNED_BYTE));
 
 
     this->textures.push_back(std::make_unique<Texture>(wall.c_str(), GL_TEXTURE_2D,9,GL_RGB,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(wallNormal.c_str(), GL_TEXTURE_2D,10,GL_RGB,GL_UNSIGNED_BYTE));
+
+    this->textures.push_back(std::make_unique<Texture>(woodFloorImageNormal.c_str(),GL_TEXTURE_2D,11,GL_RGBA,GL_UNSIGNED_BYTE));
+
 
 
     spotLight = std::make_unique<SpotLight>(LINE);
@@ -84,7 +89,7 @@ SceneOne::SceneOne(){
 
 //    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(2.5f, -1.0f, 5.0f), DEFAULT));
 
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, true, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(2.5f, -1.0f, 5.0f), LIGHT, lights));
+    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, true, textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR_NORMAL].get(), glm::vec3(2.5f, -1.0f, 5.0f), LIGHT, lights));
 
 //    models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-1.5,-1.0,1.0), DEFAULT));
 //
@@ -187,7 +192,18 @@ SceneOne::SceneOne(){
 //    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,6), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(2.5f, 2.0f, -3.0f), DEFAULT));
 //    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(3.5f, 2.0f, -4.0f), DEFAULT));
 //    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(1.5f, 2.0f, -4.0f), DEFAULT));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false,false, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(1.5f, 2.0f, -4.0f), LIGHT,lights));
+    std::vector<BaseModel*> lightsRoomOne = std::vector<BaseModel*>(); // As example
+    lightsRoomOne.push_back(spotLight.get());
+
+
+    models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(1.5f, 1.6f, -4.0f), LINE));
+    lightsRoomOne.push_back(models[models.size()-1].get());
+
+    models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(1.0f, 1.6f, -3.0f), LINE));
+    lightsRoomOne.push_back(models[models.size()-1].get());
+    
+    
+    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false,false, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(1.5f, 2.0f, -4.0f), LIGHT,lightsRoomOne));
 
 
 
