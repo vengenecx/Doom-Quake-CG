@@ -21,6 +21,8 @@ SceneOne::SceneOne(){
     std::string wall = (currentDir + "/model-files/wall/brickwall.jpg");
     std::string wallNormal = (currentDir + "/model-files/wall/brickwall_normal.jpg");
     std::string woodFloorImageNormal = (currentDir + "/model-files/grass/woodFloorNormal.png");
+    std::string dungeonNormalImage = (currentDir + "/model-files/grass/dungeon_texture_normal.png");
+
 
     
 // =======
@@ -57,7 +59,8 @@ SceneOne::SceneOne(){
 // <<<<<<< HEAD
     this->textures.push_back(std::make_unique<Texture>(woodFloorImageNormal.c_str(),GL_TEXTURE_2D,11,GL_RGBA,GL_UNSIGNED_BYTE));
 
-    this->textures.push_back(std::make_unique<Texture>(dungeonImage.c_str(), GL_TEXTURE_2D,9,GL_RGB,GL_UNSIGNED_BYTE)); // new
+    this->textures.push_back(std::make_unique<Texture>(dungeonImage.c_str(), GL_TEXTURE_2D,12,GL_RGB,GL_UNSIGNED_BYTE)); // new
+    this->textures.push_back(std::make_unique<Texture>(dungeonNormalImage.c_str(), GL_TEXTURE_2D,13,GL_RGBA,GL_UNSIGNED_BYTE)); // new
 
 
     spotLight = std::make_unique<SpotLight>(LINE);
@@ -84,16 +87,16 @@ SceneOne::SceneOne(){
 // =======
 //     models = std::vector<std::unique_ptr<BaseModel>>();
 
-//     models.push_back(std::make_unique<Model>("model-files/hellknight/Hellknight_LATEST.obj", glm::vec3(2.0f, 0.0f, 5.0f), glm::vec3(0.7f, 0.7f, 0.7f), glm::vec3(1.0f,1.0f, 1.0f), MODEL_LOADER_SHADER));
+    models.push_back(std::make_unique<Model>("model-files/hellknight/Hellknight_LATEST.obj", glm::vec3(2.0f, 0.0f, 5.0f), glm::vec3(0.7f, 0.7f, 0.7f), glm::vec3(1.0f,1.0f, 1.0f), MODEL_LOADER_SHADER));
 
-//     models.push_back(std::make_unique<Model>("model-files/spaceship/spaceship.obj",glm::vec3(2.5f, 0.0f, -4.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(2.0f,2.0f,2.0f), MODEL_LOADER_SHADER));
+    models.push_back(std::make_unique<Model>("model-files/spaceship/spaceship.obj",glm::vec3(2.5f, 0.0f, -4.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(2.0f,2.0f,2.0f), MODEL_LOADER_SHADER));
 // >>>>>>> Benoit
 
-    // models.push_back(std::make_unique<Model>("model-files/doomSword/Doom Eternal Weapon.obj", glm::vec3(-6.0f, 0.2f, 8.9f), glm::vec3(4.0f, 4.0f, 4.0f), glm::vec3(1.0f,1.0f, 1.0f), MODEL_LOADER_SHADER));
+    models.push_back(std::make_unique<Model>("model-files/doomSword/Doom Eternal Weapon.obj", glm::vec3(-6.0f, 0.2f, 8.9f), glm::vec3(4.0f, 4.0f, 4.0f), glm::vec3(1.0f,1.0f, 1.0f), MODEL_LOADER_SHADER));
     
-    // models.push_back(std::make_unique<Model>("model-files/spider/Only_Spider_with_Animations_Export.obj", glm::vec3(9.5f, -1.0f, 2.0f), glm::vec3(0.01f, 0.01f, 0.01f), glm::vec3(1.0f,1.0f, 1.0f), MODEL_LOADER_SHADER));
+    models.push_back(std::make_unique<Model>("model-files/spider/Only_Spider_with_Animations_Export.obj", glm::vec3(9.5f, -1.0f, 2.0f), glm::vec3(0.01f, 0.01f, 0.01f), glm::vec3(1.0f,1.0f, 1.0f), MODEL_LOADER_SHADER));
 
-    // models.push_back(std::make_unique<Model>("model-files/sniper/sniper.obj", glm::vec3(13.0f, 0.0f, 6.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(1.0f,1.0f, 1.0f), MODEL_LOADER_SHADER));
+    models.push_back(std::make_unique<Model>("model-files/sniper/sniper.obj", glm::vec3(13.0f, 0.0f, 6.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(1.0f,1.0f, 1.0f), MODEL_LOADER_SHADER));
 
     // models.push_back(std::make_unique<CubeModel>(textures[ETexture::DUNGEON].get(),textures[ETexture::WOODFLOOR].get(), glm::vec3(0.5f,  -0.5f, 9.5f),DOUBLE_TEXTURE_COLOR_SHADER));
     // models.push_back(std::make_unique<CubeModel>(textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR].get(), glm::vec3(2.0f,  -0.5f, 3.0f),DOUBLE_TEXTURE_COLOR_SHADER));
@@ -102,7 +105,7 @@ SceneOne::SceneOne(){
 
 //    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(2.5f, -1.0f, 5.0f), DEFAULT));
 
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, true, textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR_NORMAL].get(), glm::vec3(2.5f, -1.0f, 5.0f), LIGHT, lights));
+    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, true, textures[ETexture::DUNGEON].get(),textures[ETexture::DUNGEONNORMAL].get(), glm::vec3(2.5f, -1.0f, 5.0f), LIGHT, lights));
 
 //    models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-1.5,-1.0,1.0), DEFAULT));
 //
@@ -174,7 +177,9 @@ SceneOne::SceneOne(){
 //     models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,9), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-5.5f, -1.0f, 4.5f), DEFAULT));
 //     models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(-1.5f, -1.0f, 8.0f), DEFAULT));
 //     models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,0,1), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(6.0f, -1.0f, 3.5f), DEFAULT));
-//     models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,6), false, textures[ETexture::DUNGEON].get(), glm::vec3(9.5f, -1.0f, 1.0f), DEFAULT));
+    // models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,6), false, textures[ETexture::DUNGEON].get(), glm::vec3(9.5f, -1.0f, 1.0f), DEFAULT));
+    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,6), true,false, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(9.5f, -1.0f, 1.0f), LIGHT,lights));
+
 //     models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,1), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(7.5f, -1.0f, 4.5f), DEFAULT));
 //     models.push_back(std::make_unique<PlaneModel>(glm::vec3(9,0,2), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(11.5f, -1.0f, 6.0f), DEFAULT));
 //     models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,6), false, textures[ETexture::WOODFLOOR].get(), glm::vec3(2.5f, -1.0f, -3.0f), DEFAULT));
@@ -264,17 +269,13 @@ SceneOne::SceneOne(){
     std::vector<BaseModel*> lightsRoomOne = std::vector<BaseModel*>(); // As example
     lightsRoomOne.push_back(spotLight.get());
 
-
     models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(1.5f, 1.6f, -4.0f), LINE));
     lightsRoomOne.push_back(models[models.size()-1].get());
 
     models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(1.0f, 1.6f, -3.0f), LINE));
     lightsRoomOne.push_back(models[models.size()-1].get());
-    
-    
+        
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false,false, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(1.5f, 2.0f, -4.0f), LIGHT,lightsRoomOne));
-
-
 
     // Test Cube
     //models.push_back(std::make_unique<CubeModel>(glm::vec3( 2.0f,  2.0f, 2.0f),textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3( 0.0f,  0.0f,  0.0f), LIGHT,lights));
@@ -282,7 +283,15 @@ SceneOne::SceneOne(){
 //     models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(16.0f, 0.5f, 6.0f), DEFAULT));
 //     models.push_back(std::make_unique<PlaneModel>(glm::vec3(8,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(12.0f, 0.5f, 5.0f), DEFAULT));
 //     models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(8.0f, 0.5f, 4.5f), DEFAULT));
-//     models.push_back(std::make_unique<PlaneModel>(glm::vec3(4,3,0), true, textures[ETexture::DUNGEON].get(), glm::vec3(10.0f, 0.5f, 4.0f), DEFAULT));
+       
+       
+    std::vector<BaseModel*> lightsRoomTwo = std::vector<BaseModel*>(); // As example
+    lightsRoomTwo.push_back(spotLight.get());
+
+    models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(9.0f, 1.6f, 3.0f), LINE));
+    lightsRoomTwo.push_back(models[models.size()-1].get());
+    
+    models.push_back(std::make_unique<PlaneModel>(glm::vec3(4,3,0), true, false, textures[ETexture::DUNGEON].get(), textures[ETexture::DUNGEONNORMAL].get(), glm::vec3(10.0f, 0.5f, 4.0f), LIGHT, lightsRoomTwo));
 //     models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,6), true, textures[ETexture::DUNGEON].get(), glm::vec3(12.0f, 0.5f, 1.0f), DEFAULT));
 //     models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,3,0), true, textures[ETexture::DUNGEON].get(), glm::vec3(9.5f, 0.5f, -2.0f), DEFAULT));
 //     models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,5), true, textures[ETexture::DUNGEON].get(), glm::vec3(7.0f, 0.5f, 0.5f), DEFAULT));

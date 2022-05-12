@@ -18,7 +18,8 @@ enum ETexture {
     WALL = 8,
     WALL_NORMAL = 9,
     WOODFLOOR_NORMAL = 10,
-    DUNGEON = 11
+    DUNGEON = 11,
+    DUNGEONNORMAL = 12
 };
 
 #endif //DOOM_QUAKE_ETEXTURE_H
