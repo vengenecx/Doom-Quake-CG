@@ -51,3 +51,7 @@ void BaseModel::setupShader(Shader * shader,uint &pos){
 BoundingBox BaseModel::getBoundingBox() {
     return bb;
 }
+
+void BaseModel::drawReflection(Shader *shader) {
+
+}

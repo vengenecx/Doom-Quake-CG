@@ -72,7 +72,7 @@
      //stbi_set_flip_vertically_on_load(true);
      glEnable(GL_DEPTH_TEST);
 
-     glEnable(GL_MULTISAMPLE);
+     //glEnable(GL_MULTISAMPLE);
 
      // Text
 

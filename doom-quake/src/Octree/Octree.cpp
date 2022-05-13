@@ -302,7 +302,26 @@ void Octree::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culli
         m->resetDraw();
     }
 
+    glEnable(GL_STENCIL_TEST);
+    glStencilFunc(GL_ALWAYS, 1, 0xFF);
+    glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
+    glStencilMask(0xFF);
+
     root->draw(shaders, culling,octreeVisible);
 
+    for(auto m: root->models){
+        m->resetDraw();
+    }
+
+    glStencilFunc(GL_EQUAL, 1, 0xFF);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    glStencilMask(0x00);
+    glDisable(GL_DEPTH_TEST);
+
+    root->drawReflection(shaders, culling);
+
+    glStencilFunc(GL_ALWAYS, 0, 0xFF);
+    glEnable(GL_DEPTH_TEST);
+    glDisable(GL_STENCIL_TEST);
 //    std::cout << std::endl;
 }

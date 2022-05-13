@@ -23,6 +23,9 @@ public:
     BaseModel(ShaderType type, BoundingBox bb,std::vector<BaseModel*> &light);
     BaseModel(ShaderType type, std::vector<BaseModel*> &light);
     virtual void draw(Shader * shader) = 0;
+    virtual void drawReflection(Shader * shader);
+
+
     virtual void updatePosition(glm::vec3 pos) = 0;
     virtual void remove() = 0;
     virtual ~BaseModel() {}
