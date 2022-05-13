@@ -75,24 +75,24 @@ void Model::draw(Shader *shader)
 
 void Model::drawReflection(Shader * shader){
     if(gammaCorrection){
-        std::cout << "draw" << std::endl;
+        std::cout << ".";
         // render the loaded model
         glm::mat4 m = glm::mat4(1.0f);
         //m = glm::translate(m, glm::vec3(0.0f, 0.0f, -20.0f)); // translate it down so it's at the center of the scene
 
-        glm::vec3 reflecPos = glm::vec3(position.x,-1  - abs(position.y),position.z);
+        glm::vec3 reflecPos = glm::vec3(position.x,-4,position.z);
 
 
-
+        m = glm::translate(m, reflecPos);
         m = glm::scale(m, sizeOfScaling);	// it's a bit too big for our scene, so scale it down
 
         m = glm::rotate(m, glm::radians(3.1415926536f), glm::normalize(glm::vec3(1.0, 0.0, 1.0)));
 
-        m = glm::translate(m, reflecPos);
+
 
         shader->setMat4("model", m);
 
-        setLights(shader);
+        //setLights(shader);
 
 
         for(unsigned int i = 0; i < meshes.size(); i++)
