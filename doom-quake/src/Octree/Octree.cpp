@@ -318,7 +318,7 @@ void Octree::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culli
     glStencilMask(0x00);
     glDisable(GL_DEPTH_TEST);
 
-    root->drawReflection(shaders, culling);
+    //root->drawReflection(shaders, culling);
 
     glStencilFunc(GL_ALWAYS, 0, 0xFF);
     glEnable(GL_DEPTH_TEST);

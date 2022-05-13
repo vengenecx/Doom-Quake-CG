@@ -35,7 +35,7 @@ SceneOne::SceneOne(){
     this->textures.push_back(std::make_unique<Texture>(grassImg.c_str(),GL_TEXTURE_2D,3,GL_RGB,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(metalImg.c_str(),GL_TEXTURE_2D,4,GL_RGB,GL_SRGB)); // important change!
     this->textures.push_back(std::make_unique<Texture>(concreteImg.c_str(),GL_TEXTURE_2D,5,GL_RGB,GL_UNSIGNED_BYTE));
-    this->textures.push_back(std::make_unique<Texture>(woodFloorImage.c_str(),GL_TEXTURE_2D,6,GL_RGB,GL_UNSIGNED_BYTE));
+    this->textures.push_back(std::make_unique<Texture>(woodFloorImage.c_str(),GL_TEXTURE_2D,6,GL_RGBA,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(doorWallImage.c_str(), GL_TEXTURE_2D,7,GL_RGB,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(containerImg.c_str(), GL_TEXTURE_2D,8,GL_RGB,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(wall.c_str(), GL_TEXTURE_2D,9,GL_RGB,GL_UNSIGNED_BYTE));
@@ -49,13 +49,7 @@ SceneOne::SceneOne(){
 
     models = std::vector<std::unique_ptr<BaseModel>>();
 
-    // adding object to the scene ======================================================================================================================================
-    models.push_back(std::make_unique<Model>("model-files/hellknight/Hellknight_LATEST.obj", glm::vec3(2.0f, 0.0f, 5.0f), glm::vec3(0.7f, 0.7f, 0.7f), glm::vec3(1.0f,1.0f, 1.0f), MODEL_LOADER_SHADER));
-    models.push_back(std::make_unique<Model>("model-files/spaceship/spaceship.obj",glm::vec3(2.5f, 0.0f, -4.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(2.0f,2.0f,2.0f), MODEL_LOADER_SHADER));
-    models.push_back(std::make_unique<Model>("model-files/doomSword/Doom Eternal Weapon.obj", glm::vec3(-6.0f, 0.2f, 8.9f), glm::vec3(4.0f, 4.0f, 4.0f), glm::vec3(1.0f,1.0f, 1.0f), MODEL_LOADER_SHADER));
-    models.push_back(std::make_unique<Model>("model-files/spider/Only_Spider_with_Animations_Export.obj", glm::vec3(9.5f, -1.0f, 2.0f), glm::vec3(0.01f, 0.01f, 0.01f), glm::vec3(1.0f,1.0f, 1.0f), MODEL_LOADER_SHADER));
-    models.push_back(std::make_unique<Model>("model-files/sniper/sniper.obj", glm::vec3(13.0f, 0.0f, 6.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(1.0f,1.0f, 1.0f), MODEL_LOADER_SHADER));
-    
+
     // For each light list don't forget to add spotlight
     std::vector<BaseModel*> lightMonsterRoom = std::vector<BaseModel*>();
     lightMonsterRoom.push_back(spotLight.get());
@@ -83,6 +77,17 @@ SceneOne::SceneOne(){
     lightSniperRoom.push_back(spotLight.get());
     models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(15.0f, 0.1f, 6.0f), LINE));
     lightSniperRoom.push_back(models[models.size()-1].get());
+
+
+    // adding object to the scene ======================================================================================================================================
+
+    models.push_back(std::make_unique<Model>("model-files/plant/monster.obj",glm::vec3(2.5f, -0.9f, 6.0f), glm::vec3(0.005f, 0.005f, 0.005f), glm::vec3(2.0f,2.0f,2.0f), LIGHT, lightMonsterRoom));
+    models.push_back(std::make_unique<Model>("model-files/spaceship/spaceship.obj",glm::vec3(2.5f, 0.0f, -4.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(2.0f,2.0f,2.0f), LIGHT, lightSpaceShip));
+    models.push_back(std::make_unique<Model>("model-files/doomSword/Doom Eternal Weapon.obj", glm::vec3(-6.0f, 0.2f, 8.9f), glm::vec3(4.0f, 4.0f, 4.0f), glm::vec3(1.0f,1.0f, 1.0f), LIGHT,  lightSwordRoom));
+    models.push_back(std::make_unique<Model>("model-files/spider/Only_Spider_with_Animations_Export.obj", glm::vec3(9.5f, -1.0f, 2.0f), glm::vec3(0.01f, 0.01f, 0.01f), glm::vec3(1.0f,1.0f, 1.0f), LIGHT, lightSpiderRoom));
+    models.push_back(std::make_unique<Model>("model-files/sniper/sniper.obj", glm::vec3(13.0f, 0.0f, 6.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(1.0f,1.0f, 1.0f), LIGHT,  lightSniperRoom));
+
+
 
     // the first pair of coordinates represent the current drawn plane, the secondpair of coordinates represent the shifted position of the plane!
     // adding all the plane models for the FLOOR ======================================================================================================================================
