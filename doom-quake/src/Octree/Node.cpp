@@ -383,6 +383,50 @@ void Node::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling
 
 }
 
+
+void Node::drawReflection(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling){
+
+    if(!this->models.empty()){
+        BoundingBox cul = culling->getBounding();
+        if(boxIn(cul,boundingBox)){
+            for(auto m : models){
+                if(!m->shown()) {
+                    shaders[m->getShaderType()]->use();
+                    if (m->getShaderType() == LIGHT) {
+                        shaders[m->getShaderType()]->setVec3("viewPos", culling->getOrigin());
+                        shaders[m->getShaderType()]->setVec3("direction", culling->getDirection());
+                        //std::cout << culling->getDirection().x << culling->getDirection().y << culling->getOrigin()
+                    }
+                    m->drawReflection(shaders[m->getShaderType()].get());
+                }
+            }
+        } else{
+            if(hasChildren()) { // Leaf
+                for(int i=0;  i<8; i++){
+                    if(children[i] != NULL)
+                        children[i]->draw(shaders,culling, false);
+                }
+            } else{
+//                    std::cout << "test" << std::endl;
+                bool getekend = false;
+                for(auto m : models){
+//                        if(!m->shown() && fitBox(culling,m->getBoundingBox())) {
+                    getekend = true;
+                    if(!m->shown() && overlapPlane(cul,m->getBoundingBox())) {
+                        shaders[m->getShaderType()]->use();
+                        if (m->getShaderType() == LIGHT) {
+                            shaders[m->getShaderType()]->setVec3("viewPos", culling->getOrigin());
+                            shaders[m->getShaderType()]->setVec3("direction", culling->getDirection());
+                        }
+                        m->drawReflection(shaders[m->getShaderType()].get());
+                    }
+                }
+            }
+        }
+    }
+
+}
+
 //void Node::draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling, bool octreeVisible){
 //
 //    if(!this->models.empty()){

@@ -17,7 +17,7 @@
 class Model : public BaseModel{
 public:
     // constructor, expects a filepath to a 3D model.
-    Model(std::string const &path, glm::vec3 position, glm::vec3 sizeOfScaling, glm::vec3 boundingBoxSize, ShaderType type, bool gamma = false);
+    Model(std::string const &path, glm::vec3 position, glm::vec3 sizeOfScaling, glm::vec3 boundingBoxSize, ShaderType type,std::vector<BaseModel*> &light, bool gamma = false);
     ~Model();
 
     void draw(Shader *shader);
@@ -42,6 +42,10 @@ private:
     // https://www.sebastianhaas.at/calculating-bounding-box/
     std::unique_ptr<BoundingBox> boundingBox;
     void calculateBoundingBox();
+
+    void setLights(Shader *shader);
+
+    void drawReflection(Shader * shader);
 
     void loadModel(std::string path);
     void processNode(aiNode *node, const aiScene *scene);

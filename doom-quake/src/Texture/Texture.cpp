@@ -28,15 +28,18 @@ Texture::Texture(const char* image, GLenum texType, GLuint slot, GLenum format, 
     glBindTexture(texType, ID);
 
     // Configures the type of algorithm that is used to make the image smaller or bigger
-    glTexParameteri(texType, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(texType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+//    glTexParameteri(texType, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//    glTexParameteri(texType, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     // Configures the way the texture repeats (if it does at all)
-    glTexParameteri(texType, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(texType, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//    glTexParameteri(texType, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//    glTexParameteri(texType, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    glTexParameteri(texType, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+    glTexParameteri(texType, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
 
     // Extra lines in case you choose to use GL_CLAMP_TO_BORDER
     // float flatColor[] = {1.0f, 1.0f, 1.0f, 1.0f};

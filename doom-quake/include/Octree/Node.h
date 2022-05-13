@@ -43,6 +43,7 @@ class Node
 
 
         void draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling, bool octreeVisible);
+        void drawReflection(std::vector<std::unique_ptr<Shader>> & shaders, Culling* culling);
 
 private:
     int depth;
