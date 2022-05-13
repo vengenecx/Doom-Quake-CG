@@ -82,8 +82,8 @@ SceneOne::SceneOne(){
     // adding object to the scene ======================================================================================================================================
 
     models.push_back(std::make_unique<Model>("model-files/plant/monster.obj",glm::vec3(2.5f, -0.9f, 6.0f), glm::vec3(0.005f, 0.005f, 0.005f), glm::vec3(2.0f,2.0f,2.0f), LIGHT, lightMonsterRoom));
-    models.push_back(std::make_unique<Model>("model-files/spaceship/spaceship.obj",glm::vec3(2.5f, 0.0f, -4.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(2.0f,2.0f,2.0f), LIGHT, lightSpaceShip));
-    models.push_back(std::make_unique<Model>("model-files/doomSword/Doom Eternal Weapon.obj", glm::vec3(-6.0f, 0.2f, 8.9f), glm::vec3(4.0f, 4.0f, 4.0f), glm::vec3(1.0f,1.0f, 1.0f), LIGHT,  lightSwordRoom));
+    models.push_back(std::make_unique<Model>("model-files/spaceship/spaceship.obj",glm::vec3(2.5f, 0.0f, -4.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(2.0f,2.0f,2.0f), LIGHT, lightSpaceShip,true));
+    models.push_back(std::make_unique<Model>("model-files/doomSword/Doom Eternal Weapon.obj", glm::vec3(-6.0f, 0.2f, 8.9f), glm::vec3(4.0f, 4.0f, 4.0f), glm::vec3(1.0f,1.0f, 1.0f), LIGHT,  lightSwordRoom, true));
     models.push_back(std::make_unique<Model>("model-files/spider/Only_Spider_with_Animations_Export.obj", glm::vec3(9.5f, -1.0f, 2.0f), glm::vec3(0.01f, 0.01f, 0.01f), glm::vec3(1.0f,1.0f, 1.0f), LIGHT, lightSpiderRoom));
     models.push_back(std::make_unique<Model>("model-files/sniper/sniper.obj", glm::vec3(13.0f, 0.0f, 6.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(1.0f,1.0f, 1.0f), LIGHT,  lightSniperRoom));
 
@@ -93,7 +93,7 @@ SceneOne::SceneOne(){
     // adding all the plane models for the FLOOR ======================================================================================================================================
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, true, textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR_NORMAL].get(), glm::vec3(2.5f, -1.0f, 5.0f), LIGHT, lightMonsterRoom));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, true, textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR_NORMAL].get(), glm::vec3(-1.5f,-1.0f,1.0f), LIGHT, lightMonsterRoom));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,9), false, true, textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR_NORMAL].get(), glm::vec3(-5.5f, -1.0f, 4.5f), LIGHT, lightSwordRoom));
+    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,9), false, true, textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR_NORMAL].get(), glm::vec3(-5.5f, -1.0f, 4.5f), LIGHT, lightSwordRoom,true));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, true, textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR_NORMAL].get(), glm::vec3(-1.5f, -1.0f, 8.0f), LIGHT, lightSwordRoom));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,0,1), false, true, textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR_NORMAL].get(), glm::vec3(6.0f, -1.0f, 3.5f), LIGHT, lightMonsterRoom));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,6), false, true, textures[ETexture::DUNGEON].get(),textures[ETexture::DUNGEONNORMAL].get(), glm::vec3(9.5f, -1.0f, 1.0f), LIGHT, lightSpiderRoom));

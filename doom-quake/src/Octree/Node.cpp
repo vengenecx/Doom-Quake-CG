@@ -404,7 +404,7 @@ void Node::drawReflection(std::vector<std::unique_ptr<Shader>> & shaders, Cullin
             if(hasChildren()) { // Leaf
                 for(int i=0;  i<8; i++){
                     if(children[i] != NULL)
-                        children[i]->draw(shaders,culling, false);
+                        children[i]->drawReflection(shaders,culling);
                 }
             } else{
 //                    std::cout << "test" << std::endl;

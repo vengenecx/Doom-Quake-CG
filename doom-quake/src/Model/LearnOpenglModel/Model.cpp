@@ -74,27 +74,33 @@ void Model::draw(Shader *shader)
 }
 
 void Model::drawReflection(Shader * shader){
-    // render the loaded model
-    glm::mat4 m = glm::mat4(1.0f);
-    //m = glm::translate(m, glm::vec3(0.0f, 0.0f, -20.0f)); // translate it down so it's at the center of the scene
-    m = glm::rotate(m, glm::radians(3.1415926536f), glm::normalize(glm::vec3(1.0, 0.0, 1.0)));
+    if(gammaCorrection){
+        std::cout << "draw" << std::endl;
+        // render the loaded model
+        glm::mat4 m = glm::mat4(1.0f);
+        //m = glm::translate(m, glm::vec3(0.0f, 0.0f, -20.0f)); // translate it down so it's at the center of the scene
 
-    glm::vec3 reflecPos = glm::vec3(position.x,-8  - abs(position.y),position.z);
-
-    m = glm::translate(m, reflecPos);
-
-    m = glm::scale(m, sizeOfScaling);	// it's a bit too big for our scene, so scale it down
-
-    shader->setMat4("model", m);
-
-    setLights(shader);
+        glm::vec3 reflecPos = glm::vec3(position.x,-1  - abs(position.y),position.z);
 
 
-    for(unsigned int i = 0; i < meshes.size(); i++)
-        meshes[i].draw(shader);
+
+        m = glm::scale(m, sizeOfScaling);	// it's a bit too big for our scene, so scale it down
+
+        m = glm::rotate(m, glm::radians(3.1415926536f), glm::normalize(glm::vec3(1.0, 0.0, 1.0)));
+
+        m = glm::translate(m, reflecPos);
+
+        shader->setMat4("model", m);
+
+        setLights(shader);
 
 
-    show = true;
+        for(unsigned int i = 0; i < meshes.size(); i++)
+            meshes[i].draw(shader);
+
+
+        show = true;
+    }
 }
 
 BoundingBox* Model::getBoundingbox(){

@@ -12,7 +12,7 @@ class PlaneModel : public BaseModel {
 public:
     PlaneModel(glm::vec3 dimensions, bool wall,  Texture * texture, glm::vec3 pos, ShaderType type);
 
-    PlaneModel(glm::vec3 dimensions, bool wall, bool inside, Texture * texture_1, Texture* texture_2, glm::vec3 pos, ShaderType type, std::vector<BaseModel*> &light);
+    PlaneModel(glm::vec3 dimensions, bool wall, bool inside, Texture * texture_1, Texture* texture_2, glm::vec3 pos, ShaderType type, std::vector<BaseModel*> &light, bool reflect=false);
     void updatePosition(glm::vec3 pos);
     void draw(Shader * shader);
     void remove();
@@ -36,6 +36,7 @@ private:
     void fillVertices(glm::vec3 dimensions, bool wall, bool inside);
     void setTextures(Shader* shader);
 
+    bool reflect;
 //    void generateBoundingbox();
 };
 

@@ -5,7 +5,7 @@
 #include "Model/Plane/PlaneModel.h"
 
 
-PlaneModel::PlaneModel(glm::vec3 dimensions, bool wall, bool inside, Texture * texture_1, Texture* texture_2, glm::vec3 pos, ShaderType type, std::vector<BaseModel*> &light) : BaseModel(type,light){
+PlaneModel::PlaneModel(glm::vec3 dimensions, bool wall, bool inside, Texture * texture_1, Texture* texture_2, glm::vec3 pos, ShaderType type, std::vector<BaseModel*> &light, bool reflect) : BaseModel(type,light), reflect(reflect){
     this->vao = std::make_unique<VAO>();
     this->vao->bind();
     this->position =  pos;
@@ -475,6 +475,12 @@ void PlaneModel::setLights(Shader* shader) {
 
 void PlaneModel::draw(Shader *shader) {
     if(!show){
+
+        if(reflect){
+            glStencilMask(0xFF);
+        }  else{
+            glStencilMask(0x00);
+        }
         shader->use();
 
         glm::mat4 m = glm::mat4(1.0f);
@@ -499,6 +505,7 @@ void PlaneModel::draw(Shader *shader) {
 
         show = true;
 //        std::cout <<  ".";
+        glStencilMask(0x00);
     }
 }
 
