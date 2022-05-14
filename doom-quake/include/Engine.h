@@ -16,7 +16,7 @@
 #include "Model/Triangle/TriangleModel.h"
 #include "Model/Skybox/Skybox.h"
 #include "Model/Cross/CrossModel.h"
-#include "Model/Test/TestModel.cpp"
+#include "Model/Test/TestModel.h"
 
 #include "Map/Terrain/Terrain.h"
 #include "Text/TextRenderer.h"
@@ -32,6 +32,7 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include "Game/Game.h"
+#include "Culling/Culling.h"
 
 #include<filesystem>
 namespace fs = std::filesystem;
@@ -54,7 +55,6 @@ public:
 
 private:
     void keyHandler(GLFWwindow *window);
-
     void drawControls(GLFWwindow *window);
 
     Game game;
@@ -94,6 +94,7 @@ private:
 
 
     std::unique_ptr<Ray> ray;
+    std::unique_ptr<Culling> culling;
 
     std::vector<std::unique_ptr<Hit>> hitPoints;
 
@@ -126,6 +127,10 @@ private:
     int frameSetPoint = 0;
 
 
+    float speed =  2.5;
+    float zoom =  45.0;
+
+
     //==============================================
     // std::unique_ptr<SceneOne> sceneone;
     // std::unique_ptr<SceneTwo> scenetwo;
@@ -146,6 +151,8 @@ private:
     bool showOctree= false;
 
     bool lennert = false;
+    bool fpsCamera = true;
+    bool spotLight = false;
 
 };
 #endif //DOOM_QUAKE_ENGINE_H

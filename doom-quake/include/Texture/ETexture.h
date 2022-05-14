@@ -7,6 +7,7 @@
 
 enum ETexture {
     AWESOMEFACE = 0,
+    // AWESOMEFACE_NORMAL= 1,
     STONE = 1,
     GRASS = 2,
     METAL = 3,
@@ -14,8 +15,12 @@ enum ETexture {
     WOODFLOOR = 5,
     DOORWALL = 6,
     CONTAINER = 7,
-    DUNGEON = 8
-
+    WALL = 8,
+    WALL_NORMAL = 9,
+    WOODFLOOR_NORMAL = 10,
+    DUNGEON = 11,
+    DUNGEONNORMAL = 12,
+    DOORWALLNORMAL = 13
 };
 
 #endif //DOOM_QUAKE_ETEXTURE_H

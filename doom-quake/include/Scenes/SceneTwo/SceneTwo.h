@@ -21,10 +21,11 @@ class SceneTwo : public Scene {
     public:
 
         SceneTwo();
-        void draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints, bool octreeVisible);
+        void draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints,Culling* culling, bool octreeVisible);
         void remove();
         void shoot(Ray* ray, std::vector<std::unique_ptr<Hit>> & hitPoints);
-    
+        void spotLightToggle(bool state);
+
     private:
         // to append al the models to:
         std::vector<std::unique_ptr<BaseModel>> models;

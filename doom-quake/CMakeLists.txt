@@ -87,7 +87,7 @@ add_executable( doom_quake src/main.cpp
                 include/imgui_demo.cpp
                 include/imgui.h
                 include/imgui.cpp
-                include/imconfig.h include/Model/Cross/CrossModel.h src/Model/Cross/CrossModel.cpp include/Model/Test/TestModel.cpp include/Hit/Hit.h src/Hit/Hit.cpp include/Texture/ETexture.h)
+                include/imconfig.h include/Model/Cross/CrossModel.h src/Model/Cross/CrossModel.cpp include/Model/Test/TestModel.h include/Hit/Hit.h src/Hit/Hit.cpp include/Texture/ETexture.h include/Culling/Culling.h src/Culling/Culling.cpp include/Model/PointLight/PointLight.h src/Model/PointLight/PointLight.cpp src/Model/Test/TestModel.cpp include/Model/DirectionLight/DirectionLight.h src/Model/DirectionLight/DirectionLight.cpp include/Model/SpotLight/SpotLight.h src/Model/SpotLight/SpotLight.cpp)
 
 # GLFW
 add_subdirectory(glfw-3.3.6)

@@ -8,7 +8,7 @@
 #include"Model/LearnOpenglModel/Model.h"
 
 
-Model::Model(std::string const &path, glm::vec3 position, glm::vec3 sizeOfScaling, glm::vec3 boundingBoxSize, ShaderType type, bool gamma) : BaseModel(type), position(position), sizeOfScaling(sizeOfScaling), boundingBoxSize(boundingBoxSize),gammaCorrection(gamma)
+Model::Model(std::string const &path, glm::vec3 position, glm::vec3 sizeOfScaling, glm::vec3 boundingBoxSize, ShaderType type,std::vector<BaseModel*> &light, bool gamma) : BaseModel(type, light), position(position), sizeOfScaling(sizeOfScaling), boundingBoxSize(boundingBoxSize),gammaCorrection(gamma)
 {
     loadModel(path);
     this->bb = BoundingBox();
@@ -32,6 +32,25 @@ void Model::updatePosition(glm::vec3 pos){
 }
 
 
+void Model::setLights(Shader* shader) {
+
+    shader->setFloat("material.shininess", 32.0f);
+    shader->setBool("directionLightState", false);
+    shader->setBool("pointLightState", false);
+    shader->setBool("spotLightState", false);
+
+    uint pos = 0;
+    for(auto l:light){
+        l->setupShader(shader,pos);
+    }
+
+    if(pos > 0){
+        shader->setBool("pointLightState", true);
+        shader->setInt("numberOfPointLights", pos);
+    }
+}
+
+
 void Model::draw(Shader *shader)
 {
     // render the loaded model
@@ -44,8 +63,44 @@ void Model::draw(Shader *shader)
 
     shader->setMat4("model", m);
 
+    setLights(shader);
+
+
     for(unsigned int i = 0; i < meshes.size(); i++)
         meshes[i].draw(shader);
+
+
+    show = true;
+}
+
+void Model::drawReflection(Shader * shader){
+    if(gammaCorrection){
+        std::cout << ".";
+        // render the loaded model
+        glm::mat4 m = glm::mat4(1.0f);
+        //m = glm::translate(m, glm::vec3(0.0f, 0.0f, -20.0f)); // translate it down so it's at the center of the scene
+
+        glm::vec3 reflecPos = glm::vec3(position.x,-4,position.z);
+
+
+        m = glm::translate(m, reflecPos);
+        m = glm::scale(m, sizeOfScaling);	// it's a bit too big for our scene, so scale it down
+
+        m = glm::rotate(m, glm::radians(3.1415926536f), glm::normalize(glm::vec3(1.0, 0.0, 1.0)));
+
+
+
+        shader->setMat4("model", m);
+
+        //setLights(shader);
+
+
+        for(unsigned int i = 0; i < meshes.size(); i++)
+            meshes[i].draw(shader);
+
+
+        show = true;
+    }
 }
 
 BoundingBox* Model::getBoundingbox(){
@@ -112,9 +167,11 @@ Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene)
             vector.z = mesh->mNormals[i].z;
             vertex.Normal = vector;
         }
+
         // texture coordinates
         if(mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
         {
+            //std::cout << "normal" << std::endl;
             glm::vec2 vec;
             // a vertex can contain up to 8 different texture coordinates. We thus make the assumption that we won't
             // use models where a vertex can have multiple texture coordinates so we always take the first set (0).
@@ -154,18 +211,31 @@ Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene)
     // specular: texture_specularN
     // normal: texture_normalN
 
+//    // 1. diffuse maps
+//    std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+//    textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+//    // 2. specular maps
+//    std::vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+//    textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+//    // 3. normal maps
+//    std::vector<Texture> normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
+//    textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
+//    // 4. height maps
+//    std::vector<Texture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
+//    textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
+
     // 1. diffuse maps
-    std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+    std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "material.diffuse");
     textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
     // 2. specular maps
-    std::vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
-    textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
-    // 3. normal maps
-    std::vector<Texture> normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
+//    std::vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "material.specular");
+//    textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+//    // 3. normal maps
+    std::vector<Texture> normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "material.specular");
     textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
-    // 4. height maps
-    std::vector<Texture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
-    textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
+//    // 4. height maps
+//    std::vector<Texture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
+//    textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
     // return a mesh object created from the extracted mesh data
     return Mesh(vertices, indices, textures);
@@ -239,3 +309,4 @@ unsigned int Model::textureFromFile(const char *path, const std::string &directo
     }
     return textureID;
 }
+

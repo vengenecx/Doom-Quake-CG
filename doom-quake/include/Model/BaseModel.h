@@ -18,9 +18,14 @@
 class BaseModel {
 public:
     BaseModel(ShaderType type);
+    //BaseModel(ShaderType type,std::vector<BaseModel*> &light);
 //    BaseModel(ShaderType type, std::unique_ptr<BoundingBox> bb);
-    BaseModel(ShaderType type, BoundingBox bb);
+    BaseModel(ShaderType type, BoundingBox bb,std::vector<BaseModel*> &light);
+    BaseModel(ShaderType type, std::vector<BaseModel*> &light);
     virtual void draw(Shader * shader) = 0;
+    virtual void drawReflection(Shader * shader);
+
+
     virtual void updatePosition(glm::vec3 pos) = 0;
     virtual void remove() = 0;
     virtual ~BaseModel() {}
@@ -28,15 +33,29 @@ public:
     virtual void shoot();
     virtual void resetShoot();
 
+    virtual void resetDraw();
+
+    virtual bool shown();
+
+    virtual bool alreadyHit();
+
     ShaderType getShaderType();
-//    BoundingBox* getBoundingBox();
 
     BoundingBox getBoundingBox();
 
+    virtual void setupShader(Shader * shader,uint &pos);
+
+//    void toggleSpotlight();
+
 protected:
     ShaderType type;
-//    std::unique_ptr<BoundingBox> bb;
     BoundingBox bb;
+
+    bool show = false;
+    bool hit = false;
+
+    //std::vector<BaseModel*> light;
+    std::vector<BaseModel *> light;
 };
 
 #endif //DOOM_QUAKE_BASEMODEL_H
