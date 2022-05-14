@@ -55,11 +55,39 @@ void PlaneModel::fillVertices(glm::vec3 dimensions, bool wall, bool inside){
 
     glm::vec3 nm,  pos1,  pos2, pos3,  pos4;
 
-    // texture coordinates
     glm::vec2 uv1(0.0f, 1.0f);
     glm::vec2 uv2(0.0f, 0.0f);
     glm::vec2 uv3(1.0f, 0.0f);
     glm::vec2 uv4(1.0f, 1.0f);
+
+    // // texture coordinates
+    // if(dimensions.y == 0){
+    //     if(dimensions.x >= dimensions.z){
+    //         // we have a floor or a roof
+    //         uv1 = glm::vec2(0.0f, dimensions.x/dimensions.z);
+    //         uv2 = glm::vec2(0.0f, 0.0f);
+    //         uv3 = glm::vec2(dimensions.x/dimensions.z, 0.0f);
+    //         uv4 = glm::vec2(dimensions.x/dimensions.z, dimensions.x/dimensions.z);
+    //     } else if (dimensions.x <= dimensions.z){
+    //            // we have a floor or a roof
+    //         uv1 = glm::vec2(0.0f, dimensions.z/dimensions.x);
+    //         uv2 = glm::vec2(0.0f, 0.0f);
+    //         uv3 = glm::vec2(dimensions.z/dimensions.x, 0.0f);
+    //         uv4 = glm::vec2(dimensions.z/dimensions.x, dimensions.z/dimensions.x);
+    //     }
+    // } // else if (dimensions.x == 0) {
+    //     // we have a wall
+    //     uv1 = glm::vec2(0.0f, dimensions.z);
+    //     uv2 = glm::vec2(0.0f, 0.0f);
+    //     uv3 = glm::vec2(dimensions.y, 0.0f);
+    //     uv4 = glm::vec2(dimensions.y, dimensions.z);
+    // } else if (dimensions.z == 0){
+    //     // we have a wall
+    //     uv1 = glm::vec2(0.0f, dimensions.x);
+    //     uv2 = glm::vec2(0.0f, 0.0f);
+    //     uv3 = glm::vec2(dimensions.y, 0.0f);
+    //     uv4 = glm::vec2(dimensions.y, dimensions.x);
+    // }
 
     // calculate tangent/bitangent vectors of both triangles
     glm::vec3 tangent1, bitangent1;

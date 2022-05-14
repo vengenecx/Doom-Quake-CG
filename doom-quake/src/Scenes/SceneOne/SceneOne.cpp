@@ -5,22 +5,22 @@
 // default constructor
 SceneOne::SceneOne(){
     // 8-bit/color RGB gives least issues!
-    std::string stoneImg = (currentDir + "/model-files/grass/stone.png");
-    std::string grassImg = (currentDir + "/model-files/grass/grass_lennert.png");
+    std::string stoneImg = (currentDir + "/model-files/textures/stone.png");
+    std::string grassImg = (currentDir + "/model-files/textures/textures_lennert.png");
     std::string awsomeFaceImg = (currentDir + "/model-files/cube/awesomeface.png");
     std::string containerImg = (currentDir + "/model-files/cube/container.jpg");
-    std::string metalImg = (currentDir + "/model-files/grass/metal.png");
-    std::string concreteImg = (currentDir + "/model-files/grass/concrete_image.png");
-    std::string bulletHoleImage = (currentDir + "/model-files/grass/bulletHole.png");
-    std::string woodFloorImage = (currentDir + "/model-files/grass/woodFloorOne.png");
-    std::string doorWallImage = (currentDir + "/model-files/grass/doorWall.png");
+    std::string metalImg = (currentDir + "/model-files/textures/metal.png");
+    std::string concreteImg = (currentDir + "/model-files/textures/concrete_image.png");
+    std::string bulletHoleImage = (currentDir + "/model-files/textures/bulletHole.png");
+    std::string woodFloorImage = (currentDir + "/model-files/textures/woodSeamLess.png");
+    std::string doorWallImage = (currentDir + "/model-files/textures/doorWall.png");
     std::string potholeImage = (currentDir + "/model-files/pothole/pothole.png");
-    std::string dungeonImage = (currentDir + "/model-files/grass/dungeon_texture.png");
-    std::string wall = (currentDir + "/model-files/wall/brickwall.jpg");
-    std::string wallNormal = (currentDir + "/model-files/wall/brickwall_normal.jpg");
-    std::string woodFloorImageNormal = (currentDir + "/model-files/grass/woodFloorNormal.png");
-    std::string dungeonNormalImage = (currentDir + "/model-files/grass/dungeon_texture_normal.png");
-    std::string doorWallNormalImage = (currentDir + "/model-files/grass/doorWallNormal.png");
+    std::string dungeonImage = (currentDir + "/model-files/textures/dungeonSeamless.png");
+    std::string wall = (currentDir + "/model-files/textures/brickwall.jpg");
+    std::string wallNormal = (currentDir + "/model-files/textures/brickwall_normal.jpg");
+    std::string woodFloorImageNormal = (currentDir + "/model-files/textures/woodSeamLessNormal.png");
+    std::string dungeonNormalImage = (currentDir + "/model-files/textures/dungeonSeamlessNormal.png");
+    std::string doorWallNormalImage = (currentDir + "/model-files/textures/doorWallNormal.png");
 
     this->potholeTexture = std::make_unique<Texture>(potholeImage.c_str(),GL_TEXTURE_2D,0,GL_RGBA,GL_UNSIGNED_BYTE);
 
@@ -35,7 +35,7 @@ SceneOne::SceneOne(){
     this->textures.push_back(std::make_unique<Texture>(grassImg.c_str(),GL_TEXTURE_2D,3,GL_RGB,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(metalImg.c_str(),GL_TEXTURE_2D,4,GL_RGB,GL_SRGB)); // important change!
     this->textures.push_back(std::make_unique<Texture>(concreteImg.c_str(),GL_TEXTURE_2D,5,GL_RGB,GL_UNSIGNED_BYTE));
-    this->textures.push_back(std::make_unique<Texture>(woodFloorImage.c_str(),GL_TEXTURE_2D,6,GL_RGBA,GL_UNSIGNED_BYTE));
+    this->textures.push_back(std::make_unique<Texture>(woodFloorImage.c_str(),GL_TEXTURE_2D,6,GL_RGB,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(doorWallImage.c_str(), GL_TEXTURE_2D,7,GL_RGB,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(containerImg.c_str(), GL_TEXTURE_2D,8,GL_RGB,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(wall.c_str(), GL_TEXTURE_2D,9,GL_RGB,GL_UNSIGNED_BYTE));
@@ -45,11 +45,9 @@ SceneOne::SceneOne(){
     this->textures.push_back(std::make_unique<Texture>(dungeonNormalImage.c_str(), GL_TEXTURE_2D,13,GL_RGBA,GL_UNSIGNED_BYTE)); // new
     this->textures.push_back(std::make_unique<Texture>(doorWallNormalImage.c_str(), GL_TEXTURE_2D,14,GL_RGBA,GL_UNSIGNED_BYTE)); // new
 
-
     spotLight = std::make_unique<SpotLight>(LINE);
 
     models = std::vector<std::unique_ptr<BaseModel>>();
-
 
     // For each light list don't forget to add spotlight
     std::vector<BaseModel*> lightMonsterRoom = std::vector<BaseModel*>();
@@ -89,11 +87,11 @@ SceneOne::SceneOne(){
 
     // the first pair of coordinates represent the current drawn plane, the secondpair of coordinates represent the shifted position of the plane!
     // adding all the plane models for the FLOOR ======================================================================================================================================
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, true, textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR_NORMAL].get(), glm::vec3(2.5f, -1.0f, 5.0f), LIGHT, lightMonsterRoom));
+    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,10), false, true, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(2.5f, -1.0f, 5.0f), LIGHT, lightMonsterRoom));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, true, textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR_NORMAL].get(), glm::vec3(-1.5f,-1.0f,1.0f), LIGHT, lightMonsterRoom));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,9), false, true, textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR_NORMAL].get(), glm::vec3(-5.5f, -1.0f, 4.5f), LIGHT, lightSwordRoom,false));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, true, textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR_NORMAL].get(), glm::vec3(-1.5f, -1.0f, 8.0f), LIGHT, lightSwordRoom));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,0,1), false, true, textures[ETexture::WOODFLOOR].get(),textures[ETexture::WOODFLOOR_NORMAL].get(), glm::vec3(6.0f, -1.0f, 3.5f), LIGHT, lightMonsterRoom));
+    models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,0,1), false, true, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(6.0f, -1.0f, 3.5f), LIGHT, lightMonsterRoom));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,6), false, true, textures[ETexture::DUNGEON].get(),textures[ETexture::DUNGEONNORMAL].get(), glm::vec3(9.5f, -1.0f, 1.0f), LIGHT, lightSpiderRoom,true));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,1), false, true, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(7.5f, -1.0f, 4.5f),  LIGHT, lightSpiderRoom,true));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(9,0,2), false, true, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(11.5f, -1.0f, 6.0f), LIGHT, lightSniperRoom));

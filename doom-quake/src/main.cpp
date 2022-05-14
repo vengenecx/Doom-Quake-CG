@@ -6,7 +6,7 @@
  // this code was first written with the help of following URL: https://learnopengl.com/Getting-started/Hello-Window
  // which was changed everytime we implemented something new
 
- int width = 800;
+ int width = 1200;
  int height = 800;
 
  int main(void)
@@ -22,10 +22,8 @@
      glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
      glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
-
      // MSAA
      glfwWindowHint(GLFW_SAMPLES, 4);
-
 
      /* Create a windowed mode window and its OpenGL context */
      window = glfwCreateWindow(width, height, "Doom-Quake", NULL, NULL);
