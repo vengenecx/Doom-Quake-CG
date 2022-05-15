@@ -58,61 +58,29 @@ private:
     void drawControls(GLFWwindow *window);
 
     Game game;
-
-    std::unique_ptr<Texture> containerTexture;
-    std::unique_ptr<Texture> awesomeTexture;
-
-    std::unique_ptr<Texture> potholeTexture;
-
-    std::unique_ptr<Shader> doubleTextureColShader;
-    std::unique_ptr<Shader> meshModelShader;
-    std::unique_ptr<BaseModel> model;
-
-    std::unique_ptr<CubeModel> cube;
-    std::unique_ptr<TriangleModel> triangle;
-
-    std::unique_ptr<Terrain> terrain;
-
-
-     std::vector<std::unique_ptr<BaseModel>> models;
-
+    std::unique_ptr<Camera> camera;
     std::unique_ptr<CrossModel> crosshair;
-
     std::vector<std::unique_ptr<Shader>> shaders;
-
-    // std::vector<Shader* > shaders;
-
-    std::unique_ptr<Shader> skyboxShader;
-
-    std::unique_ptr<Shader> tessHeightMapShader;
-
-    std::unique_ptr<Skybox> skybox;
-
-    std::unique_ptr<Shader> textShader;
-
-    std::unique_ptr<TextRenderer> textRenderer;
-
-
     std::unique_ptr<Ray> ray;
     std::unique_ptr<Culling> culling;
-
     std::vector<std::unique_ptr<Hit>> hitPoints;
+    std::unique_ptr<Scene> currentScene;
 
-    // settings
+    ImVec4 clear_color;
+
+    bool executeShoot= false;
+    bool activeShoot = false;
+    bool realeaseShoot = false;
+    bool mouse_visible = false;
+    bool m_pressed = false;
+    bool showOctree= false;
+    bool fpsCamera = true;
+    bool spotLight = false;
+    bool spaceActive = false;
+
     unsigned int SCR_WIDTH = 800;
     unsigned int SCR_HEIGHT = 800;
 
-
-
-    std::unique_ptr<Octree> octree;
-
-
-    bool spaceActive = false;
-
-
-    // camera
-    //Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
-    std::unique_ptr<Camera> camera;
     float lastX = SCR_WIDTH / 2.0f;
     float lastY = SCR_HEIGHT / 2.0f;
     bool firstMouse = true;
@@ -131,28 +99,15 @@ private:
     float zoom =  45.0;
 
 
-    //==============================================
-    // std::unique_ptr<SceneOne> sceneone;
-    // std::unique_ptr<SceneTwo> scenetwo;
-    std::unique_ptr<Scene> currentScene;
 
-
-    ImVec4 clear_color;
-
-    bool executeShoot= false;
-    bool activeShoot = false;
-    bool realeaseShoot = false;
-
-
-    bool mouse_visible = false;
-    bool m_pressed = false;
-
-
-    bool showOctree= false;
-
-    bool lennert = false;
-    bool fpsCamera = true;
-    bool spotLight = false;
+//    std::unique_ptr<Octree> octree;
+//    std::unique_ptr<Shader> skyboxShader;
+//    std::unique_ptr<Shader> tessHeightMapShader;
+//    std::unique_ptr<Skybox> skybox;
+//    std::unique_ptr<Shader> textShader;
+//    std::unique_ptr<TextRenderer> textRenderer;
+//    std::unique_ptr<Terrain> terrain;
+//    bool lennert = false;
 
 };
 #endif //DOOM_QUAKE_ENGINE_H

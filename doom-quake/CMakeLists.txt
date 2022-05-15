@@ -30,9 +30,8 @@ add_executable( doom_quake src/main.cpp
                 src/Camera/Camera.cpp
                 include/Model/Cube/CubeModel.h
                 include/Octree/BoundingBox.h 
-                include/Ray/Ray.h 
-                include/Octree/NodeCluster.h
-                include/Register/EBO.h
+                include/Ray/Ray.h
+        include/Register/EBO.h
                 include/Register/VAO.h
                 include/Register/VBO.h
 
@@ -42,9 +41,8 @@ add_executable( doom_quake src/main.cpp
                 include/Scenes/SceneOne/SceneOne.h
                 
 
-                src/Octree/Node.cpp 
-                src/Octree/NodeCluster.cpp 
-                src/Octree/Octree.cpp 
+                src/Octree/Node.cpp
+        src/Octree/Octree.cpp
                 src/Ray/Ray.cpp
                 src/Register/EBO.cpp
                 src/Register/VAO.cpp

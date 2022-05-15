@@ -7,7 +7,6 @@
 
 #include "Node.h"
 #include "Ray/Ray.h"
-#include "NodeCluster.h"
 #include "Hit/Hit.h"
 
 #include "Culling/Culling.h"

@@ -15,15 +15,12 @@ Engine::Engine()
     std::cout << currentDir << std::endl;
 
 
-    if(!lennert){
-        currentScene = std::make_unique<SceneOne>();
-    }
 
-    game = Game();
+    currentScene = std::make_unique<SceneOne>();
+    game = Game(); // No usefull functions implemented
 
 
     shaders = std::vector<std::unique_ptr<Shader>>(6);
-//    shaders[0] = std::make_unique<Shader>("shader-files/doubletexturecolor.vs", "shader-files/doubletexturecolor.fs");
 
     shaders[0] = std::make_unique<Shader>((currentDir + shaderPaths[doubleTextureColorVertex]).c_str(),(currentDir + shaderPaths[doubleTextureColorFragment]).c_str(),DOUBLE_TEXTURE_COLOR_SHADER);
     shaders[1] = std::make_unique<Shader>((currentDir + shaderPaths[modelLoadingVertex]).c_str(),(currentDir + shaderPaths[modelLoadingFragment]).c_str(), MODEL_LOADER_SHADER);
@@ -49,22 +46,15 @@ Engine::Engine()
 
 
     ray = std::make_unique<Ray>(glm::vec3(0.0,0.0,0.0),glm::vec3(1.0,1.0,1.0));
-
     culling = std::make_unique<Culling>(camera->Position,camera->Front);
-
     crosshair = std::make_unique<CrossModel>(CROSS);
 
     // Hitpoints
     hitPoints = std::vector<std::unique_ptr<Hit>>();
-
 }
 
 
-Engine::~Engine(){
-    // for(auto shader : shaders){
-    //     delete shader;
-    // }
-}
+Engine::~Engine(){}
 
 
 void Engine::loop(GLFWwindow *window, int width, int height) {
@@ -91,19 +81,23 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
     }
 
     glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
+    // Only 30 hitpoints are shown
     while(hitPoints.size() >= 30){
         hitPoints.erase(hitPoints.begin());
     }
 
+    // Update view and projection in each shader
     for(auto &s : shaders){
         s->use();
         camera->updateCamera(s.get(),(float )width,(float ) height);
     }
 
+    // Draw the scene
     currentScene->draw(shaders,hitPoints,culling.get(),showOctree);
 
+    // Crosshair draw functionalities
     shaders[crosshair->getShaderType()]->use();
     if(executeShoot)
         crosshair->shoot();
@@ -111,25 +105,24 @@ void Engine::loop(GLFWwindow *window, int width, int height) {
         crosshair->resetShoot();
     crosshair->draw(shaders[crosshair->getShaderType()].get());
 
+    // Draw culling square
     shaders[LINE]->use();
     culling->draw(shaders[LINE].get());
 
+
+    // Crosshair variables (red on/off)
     if(executeShoot){
-//        std::cout<< "shoot" << std::endl;
         executeShoot = false;
         activeShoot = true;
     }
     if(realeaseShoot){
-//        std::cout<< "release shoot" << std::endl;
         realeaseShoot = false;
     }
 
+    // No usefull function
     if(game.changed()){
-//        std::cout<< "state changed" << std::endl;
         if(game.getState() == ROOM_D){
-//            std::cout<< "room d" << std::endl;
         }
-
         game.reset();
     }
 
@@ -185,8 +178,7 @@ void Engine::drawControls(GLFWwindow *window) {
     glfwGetFramebufferSize(window, &display_w, &display_h);
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-
-    camera->updateSpeed(speed);
+    camera->updateSpeed(speed); // Speed changed by GUI interaction
 }
 
 
@@ -199,43 +191,29 @@ void Engine::keyHandler(GLFWwindow *window) {
     }
 
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-//        std::cout << "S pressed" << std::endl;
         camera->ProcessKeyboard(BACKWARD, deltaTime);
     }
 
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-//        std::cout << "A pressed" << std::endl;
        camera->ProcessKeyboard(LEFT, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-//        std::cout << "D pressed" << std::endl;
         camera->ProcessKeyboard(RIGHT, deltaTime);
     }
 
      if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
-//         std::cout << "Q pressed" << std::endl;
          camera->ProcessKeyboard(LEFTSTRAFE, deltaTime);
      }
      if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-//         std::cout << "E pressed" << std::endl;
          camera->ProcessKeyboard(RIGHTSTRAFE, deltaTime);
      }
 
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && !spaceActive) {
-//        std::cout << "Space pressed" << std::endl;
-        executeShoot = true;
-
-//        std::cout << camera->Front.x << " ," <<  camera->Front.y << " ,"   <<  camera->Front.z << std::endl;
-//        std::cout << camera->Position.x << " ," <<  camera->Position.y << " ,"   <<  camera->Position.z << std::endl;
-        ray->setRay(camera->Position,camera->Front);
-
-        if(!lennert){
-            currentScene->shoot(ray.get(),hitPoints);
-        } else{
-            octree->shoot(*ray.get(), hitPoints);
-        }
-
+        ray->setRay(camera->Position,camera->Front); // Set ray position and front
+        currentScene->shoot(ray.get(),hitPoints); // Loop through octree and fill hitpoints
+        // Boolean party
         spaceActive = true;
+        executeShoot = true;
     }
 
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_RELEASE && spaceActive) {
@@ -245,9 +223,9 @@ void Engine::keyHandler(GLFWwindow *window) {
 
     if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS && !m_pressed) {
         if(!mouse_visible){
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL); // Mouse visible
         } else{
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); // Mouse not visible FPS mode
         }
         mouse_visible = !mouse_visible;
         m_pressed = true;
@@ -256,9 +234,12 @@ void Engine::keyHandler(GLFWwindow *window) {
         m_pressed = false;
     }
 
-    culling->setCulling(camera->Position,camera->Front);
+    culling->setCulling(camera->Position,camera->Front); // Update culling variables
     camera->cameraGrounded(fpsCamera);
 }
+
+
+// LearnOpengl https://learnopengl.com/Introduction
 
 // glfw: whenever the mouse moves, this callback is called
 // -------------------------------------------------------
@@ -287,6 +268,8 @@ void Engine::mouseHandler(GLFWwindow* window, double xposIn, double yposIn)
 void Engine::remove() {
     currentScene->remove();
 }
+
+// Static functions passed into object
 
 // glfw: whenever the mouse scroll wheel scrolls, this callback is called
 // ----------------------------------------------------------------------
