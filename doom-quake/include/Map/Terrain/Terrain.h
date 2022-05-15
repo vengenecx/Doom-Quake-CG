@@ -10,6 +10,8 @@
 #include "Texture/Texture.h"
 #include "Register/VAO.h"
 
+// EXTRA NOT USED IN CODE
+
 class Terrain {
 public:
     Terrain(Texture * mapTexture);

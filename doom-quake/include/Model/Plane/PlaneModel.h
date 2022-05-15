@@ -23,13 +23,11 @@ public:
 private:
     std::unique_ptr<VAO> vao;
     std::unique_ptr<VBO> vbo;
-    std::unique_ptr<EBO> ebo;
 
     Texture* texture_1;
     Texture* texture_2;
 
     std::vector<float> vertices;
-    std::vector<GLuint> indices;
 
     glm::vec3 position;
 
@@ -37,7 +35,6 @@ private:
     void setTextures(Shader* shader);
 
     bool reflect;
-//    void generateBoundingbox();
 };
 
 #endif //DOOM_QUAKE_PLANEMODEL_H

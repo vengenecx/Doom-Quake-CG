@@ -4,6 +4,9 @@
 #include"glad.h"
 #include"VBO.h"
 
+// Based on: https://github.com/VictorGordan/opengl-tutorials
+
+
 class VAO
 {
 public:

@@ -12,13 +12,7 @@ PlaneModel::PlaneModel(glm::vec3 dimensions, bool wall, bool inside, Texture * t
 
     fillVertices(dimensions, wall, inside);
 
-    this->indices = std::vector<GLuint>
-            {
-                    0,1,2,3,4,5
-            };
-
     this->vbo = std::make_unique<VBO>(vertices,vertices.size());
-    this->ebo = std::make_unique<EBO>(indices,indices.size());
 
     vao->linkAttrib(vbo.get(), 0, 3, GL_FLOAT, 14 * sizeof(float), (void*)0);
     vao->linkAttrib(vbo.get(), 1, 3, GL_FLOAT, 14 * sizeof(float), (void*)(3 * sizeof(float)));
@@ -29,7 +23,6 @@ PlaneModel::PlaneModel(glm::vec3 dimensions, bool wall, bool inside, Texture * t
     // Unbind all to prevent accidentally modifying them
     vao->unbind();
     vbo->unbind();
-    ebo->unbind();
 
 
     this->texture_1 = texture_1;
@@ -40,7 +33,7 @@ PlaneModel::PlaneModel(glm::vec3 dimensions, bool wall, bool inside, Texture * t
     this->bb.centre = position;
     this->bb.dimensions = glm::vec3(dimensions.x,dimensions.y,dimensions.z);
 
-   // this->vertices.clear(); // Clear vertices
+    this->vertices.clear(); // Clear vertices
 }
 
 
@@ -48,7 +41,6 @@ PlaneModel::~PlaneModel() {
     std::cout << "deleted cubemodel" << std::endl;
     vao.release();
     vbo.release();
-    ebo.release();
 }
 
 void PlaneModel::fillVertices(glm::vec3 dimensions, bool wall, bool inside){
@@ -96,6 +88,7 @@ void PlaneModel::fillVertices(glm::vec3 dimensions, bool wall, bool inside){
     glm::vec3 edge1, edge2;
     glm::vec2 deltaUV1, deltaUV2;
 
+    // Normals based on wall orientation
     if(wall){
         if(inside){
             if(dimensions.z == 0){
@@ -484,7 +477,7 @@ void PlaneModel::setTextures(Shader* shader) {
 }
 
 void PlaneModel::setLights(Shader* shader) {
-
+    //Explained in planemodel
     shader->setFloat("material.shininess", 32.0f);
     shader->setBool("directionLightState", false);
     shader->setBool("pointLightState", false);
@@ -504,6 +497,7 @@ void PlaneModel::setLights(Shader* shader) {
 void PlaneModel::draw(Shader *shader) {
     if(!show){
 
+        // Mask on/off
         if(reflect){
             glStencilMask(0xFF);
         }  else{
@@ -516,23 +510,18 @@ void PlaneModel::draw(Shader *shader) {
         shader->setMat4("model", m);
 
         setTextures(shader);
-
-
         setLights(shader);
 
         this->texture_1->bind();
         this->texture_2->bind();
 
         this->vao->bind();
-        this->ebo->bind();
 
-        glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
+        glDrawArrays(GL_TRIANGLES, 0,6);
 
         this->vao->unbind();
-        this->ebo->unbind();
 
         show = true;
-//        std::cout <<  ".";
         glStencilMask(0x00);
     }
 }
@@ -540,5 +529,4 @@ void PlaneModel::draw(Shader *shader) {
 void PlaneModel::remove() {
     this->vao->remove();
     this->vbo->remove();
-    this->ebo->remove();
 }

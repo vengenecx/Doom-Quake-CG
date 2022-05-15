@@ -14,12 +14,13 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
-//
-//#include "resource_manager.h"
-
 #include "Texture/Texture.h"
 #include "Shaders/Shader.h"
 
+
+// NOT USED
+// LearnOpenGL!!
+// https://learnopengl.com/Introduction
 
 /// Holds all state information relevant to a character as loaded using FreeType
 struct Character {

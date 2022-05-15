@@ -18,8 +18,6 @@
 class BaseModel {
 public:
     BaseModel(ShaderType type);
-    //BaseModel(ShaderType type,std::vector<BaseModel*> &light);
-//    BaseModel(ShaderType type, std::unique_ptr<BoundingBox> bb);
     BaseModel(ShaderType type, BoundingBox bb,std::vector<BaseModel*> &light);
     BaseModel(ShaderType type, std::vector<BaseModel*> &light);
     virtual void draw(Shader * shader) = 0;
@@ -44,8 +42,6 @@ public:
     BoundingBox getBoundingBox();
 
     virtual void setupShader(Shader * shader,uint &pos);
-
-//    void toggleSpotlight();
 
 protected:
     ShaderType type;

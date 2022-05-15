@@ -23,30 +23,16 @@
 
 class Culling {
 public:
-
-    Culling(bool draw=true);
     Culling(const glm::vec3  origin, const glm::vec3 direction,bool draw=true);
 
-    glm::vec3 getLeft();
-    glm::vec3 getRight();
     glm::vec3 getDirection();
-
-    glm::vec2 getDirectioPlaneY();
-
     glm::vec3 getOrigin();
-
     BoundingBox getBounding();
 
     void initDraw();
-
-//
     void draw(Shader* shader);
-
     void setCulling(const glm::vec3  origin, const glm::vec3 direction);
 
-//    point3 at(double t) const {
-//        return orig + t*dir;
-//    }
 private:
     glm::vec3 direction;
     glm::vec2 dir;
@@ -60,9 +46,7 @@ private:
 
     std::unique_ptr<VAO> vao;
     std::unique_ptr<VBO> vbo;
-    std::unique_ptr<EBO> ebo;
 
-    std::vector<GLuint> indices;
     std::vector<float> vertices;
 
 

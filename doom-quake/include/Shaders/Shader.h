@@ -15,6 +15,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "ShaderType.h"
 
+
+// LearnOpenGL!!
+// https://learnopengl.com/Introduction
+
 class Shader {
 public:
     // the program ID

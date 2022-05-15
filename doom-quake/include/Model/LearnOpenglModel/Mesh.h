@@ -16,6 +16,9 @@
 
 #define MAX_BONE_INFLUENCE 4
 
+// LearnOpengl!!!!!!
+// https://learnopengl.com/Introduction
+
 struct Vertex {
     // position
     glm::vec3 Position;

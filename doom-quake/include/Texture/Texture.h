@@ -12,6 +12,8 @@
 #include <stb_image.h>
 #include "Shaders/Shader.h"
 
+// Based on: https://github.com/VictorGordan/opengl-tutorials
+
 class Texture {
 public:
     GLuint ID;

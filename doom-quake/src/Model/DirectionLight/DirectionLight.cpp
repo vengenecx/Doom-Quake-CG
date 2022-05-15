@@ -55,6 +55,9 @@ DirectionLight::DirectionLight(glm::vec3 dimensions, glm::vec3 position, ShaderT
     this->bb = BoundingBox();
     this->bb.centre = position;
     this->bb.dimensions  =  glm::vec3(dimensions.x,dimensions.y,dimensions.z);
+
+    this->vertices.clear();
+    this->indices.clear();
 }
 
 
@@ -297,9 +300,7 @@ void DirectionLight::updatePosition(glm::vec3 pos){
 }
 
 void DirectionLight::setupShader(Shader * shader,uint &pos){
-
     shader->setBool("directionLightState", true);
-
     shader->setVec3("dirLight.position", position);
     shader->setVec3("dirLight.ambient", ambient);
     shader->setVec3("dirLight.diffuse", diffuse);

@@ -10,15 +10,10 @@ SpotLight::SpotLight(ShaderType type, glm::vec3 ambient, glm::vec3 diffuse, glm:
 }
 
 
-
-SpotLight::~SpotLight()  {
-    std::cout << "deleted cubemodel" << std::endl;
-}
+SpotLight::~SpotLight()  {}
 
 
-void SpotLight::updatePosition(glm::vec3 pos){
-
-}
+void SpotLight::updatePosition(glm::vec3 pos){}
 
 void SpotLight::toggleSpotLight(bool state){
     this->state = state;
@@ -26,7 +21,6 @@ void SpotLight::toggleSpotLight(bool state){
 
 void SpotLight::setupShader(Shader * shader,uint &pos){
     if(state){
-
         shader->setBool("spotLightState", true);
 
         shader->setVec3("spotLight.ambient", ambient);

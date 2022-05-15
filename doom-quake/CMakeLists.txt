@@ -62,11 +62,8 @@ add_executable( doom_quake src/main.cpp
                 src/Model/Skybox/Skybox.cpp include/Model/Plane/PlaneModel.h
                 src/Model/Plane/PlaneModel.cpp include/Map/Terrain/Terrain.h
                 src/Map/Terrain/Terrain.cpp
-                include/Model/LightBox/LightBox.h               
 
-                src/Model/LightBox/LightBox.cpp
-
-                include/Scenes/Scene.h                
+        include/Scenes/Scene.h
 
                 include/Text/TextRenderer.h src/Text/TextRenderer.cpp include/Game/Game.h src/Game/Game.cpp
 

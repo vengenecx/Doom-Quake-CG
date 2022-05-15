@@ -4,6 +4,9 @@
 #include"glad.h"
 #include <vector>
 
+
+// Based on: https://github.com/VictorGordan/opengl-tutorials
+
 class EBO
 {
 public:

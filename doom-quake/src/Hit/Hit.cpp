@@ -25,7 +25,8 @@ void Hit::calculateAlignment(BoundingBox& bx) {
     float min_z = bx.centre.z - bx.dimensions.z/2.0;
     float max_z = bx.centre.z + bx.dimensions.z/2.0;
 
-
+    // Check dimension alignment (we only work with bounding-boxes)
+    // Poins are shifted (otherwise planes and holes are drawn through each other)
     if(bx.dimensions.x == 0.0 ||bx.dimensions.y == 0.0 ||bx.dimensions.z == 0.0){
         if(bx.dimensions.x == 0.0){
             alignment = X;
@@ -37,31 +38,21 @@ void Hit::calculateAlignment(BoundingBox& bx) {
         twoSides = true;
     } else{
         if((min_x == point.x || max_x == point.x)){
-//            std::cout << "1,2" << std::endl;
             alignment = X;
-
             if(min_x == point.x )
                 point.x -= 0.01;
             else
                 point.x += 0.01;
-
         }
-
         if((min_y == point.y || max_y == point.y)) {
-//            std::cout << "3,4" << std::endl;
             alignment = EAligment::Y;
-
             if(min_y == point.y )
                 point.y -= 0.01;
             else
                 point.y += 0.01;
-
         }
-
         if((min_z == point.z || max_z == point.z)) {
-//            std::cout << "5,6" << std::endl;
             alignment = Z;
-
             if(min_z == point.z )
                 point.z -= 0.01;
             else
@@ -79,10 +70,7 @@ EAligment Hit::getAlignment(){
     return alignment;
 }
 
-
 void Hit::initDraw() {
-
-
     static float x_pos = 0.1;
     static float x_neg = -0.1;
 
@@ -93,12 +81,9 @@ void Hit::initDraw() {
     static float z_neg = -0.1;
 
 
-    glm::vec3 col = glm::vec3(1.0,1.0,1.0);
-
-    std:: cout << static_cast<int>(alignment)  << std::endl;
+    static glm::vec3 col = glm::vec3(1.0,1.0,1.0);
 
     if(alignment == EAligment::Z){
-//        std::cout<< "z"  << std::endl;
         this->vertices.push_back(x_pos);
         this->vertices.push_back(y_pos);
         this->vertices.push_back(0);
@@ -143,7 +128,6 @@ void Hit::initDraw() {
         this->vertices.push_back(0);
         this->vertices.push_back(1);
     } else if(alignment == Y){
-//        std::cout<< "y"  << std::endl;
         this->vertices.push_back(x_pos);
         this->vertices.push_back(0);
         this->vertices.push_back(z_pos);
@@ -188,7 +172,6 @@ void Hit::initDraw() {
         this->vertices.push_back(0);
         this->vertices.push_back(1);
     } else{
-//        std::cout<< "x"  << std::endl;
         this->vertices.push_back(0);
         this->vertices.push_back(y_pos);
         this->vertices.push_back(z_pos);
@@ -256,8 +239,6 @@ void Hit::initDraw() {
     vao->unbind();
     vbo->unbind();
     ebo->unbind();
-
-//    this->texture = texture;
 }
 
 void Hit::remove() {

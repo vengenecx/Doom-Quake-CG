@@ -26,19 +26,15 @@ public:
     glm::vec3 getPoint();
     EAligment getAlignment();
 
-
     void draw(Shader * shader, Texture* texture);
-
     void remove();
 
 private:
     glm::vec3 point;
     EAligment alignment;
 
-
     void calculateAlignment(BoundingBox& bx);
     void initDraw();
-
     void setTextures(Shader* shader, Texture* texture);
 
 

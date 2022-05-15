@@ -14,6 +14,11 @@
 #include "Octree/BoundingBox.h"
 #include "Model/BaseModel.h"
 
+
+
+// LearnOpengl!!!!!!
+// https://learnopengl.com/Introduction
+
 class Model : public BaseModel{
 public:
     // constructor, expects a filepath to a 3D model.

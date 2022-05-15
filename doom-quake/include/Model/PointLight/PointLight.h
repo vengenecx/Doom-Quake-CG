@@ -37,9 +37,7 @@ private:
     float quadratic;
 
     void setTextures(Shader* shader);
-
-    void generateBoundingbox();
-
+//    void generateBoundingbox();
     void fillVertices(glm::vec3 dimensions);
 };
 

@@ -3,6 +3,8 @@
 
 #include "Model/BaseModel.h"
 
+// NOT USED
+
 class TriangleModel : public BaseModel {
 public:
     // mesh data

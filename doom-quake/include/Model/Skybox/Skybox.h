@@ -10,6 +10,8 @@
 #include "Register/VAO.h"
 #include "Texture/Texture.h"
 
+// Not used in the current setup (comes from learnopengl)
+
 class Skybox {
 public:
     Skybox(std::vector<std::string>& faces, std::string directory, bool rgba=false);
