@@ -164,9 +164,7 @@ void Octree::shoot(Ray& ray, std::vector<std::unique_ptr<Hit>> & hitPoints){
 
 bool Octree::searchRecursive(Node* node, Ray& ray, std::vector<std::unique_ptr<Hit>>& hitPoints){
     if(node->hasChildren()){
-
         bool res = false;
-
         for(int i=0 ; i<8;i++){
             if(intersect(node->children[i]->boundingBox, ray)) {
                 res = searchRecursive(node->children[i].get(), ray,  hitPoints);
@@ -175,26 +173,16 @@ bool Octree::searchRecursive(Node* node, Ray& ray, std::vector<std::unique_ptr<H
         return res;
     } else{
         if(!node->models.empty()){
-//        std::cout << "NOT EMPTY" << std::endl;
             for(auto m :node->models){
                 if(!m->alreadyHit()){
                     BoundingBox bx = m->getBoundingBox();
                     glm::vec3 vecIntersection;
                     float flFraction;
-
                     bool hit = intersect(bx,ray,  vecIntersection, flFraction);
-
                     if(hit){
-                        std::cout << "HIT" << std::endl;
-
                         hitPoints.push_back(std::make_unique<Hit>(vecIntersection,bx));
                         m->shoot();
                     }
-                    else{
-                        std::cout << "MISSED" << std::endl;
-                    }
-                } else{
-                    std::cout << "dsfsdf" << std::endl;
                 }
             }
         }
@@ -250,6 +238,7 @@ bool Octree::intersect(BoundingBox& bb1, Ray& ray, glm::vec3 & vecIntersection, 
     vecIntersection = v0 + b * f_low;
 
     flFraction = f_low;
+
 
     return true;
 

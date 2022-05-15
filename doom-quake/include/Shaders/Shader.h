@@ -13,6 +13,7 @@
 #include <sstream>
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
+#include "ShaderType.h"
 
 class Shader {
 public:
@@ -20,10 +21,10 @@ public:
     unsigned int ID;
 
     // constructor reads and builds the shader
-    Shader(const char* vertexPath, const char* fragmentPath);
+    Shader(const char* vertexPath, const char* fragmentPath, ShaderType type);
 
     Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath,
-           const char* tessControlPath, const char* tessEvalPath);
+           const char* tessControlPath, const char* tessEvalPath, ShaderType type);
     // use/activate the shader
     void use();
 
@@ -44,9 +45,12 @@ public:
     void setMat3(const std::string &name, const glm::mat3 &mat) const;
     void setMat4(const std::string &name, const glm::mat4 &mat) const;
 
+    ShaderType getShaderType();
 private:
     // utility function for checking shader compilation/linking errors
     void checkCompileErrors(unsigned int shader, std::string type);
+
+    ShaderType type;
 };
 
 

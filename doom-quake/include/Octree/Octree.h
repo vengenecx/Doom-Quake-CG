@@ -18,17 +18,11 @@ public:
     Octree(BoundingBox& boundingBox, int depth);
 
     void addModel(BaseModel* model);
-
-
     void shoot(Ray& ray, std::vector<std::unique_ptr<Hit>> & hitPoints);
-
     void draw(std::vector<std::unique_ptr<Shader>> & shaders, Culling * culling, bool octreeVisible);
-
-
 
 private:
     std::unique_ptr<Node> root;
-
 
     void generateChildren(Node* node);
 

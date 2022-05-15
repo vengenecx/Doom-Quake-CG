@@ -5,7 +5,7 @@
 #include "Shaders/Shader.h"
 
 
-Shader::Shader(const char* vertexPath, const char* fragmentPath)
+Shader::Shader(const char* vertexPath, const char* fragmentPath, ShaderType shaderType) : type(shaderType)
 {
     // 1. retrieve the vertex/fragment source code from filePath
     std::string vertexCode;
@@ -61,7 +61,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
 }
 
 Shader::Shader(const char *vertexPath, const char *fragmentPath, const char *geometryPath, const char *tessControlPath,
-               const char *tessEvalPath) {
+               const char *tessEvalPath, ShaderType shaderType): type(shaderType) {
     // 1. retrieve the vertex/fragment source code from filePath
     std::string vertexCode;
     std::string fragmentCode;
@@ -257,6 +257,10 @@ void Shader::setMat4(const std::string &name, const glm::mat4 &mat) const
     glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
+
+ShaderType Shader::getShaderType(){
+    return type;
+}
 
 // utility function for checking shader compilation/linking errors.
 // ------------------------------------------------------------------------

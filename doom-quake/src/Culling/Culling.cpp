@@ -25,7 +25,7 @@ void Culling::setCulling(const glm::vec3  origin, const glm::vec3 direction){
 
     calculateVectors(direction);
 
-    glm::vec3 col = glm::vec3(0.0,0.0,1.0);
+    glm::vec3 col = glm::vec3(0.0,1.0,0.0);
 
     this->vertices.clear();
 
