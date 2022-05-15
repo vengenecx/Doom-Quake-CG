@@ -2,9 +2,9 @@
 
 
 
-// default constructor
 SceneOne::SceneOne(){
-    // 8-bit/color RGB gives least issues!
+    // Textures
+    //  Texture paths
     std::string stoneImg = (currentDir + "/model-files/textures/stone.png");
     std::string grassImg = (currentDir + "/model-files/textures/textures_lennert.png");
     std::string awsomeFaceImg = (currentDir + "/model-files/cube/awesomeface.png");
@@ -22,15 +22,14 @@ SceneOne::SceneOne(){
     std::string dungeonNormalImage = (currentDir + "/model-files/textures/dungeonSeamlessNormal.png");
     std::string doorWallNormalImage = (currentDir + "/model-files/textures/doorWallNormal.png");
 
+    // Pothole texture
     this->potholeTexture = std::make_unique<Texture>(potholeImage.c_str(),GL_TEXTURE_2D,0,GL_RGBA,GL_UNSIGNED_BYTE);
 
+    // Texture list (positions are stored in ETexture)
     this->textures = std::vector<std::unique_ptr<Texture>>();
 
+    // The slots are just in case when using multiple textures in one shader
     this->textures.push_back(std::make_unique<Texture>(awsomeFaceImg.c_str(),GL_TEXTURE_2D,1,GL_RGBA,GL_UNSIGNED_BYTE));
-    // this->textures.push_back(std::make_unique<Texture>(awsomeFaceImgNormal.c_str(),GL_TEXTURE_2D,2,GL_RGBA,GL_UNSIGNED_BYTE));
-    // CHANGE /include/Texture/Etecture.h (    AWESOMEFACE = 0,    AWESOMEFACE = 1).....
-
-    // SHIFT ALL SLOTS!!!!
     this->textures.push_back(std::make_unique<Texture>(stoneImg.c_str(),GL_TEXTURE_2D,2,GL_RGBA,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(grassImg.c_str(),GL_TEXTURE_2D,3,GL_RGB,GL_UNSIGNED_BYTE));
     this->textures.push_back(std::make_unique<Texture>(metalImg.c_str(),GL_TEXTURE_2D,4,GL_RGB,GL_SRGB)); // important change!
@@ -45,11 +44,17 @@ SceneOne::SceneOne(){
     this->textures.push_back(std::make_unique<Texture>(dungeonNormalImage.c_str(), GL_TEXTURE_2D,13,GL_RGBA,GL_UNSIGNED_BYTE)); // new
     this->textures.push_back(std::make_unique<Texture>(doorWallNormalImage.c_str(), GL_TEXTURE_2D,14,GL_RGBA,GL_UNSIGNED_BYTE)); // new
 
+
+    // Instance of spotlight
     spotLight = std::make_unique<SpotLight>(LINE);
 
+
+    // Model list initiated
     models = std::vector<std::unique_ptr<BaseModel>>();
 
-    // For each light list don't forget to add spotlight
+
+    // Light lists based on each room
+
     std::vector<BaseModel*> lightMonsterRoom = std::vector<BaseModel*>();
     lightMonsterRoom.push_back(spotLight.get());
     models.push_back(std::make_unique<DirectionLight>(glm::vec3(0.1f,  0.1f, 0.1f), glm::vec3(2.0f,  0.8f,  3.0f), LINE));
@@ -78,12 +83,17 @@ SceneOne::SceneOne(){
     models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(15.0f, 0.1f, 6.0f), LINE));
     lightSniperRoom.push_back(models[models.size()-1].get());
 
-    // adding object to the scene ======================================================================================================================================
+
+
+    // adding object (LeanrOpengl load model tutorial) to the scene ======================================================================================================================================
     // models.push_back(std::make_unique<Model>("model-files/plant/Monster.obj",glm::vec3(2.5f, -0.9f, 6.0f), glm::vec3(0.005f, 0.005f, 0.005f), glm::vec3(2.0f,2.0f,2.0f), LIGHT, lightMonsterRoom));
     models.push_back(std::make_unique<Model>("model-files/spaceship/spaceship.obj",glm::vec3(2.5f, 0.0f, -4.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(2.0f,2.0f,2.0f), LIGHT, lightSpaceShip,false));
     models.push_back(std::make_unique<Model>("model-files/doomSword/Doom Eternal Weapon.obj", glm::vec3(-6.0f, 0.2f, 8.9f), glm::vec3(4.0f, 4.0f, 4.0f), glm::vec3(1.0f,1.0f, 1.0f), LIGHT,  lightSwordRoom, false));
     models.push_back(std::make_unique<Model>("model-files/spider/Only_Spider_with_Animations_Export.obj", glm::vec3(9.5f, -1.0f, 2.0f), glm::vec3(0.01f, 0.01f, 0.01f), glm::vec3(1.0f,1.0f, 1.0f), LIGHT, lightSpiderRoom, true));
     models.push_back(std::make_unique<Model>("model-files/sniper/sniper.obj", glm::vec3(13.0f, 0.0f, 6.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(1.0f,1.0f, 1.0f), LIGHT,  lightSniperRoom));
+
+
+    // Scene setup
 
     // the first pair of coordinates represent the current drawn plane, the secondpair of coordinates represent the shifted position of the plane!
     // adding all the plane models for the FLOOR ======================================================================================================================================
@@ -151,32 +161,12 @@ SceneOne::SceneOne(){
 
 
 
-
-
-
-    // std::vector<BaseModel*> lightsRoomOne = std::vector<BaseModel*>(); // As example
-    // lightsRoomOne.push_back(spotLight.get());
-
-    // models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(1.5f, 1.6f, -4.0f), LINE));
-    // lightsRoomOne.push_back(models[models.size()-1].get());
-
-    // models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(1.0f, 1.6f, -3.0f), LINE));
-    // lightsRoomOne.push_back(models[models.size()-1].get());
-        
-    // models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false,false, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(1.5f, 2.0f, -4.0f), LIGHT,lightsRoomOne));
-
-    // Test Cube
-    //models.push_back(std::make_unique<CubeModel>(glm::vec3( 2.0f,  2.0f, 2.0f),textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3( 0.0f,  0.0f,  0.0f), LIGHT,lights));
-// =======
-//     models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,2), true, textures[ETexture::CONCRETE].get(), glm::vec3(16.0f, 0.5f, 6.0f), DEFAULT));
-//     models.push_back(std::make_unique<PlaneModel>(glm::vec3(8,3,0), true, textures[ETexture::CONCRETE].get(), glm::vec3(12.0f, 0.5f, 5.0f), DEFAULT));
-//     models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,1), true, textures[ETexture::CONCRETE].get(), glm::vec3(8.0f, 0.5f, 4.5f), DEFAULT));
-       
-       
+    // Octree bounding-box definition
     BoundingBox box = BoundingBox();
     box.centre = glm::vec3(0.0,0.0,0.0);
     box.dimensions = glm::vec3(50.0,50.0,50.0);
 
+    // Octree instance with fixed depth 10
     octree = std::make_unique<Octree>(box, 10);
 
     // Append all models into the octree
@@ -186,6 +176,8 @@ SceneOne::SceneOne(){
 }
 
 void SceneOne::draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints, Culling* culling, bool octreeVisible){
+
+    // Draw the octree (only culling region)
     octree->draw(shaders,culling,octreeVisible);
 
     // Hitpoints aren't stored in the octree
