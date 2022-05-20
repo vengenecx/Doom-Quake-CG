@@ -1091,4 +1091,3 @@ void CubeModel::remove() {
     this->vao->remove();
     this->vbo->remove();
 }
-

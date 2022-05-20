@@ -30,7 +30,7 @@ Engine::Engine()
     shaders[5] = std::make_unique<Shader>((currentDir + shaderPaths[lightVertex]).c_str(),(currentDir + shaderPaths[lightFragment]).c_str(),LIGHT);
 
 
-    camera = std::make_unique<Camera>(fpsCamera,glm::vec3(0.0f, 0.2f, -2.0f));
+    camera = std::make_unique<Camera>(fpsCamera,glm::vec3(-5.0f, 0.2f, 2.0f));
 
 
 //    Other additional tests
