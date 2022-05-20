@@ -56,7 +56,6 @@ PointLight::PointLight(glm::vec3 dimensions, glm::vec3 position, ShaderType type
     this->bb.dimensions  =  glm::vec3(dimensions.x,dimensions.y,dimensions.z);
 
     this->vertices.clear();
-    this->indices.clear();
 }
 
 
