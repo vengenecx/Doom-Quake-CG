@@ -7,7 +7,7 @@
 
 Texture::Texture(){}
 
-Texture::Texture(const char* image, GLenum texType, GLuint slot, GLenum format, GLenum pixelType)
+Texture::Texture(const char* image, GLenum texType, GLuint slot, GLenum format, GLenum pixelType, float size)  : size(size)
 {
     // Assigns the type of the texture ot the texture object
     target = texType;
@@ -90,4 +90,8 @@ int Texture::getHeight() {
 
 int Texture::getWidth() {
     return width;
+}
+
+float Texture::getSize() {
+    return size;
 }

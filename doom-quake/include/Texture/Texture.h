@@ -25,7 +25,7 @@ public:
 
 
     Texture();
-    Texture(const char* image, GLenum texType, GLuint slot, GLenum format, GLenum pixelType);
+    Texture(const char* image, GLenum texType, GLuint slot, GLenum format, GLenum pixelType, float size=2.0);
 
     // Assigns a texture unit to a texture
 //    void texUnit(Shader* shader, const char* uniform, GLuint unit);
@@ -39,6 +39,9 @@ public:
     // Deletes a texture
     void remove();
 
+    // Get size
+    float getSize();
+
 
     int getWidth();
     int getHeight();
@@ -46,6 +49,7 @@ public:
 private:
     int width;
     int height;
+    float size;
 };
 
 #endif //DOOM_QUAKE_TEXTURE_H
