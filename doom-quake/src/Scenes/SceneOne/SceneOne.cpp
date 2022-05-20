@@ -57,7 +57,9 @@ SceneOne::SceneOne(){
 
     std::vector<BaseModel*> lightMonsterRoom = std::vector<BaseModel*>();
     lightMonsterRoom.push_back(spotLight.get());
-    models.push_back(std::make_unique<DirectionLight>(glm::vec3(0.1f,  0.1f, 0.1f), glm::vec3(2.0f,  0.8f,  3.0f), LINE));
+    //models.push_back(std::make_unique<DirectionLight>(glm::vec3(0.1f,  0.1f, 0.1f), glm::vec3(2.0f,  0.8f,  3.0f), LINE));
+    //lightMonsterRoom.push_back(models[models.size()-1].get());
+    models.push_back(std::make_unique<PointLight>(glm::vec3(0.1f,  0.1f, 0.1f), glm::vec3(2.0f,  0.8f,  3.0f), LINE));
     lightMonsterRoom.push_back(models[models.size()-1].get());
 
 
@@ -189,7 +191,7 @@ void SceneOne::draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<s
 
 void SceneOne::remove(){
     for(std::unique_ptr<BaseModel>& c : this->models){
-        c->remove();
+        //c->remove();
     }
 }
 

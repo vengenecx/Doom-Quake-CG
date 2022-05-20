@@ -8,7 +8,7 @@
 
 class DirectionLight : public BaseModel {
 public:
-    DirectionLight(glm::vec3 dimensions, glm::vec3 position, ShaderType type, glm::vec3 ambient = glm::vec3(0.05,0.05,0.05),glm::vec3 diffuse = glm::vec3(0.6,0.6,0.6), glm::vec3 specular = glm::vec3(0.2,0.2,0.2));
+    DirectionLight(glm::vec3 dimensions, glm::vec3 position, ShaderType type, glm::vec3 ambient = glm::vec3(0.05,0.05,0.05),glm::vec3 diffuse = glm::vec3(0.8,0.8,0.8), glm::vec3 specular = glm::vec3(0.2,0.2,0.2));
 
     void updatePosition(glm::vec3 pos);
     void draw(Shader * shader);
