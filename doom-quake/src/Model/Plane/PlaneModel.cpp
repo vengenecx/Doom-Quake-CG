@@ -52,33 +52,36 @@ void PlaneModel::fillVertices(glm::vec3 dimensions, bool wall, bool inside) {
     glm::vec2 uv3(1.0f, 0.0f);
     glm::vec2 uv4(1.0f, 1.0f);
 
-
+    float size = 2.0;
      if(dimensions.y == 0){
-         float x = dimensions.x / 2;
-         float z = dimensions.z / 2;
+         float x = dimensions.x / size;
+         float z = dimensions.z / size;
          uv1.y = z;
          uv3.x = x;
          uv4.x = x;
          uv4.y = z;
-    }
-
-    if(dimensions.x == 0){
-        float y = dimensions.y / 2;
-        float z = dimensions.z / 2;
+    } else if (dimensions.x == 0){
+        float y = dimensions.y / size;
+        float z = dimensions.z / size;
         uv1.y = y;
         uv3.x = z;
         uv4.x = z;
         uv4.y = y;
-    }
-
-    if(dimensions.z == 0){
-        float x = dimensions.x / 2;
-        float y = dimensions.y / 2;
+    } else if(dimensions.z == 0){
+        float x = dimensions.x / size;
+        float y = dimensions.y / size;
         uv1.y = y;
         uv3.x = x;
         uv4.x = x;
         uv4.y = y;
-    }
+    } else{
+         float y = dimensions.y / size;
+         float z = dimensions.z / size;
+         uv1.y = y;
+         uv3.x = z;
+         uv4.x = z;
+         uv4.y = y;
+     }
 
     // // texture coordinates
     // if(dimensions.y == 0){
