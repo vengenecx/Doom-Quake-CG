@@ -10,6 +10,9 @@ PlaneModel::PlaneModel(glm::vec3 dimensions, bool wall, bool inside, Texture * t
     this->vao->bind();
     this->position =  pos;
 
+    this->texture_1 = texture_1;
+    this->texture_2 = texture_2;
+
     fillVertices(dimensions, wall, inside);
 
     this->vbo = std::make_unique<VBO>(vertices,vertices.size());
@@ -23,10 +26,6 @@ PlaneModel::PlaneModel(glm::vec3 dimensions, bool wall, bool inside, Texture * t
     // Unbind all to prevent accidentally modifying them
     vao->unbind();
     vbo->unbind();
-
-
-    this->texture_1 = texture_1;
-    this->texture_2 = texture_2;
 
 
     this->bb = BoundingBox();
@@ -52,7 +51,7 @@ void PlaneModel::fillVertices(glm::vec3 dimensions, bool wall, bool inside) {
     glm::vec2 uv3(1.0f, 0.0f);
     glm::vec2 uv4(1.0f, 1.0f);
 
-    float size = 2.0;
+    float size = this->texture_1->getSize();
      if(dimensions.y == 0){
          float x = dimensions.x / size;
          float z = dimensions.z / size;

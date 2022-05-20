@@ -54,9 +54,9 @@ SceneOne::SceneOne(){
     this->textures.push_back(std::make_unique<Texture>(doorWallNormalImage.c_str(), GL_TEXTURE_2D,14,GL_RGBA,GL_UNSIGNED_BYTE)); // new
     this->textures.push_back(std::make_unique<Texture>(spaceMetalImage.c_str(), GL_TEXTURE_2D,15,GL_RGB,GL_UNSIGNED_BYTE)); // new
     this->textures.push_back(std::make_unique<Texture>(spaceMetalNormalImage.c_str(), GL_TEXTURE_2D,16,GL_RGBA,GL_UNSIGNED_BYTE)); // new
-    this->textures.push_back(std::make_unique<Texture>(metalTwoImage.c_str(), GL_TEXTURE_2D,17,GL_RGB,GL_UNSIGNED_BYTE)); // new
+    this->textures.push_back(std::make_unique<Texture>(metalTwoImage.c_str(), GL_TEXTURE_2D,17,GL_RGB,GL_UNSIGNED_BYTE,1)); // new
     this->textures.push_back(std::make_unique<Texture>(metalTwoNormalImage.c_str(), GL_TEXTURE_2D,18,GL_RGBA,GL_UNSIGNED_BYTE)); // new
-    this->textures.push_back(std::make_unique<Texture>(metalThreeImage.c_str(), GL_TEXTURE_2D,19,GL_RGB,GL_UNSIGNED_BYTE)); // new
+    this->textures.push_back(std::make_unique<Texture>(metalThreeImage.c_str(), GL_TEXTURE_2D,19,GL_RGB,GL_UNSIGNED_BYTE, 1)); // new
     this->textures.push_back(std::make_unique<Texture>(metalThreeNormalImage.c_str(), GL_TEXTURE_2D,20,GL_RGBA,GL_UNSIGNED_BYTE)); // new
 
     // Instance of spotlight
