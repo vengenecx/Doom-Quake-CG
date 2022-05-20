@@ -7,7 +7,7 @@
 
 Texture::Texture(){}
 
-Texture::Texture(const char* image, GLenum texType, GLuint slot, GLenum format, GLenum pixelType)
+Texture::Texture(const char* image, GLenum texType, GLuint slot, GLenum format, GLenum pixelType, float size)  : size(size)
 {
     // Assigns the type of the texture ot the texture object
     target = texType;
@@ -38,8 +38,8 @@ Texture::Texture(const char* image, GLenum texType, GLuint slot, GLenum format, 
 //    glTexParameteri(texType, GL_TEXTURE_WRAP_S, GL_REPEAT);
 //    glTexParameteri(texType, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-    glTexParameteri(texType, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-    glTexParameteri(texType, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+    glTexParameteri(texType, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(texType, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
     // Extra lines in case you choose to use GL_CLAMP_TO_BORDER
     // float flatColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
@@ -90,4 +90,8 @@ int Texture::getHeight() {
 
 int Texture::getWidth() {
     return width;
+}
+
+float Texture::getSize() {
+    return size;
 }
