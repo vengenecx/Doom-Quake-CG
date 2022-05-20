@@ -142,16 +142,16 @@ void Engine::drawControls(GLFWwindow *window) {
 
     ImGui::Begin("Controls");
 
-    ImGui::Text("Room selection:");
-
-
-    ImGui::NewLine();
-    ImGui::SameLine();
-    if (ImGui::Button("Room A"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-        game.setStateRoomA();
-    ImGui::SameLine();
-    if (ImGui::Button("Room B"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-        game.setStateRoomB();
+//    ImGui::Text("Room selection:");
+//
+//
+//    ImGui::NewLine();
+//    ImGui::SameLine();
+//    if (ImGui::Button("Room A"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+//        game.setStateRoomA();
+//    ImGui::SameLine();
+//    if (ImGui::Button("Room B"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+//        game.setStateRoomB();
 
     ImGui::NewLine();
     ImGui::Checkbox("Octree", &showOctree);
