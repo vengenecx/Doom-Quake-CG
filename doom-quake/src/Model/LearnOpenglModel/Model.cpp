@@ -80,19 +80,30 @@ void Model::drawReflection(Shader * shader){
         glm::mat4 m = glm::mat4(1.0f);
         //m = glm::translate(m, glm::vec3(0.0f, 0.0f, -20.0f)); // translate it down so it's at the center of the scene
 
-        glm::vec3 reflecPos = glm::vec3(position.x,-4,position.z);
+        glm::vec3 reflecPos = glm::vec3(position.x,-1.5,position.z);
 
-
+        m = glm::rotate(m, glm::radians(-1.1415926536f), glm::normalize(glm::vec3(1.0, 0.0, 1.0)));
         m = glm::translate(m, reflecPos);
+
+
         m = glm::scale(m, sizeOfScaling);	// it's a bit too big for our scene, so scale it down
 
-        m = glm::rotate(m, glm::radians(3.1415926536f), glm::normalize(glm::vec3(1.0, 0.0, 1.0)));
 
 
 
         shader->setMat4("model", m);
 
-        //setLights(shader);
+        shader->setFloat("material.shininess", 100.0f);
+        shader->setBool("pointLightState", false);
+        shader->setBool("spotLightState", false);
+
+
+        shader->setBool("directionLightState", true);
+        shader->setVec3("dirLight.position", position);
+        shader->setVec3("dirLight.ambient", glm::vec3(0.05,0.05,0.05));
+        shader->setVec3("dirLight.diffuse", glm::vec3(0.3,0.3,0.3));
+        shader->setVec3("dirLight.specular", glm::vec3(0.1,0.1,0.1));
+
 
 
         for(unsigned int i = 0; i < meshes.size(); i++)

@@ -85,8 +85,8 @@ SceneOne::SceneOne(){
     lightSpiderRoom.push_back(spotLight.get());
     models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(8.0f, 1.6f, 3.0f), LINE));
     lightSpiderRoom.push_back(models[models.size()-1].get());
-    models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(11.0f, 1.6f, -1.0f), LINE));
-    lightSpiderRoom.push_back(models[models.size()-1].get());    
+//    models.push_back(std::make_unique<PointLight>(glm::vec3( 0.1f,  0.1f, 0.1f), glm::vec3(11.0f, 1.6f, -1.0f), LINE));
+//    lightSpiderRoom.push_back(models[models.size()-1].get());
 
     std::vector<BaseModel*> lightSpaceShip = std::vector<BaseModel*>();
     lightSpaceShip.push_back(spotLight.get());
@@ -117,12 +117,12 @@ SceneOne::SceneOne(){
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,9), false, true, textures[ETexture::SPACEMETAL].get(),textures[ETexture::SPACEMETALNORMAL].get(), glm::vec3(-5.5f, -1.0f, 4.5f), LIGHT, lightSwordRoom,false));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(3,0,2), false, true, textures[ETexture::METALTWO].get(),textures[ETexture::METALTWONORMAL].get(), glm::vec3(-1.5f, -1.0f, 8.0f), LIGHT, lightSwordRoom));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(2,0,1), false, true, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(6.0f, -1.0f, 3.5f), LIGHT, lightMonsterRoom));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,6), false, true, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(9.5f, -1.0f, 1.0f), LIGHT, lightSpiderRoom,true));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,1), false, true, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(7.5f, -1.0f, 4.5f),  LIGHT, lightSpiderRoom,true));
+    models.push_back(std::make_unique<PlaneModel>(glm::vec3(5,0,6), false, true, textures[ETexture::METALTWO].get(),textures[ETexture::METALTWONORMAL].get(), glm::vec3(9.5f, -1.0f, 1.0f), LIGHT, lightSpiderRoom,true));
+    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,1), false, true, textures[ETexture::METALTWO].get(),textures[ETexture::METALTWONORMAL].get(), glm::vec3(7.5f, -1.0f, 4.5f),  LIGHT, lightSpiderRoom,true));
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(9,0,2), false, true, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(11.5f, -1.0f, 6.0f), LIGHT, lightSniperRoom));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,6), false, true, textures[ETexture::METALTWO].get(),textures[ETexture::METALTWO].get(), glm::vec3(2.5f, -1.0f, -3.0f), LIGHT, lightSpaceShip,false));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, true, textures[ETexture::METALTWO].get(),textures[ETexture::METALTWO].get(), glm::vec3(3.5f, -1.0f, -4.0f), LIGHT, lightSpaceShip,false));
-    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, true, textures[ETexture::METALTWO].get(),textures[ETexture::METALTWO].get(), glm::vec3(1.5f, -1.0f, -4.0f), LIGHT, lightSpaceShip,false));
+    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,6), false, true, textures[ETexture::METALTWO].get(),textures[ETexture::METALTWONORMAL].get(), glm::vec3(2.5f, -1.0f, -3.0f), LIGHT, lightSpaceShip,false));
+    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, true, textures[ETexture::METALTWO].get(),textures[ETexture::METALTWONORMAL].get(), glm::vec3(3.5f, -1.0f, -4.0f), LIGHT, lightSpaceShip,false));
+    models.push_back(std::make_unique<PlaneModel>(glm::vec3(1,0,4), false, true, textures[ETexture::METALTWO].get(),textures[ETexture::METALTWONORMAL].get(), glm::vec3(1.5f, -1.0f, -4.0f), LIGHT, lightSpaceShip,false));
 
     // adding all the plane models for the WALLS ======================================================================================================================================
     models.push_back(std::make_unique<PlaneModel>(glm::vec3(0,3,3), true, false, textures[ETexture::WALL].get(),textures[ETexture::WALL_NORMAL].get(), glm::vec3(5.0f, 0.5f, 1.5f), LIGHT,lightMonsterRoom));
