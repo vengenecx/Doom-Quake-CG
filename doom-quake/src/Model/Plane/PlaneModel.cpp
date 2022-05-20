@@ -529,9 +529,11 @@ void PlaneModel::draw(Shader *shader) {
 
         // Mask on/off
         if(reflect){
+            glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
             glStencilMask(0xFF);
         }  else{
-            glStencilMask(0x00);
+            glStencilOp(GL_ZERO, GL_ZERO, GL_ZERO);
+            glStencilMask(0xFF);
         }
         shader->use();
 
