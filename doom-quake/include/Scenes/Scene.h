@@ -17,6 +17,8 @@ public:
     virtual void spotLightToggle(bool state) = 0;
 
     virtual void shoot(Ray* ray, std::vector<std::unique_ptr<Hit>> & hitPoints) = 0;
+
+    virtual ~Scene(){};
 protected:
     std::unique_ptr<Octree> octree;
 };

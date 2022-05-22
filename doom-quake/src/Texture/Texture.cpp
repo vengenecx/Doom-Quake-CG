@@ -19,7 +19,7 @@ Texture::Texture(const char* image, GLenum texType, GLuint slot, GLenum format, 
     // Reads the image from a file and stores it in bytes
     unsigned char* bytes = stbi_load(image, &width, &height, &numColCh, 0);
 
-    std::cout << "Loaded heightmap of size " << height << " x " << width << std::endl;
+    //std::cout << "Loaded heightmap of size " << height << " x " << width << std::endl;
     // Generates an OpenGL texture object
     glGenTextures(1, &ID);
     // Assigns the texture to a Texture Unit

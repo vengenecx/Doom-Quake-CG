@@ -27,12 +27,14 @@ namespace fs = std::filesystem;
 class SceneOne : public Scene {
 public:
     SceneOne();
+    ~SceneOne();
 
     void draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints, Culling* culling, bool octreeVisible);
     void remove();
     void shoot(Ray* ray, std::vector<std::unique_ptr<Hit>> & hitPoints);
     void spotLightToggle(bool state);
-    
+
+
 private:
     std::string currentDir = (fs::current_path()).string();
     std::vector<std::unique_ptr<BaseModel>> models; // List of all models

@@ -101,11 +101,11 @@ SceneOne::SceneOne(){
 
 
     // adding object (LeanrOpengl load model tutorial) to the scene ======================================================================================================================================
-    models.push_back(std::make_unique<Model>("model-files/plant/Monster.obj",glm::vec3(2.5f, -0.9f, 6.0f), glm::vec3(0.005f, 0.005f, 0.005f), glm::vec3(1.0f,2.8f,1.0f), LIGHT, lightMonsterRoom,false));
-    models.push_back(std::make_unique<Model>("model-files/spaceship/spaceship.obj",glm::vec3(2.5f, 0.0f, -4.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(1.4f,1.0f,1.2f), LIGHT, lightSpaceShip,false));
-    models.push_back(std::make_unique<Model>("model-files/doomSword/Doom Eternal Weapon.obj", glm::vec3(-6.0f, 0.2f, 8.9f), glm::vec3(4.0f, 4.0f, 4.0f), glm::vec3(0.1f,2.0f, 0.05f), LIGHT,  lightSwordRoom, false));
-    models.push_back(std::make_unique<Model>("model-files/spider/Only_Spider_with_Animations_Export.obj", glm::vec3(9.5f, -1.0f, 2.0f), glm::vec3(0.01f, 0.01f, 0.01f), glm::vec3(1.0f,1.0f, 2.0f), LIGHT, lightSpiderRoom, true));
-    models.push_back(std::make_unique<Model>("model-files/sniper/sniper.obj", glm::vec3(13.0f, 0.0f, 6.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(1.0f,1.0f, 1.0f), LIGHT,  lightSniperRoom));
+//    models.push_back(std::make_unique<Model>("model-files/plant/Monster.obj",glm::vec3(2.5f, -0.9f, 6.0f), glm::vec3(0.005f, 0.005f, 0.005f), glm::vec3(1.0f,2.8f,1.0f), LIGHT, lightMonsterRoom,false));
+//    models.push_back(std::make_unique<Model>("model-files/spaceship/spaceship.obj",glm::vec3(2.5f, 0.0f, -4.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(1.4f,1.0f,1.2f), LIGHT, lightSpaceShip,false));
+//    models.push_back(std::make_unique<Model>("model-files/doomSword/Doom Eternal Weapon.obj", glm::vec3(-6.0f, 0.2f, 8.9f), glm::vec3(4.0f, 4.0f, 4.0f), glm::vec3(0.1f,2.0f, 0.05f), LIGHT,  lightSwordRoom, false));
+//    models.push_back(std::make_unique<Model>("model-files/spider/Only_Spider_with_Animations_Export.obj", glm::vec3(9.5f, -1.0f, 2.0f), glm::vec3(0.01f, 0.01f, 0.01f), glm::vec3(1.0f,1.0f, 2.0f), LIGHT, lightSpiderRoom, true));
+//    models.push_back(std::make_unique<Model>("model-files/sniper/sniper.obj", glm::vec3(13.0f, 0.0f, 6.0f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(1.0f,1.0f, 1.0f), LIGHT,  lightSniperRoom));
 
 
     // Scene setup
@@ -190,6 +190,13 @@ SceneOne::SceneOne(){
     }
 }
 
+SceneOne::~SceneOne(){
+    for(std::unique_ptr<BaseModel>& c : this->models){
+        c.release();
+    }
+    octree.release();
+}
+
 void SceneOne::draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints, Culling* culling, bool octreeVisible){
 
     // Draw the octree (only culling region)
@@ -204,7 +211,7 @@ void SceneOne::draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<s
 
 void SceneOne::remove(){
     for(std::unique_ptr<BaseModel>& c : this->models){
-        //c->remove();
+        c->remove();
     }
 }
 

@@ -64,6 +64,10 @@ SceneTwo::SceneTwo(){
     std::cout << "SceneOne.cpp: models pushed back..." << std::endl;
 }
 
+SceneTwo::~SceneTwo(){
+    octree.release();
+}
+
 void SceneTwo::draw(std::vector<std::unique_ptr<Shader>> & shaders,std::vector<std::unique_ptr<Hit>>& hitPoints,Culling* culling, bool octreeVisible){
     for(std::unique_ptr<BaseModel>& c : this->models){
         shaders[c->getShaderType()]->use();
