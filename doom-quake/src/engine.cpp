@@ -17,7 +17,7 @@ Engine::Engine()
 
 
     currentScene = std::make_unique<SceneOne>();
-    game = Game(); // No usefull functions implemented
+    game = Game(); // No useful functions implemented
 
 
     shaders = std::vector<std::unique_ptr<Shader>>(6);
